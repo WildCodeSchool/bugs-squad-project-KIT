@@ -1,10 +1,24 @@
 <nav class="navbar">
   <div class="nav-row">
-    <img src="src/assets/logo/K.I.T.png" alt="logo" class="logo" />
+    <div class="logo">
+      <a href="#">
+        <img src="src/assets/logo/K.I.T.png" alt="logo" />
+      </a>
+    </div>
     <ul class="list">
       <li><a href="#" class="btn">DASHBOARD</a></li>
       <li><a href="#" class="btn">MES COLLECTIONS</a></li>
       <li><a href="#" class="btn">MES FLUX</a></li>
     </ul>
+    <div class="nav-profile">
+      <button (click)="showOptions()" class="profile-btn">
+        <!--<img src="#" alt="Photo de profil" />-->
+        <div class="dropdown">
+          <a href="#">Mon profil</a>
+          <a href="#">Paramètres</a>
+          <a href="#">Se déconnecter</a>
+        </div>
+      </button>
+    </div>
   </div>
 </nav>

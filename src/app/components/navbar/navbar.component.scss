@@ -1,5 +1,25 @@
 @import "src/styles.scss";
 
+@media screen and (max-width: 767px) {
+  .navbar {
+    height: 100px;
+  }
+
+  .navbar .logo {
+    width: 15%;
+    height: auto;
+  }
+
+  .navbar .nav-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar .list {
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+
 .navbar {
   background-color: $quaternary-color;
   display: flex;
@@ -22,12 +42,13 @@
 
 .navbar .list {
   display: flex;
-  align-items: center;
+  justify-content: flex-end;
   list-style: none;
-  margin: 0;
-  padding: 0;
-  justify-content: space-between;
-  width: 70%;
+  width: 65%;
+}
+
+.navbar .list li {
+  margin-right: 1rem;
 }
 
 .btn {
@@ -46,3 +67,49 @@
   color: $quaternary-color;
 }
 
+.nav-profile {
+  display: flex;
+  justify-content: center;
+  width: 5%;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $main-color;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.profile-btn img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.profile-btn .dropdown {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.profile-btn .dropdown a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.profile-btn.active .dropdown {
+  display: block;
+}
