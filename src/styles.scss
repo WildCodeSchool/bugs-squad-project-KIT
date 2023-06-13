@@ -28,7 +28,7 @@ $font-weight-medium: 500;
 $font-weight-bold: 700;
 
 // Définition des variables pour les tailles de polices
-html, body { height: 100%; font-family: $font;
+html, body { height: 100%; font-family: $font; margin: 0;
 }
 h1 { font-size: 2rem; font: $font-weight-bold; }
 h2 { font-size: 1.5rem; font : $font-weight-medium; }
