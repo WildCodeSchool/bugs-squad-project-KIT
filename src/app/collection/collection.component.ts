@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Collection } from '../models/Collection';
 import { Link } from '../models/Link';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-collection',
@@ -8,8 +9,8 @@ import { Link } from '../models/Link';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent {
-
-  collection: Collection = new Collection('Ma collection', [new Link('https://angular.io/', 'doc officielle Angular')], 'ma description');
+  faPencil = faPencil;
+  collection: Collection = new Collection('Ma collection', [new Link('https://angular.io/', 'doc officielle Angular'), new Link('https://angular.io/', 'doc officielle Angular'),new Link('https://angular.io/', 'doc officielle Angular'), new Link('https://angular.io/', 'doc officielle Angular'), new Link('https://angular.io/', 'doc officielle Angular')], 'ma description');
 
 
 }

@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { DemoPageComponent } from './pages/demo/demo.component';
 import { DemoComponent } from './components/demo/demo.component';
@@ -15,7 +16,7 @@ import { DashCollectionsComponent } from './dash-collections/dash-collections.co
 
 @NgModule({
   declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, CollectionComponent, CollectionsComponent, DashCollectionsComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })

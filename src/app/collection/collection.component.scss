@@ -1,0 +1,41 @@
+@import 'src/styles.scss';
+
+
+.collection {
+  width: 260px;
+  background-color: red;
+  outline: solid 2px $quaternary-color;
+  border-radius: 8px;
+  height: 320px;
+  display: flex;
+  justify-content: end;
+  }
+
+.collection-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 244px;
+  background-color: $bg-color;
+}
+
+.meta {
+  align-items: left;
+  height: auto;
+  min-height: 0;
+}
+
+.links {
+  list-style: none;
+  width: 100%;
+  height: auto;
+  li p {
+    background-color: $quaternary-color;
+    color: $bg-color;
+    padding: 4px;
+    border-radius: 4px;
+    width: 80%;
+  }
+}
