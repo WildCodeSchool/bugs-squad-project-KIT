@@ -1,0 +1,41 @@
+<div class="aboutPage">
+  <div class="presentation">
+    <img src="assets/img/qui-sommes-nous.jpg" alt="qui-sommes-nous" />
+    <h1>QUI SOMMES NOUS ?</h1>
+
+    <p>
+      Sainte-viarge de saintes fesses de ciboire de marde de saint-ciboire de charrue de patente à gosse de torvisse de
+      calvaire de verrat de mosus de viande à chien de torrieux de calvinouche de christie de cimonaque de caltor de
+      bâtard de tabarnane d'ostifie de viarge de sacréfice de colon de boswell de p'tit Jésus de saint-cimonaque de
+      calvince d'ostie de sacrament de bout d'viarge. Sainte-viarge de saintes fesses de ciboire de marde de
+      saint-ciboire de charrue de patente à gosse de torvisse de calvaire de verrat de mosus de viande à chien de
+      torrieux de calvinouche de christie de cimonaque de caltor de bâtard de tabarnane d'ostifie.
+    </p>
+  </div>
+
+  <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+    <label>Email:</label>
+    <input type="email" formControlName="email" required />
+    <div
+      *ngIf="
+        contactForm.controls.email.errors && (contactForm.controls.email.dirty || contactForm.controls.email.touched)
+      "
+      class="invalid"
+    >
+      <div *ngIf="contactForm.controls.email.errors?.['required']">Email is required.</div>
+      <div *ngIf="contactForm.controls.email.errors?.['email']">Email address is not valid.</div>
+    </div>
+    <label>Message:</label>
+    <textarea formControlName="message" required></textarea>
+    <div
+      *ngIf="
+        contactForm.controls.message.errors &&
+        (contactForm.controls.message.dirty || contactForm.controls.message.touched)
+      "
+      class="invalid"
+    >
+      <div *ngIf="contactForm.controls.message.errors?.['required']">Message is required.</div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>

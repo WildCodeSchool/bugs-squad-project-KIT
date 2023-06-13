@@ -12,10 +12,22 @@ import { DemoDirective } from './directives/demo.directive';
 import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { Page500Component } from './pages/page500/page500.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, MentionLegalesComponent, Page404Component, Page500Component],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  declarations: [
+    AppComponent,
+    DemoPageComponent,
+    DemoComponent,
+    DemoPipe,
+    DemoDirective,
+    MentionLegalesComponent,
+    Page404Component,
+    Page500Component,
+    AboutComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
