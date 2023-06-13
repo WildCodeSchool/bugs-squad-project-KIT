@@ -10,10 +10,11 @@ import { DemoComponent } from './components/demo/demo.component';
 import { DemoPipe } from './pipes/demo.pipe';
 import { DemoDirective } from './directives/demo.directive';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, NavbarComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgOptimizedImage],
   providers: [],
   bootstrap: [AppComponent],
 })

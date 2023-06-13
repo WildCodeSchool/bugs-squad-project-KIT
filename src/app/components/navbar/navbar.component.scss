@@ -1,0 +1,48 @@
+@import "src/styles.scss";
+
+.navbar {
+  background-color: $quaternary-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.navbar .nav-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo {
+  width: 15%;
+  height: auto;
+}
+
+.navbar .list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 24px;
+  background-color: $quaternary-color;
+  color: $bg-color;
+  border: 2px solid $bg-color;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: $bg-color;
+  color: $quaternary-color;
+}
+
