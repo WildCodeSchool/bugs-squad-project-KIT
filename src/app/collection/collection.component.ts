@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Collection } from '../models/Collection';
+import { Link } from '../models/Link';
 
 @Component({
   selector: 'app-collection',
@@ -7,6 +8,8 @@ import { Collection } from '../models/Collection';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent {
+
+  collection: Collection = new Collection('Ma collection', [new Link('https://angular.io/', 'doc officielle Angular')], 'ma description');
 
 
 }

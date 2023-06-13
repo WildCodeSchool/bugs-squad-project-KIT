@@ -1,1 +1,9 @@
 <p>collection works!</p>
+<h2>{{collection.title}}</h2>
+<p>{{collection.description}}</p>
+<ul>
+<li *ngFor="let link of collection.links">
+  <p>{{link.url}}</p>
+  <p>{{link.comment}}</p>
+  </li>
+</ul>
