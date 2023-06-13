@@ -11,9 +11,10 @@ import { DemoPipe } from './pipes/demo.pipe';
 import { DemoDirective } from './directives/demo.directive';
 import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
 import { Page404Component } from './pages/page404/page404.component';
+import { Page500Component } from './pages/page500/page500.component';
 
 @NgModule({
-  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, MentionLegalesComponent, Page404Component],
+  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, MentionLegalesComponent, Page404Component, Page500Component],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
