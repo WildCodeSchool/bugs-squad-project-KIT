@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Collection } from '../models/Collection';
 
 @Component({
   selector: 'app-collection',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent {
+
 
 }
