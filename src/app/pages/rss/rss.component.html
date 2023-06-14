@@ -1,0 +1,4 @@
+<button (click)="openModal()">+ Créer un flux RSS</button>
+<div *ngFor="let rssLink of rssFeedService">
+  <app-rss-feeds [rssLink]="rssLink"></app-rss-feeds>
+</div>
