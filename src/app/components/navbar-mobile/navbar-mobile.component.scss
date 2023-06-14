@@ -1,0 +1,15 @@
+@import 'src/styles.scss';
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  background-color: $quaternary-color;
+  justify-content: space-between;
+}
+
+.mat-drawer-inner-container {
+  background-color: $quaternary-color;
+}
+
+.logo img {
+  height: 3rem;
+}

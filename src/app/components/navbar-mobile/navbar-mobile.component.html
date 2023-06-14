@@ -1,7 +1,32 @@
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+<mat-toolbar class="mat-toolbar">
+  <button
+    mat-icon-button
+    (click)="opened = !opened"
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon>menu</mat-icon>
   </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
+  <div class="logo">
+    <img src="../../../assets/logo/K.I.T_small.png" />
+  </div>
 </mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="over">
+    <mat-nav-list>
+      <a mat-list-item href="#">Flux RSS</a>
+      <a mat-list-item href="#">TODO Lists</a>
+      <a mat-list-item href="#">Dashboard</a>
+      <a mat-list-item href="#">Mes collections</a>
+      <a mat-list-item href="#">Mon profil</a>
+      <a mat-list-item href="#">Paramètres</a>
+      <a mat-list-item href="#">Me déconnecter</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

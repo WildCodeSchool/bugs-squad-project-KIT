@@ -1,14 +1,10 @@
-<!-- composant principal de l'application
-<ng-container *ngIf="(isMobile$ | async) === true; then mobileView; else desktopView"></ng-container>
--->
-
-<!-- vue mobile -->
-<ng-template #mobileView>
-  <app-navbar-mobile></app-navbar-mobile>
-</ng-template>
-
-<!-- vue pour dekstop -->
-<ng-template #desktopView>
+<!-- template pour la version de bureau -->
+<div *ngIf="!isMobile">
   <app-navbar></app-navbar>
-</ng-template>
+</div>
+
+<!-- template pour la version mobile -->
+<div *ngIf="isMobile">
+  <app-navbar-mobile></app-navbar-mobile>
+</div>
 <router-outlet></router-outlet>
