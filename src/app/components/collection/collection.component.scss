@@ -54,11 +54,19 @@ ul {
     width: 90%;
     height: 2rem;
     margin-top: 0.5rem;
-    p {
+    .link {
+      display: flex;
+      justify-content: space-between;
       background-color: $quaternary-color;
       border-radius: 4px;
-      padding: 2px;
       color: white;
+      height: 1.5rem;
+      align-items: center;
+
+      p {
+        margin: auto;
+      }
+
     }
   }
 }

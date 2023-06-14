@@ -5,13 +5,34 @@
       <fa-icon [icon]="faLink"></fa-icon>
     </div>
     <div class="meta">
+      <h3 class="title">{{ testcollection.title }}</h3>
+      <p class="desciption">{{ testcollection.description }}</p>
+    </div>
+    <ul>
+      <li *ngFor="let link of testcollection.links">
+        <div class="link">
+          <p>{{ link.comment }}</p>
+          <p><fa-icon [icon]="faPencil"></fa-icon></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="collection">
+  <div class="collection-infos">
+    <div class="icons">
+      <p>...</p>
+      <fa-icon [icon]="faLink"></fa-icon>
+    </div>
+    <div class="meta">
       <h3 class="title">{{ collection.title }}</h3>
       <p class="desciption">{{ collection.description }}</p>
     </div>
     <ul>
       <li *ngFor="let link of collection.links">
         <p>
-          {{ link.comment }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {{ link.comment }}
           <fa-icon [icon]="faPencil"></fa-icon>
         </p>
       </li>
