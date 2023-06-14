@@ -1,0 +1,99 @@
+@import 'src/styles.scss';
+
+// .collection has a red background, .collection-infos has a white background and is 244px wide, is a flexbox and everuthing is centered, the h3, the <p>, the <ul> and the <li> are aligned
+
+.collection {
+  width: 260px;
+  background-color: red;
+  outline: solid 2px $quaternary-color;
+  border-radius: 8px;
+  height: 320px;
+  display: flex;
+  justify-content: end;
+}
+
+.collection-infos {
+  height: 100%;
+  width: 244px;
+  background-color: $bg-color;
+}
+
+.icons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 2rem;
+  margin-right: 2rem;
+
+  p {
+    margin-right: 1rem;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+  }
+}
+
+.meta {
+  margin: 1rem 0 0 1rem;
+
+  h3 {
+   margin: 0;
+  }
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0;
+  width: 100%;
+
+
+  li {
+    width: 90%;
+    height: 2rem;
+    margin-top: 0.5rem;
+    p {
+      background-color: $quaternary-color;
+      border-radius: 4px;
+      padding: 2px;
+      color: white;
+    }
+  }
+}
+
+// .collection {
+//   width: 260px;
+//   background-color: red;
+//   outline: solid 2px $quaternary-color;
+//   border-radius: 8px;
+//   height: 320px;
+//   display: flex;
+//   justify-content: end;
+//   overflow: hidden;
+//   }
+
+// .collection-infos {
+//   height: 100%;
+//   width: 244px;
+//   background-color: $bg-color;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   ul {
+//     list-style: none;
+//     background-color: red;
+//     width: 90%;
+//   }
+//   li p {
+//     background-color: $quaternary-color;
+//     color: $bg-color;
+//     padding: 2px;
+//     border-radius: 4px;
+//     width: 100%;
+//     display: block;
+
+//   }
+// }
