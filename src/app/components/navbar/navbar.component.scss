@@ -1,28 +1,5 @@
 @import "src/styles.scss";
 
-@import "src/styles.scss";
-
-@media screen and (max-width: 767px) {
-  .navbar {
-    height: 100px;
-
-    .logo {
-      width: 15%;
-      height: auto;
-    }
-
-    .nav-row {
-      flex-direction: column;
-      align-items: center;
-
-      .list {
-        width: 100%;
-        justify-content: space-around;
-      }
-    }
-  }
-}
-
 .navbar {
   background-color: $quaternary-color;
   display: flex;
