@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  height: 100%;
 
   .team-container {
     display: flex;
@@ -17,8 +17,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 1rem;
-      padding: 1rem;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      width: 10rem;
+      height: 10rem;
       border: 1px solid #ddd;
       border-radius: 4px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -29,7 +31,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-bottom: 1rem;
       }
 
       &:hover {
@@ -46,15 +47,12 @@
       .team-member-info {
         text-align: center;
 
-        h3 {
-          margin-bottom: 0.5rem;
-        }
-
         a {
-          color: #6b48ff;
-          font-weight: 700;
+          color: $quaternary-color;
+          font-weight: $font-weight-bold;
           text-decoration: none;
           transition: color 0.2s ease-in-out;
+
 
           &:hover {
             color: #482880;
