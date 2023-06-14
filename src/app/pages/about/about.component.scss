@@ -5,19 +5,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
 
   .presentation {
     text-align: center;
     width: 75%;
-    margin-bottom: 2rem;
 
     h1 {
       color: $main-color;
     }
 
     p {
-      margin: 2rem 0;
+      width: 75%;
+    }
+
+    .about {
+      display: flex;
+      flex-direction: row;
     }
   }
 
@@ -29,7 +32,6 @@
     border: 2px solid #f67280;
     border-radius: 10px;
     padding: 3rem;
-    margin-bottom: 2rem;
 
     h1 {
       color: $main-color;

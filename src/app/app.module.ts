@@ -14,6 +14,7 @@ import { Page404Component } from './pages/page404/page404.component';
 import { Page500Component } from './pages/page500/page500.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     Page500Component,
     AboutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, ReactiveFormsModule, NgOptimizedImage],
   providers: [],
   bootstrap: [AppComponent],
 })
