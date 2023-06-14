@@ -23,10 +23,10 @@
     font-weight: 700;
   }
 
-  .link {
+  .link-pw {
     color: $tertiary-color;
   }
-  .link:hover {
+  .link-pw:hover {
     color: $main-color;
   }
   p {
@@ -37,6 +37,8 @@
   h4 {
     font-weight: 600;
     color: $main-color;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
   }
 
   /*******************SECTIONS***********************/
@@ -70,6 +72,10 @@
           text-align: center;
         }
       }
+    }
+
+    .form-section {
+      text-align: center;
     }
   }
 }
@@ -134,6 +140,8 @@
   transform-style: preserve-3d;
   perspective: 800px;
   margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .card-3d-wrapper {
   width: 100%;
@@ -174,24 +182,32 @@
 .center-wrap {
   position: absolute;
   width: 100%;
-  padding: 0 35px;
+  // padding: 0 35px;
   top: 50%;
   left: 0;
   transform: translate3d(0, -50%, 35px) perspective(100px);
   z-index: 20;
-  display: block;
+  // display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .form-group {
   position: relative;
   display: block;
-  margin: 0;
+  margin-top: 1rem;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .form-style {
   padding: 13px 20px;
   padding-left: 55px;
-  height: 48px;
+  height: 28px;
   width: 100%;
   font-weight: 500;
   border-radius: 4px;
@@ -214,7 +230,7 @@
 }
 .input-icon {
   position: absolute;
-  top: 0;
+  top: 0px;
   left: 18px;
   height: 48px;
   font-size: 24px;
@@ -275,9 +291,11 @@
   height: 44px;
   font-size: 13px;
   font-weight: 600;
+  text-decoration: none;
   text-transform: uppercase;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
+  margin-top: 30px;
   padding: 0 30px;
   letter-spacing: 1px;
   display: -webkit-inline-flex;
@@ -308,18 +326,4 @@
   background-color: $quaternary-color;
   color: $main-color;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
-}
-
-.logo {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  display: block;
-  z-index: 100;
-  transition: all 250ms linear;
-}
-.logo img {
-  height: 26px;
-  width: auto;
-  display: block;
 }

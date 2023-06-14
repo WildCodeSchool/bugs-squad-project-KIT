@@ -19,8 +19,11 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@iconscout/unicons": "^4.0.8",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "unicons": "^0.0.3",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {

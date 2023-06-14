@@ -29,9 +29,13 @@ $font-weight-bold: 700;
 // Définition des variables pour les tailles de polices
 html,
 body {
+  box-sizing: border-box;
   margin: 0;
-  height: 100%;
+  padding: 0;
   font-family: $font;
+  font-size: 16px;
+  color: $text-color;
+  background-color: $bg-color;
 }
 h1 {
   font-size: 2rem;
