@@ -11,10 +11,8 @@ $text-color: #000000;
 $grey-color: #333333;
 
 // Définition des variables pour les images
-$logoDark: url("/assets/logo/K.I.T_D.png");
-$logo2Light: url("/assets/logo/K.I.T_L.png");
-$logoDarkSans: url("/assets/logo/K.I.T_D_S.png");
-$logo2LightSans: url("/assets/logo/K.I.T_L_S.png");
+$logo: url("src/assets/logo/K.I.T.png");
+$logo2: url("src/assets/logo/K.I.T2.png");
 
 // Définition des variables pour la police Rubik
 
@@ -30,10 +28,15 @@ $font-weight-bold: 700;
 
 // Définition des variables pour les tailles de polices
 html, body {
-  height: 100%;
-  font-family: $font;
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  font-family: $font;
+  font-size: 16px;
+  color: $text-color;
+  background-color: $bg-color;
 }
+
 
 h1 {
   font-size: 2rem;
