@@ -1,22 +1,60 @@
 <div class="aboutPage">
   <div class="presentation">
     <h1>QUI SOMMES NOUS ?</h1>
-
     <div class="about">
-      <p>
-        Sainte-viarge de saintes fesses de ciboire de marde de saint-ciboire de charrue de patente à gosse de torvisse
-        de calvaire de verrat de mosus de viande à chien de torrieux de calvinouche de christie de cimonaque de caltor
-        de bâtard de tabarnane d'ostifie de viarge de sacréfice de colon de boswell de p'tit Jésus de saint-cimonaque de
-        calvince d'ostie de sacrament de bout d'viarge. Sainte-viarge de saintes fesses de ciboire de marde de
-        saint-ciboire de charrue de patente à gosse de torvisse de calvaire de verrat de mosus de viande à chien de
-        torrieux de calvinouche de christie de cimonaque de caltor de bâtard de tabarnane d'ostifie.
-      </p>
-      <a href="https://qr-creator.com/" target="_blank" style="cursor: default">
+      <div class="team-container">
+        <div class="team-member">
+          <img src="./assets/mattei.jpg" alt="Mattei's photo" />
+          <div class="team-member-info">
+            <h3>Mattei</h3>
+            <a href="https://github.com/MatteiT" target="_blank">GitHub</a>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/emericb.jpg" alt="EmericB's photo" />
+          <div class="team-member-info">
+            <h3>EmericB</h3>
+            <a href="https://github.com/emericb" target="_blank">GitHub</a>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/tylyfox.jpg" alt="Tylyfox's photo" />
+          <div class="team-member-info">
+            <h3>Tylyfox</h3>
+            <a href="https://github.com/Tylyfox" target="_blank">GitHub</a>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/newaluigi.jpg" alt="Newaluigi's photo" />
+          <div class="team-member-info">
+            <h3>Newaluigi</h3>
+            <a href="https://github.com/Newaluigi" target="_blank">GitHub</a>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/emmirose.jpg" alt="Emmirose's photo" />
+          <div class="team-member-info">
+            <h3>Emmirose</h3>
+            <a href="https://github.com/emmirose" target="_blank">GitHub</a>
+          </div>
+        </div>
+        <p>
+          Sainte-viarge de saintes fesses de ciboire de marde de saint-ciboire de charrue de patente à gosse de de
+          calvaire de verrat de mosus de viande à chien de torrieux de calvinouche de christie de cimonaque de caltor de
+          bâtard de tabarnane d'ostifie de viarge de sacréfice de colon de boswell de p'tit Jésus de saint-cimonaque de
+          calvince d'ostie de sacrament de bout d'viarge. Sainte-viarge de saintes fesses de ciboire de marde de
+          saint-ciboire de charrue de patente à gosse de torvisse de calvaire de verrat de mosus de viande à chien de
+          torrieux de calvinouche de christie de cimonaque de caltor de bâtard de tabarnane d'ostifie.
+        </p>
+      </div>
+
+      <div class="QR">
         <img
           src="https://qr-api.quel.jp/v1/?size=4&data=https%3A%2F%2Fqr-creator.com%2Furls%2FbY27DsIwDEU_CEF3tlB1AwYUMUZyW9NachKUOH38PZVZs12fY93rZpFvvjbNRDKX_jJE3zxABMm6ikKPiYa-puzO-yduNfXEFbjQRPVKTylmdP_Zk2nN2SbKAsGZBQSSok6XNd5iya6FEZLo_QbGIHS8M24QxoSK77gQMxy88x4UvWLO0f0A"
           alt="QR Code"
         />
-      </a>
+        <h4>Le QRcode de l'équipe</h4>
+      </div>
     </div>
   </div>
   <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
