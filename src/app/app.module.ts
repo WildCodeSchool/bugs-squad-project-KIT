@@ -13,9 +13,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgOptimizedImage } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
 
 @NgModule({
-  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, NavbarComponent],
+  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, NavbarComponent, NavbarMobileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
