@@ -1,6 +1,126 @@
 @import "src/styles.scss";
 
+@import "src/styles.scss";
+
 @media screen and (max-width: 767px) {
+  .navbar {
+    height: 100px;
+
+    .logo {
+      width: 15%;
+      height: auto;
+    }
+
+    .nav-row {
+      flex-direction: column;
+      align-items: center;
+
+      .list {
+        width: 100%;
+        justify-content: space-around;
+      }
+    }
+  }
+}
+
+.navbar {
+  background-color: $quaternary-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+
+  .nav-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      width: 15%;
+      height: auto;
+    }
+
+    .list {
+      display: flex;
+      justify-content: flex-end;
+      list-style: none;
+      width: 65%;
+
+      li {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 24px;
+  background-color: $quaternary-color;
+  color: $bg-color;
+  border: 2px solid $bg-color;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $bg-color;
+    color: $quaternary-color;
+  }
+}
+
+.nav-profile {
+  display: flex;
+  justify-content: center;
+  width: 5%;
+
+  .profile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $main-color;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 80px;
+      right: 0;
+      background-color: #fff;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      z-index: 1;
+
+      a {
+        display: block;
+        padding: 12px 16px;
+        text-decoration: none;
+        color: #333;
+      }
+    }
+
+    &.active {
+      .dropdown {
+        display: block;
+      }
+    }
+  }
+}
+
+
+/*@media screen and (max-width: 767px) {
   .navbar {
     height: 100px;
   }
@@ -113,3 +233,4 @@
 .profile-btn.active .dropdown {
   display: block;
 }
+*/
