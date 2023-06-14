@@ -1,4 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+// Définition des variables pour les couleurs
+$main-color: #f67280;
+$secondary-color: #c06c84;
+$tertiary-color: #6c5b7b;
+$quaternary-color: #355c7d;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Définition des variables pour les fonds
+
+$bg-color: #ffffff;
+$text-color: #000000;
+$grey-color: #333333;
+
+// Définition des variables pour les images
+$logo: url('src/assets/logo/K.I.T.png');
+$logo2: url('src/assets/logo/K.I.T2.png');
+
+// Définition des variables pour la police Rubik
+
+$font: 'Rubik', sans-serif;
+$italic: italic;
+
+// Définition des poids de polices Rubik
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Définition des variables pour les tailles de polices
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: $font;
+}
+h1 {
+  font-size: 2rem;
+  font: $font-weight-bold;
+}
+h2 {
+  font-size: 1.5rem;
+  font: $font-weight-medium;
+}
+h3 {
+  font-size: 1.3rem;
+  font: $font-weight-medium;
+}
+p {
+  font-size: 1rem;
+  font: $font-weight-normal;
+}
+li {
+  font-size: 1rem;
+  font: $font-weight-normal;
+}
+a {
+  font-size: 1rem;
+  font: $font-weight-normal;
+}
+span {
+  font-size: 0.8rem;
+  font: $font-weight-light;
+}
