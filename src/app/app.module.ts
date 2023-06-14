@@ -16,7 +16,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
 
 @NgModule({
-  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, NavbarComponent, NavbarMobileComponent],
+  declarations: [
+    AppComponent,
+    DemoPageComponent,
+    DemoComponent,
+    DemoPipe,
+    DemoDirective,
+    NavbarComponent,
+    NavbarMobileComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

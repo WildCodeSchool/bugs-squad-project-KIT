@@ -1,4 +1,4 @@
-@import "src/styles.scss";
+@import 'src/styles.scss';
 
 .navbar {
   background-color: $quaternary-color;
@@ -77,7 +77,7 @@
       top: 80px;
       right: 0;
       background-color: #fff;
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
       z-index: 1;
 
       a {
@@ -95,7 +95,6 @@
     }
   }
 }
-
 
 /*@media screen and (max-width: 767px) {
   .navbar {
