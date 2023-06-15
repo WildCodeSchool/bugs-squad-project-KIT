@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from './components/footer/footer.component';
-
+import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +29,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NavbarComponent,
     NavbarMobileComponent,
     FooterComponent,
+    BurgerButtonComponent,
   ],
   imports: [
     BrowserModule,

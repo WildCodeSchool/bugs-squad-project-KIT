@@ -14,8 +14,7 @@
     justify-content: flex-start;
 
     img {
-      padding-right: 0.5rem;
-      padding-left: 0.5rem;
+      margin-left: 1rem;
       height: 2rem;
       width: 2rem;
     }
@@ -38,6 +37,17 @@
   @media screen and (max-width: 767px) {
     .footer-link {
       display: none;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: flex-start;
+
+      img {
+        margin-left: 0.5rem;
+        height: 1rem;
+        width: 1rem;
+      }
     }
 
     .mat-toolbar-row img {
