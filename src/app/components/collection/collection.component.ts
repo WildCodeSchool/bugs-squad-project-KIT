@@ -16,21 +16,15 @@ export class CollectionComponent {
 
   public color = '#FFFFFF';
 
-  testcollection: Collection = new Collection(
-    'Ma collection',
-    [
-      new Link('https://angular.io/', 'doc officielle Angular'),
-      new Link('https://angular.io/', 'doc officielle Angular'),
-      new Link('https://angular.io/', 'doc officielle Angular'),
-      new Link('https://angular.io/', 'doc officielle Angular'),
-    ],
-    'ma description'
-  );
-
   @Input() collection!: Collection;
   @Input() collectionColor!: AbstractControl;
 
   ngOnInit() {
     this.color = this.collectionColor.value;
+  }
+  // If there is a comment in the Link of the Collection, the comment is displayed. Else, the url is displayed
+
+  getLinkComment(link: Link) {
+    return link.comment ? link.comment : link.url;
   }
 }
