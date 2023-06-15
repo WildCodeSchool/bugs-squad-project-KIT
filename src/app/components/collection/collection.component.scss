@@ -1,7 +1,10 @@
 @import 'src/styles.scss';
 
 // .collection has a red background, .collection-infos has a white background and is 244px wide, is a flexbox and everuthing is centered, the h3, the <p>, the <ul> and the <li> are aligned
-
+:host{
+  width: 260px;
+  display: block;
+}
 .collection {
   width: 260px;
   outline: solid 2px $quaternary-color;

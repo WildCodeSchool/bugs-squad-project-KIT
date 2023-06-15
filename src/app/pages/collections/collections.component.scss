@@ -1,10 +1,15 @@
 @import 'src/styles.scss';
 
+.body {
+
+
 .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
+  width: fit-content;
+  margin: 0 auto;
 
   label {
     display: flex;
@@ -13,6 +18,21 @@
 
     input {
       border: 1px solid $secondary-color;
+      width: 15rem;
+    }
+    .color {
+      width: 3rem;
+      border: none;
     }
   }
+
+  .collections {
+    display: flex;
+    background-color: black;
+    margin: 2rem;
+    .singleCollection {
+      width: 320px;
+    }
+  }
+}
 }
