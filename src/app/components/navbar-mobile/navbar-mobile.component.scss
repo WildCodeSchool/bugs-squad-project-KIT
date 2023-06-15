@@ -17,3 +17,8 @@
 .logo img {
   height: 3rem;
 }
+
+.mat-mdc-list-base {
+  --mdc-list-list-item-one-line-container-height: 6rem;
+  text-align: center;
+}
