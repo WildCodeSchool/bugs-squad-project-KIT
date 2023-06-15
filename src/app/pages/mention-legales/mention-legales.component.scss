@@ -1,11 +1,34 @@
+@use "/src/imports" as *;
+
 .mentions-legales {
-  max-width: 800px;
-  margin: 0 auto;
-  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  max-width: 50%;
+  margin: 2rem auto;
+  border: 1px solid $main-color;
+}
+
+.enterprise {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $main-color;
+  padding: 1rem;
+  width: 50%;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 2rem;
+  color: $main-color;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1rem;
+  color: $main-color;
 }
 
 .content {
   padding: 1rem;
-  background-color: #f9f9f9;
   border-radius: 0.5rem;
 }
