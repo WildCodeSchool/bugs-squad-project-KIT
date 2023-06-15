@@ -1,0 +1,68 @@
+@import 'src/styles.scss';
+
+.presentation-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+
+  .imgleft {
+    scale: 1.5;
+    margin-top: 50px;
+  }
+
+  .imgright {
+    margin-top: 50px;
+  }
+}
+
+.presentation-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  color: $quaternary-color;
+}
+
+ul {
+  list-style: none;
+  position: relative;
+  left: -250px;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 40px;
+  padding: 30px;
+  font-weight: bold;
+  color: $quaternary-color;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: $quaternary-color;
+}
+
+.scrollbutton {
+  background-color: $main-color;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: large;
+  color: $quaternary-color;
+  font-weight: bold;
+}
