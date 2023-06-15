@@ -1,6 +1,11 @@
 .mentions-legales {
-  max-height: 400px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  padding: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.content {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 0.5rem;
 }

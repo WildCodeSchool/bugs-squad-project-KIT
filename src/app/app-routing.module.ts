@@ -5,7 +5,7 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
 
 const routes: Routes = [
   { path: '', component: DemoPageComponent },
-  { path: 'mention-legales', component: MentionLegalesComponent },
+  { path: 'mentionlegales', component: MentionLegalesComponent },
 ];
 
 @NgModule({
