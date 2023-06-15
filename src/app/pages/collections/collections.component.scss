@@ -10,6 +10,10 @@
   align-items: start;
   width: fit-content;
   margin: 0 auto;
+  border: 1px solid $quaternary-color;
+  padding: 2rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
 
   label {
     display: flex;
@@ -25,14 +29,19 @@
       border: none;
     }
   }
+  button {
+    background-color: $quaternary-color;
+    border: none;
+    height: 2rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  }
 
   .collections {
-    display: flex;
-    background-color: black;
-    margin: 2rem;
-    .singleCollection {
-      width: 320px;
-    }
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 2rem;
   }
-}
 }
