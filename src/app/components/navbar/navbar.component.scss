@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 55px;
 
   .nav-row {
     display: flex;
@@ -14,7 +14,7 @@
     justify-content: space-between;
 
     .logo img {
-      width: 30%;
+      width: 25%;
       padding-left: 1rem;
     }
 
@@ -33,10 +33,10 @@
 
 .btn {
   display: inline-block;
-  padding: 16px 24px;
+  padding: 8px 16px;
   background-color: $quaternary-color;
   color: $bg-color;
-  border: 2px solid $bg-color;
+  border: 1px solid $bg-color;
   border-radius: 0.5rem;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -56,8 +56,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background-color: $main-color;
     color: #fff;
@@ -74,7 +74,7 @@
     .dropdown {
       display: none;
       position: absolute;
-      top: 80px;
+      top: 55px;
       right: 0;
       background-color: #fff;
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
