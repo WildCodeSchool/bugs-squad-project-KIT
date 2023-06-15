@@ -9,10 +9,10 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 export class AppComponent {
   isMobile = false;
   constructor(private deviceService: DeviceDetectorService) {
-    this.epicFunction();
+    this.checkDevice();
   }
 
-  epicFunction() {
+  checkDevice() {
     const isDesktop = this.deviceService.isDesktop();
     this.isMobile = !isDesktop;
   }

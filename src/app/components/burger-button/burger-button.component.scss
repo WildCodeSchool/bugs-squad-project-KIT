@@ -3,6 +3,9 @@ $burgerBarHeight: 1px;
 $burgerBarColor: #333;
 
 .burger-menu {
+  border: none;
+  background-color: transparent;
+  color: transparent;
   width: $burgerWidth;
   height: $burgerWidth;
   cursor: pointer;
@@ -14,7 +17,7 @@ $burgerBarColor: #333;
       position: absolute;
       width: $burgerWidth - 2 * $burgerBarHeight;
       left: 0px;
-      top: 11px;
+      /*top: 11px;*/
       border: $burgerBarHeight solid $burgerBarColor;
       transition: border-color 0.2s ease-in 0.2s;
 
