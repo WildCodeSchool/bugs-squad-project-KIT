@@ -12,9 +12,7 @@ export class RssModalComponent {
     rssUrl: ['', Validators.required],
   });
 
-  constructor(
-      private dialogRef: MatDialogRef<RssModalComponent>,private fb: FormBuilder
-  ) {}
+  constructor(private dialogRef: MatDialogRef<RssModalComponent>, private fb: FormBuilder) {}
 
   closeModal(): void {
     if (this.rssCreateForm.invalid) {

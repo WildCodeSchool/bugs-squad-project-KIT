@@ -27,7 +27,7 @@ export class RssFeedsComponent {
     });
   }
   getTruncatedDescription(description: string): string {
-    const maxLength = 50;
+    const maxLength = 100;
     if (description.length > maxLength) {
       return `${description.slice(0, maxLength)}...`;
     } else {

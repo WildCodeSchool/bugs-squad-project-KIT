@@ -1,0 +1,13 @@
+.main__cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #D9D9D9;
+}
+.main__cards .card {
+  background-color: #FFFFFF;
+}
+mat-icon {
+  color: #C06C84;
+}

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RssFeedsComponent } from './rss-feeds.component';
 
 describe('RssFeedsComponent', () => {
@@ -8,9 +7,8 @@ describe('RssFeedsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RssFeedsComponent ]
-    })
-    .compileComponents();
+      declarations: [RssFeedsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RssFeedsComponent);
     component = fixture.componentInstance;

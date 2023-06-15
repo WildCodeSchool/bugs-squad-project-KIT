@@ -1,9 +1,15 @@
-<div *ngIf="rssData">
+<div class="main__cards" *ngIf="rssData">
   <div *ngFor="let rssItem of rssData.items">
     <div class="card">
+      <div class="card__flux-head">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+      </div>
       <h3>{{ rssItem.title }}</h3>
       <div [innerHTML]="getTruncatedDescription(rssItem.description)"></div>
-      <a [href]="rssItem.link" rel="nofollow">{{ rssItem.title }}</a>
+      <a [href]="rssItem.link" rel="nofollow" target="_blank">Lien de l'article</a>
+    </div>
+    <div class="card__flux-footer">
+
     </div>
   </div>
 </div>
