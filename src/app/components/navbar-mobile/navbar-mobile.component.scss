@@ -1,4 +1,4 @@
-@import 'src/styles.scss';
+@import '../../../styles.scss';
 
 .mat-toolbar-row,
 .mat-toolbar-single-row {
@@ -21,4 +21,5 @@
 .mat-mdc-list-base {
   --mdc-list-list-item-one-line-container-height: 6rem;
   text-align: center;
+  font-size: 2rem;
 }
