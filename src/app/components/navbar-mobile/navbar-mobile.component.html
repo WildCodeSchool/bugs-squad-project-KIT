@@ -1,13 +1,6 @@
 <mat-toolbar class="mat-toolbar">
   <mat-toolbar-row>
-    <button
-      mat-icon-button
-      (click)="opened = !opened"
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
+    <app-burger-button (click)="opened = !opened"></app-burger-button>
     <div class="logo">
       <img src="../../../assets/logo/K.I.T_small.png" alt="logo" />
     </div>

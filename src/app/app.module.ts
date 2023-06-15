@@ -17,6 +17,7 @@ import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatListModule } from '@angular/material/list';
     DemoDirective,
     NavbarComponent,
     NavbarMobileComponent,
+    BurgerButtonComponent,
   ],
   imports: [
     BrowserModule,
