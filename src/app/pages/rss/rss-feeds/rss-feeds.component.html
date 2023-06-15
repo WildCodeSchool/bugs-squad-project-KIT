@@ -1,15 +1,17 @@
-<div class="main__cards" *ngIf="rssData">
-  <div *ngFor="let rssItem of rssData.items">
-    <div class="card">
-      <div class="card__flux-head">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+<div class="rss-feed__card" *ngIf="rssData">
+  <div *ngFor="let rssItem of rssData.items; let i = index">
+    <div class="rss-feed__card-content">
+      <div class="rss-feed__card-head" (click)="toggleCardVisibility(i)">
+        <h3>{{ formatTitle(rssItem.title) }}</h3>
+        <mat-icon></mat-icon>
       </div>
-      <h3>{{ rssItem.title }}</h3>
-      <div [innerHTML]="getTruncatedDescription(rssItem.description)"></div>
-      <a [href]="rssItem.link" rel="nofollow" target="_blank">Lien de l'article</a>
-    </div>
-    <div class="card__flux-footer">
-
+      <div class="rss-feed__card-article" [ngClass]="{ 'hidden': i !== activeCardIndex && activeCardIndex !== -1 }">
+        <p [innerHTML]="getTruncatedDescription(rssItem.description)"></p>
+        <a [href]="rssItem.link" rel="nofollow" target="_blank">Lien de l'article</a>
+      </div>
+      <div class="rss-feed__card-footer" [ngClass]="{ 'hidden': i !== activeCardIndex && activeCardIndex !== -1 }">
+        <p></p>
+      </div>
     </div>
   </div>
 </div>

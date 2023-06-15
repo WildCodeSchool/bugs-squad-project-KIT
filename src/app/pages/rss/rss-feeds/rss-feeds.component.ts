@@ -9,6 +9,7 @@ import { RssFeedService } from '../../../services/rss.service';
 export class RssFeedsComponent {
   @Input() rssLink!: string;
   rssData?: any;
+  activeCardIndex = 0;
 
   constructor(private rssFeedService: RssFeedService) {}
 
@@ -27,11 +28,18 @@ export class RssFeedsComponent {
     });
   }
   getTruncatedDescription(description: string): string {
-    const maxLength = 100;
-    if (description.length > maxLength) {
-      return `${description.slice(0, maxLength)}...`;
+    const maxLength = 150;
+    const cleanDescription = description.replace(/<[^>]+>/g, '');
+    if (cleanDescription.length > maxLength) {
+      return `${cleanDescription.slice(0, maxLength)} ...`;
     } else {
-      return description;
+      return cleanDescription;
     }
+  }
+  formatTitle(title: string): string {
+    return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+  }
+  toggleCardVisibility(index: number): void {
+    this.activeCardIndex = index;
   }
 }
