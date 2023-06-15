@@ -1,19 +1,21 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-burger-button',
   templateUrl: './burger-button.component.html',
   styleUrls: ['./burger-button.component.scss'],
 })
-export class BurgerButtonComponent implements OnInit {
-  @Input() init = false;
+export class BurgerButtonComponent {
   @Output() opened = new EventEmitter<never>();
 
   active = false;
 
-  ngOnInit() {
-    this.active = this.init || false;
-  }
+  // On hold for further testing
+  //
+  //@Input() init = false;
+  //ngOnInit() {
+  //  this.active = this.init || false;
+  //}
 
   onBurgerClicked() {
     this.active = !this.active;
