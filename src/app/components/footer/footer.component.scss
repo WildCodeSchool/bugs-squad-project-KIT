@@ -5,39 +5,45 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-}
-
-.mat-toolbar-row {
+  height: 55px;
   display: flex;
-  justify-content: flex-start;
-}
+  align-items: center;
 
-.mat-toolbar-row img {
-  padding-left: 1rem;
-  height: 2rem;
-  width: 2rem;
-}
+  .footer-row {
+    display: flex;
+    justify-content: flex-start;
 
-.footer-link {
-  width: 100%;
-  display: inline-flex;
-  justify-content: flex-end;
-}
+    img {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+      height: 2rem;
+      width: 2rem;
+    }
+  }
 
-.footer-link a {
-  color: $bg-color;
-  text-decoration: none;
-  font-size: 1rem;
-  text-decoration: none;
-  padding-right: 1rem;
-}
+  .footer-link {
+    width: 100%;
+    display: inline-flex;
+    justify-content: flex-end;
 
-.social-icon {
-  margin: 0 12px;
-  color: white;
-  font-size: 24px;
+    a {
+      color: $bg-color;
+      text-decoration: none;
+      font-size: 1rem;
+      padding-right: 1rem;
+      font-weight: $font-weight-light;
+    }
+  }
 
-  &:hover {
-    transform: translateY(-3px);
+  @media screen and (max-width: 767px) {
+    .footer-link {
+      display: none;
+    }
+
+    .mat-toolbar-row img {
+      padding-right: 1rem;
+      height: 1rem;
+      width: 1rem;
+    }
   }
 }
