@@ -1,18 +1,19 @@
-
+button {
+  background-color: #355C7D;
+  color: #fff;
+  font-family: 'Rubik', sans-serif;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0.5em;
+  margin: 1em;
+}
 .rss__myFlux {
   margin: 1em;
-  button {
-    background-color: #355C7D;
-    color: #fff;
-    font-family: 'Rubik', sans-serif;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-    padding: 0.5em;
-  }
+  border: 1px solid #355C7D;
   h1 {
-    color: $main-color;
-    margin: 1em 0 2em 0;
+    color: #F67280FF;
+    margin: 1em 1em 2em 0;
   }
 }
 
