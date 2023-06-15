@@ -163,23 +163,19 @@
 }
 
 @media screen and (max-width: 760px) {
-
-  .QR {
-    display: none;
-  }
-
   .presentation {
     width: 100%;
     margin: 1rem;
     padding: 1rem;
-
 
     h1 {
       font-size: 1.5rem;
     }
 
     p {
-      width: 200px;
+      width: 75%; /* Ajuste la largeur de la page à 75% pour un meilleur rendu */
+      margin: 0 auto;
+      font-size: 0.875rem;
     }
 
     .about {
@@ -188,6 +184,7 @@
       margin: 0 auto;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap; /* Ajoute le flex-wrap pour une meilleur gestion des éléments sur les petits écrans*/
     }
   }
 
@@ -214,6 +211,14 @@
       width: auto;
     }
   }
+
+  /* Ajoute le style pour resizer les cards*/
+  .team-member {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .team-container {
+    width: 90%;
+  }
 }
-
-
