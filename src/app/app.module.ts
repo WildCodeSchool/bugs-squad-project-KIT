@@ -8,8 +8,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { DemoPageComponent } from './pages/demo/demo.component';
-import { DemoComponent } from './components/demo/demo.component';
 import { DemoPipe } from './pipes/demo.pipe';
 import { DemoDirective } from './directives/demo.directive';
 import { CollectionComponent } from './components/collection/collection.component';
@@ -19,8 +17,6 @@ import { DashCollectionsComponent } from './components/dash-collections/dash-col
 @NgModule({
   declarations: [
     AppComponent,
-    DemoPageComponent,
-    DemoComponent,
     DemoPipe,
     DemoDirective,
     CollectionComponent,

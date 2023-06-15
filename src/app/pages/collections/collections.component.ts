@@ -15,10 +15,10 @@ export class CollectionsComponent {
   description = new FormControl('');
   link = new FormControl('');
   comment = new FormControl('');
+  collectionColor = new FormControl('#FFFFFF');
 
   addToCollections() {
     this.collections.push(this.collection);
-    console.log('added!');
   }
 
   createCollection() {
@@ -27,7 +27,6 @@ export class CollectionsComponent {
       [new Link(this.link.value as string, this.comment.value as string)],
       this.description.value as string
     );
-    console.log(this.collection);
     this.addToCollections();
   }
 }

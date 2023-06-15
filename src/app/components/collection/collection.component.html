@@ -1,3 +1,4 @@
+<!-- Collection test pour le CSS -->
 <div class="collection">
   <div class="collection-infos">
     <div class="icons">
@@ -19,7 +20,9 @@
   </div>
 </div>
 
-<div class="collection">
+<!-- Collection créée à partir du formulaire -->
+
+<div class="collection" [style.backgroundColor]="color">
   <div class="collection-infos">
     <div class="icons">
       <p>...</p>
@@ -27,14 +30,14 @@
     </div>
     <div class="meta">
       <h3 class="title">{{ collection.title }}</h3>
-      <p class="desciption">{{ collection.description }}</p>
+      <p class="description">{{ collection.description }}</p>
     </div>
     <ul>
       <li *ngFor="let link of collection.links">
-        <p>
-          {{ link.comment }}
-          <fa-icon [icon]="faPencil"></fa-icon>
-        </p>
+        <div class="link">
+          <p>{{ link.comment }}</p>
+          <p><fa-icon [icon]="faPencil"></fa-icon></p>
+        </div>
       </li>
     </ul>
   </div>
