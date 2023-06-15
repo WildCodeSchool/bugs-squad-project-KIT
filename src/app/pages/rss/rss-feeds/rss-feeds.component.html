@@ -2,7 +2,7 @@
   <div *ngFor="let rssItem of rssData.items; let i = index">
     <div class="rss-feed__card-content">
       <div class="rss-feed__card-head" (click)="toggleCardVisibility(i)">
-        <h3>{{ getTruncated(rssItem.title, 80) }}</h3>
+        <h3>{{ getTruncated(rssItem.title, 70) }}</h3>
         <mat-icon></mat-icon>
       </div>
       <div class="rss-feed__card-article" [ngClass]="{ hidden: i !== activeCardIndex && activeCardIndex !== -1 }">
