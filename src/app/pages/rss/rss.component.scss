@@ -1,33 +1,37 @@
 @import 'src/styles.scss';
-button {
-  background-color: $quaternary-color;
-  color: $bg-color;
-  font-family: $font;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-  padding: 0.5em;
-  margin: 3em 4em 1em 4em;
-}
+
 .rss__myFlux {
   flex-direction: column;
   margin: 1em 4em;
   padding: 2em;
   border: 2px solid $quaternary-color;
   border-radius: 6px;
-  h2 {
-    color: $main-color;
-    font-weight: $font-weight-medium;
+  height: 95vh;
+  .rss__myFlux-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    button {
+      background-color: $quaternary-color;
+      color: $bg-color;
+      font-family: $font;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      padding: 0.5em;
+    }
+    h2 {
+      color: $main-color;
+      font-weight: $font-weight-medium;
+    }
   }
   .rss_myFlux-card {
     height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3em;
-
-
-
+    margin-bottom: 0.5em;
   }
 }
 

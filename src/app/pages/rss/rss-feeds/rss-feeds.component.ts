@@ -27,8 +27,8 @@ export class RssFeedsComponent {
       },
     });
   }
-  getTruncatedDescription(description: string): string {
-    const maxLength = 150;
+
+  getTruncated(description: string, maxLength: number): string {
     const cleanDescription = description.replace(/<[^>]+>/g, '');
     if (cleanDescription.length > maxLength) {
       return `${cleanDescription.slice(0, maxLength)} ...`;

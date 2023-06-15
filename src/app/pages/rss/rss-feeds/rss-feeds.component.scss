@@ -1,5 +1,4 @@
-@import "src/styles.scss";
-
+@import 'src/styles.scss';
 .rss-feed__card {
   width: 720px;
   height: 175px;
@@ -44,6 +43,7 @@
     height: 25px;
   }
 }
+
 .hidden {
   display: none !important;
 }

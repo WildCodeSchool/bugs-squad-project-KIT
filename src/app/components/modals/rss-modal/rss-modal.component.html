@@ -4,11 +4,11 @@
   <mat-form-field>
     <mat-label>Lien RSS</mat-label>
     <input matInput formControlName="rssUrl" placeholder="Entrez le lien RSS" required />
-    <mat-error *ngIf="rssCreateForm.get('rssUrl')?.hasError('required')">Le lien RSS est requis.</mat-error>
+    <mat-error class="error" *ngIf="rssCreateForm.get('rssUrl')?.hasError('required')">Le lien RSS est requis.</mat-error>
   </mat-form-field>
 
   <div class="modal-buttons">
-    <button mat-raised-button color="primary" type="submit">Ajouter</button>
-    <button mat-button mat-dialog-close>Annuler</button>
+    <button type="submit">Ajouter</button>
+    <button class="button__cancel" mat-dialog-close>Annuler</button>
   </div>
 </form>

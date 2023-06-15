@@ -15,7 +15,9 @@ export class RssComponent {
   }
 
   openModal(): void {
-    const dialogRef = this.dialog.open(RssModalComponent);
+    const dialogRef = this.dialog.open(RssModalComponent, {
+      width: '40%',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
