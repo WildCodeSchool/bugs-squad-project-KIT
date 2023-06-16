@@ -1,67 +1,52 @@
-// Définition des variables pour les couleurs
-$main-color: #f67280;
-$secondary-color: #c06c84;
-$tertiary-color: #6c5b7b;
-$quaternary-color: #355c7d;
-
-// Définition des variables pour les fonds
-
-$bg-color: #ffffff;
-$text-color: #000000;
-$grey-color: #333333;
-
-// Définition des variables pour les images
-$logo: url('src/assets/logo/K.I.T.png');
-$logo2: url('src/assets/logo/K.I.T2.png');
-
-// Définition des variables pour la police Rubik
-
-$font: 'Rubik', sans-serif;
-$italic: italic;
-
-// Définition des poids de polices Rubik
-
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-bold: 700;
+@use 'imports.scss' as *;
 
 // Définition des variables pour les tailles de polices
-html,
-body {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: $font;
   font-size: 16px;
   color: $text-color;
-  background-color: $bg-color;
 }
+
 h1 {
   font-size: 2rem;
   font: $font-weight-bold;
 }
+
 h2 {
   font-size: 1.5rem;
   font: $font-weight-medium;
 }
+
 h3 {
   font-size: 1.3rem;
   font: $font-weight-medium;
 }
+
 p {
   font-size: 1rem;
   font: $font-weight-normal;
 }
+
+ul,
 li {
-  font-size: 1rem;
-  font: $font-weight-normal;
+  list-style-type: none;
 }
+
 a {
   font-size: 1rem;
   font: $font-weight-normal;
+  text-decoration: none;
 }
+
 span {
   font-size: 0.8rem;
   font: $font-weight-light;
+}
+
+button {
+  border: none;
+  background-color: inherit;
 }

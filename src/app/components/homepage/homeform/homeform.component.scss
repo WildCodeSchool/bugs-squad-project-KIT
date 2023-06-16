@@ -1,4 +1,4 @@
-@import 'src/styles.scss';
+@use '/src/imports' as *;
 
 /*******************GENERALIES***********************/
 .homeform {
@@ -230,7 +230,7 @@
 }
 .input-icon {
   position: absolute;
-  top: 0px;
+  top: -10px;
   left: 18px;
   height: 48px;
   font-size: 24px;

@@ -1,4 +1,4 @@
-@import 'src/styles.scss';
+@use '/src/imports' as *;
 
 .presentation-container {
   display: flex;
