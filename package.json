@@ -21,8 +21,6 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-    "@fortawesome/fontawesome-free": "^6.4.0",
-    "@iconscout/unicons": "^4.0.8",
     "ngx-device-detector": "^5.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
