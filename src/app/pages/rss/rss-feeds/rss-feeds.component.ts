@@ -20,24 +20,14 @@ export class RssFeedsComponent {
     this.rssFeedService.getRssData(this.rssLink).subscribe({
       next: (response: object) => {
         this.rssData = response;
-        console.log(this.rssData);
       },
       error: (error: any) => {
         console.error('Erreur lors de la récupération du flux RSS', error);
       },
     });
   }
-
-  getTruncated(description: string, maxLength: number): string {
-    const cleanDescription = description.replace(/<[^>]+>/g, '');
-    if (cleanDescription.length > maxLength) {
-      return `${cleanDescription.slice(0, maxLength)} ...`;
-    } else {
-      return cleanDescription;
-    }
-  }
-  formatTitle(title: string): string {
-    return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+  getClean(description: string): string {
+    return description.replace(/<[^>]+>/g, '');
   }
   toggleCardVisibility(index: number): void {
     this.activeCardIndex = index;
