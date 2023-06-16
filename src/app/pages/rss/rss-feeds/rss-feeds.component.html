@@ -1,0 +1,17 @@
+<div class="rss-feed__card" *ngIf="rssData">
+  <div *ngFor="let rssItem of rssData.items; let i = index">
+    <div class="rss-feed__card-content">
+      <div class="rss-feed__card-head" (click)="toggleCardVisibility(i)">
+        <h3 class="truncate">{{ rssItem.title }}</h3>
+        <mat-icon></mat-icon>
+      </div>
+      <div class="rss-feed__card-article" [ngClass]="{ hidden: i !== activeCardIndex && activeCardIndex !== -1 }">
+        <p class="truncate" [innerHTML]="getClean(rssItem.description)"></p>
+        <a [href]="rssItem.link" rel="nofollow" target="_blank">Lien de l'article</a>
+      </div>
+      <div class="rss-feed__card-footer" [ngClass]="{ hidden: i !== activeCardIndex && activeCardIndex !== -1 }">
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>
