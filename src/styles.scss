@@ -1,32 +1,4 @@
-// Définition des variables pour les couleurs
-$main-color: #f67280;
-$secondary-color: #c06c84;
-$tertiary-color: #6c5b7b;
-$quaternary-color: #355c7d;
-
-// Définition des variables pour les fonds
-
-$bg-color: #ffffff;
-$text-color: #000000;
-$grey-color: #333333;
-
-// Définition des variables pour les images
-$logoDark: url('/assets/logo/K.I.T_D.png');
-$logo2Light: url('/assets/logo/K.I.T_L.png');
-$logoDarkSans: url('/assets/logo/K.I.T_D_S.png');
-$logo2LightSans: url('/assets/logo/K.I.T_L_S.png');
-
-// Définition des variables pour la police Rubik
-
-$font: 'Rubik', sans-serif;
-$italic: italic;
-
-// Définition des poids de polices Rubik
-
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-bold: 700;
+@use "imports.scss" as *;
 
 // Définition des variables pour les tailles de polices
 * {
@@ -58,17 +30,26 @@ p {
   font: $font-weight-normal;
 }
 
+ul,
 li {
-  font-size: 1rem;
-  font: $font-weight-normal;
+  list-style-type: none;
 }
 
 a {
   font-size: 1rem;
   font: $font-weight-normal;
+  text-decoration: none;
 }
 
 span {
   font-size: 0.8rem;
   font: $font-weight-light;
 }
+
+button {
+  border: none;
+  background-color: inherit;
+}
+
+
+
