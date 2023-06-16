@@ -1,4 +1,4 @@
-@import 'src/styles.scss';
+@use "src/_imports.scss" as *;
 
 .rss__myFlux {
   flex-direction: column;

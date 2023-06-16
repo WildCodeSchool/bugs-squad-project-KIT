@@ -1,4 +1,4 @@
-@import 'src/styles.scss';
+@use "src/_imports.scss" as *;
 .modal-buttons {
 button {
   background-color: $quaternary-color;
