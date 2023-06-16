@@ -8,17 +8,27 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { DemoPipe } from './pipes/demo.pipe';
-import { DemoDirective } from './directives/demo.directive';
 import { CollectionComponent } from './components/collection/collection.component';
 import { CollectionsComponent } from './pages/collections/collections.component';
 import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NgOptimizedImage } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { FooterComponent } from './components/footer/footer.component';
+import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DemoPipe,
-    DemoDirective,
+    NavbarComponent,
+    NavbarMobileComponent,
+    FooterComponent,
+    BurgerButtonComponent,
     CollectionComponent,
     CollectionsComponent,
     DashCollectionsComponent,
@@ -27,6 +37,12 @@ import { DashCollectionsComponent } from './components/dash-collections/dash-col
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgOptimizedImage,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
     FontAwesomeModule,
     MatDialogModule,
     ReactiveFormsModule,
