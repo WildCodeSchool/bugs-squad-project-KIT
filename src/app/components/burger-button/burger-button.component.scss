@@ -3,6 +3,11 @@ $burgerBarHeight: 1px;
 $burgerBarColor: #333;
 
 .burger-menu {
+  border: none;
+  background-color: transparent;
+  color: transparent;
+  display: flex;
+  align-items: center;
   width: $burgerWidth;
   height: $burgerWidth;
   cursor: pointer;
@@ -12,9 +17,10 @@ $burgerBarColor: #333;
 
     .burger-inner {
       position: absolute;
-      width: $burgerWidth - 2 * $burgerBarHeight;
+      width: $burgerWidth - 0 * $burgerBarHeight;
+      /*width: $burgerWidth - 2 * $burgerBarHeight;*/
       left: 0px;
-      top: 11px;
+      /*top: 11px;*/
       border: $burgerBarHeight solid $burgerBarColor;
       transition: border-color 0.2s ease-in 0.2s;
 
