@@ -17,9 +17,28 @@ import { DemoDirective } from './directives/demo.directive';
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
 import { RssFeedsComponent } from './pages/rss/rss-feeds/rss-feeds.component';
-
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NgOptimizedImage } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { FooterComponent } from './components/footer/footer.component';
+import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 @NgModule({
-  declarations: [AppComponent, DemoPipe, DemoDirective, RssComponent, RssModalComponent, RssFeedsComponent],
+  declarations: [
+    AppComponent,
+    DemoPipe,
+    DemoDirective,
+    NavbarComponent,
+    NavbarMobileComponent,
+    FooterComponent,
+    BurgerButtonComponent,
+    RssComponent,
+    RssModalComponent,
+    RssFeedsComponent
+  ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +51,12 @@ import { RssFeedsComponent } from './pages/rss/rss-feeds/rss-feeds.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    NgOptimizedImage,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
