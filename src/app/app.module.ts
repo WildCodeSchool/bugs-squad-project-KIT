@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-
 import { CollectionComponent } from './components/collection/collection.component';
 import { CollectionsComponent } from './pages/collections/collections.component';
 import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
@@ -73,7 +72,6 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
     MatListModule,
     FontAwesomeModule,
     MatDialogModule,
-    ReactiveFormsModule,
   ],
 
   providers: [],

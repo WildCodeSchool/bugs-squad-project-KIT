@@ -14,5 +14,8 @@ export class AboutComponent {
     message: ['', [Validators.required, Validators.minLength(10)]],
   });
 
-  onSubmit() {}
+  submitForm() {
+    console.log(this.contactForm.value, this.contactForm.valid, this.contactForm.invalid);
+  }
+  // onSubmit() {}
 }
