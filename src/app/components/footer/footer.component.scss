@@ -1,8 +1,8 @@
-@use "/src/imports" as *;
+@use '/src/imports' as *;
 
 .footer {
   background-color: $quaternary-color;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 55px;
