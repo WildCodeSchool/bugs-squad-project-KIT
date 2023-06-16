@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: '404', component: Page404Component },
   { path: '500', component: Page500Component },
   { path: 'about', component: AboutComponent },
+  { path: '**', component: Page404Component },
 ];
 
 @NgModule({
