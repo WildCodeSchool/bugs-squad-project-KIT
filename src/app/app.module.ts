@@ -46,7 +46,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DashboardComponent,
     RssComponent,
     RssModalComponent,
-    RssFeedsComponent
+    RssFeedsComponent,
   ],
 
   imports: [
