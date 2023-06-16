@@ -4,7 +4,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RssComponent } from './pages/rss/rss.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomepageComponent },
+  { path: '', component: HomepageComponent },
   { path: 'rss', component: RssComponent },
 ];
 

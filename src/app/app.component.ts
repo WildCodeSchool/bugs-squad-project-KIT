@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (window.location.pathname === '/home') {
+    if (window.location.pathname === '/') {
       this.isHome = true;
     }
   }
