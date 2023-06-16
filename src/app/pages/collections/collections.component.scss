@@ -27,6 +27,7 @@
     .color {
       width: 3rem;
       border: none;
+      background-color:$bg-color;
     }
   }
   button {
@@ -36,6 +37,7 @@
     border-radius: 4px;
     margin-bottom: 1rem;
     color: white;
+    padding: 0 1rem;
   }
   }
 

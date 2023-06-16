@@ -24,7 +24,7 @@
 
   p {
     margin-right: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     font-size: 2rem;
   }
 }
@@ -45,25 +45,27 @@ ul {
   justify-content: space-around;
   padding: 0;
   width: 100%;
+  color: $bg-color;
 
 
   li {
     width: 90%;
     height: 2rem;
     margin-top: 0.5rem;
+
     .link {
       display: flex;
       justify-content: space-between;
       background-color: $quaternary-color;
       border-radius: 4px;
-      color: white;
       height: 1.5rem;
       align-items: center;
 
+
       p {
         margin: auto;
+        color: $bg-color !important;
       }
-
     }
   }
 }
