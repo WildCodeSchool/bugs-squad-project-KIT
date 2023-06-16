@@ -11,9 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { DemoPipe } from './pipes/demo.pipe';
-import { DemoDirective } from './directives/demo.directive';
+
+import { CollectionComponent } from './components/collection/collection.component';
+import { CollectionsComponent } from './pages/collections/collections.component';
+import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
+
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PresentationComponent } from './components/homepage/presentation/presentation.component';
 import { HomeformComponent } from './components/homepage/homeform/homeform.component';
@@ -21,6 +25,7 @@ import { HomeformComponent } from './components/homepage/homeform/homeform.compo
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
 import { RssFeedsComponent } from './pages/rss/rss-feeds/rss-feeds.component';
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgOptimizedImage } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,8 +38,6 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
 @NgModule({
   declarations: [
     AppComponent,
-    DemoPipe,
-    DemoDirective,
     HomepageComponent,
     PresentationComponent,
     HomeformComponent,
@@ -42,6 +45,9 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
     NavbarMobileComponent,
     FooterComponent,
     BurgerButtonComponent,
+    CollectionComponent,
+    CollectionsComponent,
+    DashCollectionsComponent,
     RssComponent,
     RssModalComponent,
     RssFeedsComponent,
@@ -65,6 +71,9 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
+    FontAwesomeModule,
+    MatDialogModule,
+    ReactiveFormsModule,
   ],
 
   providers: [],
