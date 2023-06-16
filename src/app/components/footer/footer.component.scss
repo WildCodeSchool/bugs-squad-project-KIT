@@ -1,4 +1,4 @@
-@import "../../../styles.scss";
+@use '/src/imports' as *;
 
 .footer {
   background-color: $quaternary-color;

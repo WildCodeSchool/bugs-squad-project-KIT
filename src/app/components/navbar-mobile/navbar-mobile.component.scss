@@ -1,4 +1,4 @@
-@import '../../../styles.scss';
+@use '/src/imports' as *;
 
 .mat-toolbar-row,
 .mat-toolbar-single-row {
@@ -25,4 +25,3 @@ mat-sidenav {
   text-align: center;
   font-size: 2rem;
 }
-
