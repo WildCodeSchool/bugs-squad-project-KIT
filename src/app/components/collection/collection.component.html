@@ -1,0 +1,22 @@
+<!-- Collection créée à partir du formulaire -->
+
+<div class="collection" [style.backgroundColor]="color">
+  <div class="collection-infos">
+    <div class="icons">
+      <p>...</p>
+      <fa-icon [icon]="faLink"></fa-icon>
+    </div>
+    <div class="meta">
+      <h3 class="title">{{ collection.title }}</h3>
+      <p class="description">{{ collection.description }}</p>
+    </div>
+    <ul>
+      <li *ngFor="let link of collection.links">
+        <div class="link">
+          <p>{{ getLinkComment(link) }}</p>
+          <p><fa-icon [icon]="faPencil"></fa-icon></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

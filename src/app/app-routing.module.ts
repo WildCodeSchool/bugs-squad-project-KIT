@@ -1,8 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DemoPageComponent } from './pages/demo/demo.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { CollectionsComponent } from './pages/collections/collections.component';
+import { RssComponent } from './pages/rss/rss.component';
+import { Page500Component } from './pages/page500/page500.component';
+import { AboutComponent } from './pages/about/about.component';
+import { Page404Component } from './pages/page404/page404.component';
 
-const routes: Routes = [{ path: '', component: DemoPageComponent }];
+const routes: Routes = [
+  { path: '', component: HomepageComponent },
+  { path: 'rss', component: RssComponent },
+  { path: 'collections', component: CollectionsComponent },
+  { path: '404', component: Page404Component },
+  { path: '500', component: Page500Component },
+  { path: 'about', component: AboutComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

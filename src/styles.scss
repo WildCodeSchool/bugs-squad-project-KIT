@@ -1,4 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'imports.scss' as *;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Définition des variables pour les tailles de polices
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: $font;
+  font-size: 16px;
+  color: $text-color;
+}
+
+h1 {
+  font-size: 2rem;
+  font: $font-weight-bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font: $font-weight-medium;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font: $font-weight-medium;
+}
+
+p {
+  font-size: 1rem;
+  font: $font-weight-normal;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  font-size: 1rem;
+  font: $font-weight-normal;
+  text-decoration: none;
+}
+
+span {
+  font-size: 0.8rem;
+  font: $font-weight-light;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+}
