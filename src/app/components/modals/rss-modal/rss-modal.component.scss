@@ -1,0 +1,39 @@
+@use "src/_imports.scss" as *;
+.modal-buttons {
+  button {
+    background-color: $quaternary-color;
+    color: $bg-color;
+    font-family: $font;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.5em;
+    margin-right: 0.5em;
+}
+  .button__cancel {
+    background-color: $bg-color;
+    font-family: $font;
+    color: $text-color;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.5em;
+    margin-right: 0.5em;
+  }
+}
+h2 {
+  text-align: center;
+  color: $main-color;
+  margin: 1em;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+input {
+  height: 25px;
+}
