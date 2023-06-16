@@ -1,0 +1,106 @@
+<div class="aboutPage">
+  <div class="presentation">
+    <h1>QUI SOMMES NOUS ?</h1>
+    <div class="about">
+      <div class="team-container">
+        <div class="team-member">
+          <img src="./assets/mattei.jpg" alt="Mattei's photo" />
+          <div class="team-member-info">
+            <h4>Mattei Tristan</h4>
+            <div class="links">
+              <a href="https://github.com/MatteiT" target="_blank">GitHub</a>
+              -
+              <a href="https://www.linkedin.com/in/tristan-mattei-a8675417a/" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/emericb.jpg" alt="EmericB's photo" />
+          <div class="team-member-info">
+            <h4>Bous Emeric</h4>
+            <div class="links">
+              <a href="https://github.com/emericb" target="_blank">GitHub</a>
+              -
+              <a href="https://www.linkedin.com/in/emeric-bous-413841164/" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/tylyfox.jpg" alt="Tylyfox's photo" />
+          <div class="team-member-info">
+            <h4>Cadart Valentin</h4>
+            <div class="links">
+              <a href="https://github.com/Tylyfox" target="_blank">GitHub</a>
+              -
+              <a href="https://www.linkedin.com/in/valentin-cadart-93762b161/" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/newaluigi.jpg" alt="Newaluigi's photo" />
+          <div class="team-member-info">
+            <h4>Levillain Alexandre</h4>
+            <div class="links">
+              <a href="https://github.com/Newaluigi" target="_blank">GitHub</a>
+              -
+              <a href="https://www.linkedin.com/in/alexandre-levillain/" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="./assets/emmirose.jpg" alt="Emmirose's photo" />
+          <div class="team-member-info">
+            <h4>Rosso Emma</h4>
+            <div class="links">
+              <a href="https://github.com/emmirose" target="_blank">GitHub</a>
+              -
+              <a href="https://www.linkedin.com/in/emma-rosso-dev/" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <p>
+          Sainte-viarge de saintes fesses de ciboire de marde de saint-ciboire de charrue de patente à gosse de de
+          calvaire de verrat de mosus de viande à chien de torrieux de calvinouche de christie de cimonaque de caltor de
+          bâtard de tabarnane d'ostifie de viarge de sacréfice de colon de boswell de p'tit Jésus de saint-cimonaque de
+          calvince d'ostie de sacrament de bout d'viarge. Sainte-viarge de saintes fesses de ciboire de marde de
+          saint-ciboire de charrue de patente à gosse de torvisse de calvaire de verrat de mosus de viande à chien de
+          torrieux de calvinouche de christie de cimonaque de caltor de bâtard de tabarnane d'ostifie.
+        </p>
+      </div>
+
+      <div class="QR">
+        <img
+          src="https://qr-api.quel.jp/v1/?size=4&data=https%3A%2F%2Fqr-creator.com%2Furls%2FbY27DsIwDEU_CEF3tlB1AwYUMUZyW9NachKUOH38PZVZs12fY93rZpFvvjbNRDKX_jJE3zxABMm6ikKPiYa-puzO-yduNfXEFbjQRPVKTylmdP_Zk2nN2SbKAsGZBQSSok6XNd5iya6FEZLo_QbGIHS8M24QxoSK77gQMxy88x4UvWLO0f0A"
+          alt="QR Code"
+        />
+        <h4>Le QRcode de l'équipe</h4>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+    <h1>CONTACTEZ-NOUS</h1>
+    <label>Email:</label>
+    <input type="email" formControlName="email" required />
+    <div
+      *ngIf="
+        contactForm.controls.email.errors && (contactForm.controls.email.dirty || contactForm.controls.email.touched)
+      "
+      class="invalid"
+    >
+      <div *ngIf="contactForm.controls.email.errors?.['required']">Email is required.</div>
+      <div *ngIf="contactForm.controls.email.errors?.['email']">Email address is not valid.</div>
+    </div>
+    <label>Message:</label>
+    <textarea formControlName="message" required></textarea>
+    <div
+      *ngIf="
+        contactForm.controls.message.errors &&
+        (contactForm.controls.message.dirty || contactForm.controls.message.touched)
+      "
+      class="invalid"
+    >
+      <div *ngIf="contactForm.controls.message.errors?.['required']">Message is required.</div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
