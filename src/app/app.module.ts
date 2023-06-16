@@ -14,6 +14,10 @@ import { AppComponent } from './app.component';
 
 import { DemoPipe } from './pipes/demo.pipe';
 import { DemoDirective } from './directives/demo.directive';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { PresentationComponent } from './components/homepage/presentation/presentation.component';
+import { HomeformComponent } from './components/homepage/homeform/homeform.component';
+
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
 import { RssFeedsComponent } from './pages/rss/rss-feeds/rss-feeds.component';
@@ -26,11 +30,15 @@ import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from './components/footer/footer.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     DemoPipe,
     DemoDirective,
+    HomepageComponent,
+    PresentationComponent,
+    HomeformComponent,
     NavbarComponent,
     NavbarMobileComponent,
     FooterComponent,
