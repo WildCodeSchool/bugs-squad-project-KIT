@@ -12,13 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatDialogModule } from '@angular/material/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { CollectionComponent } from './components/collection/collection.component';
 import { CollectionsComponent } from './pages/collections/collections.component';
 import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
+
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { PresentationComponent } from './components/homepage/presentation/presentation.component';
+import { HomeformComponent } from './components/homepage/homeform/homeform.component';
 
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
@@ -36,6 +38,9 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
 @NgModule({
   declarations: [
     AppComponent,
+    HomepageComponent,
+    PresentationComponent,
+    HomeformComponent,
     NavbarComponent,
     NavbarMobileComponent,
     FooterComponent,
@@ -45,7 +50,7 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
     DashCollectionsComponent,
     RssComponent,
     RssModalComponent,
-    RssFeedsComponent
+    RssFeedsComponent,
   ],
 
   imports: [
@@ -70,6 +75,7 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
     MatDialogModule,
     ReactiveFormsModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent],
   exports: [],

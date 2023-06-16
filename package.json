@@ -27,15 +27,10 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "node.js": "^0.0.1-security",
 
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@material-ui/core": "^4.12.4",
-    "@types/node": "^20.3.1",
-    "buffer": "^6.0.3",
-    "process": "^0.11.10",
     "ngx-device-detector": "^5.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "unicons": "^0.0.3",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
