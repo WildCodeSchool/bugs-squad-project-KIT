@@ -12,7 +12,6 @@ import { DemoDirective } from './directives/demo.directive';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PresentationComponent } from './components/homepage/presentation/presentation.component';
 import { HomeformComponent } from './components/homepage/homeform/homeform.component';
-import { ScrollButtonComponent } from './components/homepage/sroll-button/sroll-button.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { ScrollButtonComponent } from './components/homepage/sroll-button/sroll-
     HomepageComponent,
     PresentationComponent,
     HomeformComponent,
-    ScrollButtonComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],

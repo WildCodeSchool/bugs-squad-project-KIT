@@ -58,11 +58,18 @@ li {
   color: $quaternary-color;
 }
 
-.scrollbutton {
+#scrollbutton {
   background-color: $main-color;
-  padding: 15px;
+  cursor: pointer;
+  padding: 15px 30px;
   border-radius: 10px;
   font-size: large;
   color: $quaternary-color;
   font-weight: bold;
+  &:hover {
+    background-color: $quaternary-color;
+    color: $main-color;
+    box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+    border: $main-color solid 1px;
+  }
 }
