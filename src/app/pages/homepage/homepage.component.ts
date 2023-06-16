@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
     </div>
     <app-presentation></app-presentation>
     <!-- <app-scroll-button></app-scroll-button> -->
+    <app-navbar *ngIf="false"></app-navbar>
+    <app-navbar-mobile *ngIf="false"></app-navbar-mobile>
+    <app-footer *ngIf="false"></app-footer>
 
     <app-homeform></app-homeform>
   `,
