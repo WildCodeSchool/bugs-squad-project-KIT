@@ -9,13 +9,16 @@ import { DemoPageComponent } from './pages/demo/demo.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { DemoPipe } from './pipes/demo.pipe';
 import { DemoDirective } from './directives/demo.directive';
-import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
-import { Page404Component } from './pages/page404/page404.component';
-import { Page500Component } from './pages/page500/page500.component';
-import { AboutComponent } from './pages/about/about.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgOptimizedImage } from '@angular/common';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { FooterComponent } from './components/footer/footer.component';
+import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,12 +26,22 @@ import { NgOptimizedImage } from '@angular/common';
     DemoComponent,
     DemoPipe,
     DemoDirective,
-    MentionLegalesComponent,
-    Page404Component,
-    Page500Component,
-    AboutComponent,
+    NavbarComponent,
+    NavbarMobileComponent,
+    FooterComponent,
+    BurgerButtonComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, ReactiveFormsModule, NgOptimizedImage],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgOptimizedImage,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

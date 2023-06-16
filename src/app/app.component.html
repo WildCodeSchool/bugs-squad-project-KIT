@@ -1,2 +1,10 @@
-<router-outlet>
-</router-outlet>
+<!-- template pour la version de bureau -->
+<div *ngIf="!isMobile">
+  <app-navbar></app-navbar>
+</div>
+
+<!-- template pour la version mobile -->
+<div *ngIf="isMobile">
+  <app-navbar-mobile></app-navbar-mobile>
+</div>
+<app-footer></app-footer>
