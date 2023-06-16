@@ -10,13 +10,6 @@ export class BurgerButtonComponent {
 
   active = false;
 
-  // On hold for further testing
-  //
-  //@Input() init = false;
-  //ngOnInit() {
-  //  this.active = this.init || false;
-  //}
-
   onBurgerClicked() {
     this.active = !this.active;
     this.opened.emit();
