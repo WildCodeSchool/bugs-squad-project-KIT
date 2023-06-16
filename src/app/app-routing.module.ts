@@ -5,7 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'rss', component: RssComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: DashboardComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
