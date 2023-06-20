@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+
 
   .team-container {
     display: flex;
@@ -13,8 +13,6 @@
     justify-content: center;
     align-items: flex-start;
     width: 75%;
-    margin-bottom: 2rem;
-
 
     .team-member {
       display: flex;
@@ -30,12 +28,21 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.2s ease-in-out;
 
-
       .links {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        a{
+          color: $quaternary-color ;
+          text-decoration: none;
+          transition: color 0.2s ease-in-out;
+
+          &:hover {
+            color: $main-color;
+          }
+
+        }
       }
 
       &:hover {
@@ -51,11 +58,12 @@
       .team-member-info {
         text-align: center;
 
-        a {
-          color: $quaternary-color;
-          font-weight: $font-weight-bold;
-          text-decoration: none;
-          transition: color 0.2s ease-in-out;
+        h2 {
+          color: $main-color;
+          margin-bottom: 0.5rem;
+        }
+
+      }
 
 
           &:hover {
@@ -64,7 +72,9 @@
         }
       }
     }
-  }
+
+
+
 
   .presentation {
     text-align: center;
@@ -160,7 +170,8 @@
       }
     }
   }
-}
+
+
 
 @media screen and (max-width: 760px) {
   .presentation {
