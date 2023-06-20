@@ -1,33 +1,32 @@
 <div class="body">
-  <!-- Formulaire de création de collection -->
-  <div class="form">
-    <h3>Créer une nouvelle collection:</h3>
-    <label>
-      Titre:
-      <input type="text" [formControl]="title" />
-    </label>
-    <label>
-      Description:
-      <input type="text" [formControl]="description" />
-    </label>
-    <label>
-      Lien:
-      <input type="text" [formControl]="link" />
-    </label>
-    <label>
-      Commentaire:
-      <input type="text" [formControl]="comment" />
-    </label>
-    <label>
-      Couleur:
-      <input class="color" type="color" [formControl]="collectionColor" />
-    </label>
-    <button (click)="createCollection()">Créer une collection</button>
-  </div>
-
   <!-- display all of my Collection components in the collections array, with the associated style -->
 
   <div class="collections">
+    <!-- Formulaire de création de collection -->
+    <div class="form">
+      <h3>Créer une nouvelle collection:</h3>
+      <label>
+        Titre:
+        <input type="text" [formControl]="title" />
+      </label>
+      <label>
+        Description:
+        <input type="text" [formControl]="description" />
+      </label>
+      <label>
+        Lien:
+        <input type="text" [formControl]="link" />
+      </label>
+      <label>
+        Commentaire:
+        <input type="text" [formControl]="comment" />
+      </label>
+      <label>
+        Couleur:
+        <input class="color" type="color" [formControl]="collectionColor" />
+      </label>
+      <button (click)="createCollection()">Créer une collection</button>
+    </div>
     <div *ngFor="let collection of collections" class="singleCollection">
       <app-collection [collection]="collection" [collectionColor]="collectionColor"></app-collection>
     </div>
