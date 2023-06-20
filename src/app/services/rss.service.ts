@@ -6,7 +6,12 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class RssFeedService {
-  rssLinks: string[] = ['http://www.alsacreations.com/rss/actualites.xml'];
+  rssLinks: string[] = [
+    'https://news.ycombinator.com/rss',
+    'https://openai.com/blog/rss.xml',
+    'https://css-tricks.com/feed/',
+    'https://www.webdesignernews.com/feed',
+  ];
   constructor(private http: HttpClient) {}
   addRssLink(link: string): void {
     this.rssLinks.push(link);

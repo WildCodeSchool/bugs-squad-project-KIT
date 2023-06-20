@@ -15,6 +15,7 @@ export class AboutComponent {
   });
 
   submitForm() {
-    console.log(this.contactForm.value);
+    console.log(this.contactForm.value, this.contactForm.valid, this.contactForm.invalid);
   }
+  // onSubmit() {}
 }

@@ -11,9 +11,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { DemoPipe } from './pipes/demo.pipe';
-import { DemoDirective } from './directives/demo.directive';
+import { CollectionComponent } from './components/collection/collection.component';
+import { CollectionsComponent } from './pages/collections/collections.component';
+import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
+
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PresentationComponent } from './components/homepage/presentation/presentation.component';
 import { HomeformComponent } from './components/homepage/homeform/homeform.component';
@@ -30,12 +33,11 @@ import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from './components/footer/footer.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { AboutComponent } from './pages/about/about.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DemoPipe,
-    DemoDirective,
     HomepageComponent,
     PresentationComponent,
     HomeformComponent,
@@ -43,6 +45,10 @@ import { AboutComponent } from './pages/about/about.component';
     NavbarMobileComponent,
     FooterComponent,
     BurgerButtonComponent,
+    DashboardComponent,
+    CollectionComponent,
+    CollectionsComponent,
+    DashCollectionsComponent,
     RssComponent,
     RssModalComponent,
     RssFeedsComponent,
@@ -67,8 +73,9 @@ import { AboutComponent } from './pages/about/about.component';
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
+    FontAwesomeModule,
+    MatDialogModule,
   ],
-
   providers: [],
   bootstrap: [AppComponent],
   exports: [],
