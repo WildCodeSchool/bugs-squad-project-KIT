@@ -33,6 +33,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from './components/footer/footer.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
     NavbarMobileComponent,
     FooterComponent,
     BurgerButtonComponent,
+    DashboardComponent,
     CollectionComponent,
     CollectionsComponent,
     DashCollectionsComponent,
@@ -73,7 +75,6 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
     FontAwesomeModule,
     MatDialogModule,
   ],
-
   providers: [],
   bootstrap: [AppComponent],
   exports: [],

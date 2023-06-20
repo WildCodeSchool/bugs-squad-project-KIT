@@ -11,11 +11,13 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'rss', component: RssComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'collections', component: CollectionsComponent },
   { path: 'mentionslegals', component: MentionLegalesComponent },
+  { path: 'about', component: AboutComponent },
   { path: '404', component: Page404Component },
   { path: '500', component: Page500Component },
-  { path: 'about', component: AboutComponent },
+  { path: '**', component: Page404Component },
 ];
 
 @NgModule({
