@@ -6,6 +6,7 @@ import { RssComponent } from './pages/rss/rss.component';
 import { Page500Component } from './pages/page500/page500.component';
 import { AboutComponent } from './pages/about/about.component';
 import { Page404Component } from './pages/page404/page404.component';
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
 
 const routes: Routes = [
