@@ -8,6 +8,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
