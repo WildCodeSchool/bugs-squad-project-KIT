@@ -1,0 +1,20 @@
+@use '/src/imports' as *;
+
+.dashboard {
+  .dashboard__title {
+    color: black;
+  }
+}
+
+.image-row-first {
+  display: flex;
+  justify-content: space-between;
+  margin: 2%;
+}
+
+.image-row-second {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2%;
+  margin-right: 2%;
+}

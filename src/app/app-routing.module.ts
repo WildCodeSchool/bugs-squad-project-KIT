@@ -6,14 +6,17 @@ import { RssComponent } from './pages/rss/rss.component';
 import { Page500Component } from './pages/page500/page500.component';
 import { AboutComponent } from './pages/about/about.component';
 import { Page404Component } from './pages/page404/page404.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'rss', component: RssComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'collections', component: CollectionsComponent },
+  { path: 'about', component: AboutComponent },
   { path: '404', component: Page404Component },
   { path: '500', component: Page500Component },
-  { path: 'about', component: AboutComponent },
+  { path: '**', component: Page404Component },
 ];
 
 @NgModule({
