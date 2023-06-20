@@ -29,6 +29,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from './components/footer/footer.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
     RssComponent,
     RssModalComponent,
     RssFeedsComponent,
+    AboutComponent,
   ],
 
   imports: [
