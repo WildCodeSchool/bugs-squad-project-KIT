@@ -5,7 +5,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 10px;
 
   .imgleft {
     scale: 1.5;
@@ -22,7 +22,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 6px;
+  padding-bottom: 6px;
   font-size: 30px;
   font-weight: bold;
   color: $quaternary-color;
@@ -61,9 +62,9 @@ li {
 #scrollbutton {
   background-color: $main-color;
   cursor: pointer;
-  padding: 15px 30px;
+  padding: 15px 50px;
   border-radius: 10px;
-  font-size: large;
+  font-size: larger;
   color: $quaternary-color;
   font-weight: bold;
   &:hover {
