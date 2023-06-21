@@ -8,20 +8,19 @@
   box-sizing: border-box;
 }
 
-body {
-  height: 200vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+header {
+  height: 200px;
+  line-height: normal;
 }
 
 .container {
-  height: 200px;
-  // width: 9.25em;
   height: 1.15em;
   font-size: 10rem;
   font-family: $font;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container div {
@@ -47,7 +46,7 @@ body {
 .lower {
   bottom: 0;
   height: 100%;
-  background: linear-gradient(180deg, #fff 52.5%, $main-color 52.5%);
+  background: linear-gradient(180deg, transparent 52.5%, $main-color 52.5%);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -86,7 +85,7 @@ body {
 
   50%,
   70% {
-    top: 30px;
+    top: 90px;
   }
 }
 

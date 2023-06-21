@@ -1,4 +1,4 @@
-@use "/src/imports" as *;
+@use '/src/imports' as *;
 
 .aboutPage {
   display: flex;
@@ -15,7 +15,6 @@
     width: 75%;
     margin-bottom: 2rem;
 
-
     .team-member {
       display: flex;
       flex-direction: column;
@@ -29,7 +28,6 @@
       border-radius: 4px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.2s ease-in-out;
-
 
       .links {
         display: flex;
@@ -57,7 +55,6 @@
           text-decoration: none;
           transition: color 0.2s ease-in-out;
 
-
           &:hover {
             color: #482880;
           }
@@ -75,7 +72,6 @@
     h1 {
       color: $main-color;
       margin-bottom: 1rem;
-
     }
 
     p {
