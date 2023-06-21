@@ -57,17 +57,20 @@
           border-radius: 4px;
           height: 1.5rem;
           align-items: center;
+          padding: 0.5rem;
+          gap : 0.5rem;
 
-
-          p {
-            margin: auto;
-            color: $bg-color !important;
+          .link {
+            overflow: hidden;
+            color: white;
           }
-
-
+          .svg-inline--fa .fa-pencil {
+            color: white;
+          }
         }
       }
     }
 
   }
+
 }

@@ -22,6 +22,26 @@ export class CollectionsComponent {
   faPencil = faPencil;
   faLink = faLink;
 
+  angular: Collection = new Collection(
+    'Angular',
+    [
+      new Link('https://angular.io/', 'Bases'),
+      new Link('https://angular.io/tutorial', 'Tutoriel'),
+      new Link('https://angular.io/guide', 'Guide'),
+    ],
+    "Doc officielle d'Angular"
+  );
+
+  react: Collection = new Collection(
+    'React',
+    [
+      new Link('https://react.dev/', 'Bases'),
+      new Link('https://www.youtube.com/watch?v=SMgQlTSoXf0&list=PLjwdMgw5TTLWom67YfZuha-1iYzIirwJR', 'formations YT'),
+      new Link('https://react.dev/learn/tutorial-tic-tac-toe', 'Tuto tic tac toe'),
+    ],
+    'Doc officielle de React'
+  );
+
   addToCollections() {
     this.collections.push(this.collection);
   }
