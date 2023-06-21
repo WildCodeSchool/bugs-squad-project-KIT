@@ -50,7 +50,7 @@
         height: 2rem;
         margin-top: 0.5rem;
 
-        .link {
+        .links {
           display: flex;
           justify-content: space-between;
           background-color: $quaternary-color;
@@ -62,9 +62,12 @@
 
           .link {
             overflow: hidden;
-            color: white;
+
+            a {
+              color: white;
+            }
           }
-          .svg-inline--fa .fa-pencil {
+          .pencil-icon {
             color: white;
           }
         }
