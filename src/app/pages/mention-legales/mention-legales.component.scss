@@ -1,4 +1,32 @@
-@use "/src/imports" as *;
+@use "../../../imports" as *;
+
+.mentions-legales {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    color: $main-color;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+    .content {
+      margin-top: 2rem;
+      h2{
+        color: $secondary-color;
+        font-size: 1.5rem;
+         text-decoration-line: underline;
+      }
+      p {
+        font-style: italic;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+    }
 
 
-
+}
