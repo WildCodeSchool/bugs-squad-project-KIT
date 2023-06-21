@@ -12,9 +12,11 @@
     </div>
     <ul>
       <li *ngFor="let link of collection.links">
-        <div class="link">
-          <p>{{ getLinkComment(link) }}</p>
-          <p><fa-icon [icon]="faPencil"></fa-icon></p>
+        <div class="links">
+          <div class="link">
+            <a [href]="[link.url]" target="_blank">{{ getLinkComment(link) }}</a>
+          </div>
+          <div class="pencil"><i class="pencil-icon fa-solid fa-pencil"></i></div>
         </div>
       </li>
     </ul>

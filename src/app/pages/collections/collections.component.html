@@ -25,6 +25,11 @@
       </label>
       <button (click)="createCollection()">Créer une collection</button>
     </div>
+    <!-- Display the Collection Component instance with the Angular collection -->
+    <app-collection [collection]="angular" class="angular"></app-collection>
+    <!-- Display the Collection Component instance with the React collection -->
+    <app-collection [collection]="react" class="react"></app-collection>
+
     <div *ngFor="let collection of collections" class="singleCollection">
       <app-collection [collection]="collection" [collectionColor]="collectionColor"></app-collection>
     </div>

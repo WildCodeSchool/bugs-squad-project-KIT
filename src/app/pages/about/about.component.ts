@@ -14,8 +14,21 @@ export class AboutComponent {
     message: ['', [Validators.required, Validators.minLength(10)]],
   });
 
-  submitForm() {
-    console.log(this.contactForm.value, this.contactForm.valid, this.contactForm.invalid);
+  get email() {
+    return this.contactForm.get('email');
   }
-  // onSubmit() {}
+
+  get message() {
+    return this.contactForm.get('message');
+  }
+
+  submitForm() {
+    if (this.contactForm.valid) {
+      const formData = this.contactForm.value;
+      console.log(formData);
+      this.contactForm.reset();
+    } else {
+      console.log('Form is invalid. Please fix the errors.');
+    }
+  }
 }

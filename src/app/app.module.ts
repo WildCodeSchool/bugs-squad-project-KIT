@@ -24,7 +24,6 @@ import { HomeformComponent } from './components/homepage/homeform/homeform.compo
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
 import { RssFeedsComponent } from './pages/rss/rss-feeds/rss-feeds.component';
-
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgOptimizedImage } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,6 +32,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from './components/footer/footer.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
+import { AboutComponent } from './pages/about/about.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
@@ -52,6 +52,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     RssComponent,
     RssModalComponent,
     RssFeedsComponent,
+    AboutComponent,
   ],
 
   imports: [

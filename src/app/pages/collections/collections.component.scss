@@ -1,8 +1,6 @@
 @use '/src/imports' as *;
 
-
 .body {
-
   .form {
     width: 260px;
     outline: solid 2px $quaternary-color;
@@ -19,31 +17,20 @@
       }
 
       label {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
 
-        input {
-          border: 1px solid $secondary-color;
-          width: 15rem;
+      input {
+        border: 1px solid $secondary-color;
+        width: 15rem;
+      }
         }
         .color {
           width: 3rem;
           border: none;
           background-color: $bg-color;
         }
-      }
       button {
-        background-color: $quaternary-color;
-        border: none;
-        height: 2rem;
-        border-radius: 4px;
-        margin-bottom: 1rem;
-        color: white;
-        padding: 0 1rem;
-      }
-    }
-    button {
       background-color: $quaternary-color;
       border: none;
       height: 2rem;
@@ -51,8 +38,7 @@
       margin: 1rem;
       color: white;
       padding: 0 1rem;
-    }
-    }
+      }
 
     .collections {
       display: grid;
@@ -61,4 +47,5 @@
       padding: 2rem;
       margin: 3rem;
     }
+  }
 }
