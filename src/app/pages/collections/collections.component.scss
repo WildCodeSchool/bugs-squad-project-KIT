@@ -1,6 +1,7 @@
 @use '/src/imports' as *;
 
 .body {
+  margin: 2rem;
   .form {
     width: 260px;
     outline: solid 2px $quaternary-color;
@@ -24,12 +25,12 @@
         border: 1px solid $secondary-color;
         width: 15rem;
       }
-        }
         .color {
           width: 3rem;
           border: none;
           background-color: $bg-color;
         }
+      }
       button {
       background-color: $quaternary-color;
       border: none;
@@ -39,7 +40,7 @@
       color: white;
       padding: 0 1rem;
       }
-
+  }
     .collections {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -47,5 +48,4 @@
       padding: 2rem;
       margin: 3rem;
     }
-  }
 }
