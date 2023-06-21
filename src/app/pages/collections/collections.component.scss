@@ -24,12 +24,12 @@
         border: 1px solid $secondary-color;
         width: 15rem;
       }
-      .color {
-        width: 3rem;
-        border: none;
-        background-color:$bg-color;
-      }
-      }
+        }
+        .color {
+          width: 3rem;
+          border: none;
+          background-color: $bg-color;
+        }
       button {
       background-color: $quaternary-color;
       border: none;
@@ -39,7 +39,6 @@
       color: white;
       padding: 0 1rem;
       }
-    }
 
     .collections {
       display: grid;
@@ -48,4 +47,5 @@
       padding: 2rem;
       margin: 3rem;
     }
+  }
 }
