@@ -23,11 +23,18 @@
     font-weight: 700;
   }
 
-  .link-pw {
-    color: $tertiary-color;
-  }
-  .link-pw:hover {
-    color: $main-color;
+  .password {
+    margin-top: 1rem;
+
+    .link-pw {
+      padding-top: 10px;
+      color: $secondary-color;
+      font-weight: 200;
+    }
+    .link-pw:hover {
+      color: $main-color;
+      font-weight: 500;
+    }
   }
   p {
     font-weight: 500;
@@ -208,7 +215,7 @@
   flex-wrap: wrap;
 }
 .form-style {
-  padding: 13px 20px;
+  padding: 25px 20px;
   padding-left: 55px;
   height: 28px;
   width: 100%;
@@ -233,7 +240,7 @@
 }
 .input-icon {
   position: absolute;
-  top: -10px;
+  top: 0;
   left: 18px;
   height: 48px;
   font-size: 24px;
