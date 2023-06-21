@@ -1,0 +1,51 @@
+@use '/src/imports' as *;
+
+.body {
+  .form {
+    width: 260px;
+    outline: solid 2px $quaternary-color;
+    border-radius: 8px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+      h3 {
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+
+      label {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        border: 1px solid $secondary-color;
+        width: 15rem;
+      }
+        }
+        .color {
+          width: 3rem;
+          border: none;
+          background-color: $bg-color;
+        }
+      button {
+      background-color: $quaternary-color;
+      border: none;
+      height: 2rem;
+      border-radius: 4px;
+      margin: 1rem;
+      color: white;
+      padding: 0 1rem;
+      }
+
+    .collections {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 2rem;
+      margin: 3rem;
+    }
+  }
+}

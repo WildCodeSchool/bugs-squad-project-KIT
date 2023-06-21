@@ -1,4 +1,4 @@
-@use "imports.scss" as *;
+@use 'imports.scss' as *;
 
 // Définition des variables pour les tailles de polices
 * {
@@ -50,6 +50,3 @@ button {
   border: none;
   background-color: inherit;
 }
-
-
-

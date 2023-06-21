@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="nav-row">
+    <div class="logo">
+      <a routerLink="/dashboard">
+        <img src="../../../assets/logo/K.I.T_small.png" alt="logo" />
+      </a>
+    </div>
+    <ul class="list">
+      <li><a routerLink="/dashboard" class="btn">DASHBOARD</a></li>
+      <li><a routerLink="/collections" class="btn">MES COLLECTIONS</a></li>
+      <li><a routerLink="/rss" class="btn">MES FLUX</a></li>
+    </ul>
+    <div class="nav-profile">
+      <button (click)="showOptions()" class="profile-btn">
+        <div class="dropdown">
+          <a routerLink="/profil">Mon profil</a>
+          <a routerLink="/settings">Paramètres</a>
+          <a routerLink="/logout">Se déconnecter</a>
+        </div>
+      </button>
+    </div>
+  </div>
+</nav>
+<main>
+  <router-outlet></router-outlet>
+</main>
