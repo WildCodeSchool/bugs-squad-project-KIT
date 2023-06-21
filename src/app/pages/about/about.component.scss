@@ -6,6 +6,29 @@
   justify-content: center;
   align-items: center;
 
+  .presentation {
+    text-align: center;
+    width: 75%;
+    margin: 1rem 2rem;
+    padding: 1rem;
+
+    h1 {
+      color: $main-color;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      width: 100%;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+
+    .about {
+      display: flex;
+      flex-direction: row;
+    }
+  }
 
   .team-container {
     display: flex;
@@ -19,40 +42,48 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 1rem;
-      padding: 1rem;
-      width: 10rem;
-      height: 10rem;
+      margin: 0.5rem;
+      width: 12rem;
+      height: 12rem;
       border: 1px solid #ddd;
       border-radius: 4px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.2s ease-in-out;
 
+      h4{
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      img {
+        object-fit: cover;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+
       .links {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
-        a{
-          color: $quaternary-color ;
+
+        a {
+          color: $quaternary-color;
           text-decoration: none;
+          font-size:1rem;
           transition: color 0.2s ease-in-out;
+          margin: 0 0.5rem;
 
           &:hover {
             color: $main-color;
           }
-
         }
       }
-
       &:hover {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      img {
-        width: 100%;
-        height: auto;
-        border-radius: 50%;
       }
 
       .team-member-info {
@@ -62,43 +93,12 @@
           color: $main-color;
           margin-bottom: 0.5rem;
         }
-
       }
-
-
-          &:hover {
-            color: #482880;
-          }
-        }
-      }
-    }
-
-
-
-
-  .presentation {
-    text-align: center;
-    width: 75%;
-    margin: 1rem;
-    padding: 1rem;
-
-    h1 {
-      color: $main-color;
-      margin-bottom: 1rem;
-
-    }
-
-    p {
-      width: 75%;
-      margin: 0 auto;
-    }
-
-    .about {
-      display: flex;
-      flex-direction: row;
-      margin: 0 auto;
     }
   }
+}
+
+
 
   form {
     display: flex;
@@ -171,20 +171,30 @@
     }
   }
 
-
-
 @media screen and (max-width: 760px) {
   .presentation {
     width: 100%;
     margin: 1rem;
     padding: 1rem;
 
+    .team-container {
+      display: flex;
+      flex-direction: row;
+    }
+
+  .team-member {
+      width: 5rem;
+        height: 5rem;
+  }
+      .team-container {
+        width: 100%;
+  }
     h1 {
       font-size: 1.5rem;
     }
 
     p {
-      width: 75%; /* Ajuste la largeur de la page à 75% pour un meilleur rendu */
+      width: 75%;
       margin: 0 auto;
       font-size: 0.875rem;
     }
@@ -195,16 +205,15 @@
       margin: 0 auto;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap; /* Ajoute le flex-wrap pour une meilleur gestion des éléments sur les petits écrans*/
+      flex-wrap: wrap;
     }
   }
 
   form {
-    width: 100%;
-    border: none;
-    padding: 0;
-    margin: 1rem;
-
+    width: 75%;
+    border: 2px solid $main-color;
+    border-radius: 10px;
+    margin: 1rem 2rem;
     h1 {
       font-size: 1.5rem;
       text-align: center;
@@ -218,18 +227,15 @@
 
     button[type='submit'] {
       font-size: 0.875rem;
-      margin-bottom: 1rem;
       width: auto;
     }
   }
 
-  /* Ajoute le style pour resizer les cards*/
-  .team-member {
-    width: 7rem;
-    height: 7rem;
+  .team-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 
-  .team-container {
-    width: 90%;
-  }
 }
