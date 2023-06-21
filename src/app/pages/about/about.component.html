@@ -87,8 +87,8 @@
       "
       class="invalid"
     >
-      <div *ngIf="contactForm.controls.email.errors?.['required']">Email is required.</div>
-      <div *ngIf="contactForm.controls.email.errors?.['email']">Email address is not valid.</div>
+      <div class="error" *ngIf="contactForm.controls.email.errors?.['required']">Email is required.</div>
+      <div class="error" *ngIf="contactForm.controls.email.errors?.['email']">Email address is not valid.</div>
     </div>
     <label>Message:</label>
     <textarea formControlName="message" required></textarea>
@@ -99,7 +99,10 @@
       "
       class="invalid"
     >
-      <div *ngIf="contactForm.controls.message.errors?.['required']">Message is required.</div>
+      <div class="error" *ngIf="contactForm.controls.message.errors?.['required']">Message is required.</div>
+      <div class="error" *ngIf="contactForm.controls.message.errors?.['minlength']">
+        Message must be at least 10 characters long
+      </div>
     </div>
     <button type="submit">Submit</button>
   </form>
