@@ -1,4 +1,4 @@
-@use "/src/imports" as *;
+@use '/src/imports' as *;
 
 .collection {
   width: 260px;
@@ -30,7 +30,7 @@
       margin: 1rem 0 0 1rem;
 
       h3 {
-       margin: 0;
+        margin: 0;
       }
     }
 
@@ -43,7 +43,6 @@
       padding: 0;
       width: 100%;
       color: $bg-color;
-
 
       li {
         width: 90%;
@@ -73,7 +72,6 @@
         }
       }
     }
-
   }
 
 }
