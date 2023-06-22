@@ -42,10 +42,21 @@ li {
   align-items: left;
   margin-left: 50px;
   margin-right: 50px;
-  font-size: 40px;
+  font-size: 30px;
   padding: 30px;
   font-weight: bold;
   color: $quaternary-color;
+}
+
+.contimgcenter {
+  height: 220px;
+}
+
+.imgcenter {
+  padding: 0;
+  margin: 10px;
+  height: 180px;
+  display: none;
 }
 
 .scroll {
@@ -72,5 +83,54 @@ li {
     color: $main-color;
     box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
     border: $main-color solid 1px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 1800px) {
+  .presentation-text {
+    margin-top: 20px;
+  }
+  .imgleft {
+    height: 250px;
+  }
+
+  .imgright {
+    height: 300px;
+  }
+}
+
+@media (max-width: 424px) {
+  .imgleft {
+    display: none;
+  }
+
+  .imgright {
+    display: none;
+  }
+  .presentation-container {
+    position: static;
+
+    ul {
+      left: 20px;
+      margin-top: 50px;
+      li {
+        font-size: 20px;
+
+        padding: 15px;
+      }
+    }
+  }
+  .presentation-text {
+    font-size: 20px;
+    margin-top: 50px;
+    display: block;
+    text-align: center;
+  }
+  .imgcenter {
+    display: block;
+  }
+  #scrollbutton {
+    margin-top: 20px;
+    font-size: 20px;
   }
 }
