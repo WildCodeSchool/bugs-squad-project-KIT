@@ -1,15 +1,17 @@
 <!-- template pour la version de bureau -->
-<div *ngIf="!isHome; else elseHome">
-  <div *ngIf="!isMobile">
-    <app-navbar></app-navbar>
-  </div>
+<div class="container">
+  <div>
+    <div *ngIf="!isMobile">
+      <app-navbar></app-navbar>
+    </div>
 
-  <!-- template pour la version mobile -->
-  <div *ngIf="isMobile">
-    <app-navbar-mobile></app-navbar-mobile>
+    <!-- template pour la version mobile -->
+    <div *ngIf="isMobile">
+      <app-navbar-mobile></app-navbar-mobile>
+    </div>
   </div>
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+  <app-footer></app-footer>
 </div>
-<ng-template #elseHome>
-  <router-outlet></router-outlet>
-</ng-template>
-<app-footer></app-footer>

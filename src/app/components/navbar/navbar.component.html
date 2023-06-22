@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav *ngIf="!hasHeader" class="navbar">
   <div class="nav-row">
     <div class="logo">
       <a routerLink="/dashboard">
@@ -21,6 +21,3 @@
     </div>
   </div>
 </nav>
-<main>
-  <router-outlet></router-outlet>
-</main>
