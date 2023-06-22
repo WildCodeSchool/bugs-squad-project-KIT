@@ -34,6 +34,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     RssModalComponent,
     RssFeedsComponent,
     AboutComponent,
+    MentionLegalesComponent,
   ],
 
   imports: [
