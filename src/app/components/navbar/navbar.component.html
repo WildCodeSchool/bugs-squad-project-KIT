@@ -11,13 +11,14 @@
       <li><a routerLink="/rss" class="btn">MES FLUX</a></li>
     </ul>
     <div class="nav-profile">
-      <button (click)="showOptions()" class="profile-btn">
+      <a (click)="showOptions()" class="profile-btn">
+        <img src="../../../assets/icons/account-48.png" alt="logo" class="profile-img" />
         <div class="dropdown">
           <a routerLink="/profil">Mon profil</a>
           <a routerLink="/settings">Paramètres</a>
-          <a routerLink="/logout">Se déconnecter</a>
+          <a routerLink="/home">Se déconnecter</a>
         </div>
-      </button>
+      </a>
     </div>
   </div>
 </nav>
