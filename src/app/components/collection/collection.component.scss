@@ -6,7 +6,7 @@
   border-radius: 8px;
   height: 320px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 
   .collection-infos {
     height: 100%;
@@ -15,7 +15,7 @@
 
     .icons {
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       align-items: center;
       height: 2rem;
       margin-right: 2rem;
