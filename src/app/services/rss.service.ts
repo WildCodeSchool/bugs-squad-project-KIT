@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RssFeedService {
   rssLinks: string[] = [
-    'https://news.ycombinator.com/rss',
+    'https://sharadcodes.github.io/feed.xml',
     'https://openai.com/blog/rss.xml',
     'https://css-tricks.com/feed/',
     'https://www.webdesignernews.com/feed',

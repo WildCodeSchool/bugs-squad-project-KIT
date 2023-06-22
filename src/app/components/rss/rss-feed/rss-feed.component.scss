@@ -1,0 +1,23 @@
+@use '/src/imports' as *;
+
+.rss-feed__content {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  .rss-feed__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .rss-feed__card-head {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+
+}
+
+

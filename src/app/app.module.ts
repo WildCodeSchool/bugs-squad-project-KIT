@@ -23,7 +23,7 @@ import { HomeformComponent } from './components/homepage/homeform/homeform.compo
 
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
-import { RssFeedsComponent } from './pages/rss/rss-feeds/rss-feeds.component';
+import { RssFeedComponent } from './components/rss/rss-feed/rss-feed.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgOptimizedImage } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -52,7 +52,7 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
     DashCollectionsComponent,
     RssComponent,
     RssModalComponent,
-    RssFeedsComponent,
+    RssFeedComponent,
     AboutComponent,
     MentionLegalesComponent,
   ],

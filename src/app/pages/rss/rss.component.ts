@@ -21,7 +21,6 @@ export class RssComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log(result);
         this.rssService.addRssLink(result);
       }
     });
