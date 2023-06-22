@@ -1,6 +1,32 @@
+@use "../../../imports" as *;
+
 .mentions-legales {
-  max-height: 400px; /* Hauteur maximale de la boîte de mentions légales */
-  overflow-y: scroll; /* Ajoute une barre de défilement verticale si le contenu dépasse la hauteur maximale */
-  border: 1px solid #ccc; /* Ajoute une bordure autour de la boîte */
-  padding: 10px; /* Ajoute un espace intérieur à la boîte de mentions légales */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    color: $main-color;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+    .content {
+      margin-top: 2rem;
+      h2{
+        color: $secondary-color;
+        font-size: 1.5rem;
+         text-decoration-line: underline;
+      }
+      p {
+        font-style: italic;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+    }
+
+
 }
