@@ -1,26 +1,24 @@
-<nav class="navbar">
+<nav *ngIf="!hasHeader" class="navbar">
   <div class="nav-row">
     <div class="logo">
-      <a href="#">
+      <a routerLink="/dashboard">
         <img src="../../../assets/logo/K.I.T_small.png" alt="logo" />
       </a>
     </div>
     <ul class="list">
-      <li><a href="#" class="btn">DASHBOARD</a></li>
-      <li><a href="#" class="btn">MES COLLECTIONS</a></li>
-      <li><a href="#" class="btn">MES FLUX</a></li>
+      <li><a routerLink="/dashboard" class="btn">DASHBOARD</a></li>
+      <li><a routerLink="/collections" class="btn">MES COLLECTIONS</a></li>
+      <li><a routerLink="/rss" class="btn">MES FLUX</a></li>
     </ul>
     <div class="nav-profile">
-      <button (click)="showOptions()" class="profile-btn">
+      <a (click)="showOptions()" class="profile-btn">
+        <img src="../../../assets/icons/account-48.png" alt="logo" class="profile-img" />
         <div class="dropdown">
-          <a href="#">Mon profil</a>
-          <a href="#">Paramètres</a>
-          <a href="#">Se déconnecter</a>
+          <a routerLink="/profil">Mon profil</a>
+          <a routerLink="/settings">Paramètres</a>
+          <a routerLink="/home">Se déconnecter</a>
         </div>
-      </button>
+      </a>
     </div>
   </div>
 </nav>
-<main>
-  <router-outlet></router-outlet>
-</main>

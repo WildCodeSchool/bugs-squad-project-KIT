@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Collection } from 'src/app/models/Collection';
 import { Link } from 'src/app/models/Link';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +10,7 @@ import { AbstractControl } from '@angular/forms';
   templateUrl: './collection.component.html',
   styleUrls: ['./collection.component.scss'],
 })
-export class CollectionComponent {
+export class CollectionComponent implements OnInit {
   faPencil = faPencil;
   faLink = faLink;
 

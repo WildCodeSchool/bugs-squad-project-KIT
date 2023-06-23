@@ -1,4 +1,4 @@
-@use "/src/imports" as *;
+@use '/src/imports' as *;
 
 .collection {
   width: 260px;
@@ -6,7 +6,7 @@
   border-radius: 8px;
   height: 320px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 
   .collection-infos {
     height: 100%;
@@ -15,7 +15,7 @@
 
     .icons {
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       align-items: center;
       height: 2rem;
       margin-right: 2rem;
@@ -30,7 +30,7 @@
       margin: 1rem 0 0 1rem;
 
       h3 {
-       margin: 0;
+        margin: 0;
       }
     }
 
@@ -44,30 +44,34 @@
       width: 100%;
       color: $bg-color;
 
-
       li {
         width: 90%;
         height: 2rem;
         margin-top: 0.5rem;
 
-        .link {
+        .links {
           display: flex;
           justify-content: space-between;
           background-color: $quaternary-color;
           border-radius: 4px;
           height: 1.5rem;
           align-items: center;
+          padding: 0.5rem;
+          gap : 0.5rem;
 
+          .link {
+            overflow: hidden;
 
-          p {
-            margin: auto;
-            color: $bg-color !important;
+            a {
+              color: white;
+            }
           }
-
-
+          .pencil-icon {
+            color: white;
+          }
         }
       }
     }
-
   }
+
 }
