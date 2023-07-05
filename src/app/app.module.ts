@@ -7,6 +7,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +36,9 @@ import { BurgerButtonComponent } from './components/burger-button/burger-button.
 import { AboutComponent } from './pages/about/about.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
+import { TodolistComponent } from './components/todolist/todolist.component';
+import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
+import { TodolistsComponent } from './pages/todolists/todolists.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +59,9 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
     RssFeedsComponent,
     AboutComponent,
     MentionLegalesComponent,
+    TodolistComponent,
+    TodolistsFavComponent,
+    TodolistsComponent,
   ],
 
   imports: [
@@ -77,6 +84,7 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
     MatListModule,
     FontAwesomeModule,
     MatDialogModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
