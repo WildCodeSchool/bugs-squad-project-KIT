@@ -30,9 +30,11 @@
 }
 
 ul {
-  list-style: none;
+  list-style: inside;
+  margin-top: 50px;
   position: relative;
-  left: -250px;
+  left: -70px;
+  margin-bottom: 60px;
 }
 
 li {
@@ -40,12 +42,22 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  margin-left: 50px;
-  margin-right: 50px;
-  font-size: 40px;
-  padding: 30px;
+  margin: 0 50px;
+  font-size: 30px;
+  padding: 50px;
   font-weight: bold;
   color: $quaternary-color;
+}
+
+.contimgcenter {
+  height: 220px;
+}
+
+.imgcenter {
+  padding: 0;
+  margin: 10px;
+  height: 180px;
+  display: none;
 }
 
 .scroll {
@@ -72,5 +84,59 @@ li {
     color: $main-color;
     box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
     border: $main-color solid 1px;
+  }
+}
+
+@media (max-width: 424px) {
+  .imgleft {
+    display: none;
+  }
+
+  .imgright {
+    display: none;
+  }
+  .presentation-container {
+    position: static;
+
+    ul {
+      left: 5px;
+      margin-top: 50px;
+      li {
+        padding: 10px;
+        line-height: normal;
+        font-size: 20px;
+      }
+    }
+  }
+  .presentation-text {
+    font-size: 20px;
+    margin-top: 50px;
+    display: block;
+    text-align: center;
+  }
+  .imgcenter {
+    display: block;
+  }
+  #scrollbutton {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+}
+@media (min-width: 500px) and (max-width: 1800px) {
+  .presentation-text {
+    margin-top: 20px;
+  }
+  .imgleft {
+    height: 250px;
+  }
+
+  .imgright {
+    height: 300px;
+  }
+  ul {
+    margin-bottom: 50px;
+    li {
+      padding: 30px;
+    }
   }
 }
