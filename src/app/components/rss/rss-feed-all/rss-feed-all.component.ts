@@ -10,7 +10,7 @@ export class RssFeedAllComponent {
   @Input() rssLink!: string[];
   rssDataItems: any[] = [];
 
-  constructor(private rssFeedService: RssFeedService) {}
+  constructor(public rssFeedService: RssFeedService) {}
 
   ngOnInit(): void {
     this.getRssData();
@@ -33,13 +33,5 @@ export class RssFeedAllComponent {
   }
   getClean(description: string): string {
     return description.replace(/<[^>]+>/g, '');
-  }
-  // Format date in French format
-  formatDate(date: string): string {
-    return new Date(date).toLocaleDateString('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
   }
 }

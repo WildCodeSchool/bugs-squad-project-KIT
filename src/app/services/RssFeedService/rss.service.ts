@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,6 @@ export class RssFeedService {
     'https://css-tricks.com/feed/',
     'https://www.webdesignernews.com/feed',
   ];
-  private apiKey = 'ocgvg1llehvfjejyglkyv9xjx9uqb9nfgtntlay3';
   constructor(private http: HttpClient) {}
   addRssLink(link: string): void {
     this.rssLinks.push(link);
@@ -21,7 +21,7 @@ export class RssFeedService {
     return this.rssLinks;
   }
   getRssData(url: string, count?: number, orderBy?: string): Observable<any> {
-    let rssApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${url}&api_key=${this.apiKey}`;
+    let rssApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${url}&api_key=${environment.keyApi}`;
     if (count) {
       rssApiUrl += `&count=${count}`;
     }
@@ -51,6 +51,13 @@ export class RssFeedService {
       } else {
         return 0;
       }
+    });
+  }
+  formatDate(date: string): string {
+    return new Date(date).toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
     });
   }
 }
