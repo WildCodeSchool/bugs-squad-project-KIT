@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ToDoList } from 'src/app/models/ToDoList';
 import { Task } from 'src/app/models/Task';
 @Component({
@@ -6,4 +6,6 @@ import { Task } from 'src/app/models/Task';
   templateUrl: './todolist.component.html',
   styleUrls: ['./todolist.component.scss'],
 })
-export class TodolistComponent {}
+export class TodolistComponent {
+  @Input() todolist!: ToDoList;
+}

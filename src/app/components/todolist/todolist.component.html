@@ -5,13 +5,13 @@
     <i class="fa-regular fa-star" title="Ajouter aux favoris"></i>
   </div>
   <div class="meta">
-    <h2 class="title">Titre de la liste</h2>
-    <p class="description">Petite description</p>
+    <h2 class="title">{{ todolist.title }}</h2>
+    <p class="description">{{ todolist.description }}</p>
   </div>
   <ul>
-    <li>
+    <li *ngFor="let task of todolist.tasks">
       <mat-checkbox></mat-checkbox>
-      <p>Tâche à faire, un tout petit peu plus longue pour voir</p>
+      <p>{{ task.description }}</p>
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <i class="fa-solid fa-ellipsis-vertical"></i>
       </button>
@@ -26,7 +26,7 @@
         </button>
       </mat-menu>
     </li>
-    <li>
+    <!-- <li>
       <mat-checkbox></mat-checkbox>
       <p class="done">Tâche à faire</p>
     </li>
@@ -57,6 +57,6 @@
           Supprimer
         </button>
       </mat-menu>
-    </li>
+    </li> -->
   </ul>
 </div>

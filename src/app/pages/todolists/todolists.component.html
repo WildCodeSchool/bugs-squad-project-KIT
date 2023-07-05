@@ -1,2 +1,5 @@
-<p>todolists works!</p>
-<app-todolist></app-todolist>
+<div class="lists">
+  <div *ngFor="let todolist of todolists" class="singletodo">
+    <app-todolist [todolist]="todolist"></app-todolist>
+  </div>
+</div>
