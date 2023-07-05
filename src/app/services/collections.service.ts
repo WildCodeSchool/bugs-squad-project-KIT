@@ -9,11 +9,6 @@ import { Collection } from '../models/Collection';
 export class CollectionsService {
   private dataSource = 'http://localhost:8080/api/collections';
 
-  headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: 'No Auth',
-  });
-
   constructor(private http: HttpClient) {}
 
   getCollections() {
