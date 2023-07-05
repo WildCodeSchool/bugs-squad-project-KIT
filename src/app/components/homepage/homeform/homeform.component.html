@@ -16,53 +16,62 @@
 
                             // card Log in
 
-                            <div class="card-front">
+                            <form [formGroup]="loginForm" (submit)="login()" autocomplete="new-password"
+                                class="card-front">
                                 <div class="center-wrap">
                                     <div class="form-section">
                                         <h4 class="form-title">S'identifier</h4>
                                         <div class="form-group">
-                                            <input type="email" name="logemail" class="form-style" placeholder="Email"
-                                                id="logemail" autocomplete="off" />
-                                            <!-- <i class="input-icon uil uil-at"></i> -->
+                                            <input formControlName="email" type="email" name="logemail"
+                                                class="form-style" placeholder="Email" id="email"
+                                                autocomplete="new-password" />
                                             <i class=" input-icon fa-solid fa-at"></i>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="logpass" class="form-style"
-                                                placeholder="Mot de passe" id="logpass" autocomplete="off" />
+                                                formControlName="password" placeholder="Mot de passe" id="password"
+                                                autocomplete="new-password" />
                                             <i class="input-icon fa-solid fa-lock"></i>
                                         </div>
+                                        <!-- <button type="submit" class="btn">soumettre</button> -->
                                         <a href="dashboard" class="btn">soumettre</a>
-                                        <p class="password"><a href="#0" class="link-pw">Mot de passe
-                                                oublié?</a></p>
+                                        <p class="password"><a href="#0" class="link-pw">Mot de passe oublié ?</a></p>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
 
                             // card register
 
-                            <div class="card-back">
+                            <form [formGroup]="registerForm" (submit)="register()" autocomplete="off" class="card-back">
                                 <div class="center-wrap">
                                     <div class="form-section">
                                         <h4 class="form-title">S'enregistrer</h4>
                                         <div class="form-group">
-                                            <input type="text" name="logname" class="form-style"
-                                                placeholder="Identifiant" id="logname" autocomplete="off" />
+                                            <input type="text" formControlName="firstname" name="firstname"
+                                                class="form-style" placeholder="Prénom" id="firstname"
+                                                autocomplete="off" />
                                             <i class="input-icon fa-regular fa-user"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" name="logemail" class="form-style"
-                                                placeholder="Your Email" id="logemail" autocomplete="off" />
+                                            <input type="text" formControlName="lastname" name="lastname"
+                                                class="form-style" placeholder="Nom" id="lastname" autocomplete="off" />
+                                            <i class="input-icon fa-regular fa-user"></i>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" formControlName="email" name="email" class="form-style"
+                                                placeholder="Email" id="email" autocomplete="off" />
                                             <i class=" input-icon fa-solid fa-at"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="logpass" class="form-style"
-                                                placeholder="Your Password" id="logpass" autocomplete="off" />
+                                            <input type="password" formControlName="password" name="password"
+                                                class="form-style" placeholder="Mot de passe" id="password"
+                                                autocomplete="off" />
                                             <i class="input-icon fa-solid fa-lock"></i>
                                         </div>
-                                        <a href="#" class="btn mt-4">submit</a>
+                                        <button type="submit" class="btn mt-4">submit</button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
