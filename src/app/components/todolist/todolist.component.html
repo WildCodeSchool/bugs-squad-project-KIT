@@ -1,5 +1,9 @@
 <div class="todolist">
-  <div class="icons"></div>
+  <div class="icons">
+    <i class="fa-solid fa-pencil" title="Modifier"></i>
+    <i class="fa-solid fa-trash" title="Supprimer"></i>
+    <i class="fa-regular fa-star" title="Ajouter aux favoris"></i>
+  </div>
   <div class="meta">
     <h2 class="title">Titre de la liste</h2>
     <p class="description">Petite description</p>
@@ -8,6 +12,19 @@
     <li>
       <mat-checkbox></mat-checkbox>
       <p>Tâche à faire, un tout petit peu plus longue pour voir</p>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <i class="fa-solid fa-pencil" title="Modifier"></i>
+          Modifier
+        </button>
+        <button mat-menu-item>
+          <i class="fa-solid fa-trash" title="Supprimer"></i>
+          Supprimer
+        </button>
+      </mat-menu>
     </li>
     <li>
       <mat-checkbox></mat-checkbox>
@@ -23,8 +40,23 @@
     </li>
     <li>
       <mat-checkbox></mat-checkbox>
-      Tâche à faire, mais une tâche très très longue pour voir si le comportement est correct visuellement quand ça
-      dépasse de beacoup comme ça
+      <p>
+        Tâche à faire, mais une tâche très très longue pour voir si le comportement est correct visuellement quand ça
+        dépasse de beacoup comme ça
+      </p>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <i class="fa-solid fa-pencil" title="Modifier"></i>
+          Modifier
+        </button>
+        <button mat-menu-item>
+          <i class="fa-solid fa-trash" title="Supprimer"></i>
+          Supprimer
+        </button>
+      </mat-menu>
     </li>
   </ul>
 </div>

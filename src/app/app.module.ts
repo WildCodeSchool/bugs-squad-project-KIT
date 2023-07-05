@@ -31,6 +31,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { FooterComponent } from './components/footer/footer.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -85,6 +86,7 @@ import { TodolistsComponent } from './pages/todolists/todolists.component';
     FontAwesomeModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
