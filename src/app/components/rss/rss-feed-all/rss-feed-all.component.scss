@@ -64,6 +64,7 @@
       font-style: italic;
       font-size: 0.7em;
       font-family: $font;
+      color : $grey-color;
     }
     a {
       font-size: 0.8em;
@@ -96,7 +97,7 @@
     align-items: flex-start !important;
     span {
     font-size: 0.6em !important;
-  }
+    }
   }
 }
 

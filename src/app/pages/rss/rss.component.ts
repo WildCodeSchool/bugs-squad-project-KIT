@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RssModalComponent } from '../../components/modals/rss-modal/rss-modal.component';
-import { RssFeedService } from '../../services/rss.service';
+import { RssFeedService } from '../../services/RssFeedService/rss.service';
 
 @Component({
   selector: 'app-rss',

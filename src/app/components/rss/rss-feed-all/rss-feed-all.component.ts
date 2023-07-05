@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RssFeedService } from '../../../services/rss.service';
+import { RssFeedService } from '../../../services/RssFeedService/rss.service';
 
 @Component({
   selector: 'app-rss-feed-all',
@@ -8,7 +8,7 @@ import { RssFeedService } from '../../../services/rss.service';
 })
 export class RssFeedAllComponent {
   @Input() rssLink!: string[];
-  rssDataItems?: any[] = [];
+  rssDataItems: any[] = [];
 
   constructor(private rssFeedService: RssFeedService) {}
 
@@ -18,12 +18,12 @@ export class RssFeedAllComponent {
 
   getRssData(): void {
     this.rssLink.forEach((link: string) => {
-      this.rssFeedService.getRssData(link).subscribe({
+      this.rssFeedService.getRssData(link, 20).subscribe({
         next: (response: any): void => {
           const rssData = response;
-          this.addFeedTitleToItems(rssData);
+          this.rssFeedService.addFeedTitleToItems(rssData);
           this.rssDataItems?.push(...rssData.items);
-          this.sortRssDataItemsByDate();
+          this.rssFeedService.sortRssDataItemsByDate(this.rssDataItems);
         },
         error: (error: any): void => {
           console.error('Erreur lors de la récupération du flux RSS', error);
@@ -31,31 +31,6 @@ export class RssFeedAllComponent {
       });
     });
   }
-
-  //Add feed title to each list item
-  addFeedTitleToItems(rssData: any): void {
-    if (Array.isArray(rssData?.items)) {
-      const feedTitle = rssData.feed.title;
-      rssData.items.forEach((item: any): void => {
-        item.feedTitle = feedTitle;
-      });
-    }
-  }
-  //Allows you to sort the table according to publication dates
-  sortRssDataItemsByDate(): void {
-    this.rssDataItems?.sort((a, b) => {
-      const dateA: Date = new Date(a.pubDate);
-      const dateB: Date = new Date(b.pubDate);
-      if (dateA > dateB) {
-        return -1;
-      } else if (dateA < dateB) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-  }
-  // Clean HTML tag descriptions
   getClean(description: string): string {
     return description.replace(/<[^>]+>/g, '');
   }
