@@ -12,6 +12,11 @@
     height: 100%;
     width: 244px;
     background-color: $bg-color;
+    overflow: auto;
+
+    .title {
+      font-size: 1.5rem;
+    }
 
     .icons {
       display: flex;
@@ -26,6 +31,7 @@
         font-size: 2rem;
       }
     }
+
     .meta {
       margin: 1rem 0 0 1rem;
 
@@ -73,5 +79,5 @@
       }
     }
   }
-
 }
+

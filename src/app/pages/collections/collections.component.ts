@@ -41,7 +41,6 @@ export class CollectionsComponent implements OnInit {
   ngOnInit() {
     this.collectionsSerice.getCollections().subscribe((data) => {
       this.collections = data;
-      console.log(this.collections);
     });
   }
 }
