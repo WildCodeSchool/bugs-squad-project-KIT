@@ -12,7 +12,7 @@ import { CollectionsService } from '../../services/collections.service';
 })
 export class CollectionComponent implements OnInit {
   constructor(private collectionsSerice: CollectionsService) {}
-  private _collections!: Collection;
+  private _collections!: Collection[];
 
   faPencil = faPencil;
   faLink = faLink;

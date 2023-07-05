@@ -17,6 +17,6 @@ export class CollectionsService {
   constructor(private http: HttpClient) {}
 
   getCollections() {
-    return this.http.get(this.dataSource, { headers: this.headers }) as Observable<Collection>;
+    return this.http.get(this.dataSource) as Observable<Collection[]>;
   }
 }
