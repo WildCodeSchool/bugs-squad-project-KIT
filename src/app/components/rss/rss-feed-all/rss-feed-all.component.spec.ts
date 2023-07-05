@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RssFeedComponent } from './rss-feed.component';
+import { RssFeedAllComponent } from './rss-feed-all.component';
 
 describe('RssFeedsComponent', () => {
-  let component: RssFeedComponent;
-  let fixture: ComponentFixture<RssFeedComponent>;
+  let component: RssFeedAllComponent;
+  let fixture: ComponentFixture<RssFeedAllComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RssFeedComponent],
+      declarations: [RssFeedAllComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RssFeedComponent);
+    fixture = TestBed.createComponent(RssFeedAllComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

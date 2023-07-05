@@ -10,6 +10,7 @@ import { RssFeedService } from '../../services/rss.service';
 })
 export class RssComponent {
   rssFeedService: string[];
+
   constructor(private dialog: MatDialog, private rssService: RssFeedService) {
     this.rssFeedService = rssService.rssLinks;
   }

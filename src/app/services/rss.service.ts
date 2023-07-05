@@ -20,7 +20,7 @@ export class RssFeedService {
     return this.rssLinks;
   }
   getRssData(url: string): Observable<any> {
-    const rssApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${url}`;
+    const rssApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${url}&api_key=ocgvg1llehvfjejyglkyv9xjx9uqb9nfgtntlay3`;
     return this.http.get(rssApiUrl);
   }
 }

@@ -1,0 +1,74 @@
+@use "src/_imports.scss" as *;
+
+.rss-item {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid $quaternary-color;
+  margin: 1em;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  h3 {
+    color: white;
+    margin-bottom: 0;
+  }
+  .rss-item__flux-title {
+    flex : 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: $quaternary-color;
+    padding: 0 0.5em;
+  }
+  .rss-item__description {
+    flex : 6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 0.5em;
+    margin: 0 0.5em;
+    h3 {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      color: $secondary-color;
+      text-align: center;
+      margin: 0.5em 0;
+      font-weight: bold;
+    }
+    p {
+      color : $grey-color;
+      font-size: 0.8em;
+      font-weight: 400;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .rss-item__footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+    span {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      font-style: italic;
+      font-size: 0.7em;
+    }
+    a {
+      font-size: 0.8em;
+      color: $quaternary-color;
+      margin-right: 0.5em;
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
