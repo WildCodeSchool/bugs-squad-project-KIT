@@ -8,7 +8,6 @@ import { RssFeedService } from '../../../services/rss.service';
 })
 export class RssFeedAllComponent {
   @Input() rssLink!: string[];
-  rssData?: any;
   rssDataItems?: any[] = [];
 
   constructor(private rssFeedService: RssFeedService) {}
@@ -37,23 +36,22 @@ export class RssFeedAllComponent {
   addFeedTitleToItems(rssData: any) {
     if (Array.isArray(rssData?.items)) {
       const feedTitle = rssData.feed.title;
-
       rssData.items.forEach((item: any) => {
         item.feedTitle = feedTitle;
       });
     }
   }
+  //Allows you to sort the table according to publication dates
   sortRssDataItemsByDate() {
     this.rssDataItems?.sort((a, b) => {
       const dateA = new Date(a.pubDate);
       const dateB = new Date(b.pubDate);
-
       if (dateA > dateB) {
-        return -1; // a vient avant b
+        return -1;
       } else if (dateA < dateB) {
-        return 1; // b vient avant a
+        return 1;
       } else {
-        return 0; // les dates sont égales
+        return 0;
       }
     });
   }
@@ -61,6 +59,7 @@ export class RssFeedAllComponent {
   getClean(description: string): string {
     return description.replace(/<[^>]+>/g, '');
   }
+  // Format date in French format
   formatDate(date: string): string {
     return new Date(date).toLocaleDateString('fr-FR', {
       year: 'numeric',
