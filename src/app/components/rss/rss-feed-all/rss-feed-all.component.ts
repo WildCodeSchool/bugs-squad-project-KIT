@@ -12,20 +12,20 @@ export class RssFeedAllComponent {
 
   constructor(private rssFeedService: RssFeedService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getRssData();
   }
 
-  getRssData() {
+  getRssData(): void {
     this.rssLink.forEach((link: string) => {
       this.rssFeedService.getRssData(link).subscribe({
-        next: (response: any) => {
+        next: (response: any): void => {
           const rssData = response;
           this.addFeedTitleToItems(rssData);
           this.rssDataItems?.push(...rssData.items);
           this.sortRssDataItemsByDate();
         },
-        error: (error: any) => {
+        error: (error: any): void => {
           console.error('Erreur lors de la récupération du flux RSS', error);
         },
       });
@@ -33,19 +33,19 @@ export class RssFeedAllComponent {
   }
 
   //Add feed title to each list item
-  addFeedTitleToItems(rssData: any) {
+  addFeedTitleToItems(rssData: any): void {
     if (Array.isArray(rssData?.items)) {
       const feedTitle = rssData.feed.title;
-      rssData.items.forEach((item: any) => {
+      rssData.items.forEach((item: any): void => {
         item.feedTitle = feedTitle;
       });
     }
   }
   //Allows you to sort the table according to publication dates
-  sortRssDataItemsByDate() {
+  sortRssDataItemsByDate(): void {
     this.rssDataItems?.sort((a, b) => {
-      const dateA = new Date(a.pubDate);
-      const dateB = new Date(b.pubDate);
+      const dateA: Date = new Date(a.pubDate);
+      const dateB: Date = new Date(b.pubDate);
       if (dateA > dateB) {
         return -1;
       } else if (dateA < dateB) {
