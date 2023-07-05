@@ -10,6 +10,7 @@
   h3 {
     color: white;
     margin-bottom: 0;
+    font-family: $font;
   }
   .rss-item__flux-title {
     flex : 1;
@@ -47,6 +48,7 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-family: $font;
     }
   }
   .rss-item__footer {
@@ -61,11 +63,13 @@
       align-items: flex-start;
       font-style: italic;
       font-size: 0.7em;
+      font-family: $font;
     }
     a {
       font-size: 0.8em;
       color: $quaternary-color;
       margin-right: 0.5em;
+      font-family: $font;
       &:hover {
         color: $main-color;
       }
