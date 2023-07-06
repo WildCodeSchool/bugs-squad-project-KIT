@@ -59,20 +59,20 @@
           </div>
         </div>
         <p>
-          Sainte-viarge de saintes fesses de ciboire de marde de saint-ciboire de charrue de patente à gosse de de
-          calvaire de verrat de mosus de viande à chien de torrieux de calvinouche de christie de cimonaque de caltor de
-          bâtard de tabarnane d'ostifie de viarge de sacréfice de colon de boswell de p'tit Jésus de saint-cimonaque de
-          calvince d'ostie de sacrament de bout d'viarge. Sainte-viarge de saintes fesses de ciboire de marde de
-          saint-ciboire de charrue de patente à gosse de torvisse de calvaire de verrat de mosus de viande à chien de
-          torrieux de calvinouche de christie de cimonaque de caltor de bâtard de tabarnane d'ostifie.
+          Nous sommes la Bugs squad. Notre mission : éliminer les bugs présents sur notre chemin. Comme vous le savez
+          sans doute, un grand pouvoir implique de grandes responsabilités... C'est pourquoi notre équipe de
+          super-développeurs a décidé de mettre à profit toutes ses commpétences pour développer K.I.T. afin de le
+          mettre à disposition de nos confrères pour améliorer leur quotidien. Nous avons mis tout notre coeur dans ce
+          projet pour qu'il soit le plus efficace possible de votre laptop à votre mobile, en passant même par les
+          écrans 15''. N'hésitez pas à nous envoyer un message via le formulaire ci-dessous si vous souhaitez nous
+          rejoindre ou si vous avez des questions.
         </p>
       </div>
 
       <div class="QR">
         <img
           src="https://qr-api.quel.jp/v1/?size=4&data=https%3A%2F%2Fqr-creator.com%2Furls%2FbY27DsIwDEU_CEF3tlB1AwYUMUZyW9NachKUOH38PZVZs12fY93rZpFvvjbNRDKX_jJE3zxABMm6ikKPiYa-puzO-yduNfXEFbjQRPVKTylmdP_Zk2nN2SbKAsGZBQSSok6XNd5iya6FEZLo_QbGIHS8M24QxoSK77gQMxy88x4UvWLO0f0A"
-          alt="QR Code"
-        />
+          alt="QR Code" />
         <h4>Le QRcode de l'équipe</h4>
       </div>
     </div>
@@ -81,24 +81,18 @@
     <h1>CONTACTEZ-NOUS</h1>
     <label>Email:</label>
     <input type="email" formControlName="email" required />
-    <div
-      *ngIf="
+    <div *ngIf="
         contactForm.controls.email.errors && (contactForm.controls.email.dirty || contactForm.controls.email.touched)
-      "
-      class="invalid"
-    >
+      " class="invalid">
       <div class="error" *ngIf="contactForm.controls.email.errors?.['required']">Email is required.</div>
       <div class="error" *ngIf="contactForm.controls.email.errors?.['email']">Email address is not valid.</div>
     </div>
     <label>Message:</label>
     <textarea formControlName="message" required></textarea>
-    <div
-      *ngIf="
+    <div *ngIf="
         contactForm.controls.message.errors &&
         (contactForm.controls.message.dirty || contactForm.controls.message.touched)
-      "
-      class="invalid"
-    >
+      " class="invalid">
       <div class="error" *ngIf="contactForm.controls.message.errors?.['required']">Message is required.</div>
       <div class="error" *ngIf="contactForm.controls.message.errors?.['minlength']">
         Message must be at least 10 characters long
