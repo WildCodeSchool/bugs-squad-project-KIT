@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FavoriteFeedsComponent } from './favorite-feeds.component';
+import { TodolistComponent } from './todolist.component';
 
-describe('FavoriteFeedsComponent', () => {
-  let component: FavoriteFeedsComponent;
-  let fixture: ComponentFixture<FavoriteFeedsComponent>;
+describe('TodolistComponent', () => {
+  let component: TodolistComponent;
+  let fixture: ComponentFixture<TodolistComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FavoriteFeedsComponent ]
+      declarations: [ TodolistComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FavoriteFeedsComponent);
+    fixture = TestBed.createComponent(TodolistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
