@@ -21,6 +21,6 @@ export class CollectionComponent {
   // If there is a comment in the Link of the Collection, the comment is displayed. Else, the url is displayed
 
   getLinkComment(link: Link) {
-    return link.comment ? link.comment : link.url;
+    return link.title ? link.title : link.url;
   }
 }

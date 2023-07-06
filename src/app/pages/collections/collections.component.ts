@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Collection } from 'src/app/models/Collection';
 import { Link } from 'src/app/models/Link';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faLink } from '@fortawesome/free-solid-svg-icons';
 import { CollectionsService } from '../../services/collections.service';
 
 @Component({
