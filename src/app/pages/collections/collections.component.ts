@@ -20,7 +20,7 @@ export class CollectionsComponent implements OnInit {
   comment = new FormControl('');
   collectionColor = new FormControl('#FFFFFF');
 
-  constructor(private collectionsSerice: CollectionsService) {}
+  constructor(private collectionsService: CollectionsService) {}
 
   faPencil = faPencil;
   faLink = faLink;
@@ -39,7 +39,7 @@ export class CollectionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.collectionsSerice.getCollections().subscribe((data) => {
+    this.collectionsService.getCollections().subscribe((data) => {
       this.collections = data;
     });
   }
