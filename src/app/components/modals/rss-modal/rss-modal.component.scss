@@ -1,39 +1,24 @@
 @use 'src/_imports.scss' as *;
-.modal-buttons {
-  button {
-    background-color: $quaternary-color;
-    color: $bg-color;
-    font-family: $font;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-    padding: 0.5em;
-    margin-right: 0.5em;
-  }
-  .button__cancel {
-    background-color: $bg-color;
-    font-family: $font;
-    color: $text-color;
-    font-size: 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-    padding: 0.5em;
-    margin-right: 0.5em;
-  }
-}
-h2 {
-  text-align: center;
-  color: $main-color;
-  margin: 1em;
-}
+
 form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 1em;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #1d2b3a;
 }
-input {
-  height: 25px;
+.rssFeed__form-inputBox {
+  position: relative;
+  width: 250px;
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255,2555,2555,0.25);
+    background-color: #1d2b3a;
+    border-radius: 5px;
+  }
 }
+
+
+
