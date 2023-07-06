@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Environment variables in development
+
+To set up environment variables such as en API Key, copy the file `src/environments/environment.ts` to `src/environments/environment.development.ts`.
+Add the variables to the new file for example `apiKey: 'xxxxxxxx'`.
+To reference an environment variable in the files, import `import { environment } from 'src/environments/environment.development';` 
+and use `environment.nameOfVariable` to reference the variable.
+
+## Gitignore file for development if don't work
+
+If when you add files to a .gitignore they still appear in the git status, try to run the following commands:
+`git rm -r --cached .`
+`git add .`
+`git commit -m "fixed untracked files"`
