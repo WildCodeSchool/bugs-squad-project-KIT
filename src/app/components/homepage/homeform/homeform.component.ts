@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-homeform',
@@ -16,8 +16,20 @@ export class HomeformComponent {
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, this.passwordStrengthValidator()]),
   });
+
+  passwordStrengthValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const password = control.value;
+      const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
+
+      if (password && !regex.test(password)) {
+        return { passwordStrength: true };
+      }
+      return null;
+    };
+  }
 
   login() {
     // CALL API with username and password

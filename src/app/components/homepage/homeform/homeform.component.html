@@ -68,6 +68,14 @@
                                                 autocomplete="off" />
                                             <i class="input-icon fa-solid fa-lock"></i>
                                         </div>
+                                        <div *ngIf="registerForm.get('email')?.errors?.['email']" class="error-message">
+                                            L'adresse e-mail est invalide.
+                                        </div>
+                                        <div *ngIf="registerForm.get('password')?.errors?.['passwordStrength']"
+                                            class="error-message">
+                                            Le mot de passe doit comporter au moins 8 caractères, une lettre majuscule,
+                                            une lettre minuscule et un chiffre.
+                                        </div>
                                         <button type="submit" class="btn mt-4">submit</button>
                                     </div>
                                 </div>

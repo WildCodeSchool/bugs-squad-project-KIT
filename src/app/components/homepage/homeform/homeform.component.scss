@@ -338,3 +338,11 @@
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
   border: $main-color solid 1px;
 }
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 0;
+  width: 100%;
+}
