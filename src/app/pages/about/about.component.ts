@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-about',
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private contactService: ContactService) {}
 
   contactForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -25,8 +26,16 @@ export class AboutComponent {
   submitForm() {
     if (this.contactForm.valid) {
       const formData = this.contactForm.value;
-      console.log(formData);
-      this.contactForm.reset();
+
+      this.contactService.submitContactForm(formData).subscribe(
+        (response) => {
+          console.log(response);
+          this.contactForm.reset();
+        },
+        (error) => {
+          console.log('Error:', error);
+        }
+      );
     } else {
       console.log('Form is invalid. Please fix the errors.');
     }
