@@ -7,9 +7,21 @@
   flex-direction: column;
   align-items: center;
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.5rem;
   height: 360px;
   overflow-y: auto;
+
+  .icons {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 1rem;
+    .fa-solid, .fa-regular {
+      cursor: pointer;
+      color: $secondary-color;
+      margin: 0 0.5rem;
+    }
+  }
 
 
   .meta {
@@ -42,8 +54,12 @@
       p {
         margin: 0;
       }
+
+      .mat-mdc-icon-button {
+        margin: 0;
+      }
     }
-  }
+    }
 
 }
 
