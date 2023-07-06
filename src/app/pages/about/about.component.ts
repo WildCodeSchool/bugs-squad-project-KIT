@@ -12,7 +12,7 @@ export class AboutComponent {
 
   contactForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    message: ['', [Validators.required, Validators.minLength(10)]],
+    text: ['', [Validators.required, Validators.minLength(10)]],
   });
 
   get email() {
@@ -20,7 +20,7 @@ export class AboutComponent {
   }
 
   get message() {
-    return this.contactForm.get('message');
+    return this.contactForm.get('text');
   }
 
   submitForm() {
@@ -29,7 +29,6 @@ export class AboutComponent {
 
       this.contactService.submitContactForm(formData).subscribe(
         (response) => {
-          console.log(response);
           this.contactForm.reset();
         },
         (error) => {
