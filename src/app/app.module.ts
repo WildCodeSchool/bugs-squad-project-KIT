@@ -85,6 +85,7 @@ import { TodolistsComponent } from './pages/todolists/todolists.component';
     MatListModule,
     FontAwesomeModule,
     MatDialogModule,
+    MatMenuModule,
     MatCheckboxModule,
     MatMenuModule,
   ],
