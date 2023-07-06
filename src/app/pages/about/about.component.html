@@ -72,7 +72,8 @@
       <div class="QR">
         <img
           src="https://qr-api.quel.jp/v1/?size=4&data=https%3A%2F%2Fqr-creator.com%2Furls%2FbY27DsIwDEU_CEF3tlB1AwYUMUZyW9NachKUOH38PZVZs12fY93rZpFvvjbNRDKX_jJE3zxABMm6ikKPiYa-puzO-yduNfXEFbjQRPVKTylmdP_Zk2nN2SbKAsGZBQSSok6XNd5iya6FEZLo_QbGIHS8M24QxoSK77gQMxy88x4UvWLO0f0A"
-          alt="QR Code" />
+          alt="QR Code"
+        />
         <h4>Le QRcode de l'équipe</h4>
       </div>
     </div>
@@ -81,20 +82,23 @@
     <h1>CONTACTEZ-NOUS</h1>
     <label>Email:</label>
     <input type="email" formControlName="email" required />
-    <div *ngIf="
+    <div
+      *ngIf="
         contactForm.controls.email.errors && (contactForm.controls.email.dirty || contactForm.controls.email.touched)
-      " class="invalid">
+      "
+      class="invalid"
+    >
       <div class="error" *ngIf="contactForm.controls.email.errors?.['required']">Email is required.</div>
       <div class="error" *ngIf="contactForm.controls.email.errors?.['email']">Email address is not valid.</div>
     </div>
     <label>Message:</label>
-    <textarea formControlName="message" required></textarea>
-    <div *ngIf="
-        contactForm.controls.message.errors &&
-        (contactForm.controls.message.dirty || contactForm.controls.message.touched)
-      " class="invalid">
-      <div class="error" *ngIf="contactForm.controls.message.errors?.['required']">Message is required.</div>
-      <div class="error" *ngIf="contactForm.controls.message.errors?.['minlength']">
+    <textarea formControlName="text" required></textarea>
+    <div
+      *ngIf="contactForm.controls.text.errors && (contactForm.controls.text.dirty || contactForm.controls.text.touched)"
+      class="invalid"
+    >
+      <div class="error" *ngIf="contactForm.controls.text.errors?.['required']">Message is required.</div>
+      <div class="error" *ngIf="contactForm.controls.text.errors?.['minlength']">
         Message must be at least 10 characters long
       </div>
     </div>
