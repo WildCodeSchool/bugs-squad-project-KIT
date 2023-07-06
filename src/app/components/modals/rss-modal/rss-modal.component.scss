@@ -6,17 +6,45 @@ form {
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  background-color: #1d2b3a;
+  padding: 0.5em;
 }
 .rssFeed__form-inputBox {
   position: relative;
-  width: 250px;
+  width: 400px;
   input {
     width: 100%;
     padding: 10px;
-    border: 1px solid rgba(255,2555,2555,0.25);
-    background-color: #1d2b3a;
+    border: 1px solid $quaternary-color;
     border-radius: 5px;
+    outline: none;
+    font-size: 0.9em;
+    font-family: $font;
+    transition: 0.5s;
+  }
+  span {
+    font-family: $font;
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: $quaternary-color;
+    text-transform: uppercase;
+    transition: 0.5s;
+  }
+  input:valid ~span,
+  input:focus ~span {
+    color: white;
+    transform: translateX(10px) translateY(-10px);
+    font-size: 0.7em;
+    padding: 0 10px;
+    background-color: $main-color;
+    letter-spacing: 0.2em;
+    border-radius: 5px;
+  }
+  input:valid,
+  input:focus {
+    border-color: $main-color;
   }
 }
 

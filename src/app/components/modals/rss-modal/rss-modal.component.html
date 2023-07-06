@@ -1,16 +1,11 @@
-<h2>Ajouter un lien RSS</h2>
+
 
 <form [formGroup]="rssCreateForm" (ngSubmit)="closeModal()">
-  <mat-form-field>
-    <div class="rssFeed__form-inputBox">
-      <input formControlName="rssUrl" placeholder="Entrez le lien RSS" required />
-      <label>Lien RSS</label>
-    </div>
-
-
-    <mat-error class="error" *ngIf="rssCreateForm.get('rssUrl')?.hasError('required')">Le lien RSS est requis.</mat-error>
-  </mat-form-field>
-
+  <h2>Ajouter un lien RSS</h2>
+  <div class="rssFeed__form-inputBox">
+    <input type="text" formControlName="rssUrl" required />
+    <span>URL du flux rss</span>
+  </div>
   <div class="modal-buttons">
     <button type="submit">Ajouter</button>
     <button class="button__cancel" mat-dialog-close>Annuler</button>
