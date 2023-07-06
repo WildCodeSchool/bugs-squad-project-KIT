@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RssModalComponent } from '../../components/modals/rss-modal/rss-modal.component';
-import { RssFeedService } from '../../services/rss.service';
+import { RssFeedService } from '../../services/RssFeedService/rss.service';
 
 @Component({
   selector: 'app-rss',
@@ -10,6 +10,7 @@ import { RssFeedService } from '../../services/rss.service';
 })
 export class RssComponent {
   rssFeedService: string[];
+
   constructor(private dialog: MatDialog, private rssService: RssFeedService) {
     this.rssFeedService = rssService.rssLinks;
   }
@@ -21,7 +22,6 @@ export class RssComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log(result);
         this.rssService.addRssLink(result);
       }
     });

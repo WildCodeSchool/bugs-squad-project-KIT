@@ -7,6 +7,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,18 +24,22 @@ import { HomeformComponent } from './components/homepage/homeform/homeform.compo
 
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
-import { RssFeedsComponent } from './pages/rss/rss-feeds/rss-feeds.component';
+import { RssFeedAllComponent } from './components/rss/rss-feed-all/rss-feed-all.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgOptimizedImage } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { FooterComponent } from './components/footer/footer.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
+import { TodolistComponent } from './components/todolist/todolist.component';
+import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
+import { TodolistsComponent } from './pages/todolists/todolists.component';
 
 @NgModule({
   declarations: [
@@ -52,9 +57,12 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
     DashCollectionsComponent,
     RssComponent,
     RssModalComponent,
-    RssFeedsComponent,
+    RssFeedAllComponent,
     AboutComponent,
     MentionLegalesComponent,
+    TodolistComponent,
+    TodolistsFavComponent,
+    TodolistsComponent,
   ],
 
   imports: [
@@ -77,6 +85,9 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
     MatListModule,
     FontAwesomeModule,
     MatDialogModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
