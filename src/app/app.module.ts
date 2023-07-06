@@ -30,6 +30,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { FooterComponent } from './components/footer/footer.component';
 import { BurgerButtonComponent } from './components/burger-button/burger-button.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -77,6 +78,7 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
     MatListModule,
     FontAwesomeModule,
     MatDialogModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
