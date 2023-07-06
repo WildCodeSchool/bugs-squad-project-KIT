@@ -12,26 +12,34 @@
     height: 100%;
     width: 244px;
     background-color: $bg-color;
+    padding: 0.5rem;
+
+    .title {
+      font-size: 1.5rem;
+    }
 
     .icons {
       display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      height: 2rem;
-      margin-right: 2rem;
-
-      p {
-        margin-right: 1rem;
-        margin-bottom: 1rem;
-        font-size: 2rem;
-      }
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 1rem;
+    .fa-solid, .fa-regular {
+      cursor: pointer;
+      color: $secondary-color;
+      margin: 0 0.5rem;
     }
+    }
+
     .meta {
       margin: 1rem 0 0 1rem;
 
       h3 {
         margin: 0;
       }
+    }
+    .links-section {
+      overflow: auto;
+      height: 200px;
     }
 
     ul {
@@ -43,6 +51,7 @@
       padding: 0;
       width: 100%;
       color: $bg-color;
+
 
       li {
         width: 90%;
@@ -66,12 +75,26 @@
               color: white;
             }
           }
-          .pencil-icon {
-            color: white;
+          .link-icons {
+            display: flex;
+            gap: 0.5rem;
+            .fa-solid, .fa-regular {
+              color: white;
+              font-size: 0.8rem;
+              cursor: pointer;
+            }
           }
         }
       }
     }
+    .fa-sharp {
+      text-align: center;
+      color: $secondary-color;
+      cursor: pointer;
+    }
   }
+}
 
+.links-section::-webkit-scrollbar{
+  display: none;
 }

@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Collection } from 'src/app/models/Collection';
 import { Link } from 'src/app/models/Link';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faLink } from '@fortawesome/free-solid-svg-icons';
 import { AbstractControl } from '@angular/forms';
 
 @Component({
@@ -10,7 +9,7 @@ import { AbstractControl } from '@angular/forms';
   templateUrl: './collection.component.html',
   styleUrls: ['./collection.component.scss'],
 })
-export class CollectionComponent implements OnInit {
+export class CollectionComponent {
   faPencil = faPencil;
   faLink = faLink;
 
@@ -19,12 +18,9 @@ export class CollectionComponent implements OnInit {
   @Input() collection!: Collection;
   @Input() collectionColor!: AbstractControl;
 
-  ngOnInit() {
-    this.color = this.collectionColor.value;
-  }
   // If there is a comment in the Link of the Collection, the comment is displayed. Else, the url is displayed
 
   getLinkComment(link: Link) {
-    return link.comment ? link.comment : link.url;
+    return link.title ? link.title : link.url;
   }
 }
