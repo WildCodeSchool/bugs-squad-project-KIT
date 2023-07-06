@@ -7,7 +7,7 @@ import { ToDoList } from '../models/ToDoList';
   providedIn: 'root',
 })
 export class TodolistsService {
-  private dataSource = 'http://localhost:8080/todo-lists';
+  private dataSource = 'http://localhost:8080/api/todo-lists';
 
   constructor(private http: HttpClient) {}
 

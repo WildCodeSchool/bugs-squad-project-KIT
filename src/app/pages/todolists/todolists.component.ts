@@ -9,14 +9,12 @@ import { ToDoList } from 'src/app/models/ToDoList';
 })
 export class TodolistsComponent {
   todolists: ToDoList[] = [];
-  todolist!: ToDoList;
 
   constructor(private todolistsService: TodolistsService) {}
 
   ngOnInit() {
     this.todolistsService.getLists().subscribe((data) => {
       this.todolists = data;
-      console.log(this.todolists);
     });
   }
 }
