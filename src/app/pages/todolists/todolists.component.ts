@@ -26,7 +26,6 @@ export class TodolistsComponent {
       const index = this.todolists.indexOf(todolist);
       if (index !== -1) {
         this.todolists.splice(index, 1);
-        console.log(index);
       }
     });
   }

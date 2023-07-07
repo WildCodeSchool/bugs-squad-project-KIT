@@ -9,9 +9,10 @@ import { ToDoList } from '../../models/ToDoList';
 export class FavoriteTodoService {
   constructor(private http: HttpClient) {}
 
-  favoriteList(id: number) {
-    const body = { favorite: true };
+  updateIsFavorite(id: number, isFavorite: boolean) {
+    const updatedObject = { isFavorite: isFavorite };
     const dataSource = `http://localhost:8080/api/todo-lists/${id}`;
-    return this.http.patch(dataSource, body) as Observable<ToDoList>;
+    return this.http.put(dataSource, updatedObject) as Observable<ToDoList>;
+
   }
 }

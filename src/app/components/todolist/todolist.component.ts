@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ToDoList } from 'src/app/models/ToDoList';
-import { Task } from 'src/app/models/Task';
 import { TodoDeleteService } from 'src/app/services/todolists-services/todo-delete.service';
 import { FavoriteTodoService } from 'src/app/services/todolists-services/favorite-todo.service';
 @Component({
@@ -12,11 +11,25 @@ export class TodolistComponent {
   @Input() todolist!: ToDoList;
   @Input() deleteTodolist!: (todolist: ToDoList) => void;
 
-  constructor(private todolistService: TodoDeleteService, private favoriteService: FavoriteTodoService) {}
+  constructor(private favoriteService: FavoriteTodoService) {}
 
   isFavorite(todolist: ToDoList): void {
-    this.todolist = todolist;
-    this.favoriteService.favoriteList(todolist.id).subscribe();
-    this.todolist.isFavorite = true;
+    this.favoriteService.updateIsFavorite(todolist.id, true).subscribe({
+      next: () => {
+        // Success
+        this.todolist.isFavorite = true;
+      },
+      error: (error) => {
+        // Handle error
+        console.error(error);
+      },
+      complete: () => {
+        // Optional: Handle complete event
+      }
+    });
+  }
+  isNotFavorite(todolist: ToDoList): void {
+    this.favoriteService.updateIsFavorite(todolist.id, false).subscribe();
+    this.todolist.isFavorite = false;
   }
 }
