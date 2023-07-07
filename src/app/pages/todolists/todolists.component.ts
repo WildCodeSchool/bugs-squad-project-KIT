@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodolistsService } from 'src/app/services/todolists.service';
+import { TodolistsService } from 'src/app/services/todolists-services/todolists.service';
 import { ToDoList } from 'src/app/models/ToDoList';
 
 @Component({

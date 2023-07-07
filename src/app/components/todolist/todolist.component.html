@@ -1,30 +1,40 @@
 <div class="todolist">
-  <div class="icons">
-    <i class="fa-solid fa-pencil" title="Modifier"></i>
-    <i class="fa-solid fa-trash" title="Supprimer"></i>
-    <i class="fa-regular fa-star" title="Ajouter aux favoris"></i>
-  </div>
   <div class="meta">
+    <div class="icons">
+      <i class="fa-solid fa-pencil" title="Modifier"></i>
+      <i class="fa-solid fa-trash delete" title="Supprimer" (click)="delete(todolist)"></i>
+      <i class="fa-regular fa-star" title="Ajouter aux favoris"></i>
+    </div>
     <h2 class="title">{{ todolist.title }}</h2>
     <p class="description">{{ todolist.description }}</p>
+    <div class="new-task">
+      <i class="fa-sharp fa-solid fa-circle-plus"></i>
+      Nouvelle tâche
+    </div>
   </div>
-  <ul>
-    <li *ngFor="let task of todolist.tasks">
-      <mat-checkbox></mat-checkbox>
-      <p>{{ task.description }}</p>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <i class="fa-solid fa-ellipsis-vertical"></i>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <i class="fa-solid fa-pencil" title="Modifier"></i>
-          Modifier
-        </button>
-        <button mat-menu-item>
-          <i class="fa-solid fa-trash" title="Supprimer"></i>
-          Supprimer
-        </button>
-      </mat-menu>
-    </li>
-  </ul>
+  <div class="tasks">
+    <ul>
+      <li *ngFor="let task of todolist.tasks">
+        <div class="checkbox">
+          <mat-checkbox></mat-checkbox>
+        </div>
+        <div class="task">{{ task.description }}</div>
+        <div class="button">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <i class="fa-solid fa-pencil" title="Modifier"></i>
+              Modifier
+            </button>
+            <button mat-menu-item>
+              <i class="fa-solid fa-trash" title="Supprimer"></i>
+              Supprimer
+            </button>
+          </mat-menu>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
