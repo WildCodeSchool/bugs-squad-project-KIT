@@ -4,6 +4,7 @@ export class ToDoList {
     public id: number,
     public title: string = 'Sans titre',
     public tasks: Task[],
-    public description?: string
+    public description?: string,
+    public isFavorite: boolean = false
   ) {}
 }
