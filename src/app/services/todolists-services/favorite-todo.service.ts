@@ -13,6 +13,5 @@ export class FavoriteTodoService {
     const updatedObject = { isFavorite: isFavorite };
     const dataSource = `http://localhost:8080/api/todo-lists/${id}`;
     return this.http.put(dataSource, updatedObject) as Observable<ToDoList>;
-
   }
 }

@@ -2,9 +2,19 @@
   <div class="meta">
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier"></i>
-      <i class="fa-solid fa-trash delete" title="Supprimer" (click)="deleteTodolist(todolist)"></i>
-      <i *ngIf="!todolist.isFavorite" class="fa-regular fa-star" title="Ajouter aux favoris" (click)="isFavorite(todolist)"></i>
-      <i *ngIf="todolist.isFavorite" class="fa-solid fa-star" title="Ajouter aux favoris" (click)="isNotFavorite(todolist)"></i>
+      <i class="fa-solid fa-trash delete" title="Supprimer" (click)="deleteTodolistFn(todolist)"></i>
+      <i
+        *ngIf="!todolist.isFavorite"
+        class="fa-regular fa-star"
+        title="Ajouter aux favoris"
+        (click)="isFavorite(todolist)"
+      ></i>
+      <i
+        *ngIf="todolist.isFavorite"
+        class="fa-solid fa-star"
+        title="Ajouter aux favoris"
+        (click)="isNotFavorite(todolist)"
+      ></i>
     </div>
     <h2 class="title">{{ todolist.title }}</h2>
     <p class="description">{{ todolist.description }}</p>

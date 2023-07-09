@@ -9,7 +9,7 @@ import { FavoriteTodoService } from 'src/app/services/todolists-services/favorit
 })
 export class TodolistComponent {
   @Input() todolist!: ToDoList;
-  @Input() deleteTodolist!: (todolist: ToDoList) => void;
+  @Input() deleteTodolistFn!: (todolist: ToDoList) => void;
 
   constructor(private favoriteService: FavoriteTodoService) {}
 
@@ -23,13 +23,14 @@ export class TodolistComponent {
         // Handle error
         console.error(error);
       },
-      complete: () => {
-        // Optional: Handle complete event
-      }
     });
   }
   isNotFavorite(todolist: ToDoList): void {
     this.favoriteService.updateIsFavorite(todolist.id, false).subscribe();
     this.todolist.isFavorite = false;
+  }
+
+  deleteTodolistFromParent(todolist: ToDoList): void {
+    this.deleteTodolistFn(todolist);
   }
 }
