@@ -24,7 +24,11 @@ export class TodolistComponent {
   }
 
   deleteTask(task: Task) {
-    this.deleteTaskService.deleteTask(task.id).subscribe();
-    console.log(task);
+    this.deleteTaskService.deleteTask(task.id).subscribe(() => {
+      const index = this.todolist.tasks.indexOf(task);
+      if (index !== -1) {
+        this.todolists.splice(index, 1);
+      }
+    });
   }
 }
