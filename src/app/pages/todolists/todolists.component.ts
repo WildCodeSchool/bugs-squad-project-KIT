@@ -21,7 +21,6 @@ export class TodolistsComponent {
   }
 
   deleteTodolist(todolist: ToDoList): void {
-    console.log(todolist);
     this.todoDeleteService.deleteList(todolist.id).subscribe(() => {
       const index = this.todolists.indexOf(todolist);
       if (index !== -1) {
