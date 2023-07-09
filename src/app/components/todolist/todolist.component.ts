@@ -18,7 +18,5 @@ export class TodolistComponent {
 
   updateFavorite(todolist: ToDoList): void {
     this.favoriteService.updateIsFavorite(todolist.id, !todolist.favorite).subscribe();
-    this.todolist.favorite = !this.todolist.favorite;
-    console.log(todolist);
   }
 }
