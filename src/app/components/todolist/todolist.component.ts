@@ -1,6 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ToDoList } from 'src/app/models/ToDoList';
 import { FavoriteTodoService } from 'src/app/services/todolists-services/favorite-todo.service';
+import { DeleteTaskService } from 'src/app/services/todolists-services/delete-task.service';
+import { Task } from '../../models/Task';
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
@@ -9,8 +11,9 @@ import { FavoriteTodoService } from 'src/app/services/todolists-services/favorit
 export class TodolistComponent {
   @Input() todolist!: ToDoList;
   @Input() deleteTodolistFn!: (todolist: ToDoList) => void;
+  task!: Task;
 
-  constructor(private favoriteService: FavoriteTodoService) {}
+  constructor(private favoriteService: FavoriteTodoService, private deleteTaskService: DeleteTaskService) {}
 
   deleteTodolistFromParent(todolist: ToDoList): void {
     this.deleteTodolistFn(todolist);
@@ -18,5 +21,10 @@ export class TodolistComponent {
 
   updateFavorite(todolist: ToDoList): void {
     this.favoriteService.updateIsFavorite(todolist.id, !todolist.favorite).subscribe();
+  }
+
+  deleteTask(task: Task) {
+    this.deleteTaskService.deleteTask(task.id).subscribe();
+    console.log(task);
   }
 }

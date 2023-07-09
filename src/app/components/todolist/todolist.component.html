@@ -3,8 +3,18 @@
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier"></i>
       <i class="fa-solid fa-trash delete" title="Supprimer" (click)="deleteTodolistFn(todolist)"></i>
-      <i *ngIf="!todolist.favorite" class="fa-regular fa-star" title="Ajouter aux favoris" (click)="updateFavorite(todolist)"></i>
-      <i *ngIf="todolist.favorite" class="fa-solid fa-star" title="Ajouter aux favoris" (click)="updateFavorite(todolist)"></i>
+      <i
+        *ngIf="!todolist.favorite"
+        class="fa-regular fa-star"
+        title="Ajouter aux favoris"
+        (click)="updateFavorite(todolist)"
+      ></i>
+      <i
+        *ngIf="todolist.favorite"
+        class="fa-solid fa-star"
+        title="Ajouter aux favoris"
+        (click)="updateFavorite(todolist)"
+      ></i>
     </div>
     <h2 class="title">{{ todolist.title }}</h2>
     <p class="description">{{ todolist.description }}</p>
@@ -29,7 +39,7 @@
               <i class="fa-solid fa-pencil" title="Modifier"></i>
               Modifier
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="deleteTask(task)">
               <i class="fa-solid fa-trash" title="Supprimer"></i>
               Supprimer
             </button>
