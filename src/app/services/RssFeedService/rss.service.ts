@@ -2,17 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
+import {RssFeed} from "../../models/RssFeed";
 
 @Injectable({
   providedIn: 'root',
 })
 export class RssFeedService {
-  rssLinks: string[] = [
-    'https://sharadcodes.github.io/feed.xml',
-    'https://openai.com/blog/rss.xml',
-    'https://css-tricks.com/feed/',
-    'https://www.webdesignernews.com/feed',
-  ];
+  rssLinks: string[] = [];
+  private apiUrl = 'http://localhost:8080/api/rssFeeds';
   constructor(private http: HttpClient) {}
   addRssLink(link: string): void {
     this.rssLinks.push(link);
@@ -20,6 +17,10 @@ export class RssFeedService {
   getRssLinks(): string[] {
     return this.rssLinks;
   }
+  getAllRssFeeds(): Observable<RssFeed[]> {
+    return this.http.get<RssFeed[]>(this.apiUrl);
+  }
+
   getRssData(url: string, count?: number, orderBy?: string): Observable<any> {
     let rssApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${url}&api_key=${environment.keyApi}`;
     if (count) {

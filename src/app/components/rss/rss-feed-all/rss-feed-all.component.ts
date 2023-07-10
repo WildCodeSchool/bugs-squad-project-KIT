@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RssFeedService } from '../../../services/RssFeedService/rss.service';
+import { Observable } from 'rxjs';
+import {RssFeed} from "../../../models/RssFeed";
 
 @Component({
   selector: 'app-rss-feed-all',
@@ -7,15 +9,22 @@ import { RssFeedService } from '../../../services/RssFeedService/rss.service';
   styleUrls: ['./rss-feed-all.component.scss'],
 })
 export class RssFeedAllComponent {
-  @Input() rssLink!: string[];
+  rssLink!: string[];
   rssDataItems: any[] = [];
 
   constructor(public rssFeedService: RssFeedService) {}
 
   ngOnInit(): void {
-    this.getRssData();
+    this.rssFeedService.getAllRssFeeds().subscribe({
+      next: (response: RssFeed[]): void => {
+        this.rssLink = response.map((rssFeed: RssFeed) => rssFeed.url);
+        this.getRssData();
+      },
+      error: (error: any): void => {
+        console.error('Erreur lors de la récupération des flux RSS', error);
+      },
+    });
   }
-
   getRssData(): void {
     this.rssLink.forEach((link: string) => {
       this.rssFeedService.getRssData(link, 20).subscribe({
