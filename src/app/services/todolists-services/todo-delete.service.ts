@@ -9,7 +9,7 @@ import { ToDoList } from '../../models/ToDoList';
 export class TodoDeleteService {
   constructor(private http: HttpClient) {}
 
-  deleteList(id: number) {
+  deleteList(id: number): Observable<ToDoList> {
     const dataSource = `http://localhost:8080/api/todo-lists/${id}`;
     return this.http.delete(dataSource) as Observable<ToDoList>;
   }
