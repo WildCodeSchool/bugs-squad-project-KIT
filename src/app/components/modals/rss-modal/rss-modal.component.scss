@@ -47,6 +47,30 @@ form {
     border-color: $main-color;
   }
 }
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  button[type="submit"] {
+    font-family: $font;
+    padding: 0.5em 1em;
+    background-color: $quaternary-color;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .button__cancel {
+    font-family: $font;
+    font-size: 0.8em;
+    border: 1px solid $secondary-color;
+    border-radius: 6px;
+    padding: 0.3em 0.5em;
+    color: $secondary-color;
+    cursor: pointer;
+  }
+}
 
 
 
