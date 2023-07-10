@@ -22,7 +22,23 @@ export class RssComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.rssService.addRssLink(result);
+        this.rssService.getRssData(result).subscribe({
+          next: (response: any): void => {
+            if (response.status === 'ok') {
+              this.rssService.addRssLink(result).subscribe({
+                next: (postResponse: any): void => {
+                  console.log("C'est enregistré en base de données");
+                },
+                error: (postError: any): void => {
+                  console.error("Une erreur s'est produite lors de la requête POST", postError);
+                }
+              });
+            }
+          },
+          error: (error: any): void => {
+            console.error("L'URL du flux RSS n'est pas valide", error);
+          },
+        });
       }
     });
   }
