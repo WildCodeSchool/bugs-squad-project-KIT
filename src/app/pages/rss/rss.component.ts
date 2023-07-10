@@ -9,10 +9,7 @@ import { RssFeedService } from '../../services/RssFeedService/rss.service';
   styleUrls: ['./rss.component.scss'],
 })
 export class RssComponent {
-  rssFeedService: string[];
-
   constructor(private dialog: MatDialog, private rssService: RssFeedService) {
-    this.rssFeedService = rssService.rssLinks;
   }
 
   openModal(): void {
@@ -27,11 +24,11 @@ export class RssComponent {
             if (response.status === 'ok') {
               this.rssService.addRssLink(result).subscribe({
                 next: (postResponse: any): void => {
-                  console.log("C'est enregistré en base de données");
+                  this.rssService.rssFeedsUpdated();
                 },
                 error: (postError: any): void => {
                   console.error("Une erreur s'est produite lors de la requête POST", postError);
-                }
+                },
               });
             }
           },

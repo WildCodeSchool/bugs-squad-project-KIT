@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, of } from 'rxjs';
+import { Observable, Subject} from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 import { RssFeed } from '../../models/RssFeed';
 import { catchError } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { catchError } from 'rxjs/operators';
 export class RssFeedService {
   rssLinks: string[] = [];
   private apiUrl = 'http://localhost:8080/api/rssFeeds';
+  private rssFeedsUpdatedSubject: Subject<void> = new Subject<void>();
   constructor(private http: HttpClient) {}
   addRssLink(url: string): Observable<any> {
     const rssFeedData: { url: string } = { url: url };
@@ -64,5 +65,14 @@ export class RssFeedService {
       month: 'long',
       day: 'numeric',
     });
+  }
+  // Méthode pour notifier les composants d'une mise à jour des flux RSS
+  rssFeedsUpdated(): void {
+    this.rssFeedsUpdatedSubject.next();
+  }
+
+  // Méthode pour s'abonner aux mises à jour des flux RSS
+  onRssFeedsUpdated(): Observable<void> {
+    return this.rssFeedsUpdatedSubject.asObservable();
   }
 }
