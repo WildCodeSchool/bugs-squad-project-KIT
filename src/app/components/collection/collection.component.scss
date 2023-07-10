@@ -2,6 +2,7 @@
 
 .collection {
   width: 260px;
+  // or 20rem
   outline: solid 2px $quaternary-color;
   border-radius: 8px;
   height: 320px;
@@ -11,6 +12,7 @@
   .collection-infos {
     height: 100%;
     width: 244px;
+    // or 18rem
     background-color: $bg-color;
     padding: 0.5rem;
 
