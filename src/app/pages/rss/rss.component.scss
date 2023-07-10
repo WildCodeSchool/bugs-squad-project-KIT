@@ -4,8 +4,6 @@
   flex-direction: column;
   margin: 1em 4em;
   padding: 2em;
-  border: 2px solid $quaternary-color;
-  border-radius: 6px;
   overflow: auto;
   .rss__myFlux-header {
     display: flex;
@@ -20,11 +18,13 @@
       cursor: pointer;
       border-radius: 6px;
       padding: 0.5em;
+      margin-right: 1em;
     }
     h2 {
       color: $main-color;
       font-weight: $font-weight-medium;
       margin-bottom: 0;
+      margin-left: 1em;
     }
   }
 }
