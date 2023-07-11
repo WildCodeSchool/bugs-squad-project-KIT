@@ -22,7 +22,6 @@ export class RssComponent {
       if (result) {
         this.rssService.getRssData(result).subscribe({
           next: (response: RssResponse): void => {
-            console.log(response);
             if (response) {
               this.rssService.addRssLink(result).subscribe({
                 next: (postResponse: any): void => {
