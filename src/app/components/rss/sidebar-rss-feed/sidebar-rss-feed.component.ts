@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RssFeedService } from '../../../services/RssFeedService/rss.service';
+import { RssFeed } from '../../../models/RssFeed';
+import { RssResponse } from '../../../interface/RssResponse';
 
 @Component({
   selector: 'app-sidebar-rss-feed',
@@ -18,8 +20,8 @@ export class SidebarRssFeedComponent {
 
   getRssData(): void {
     this.rssFeedService.getAllRssFeeds().subscribe({
-      next: (response: any[]): void => {
-        this.rssLink = response.map((rssFeed: any) => rssFeed.url);
+      next: (response: RssFeed[]): void => {
+        this.rssLink = response.map((rssFeed: RssFeed) => rssFeed.url);
         this.fetchRssData();
       },
       error: (error: any): void => {
@@ -30,7 +32,7 @@ export class SidebarRssFeedComponent {
   fetchRssData(): void {
     this.rssLink.forEach((link: string) => {
       this.rssFeedService.getRssData(link).subscribe({
-        next: (response: any): void => {
+        next: (response: RssResponse): void => {
           this.rssData?.push(response.feed);
         },
         error: (error: any): void => {
