@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject} from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 import { RssFeed } from '../../models/RssFeed';
 import { catchError } from 'rxjs/operators';
@@ -66,12 +66,11 @@ export class RssFeedService {
       day: 'numeric',
     });
   }
-  // Méthode pour notifier les composants d'une mise à jour des flux RSS
+
   rssFeedsUpdated(): void {
     this.rssFeedsUpdatedSubject.next();
   }
 
-  // Méthode pour s'abonner aux mises à jour des flux RSS
   onRssFeedsUpdated(): Observable<void> {
     return this.rssFeedsUpdatedSubject.asObservable();
   }
