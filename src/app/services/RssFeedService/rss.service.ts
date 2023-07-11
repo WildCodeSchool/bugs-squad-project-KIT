@@ -4,18 +4,17 @@ import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 import { RssFeed } from '../../models/RssFeed';
 import { catchError } from 'rxjs/operators';
+import { APP_ROUTES_API } from '../../../data/apiRoutes';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RssFeedService {
-  rssLinks: string[] = [];
-  private apiUrl = 'http://localhost:8080/api/rssFeeds';
   private rssFeedsUpdatedSubject: Subject<void> = new Subject<void>();
   constructor(private http: HttpClient) {}
   addRssLink(url: string): Observable<any> {
     const rssFeedData: { url: string } = { url: url };
-    return this.http.post(this.apiUrl, rssFeedData).pipe(
+    return this.http.post(APP_ROUTES_API.RSS, rssFeedData).pipe(
       catchError((error: any) => {
         console.error("Une erreur s'est produite lors de la requête POST", error);
         throw error;
@@ -23,7 +22,7 @@ export class RssFeedService {
     );
   }
   getAllRssFeeds(): Observable<RssFeed[]> {
-    return this.http.get<RssFeed[]>(this.apiUrl);
+    return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS);
   }
 
   getRssData(url: string, count?: number, orderBy?: string): Observable<any> {
