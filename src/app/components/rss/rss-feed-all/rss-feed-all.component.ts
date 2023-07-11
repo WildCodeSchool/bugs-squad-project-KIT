@@ -34,7 +34,7 @@ export class RssFeedAllComponent implements OnInit {
       this.rssFeedService.getRssData(link).subscribe({
         next: (response: any): void => {
           const rssData = response;
-          this.rssFeedService.addFeedTitleToItems(rssData);
+          this.rssFeedService.addFeedTitleFaviconToItems(rssData);
           this.rssDataItems?.push(...rssData.items);
           this.rssFeedService.sortRssDataItemsByDate(this.rssDataItems);
         },

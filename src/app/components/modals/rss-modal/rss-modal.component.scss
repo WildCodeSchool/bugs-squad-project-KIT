@@ -5,8 +5,16 @@ form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   padding: 0.5em;
+  margin: 1em;
+  h2 {
+    font-family: $font;
+    color: $main-color;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
 }
 .rssFeed__form-inputBox {
   position: relative;

@@ -37,11 +37,13 @@ export class RssFeedService {
     return this.http.get(rssApiUrl);
   }
 
-  addFeedTitleToItems(rssData: any): void {
+  addFeedTitleFaviconToItems(rssData: any): void {
     if (Array.isArray(rssData?.items)) {
       const feedTitle = rssData.feed.title;
+      const feedFavicon = rssData.feed.image;
       rssData.items.forEach((item: any): void => {
         item.feedTitle = feedTitle;
+        item.feedFavicon = feedFavicon;
       });
     }
   }
