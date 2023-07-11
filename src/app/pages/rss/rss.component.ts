@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RssModalComponent } from '../../components/modals/rss-modal/rss-modal.component';
 import { RssFeedService } from '../../services/RssFeedService/rss.service';
 import { ToastrService } from 'ngx-toastr';
+import { RssResponse } from '../../interface/RssResponse';
 
 @Component({
   selector: 'app-rss',
@@ -20,7 +21,7 @@ export class RssComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.rssService.getRssData(result).subscribe({
-          next: (response: any): void => {
+          next: (response: RssResponse): void => {
             if (response) {
               this.rssService.addRssLink(result).subscribe({
                 next: (postResponse: any): void => {
