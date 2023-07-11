@@ -1,8 +1,12 @@
 <form [formGroup]="rssCreateForm" (ngSubmit)="closeModal()">
   <h2>Ajouter un lien RSS</h2>
   <div class="rssFeed__form-inputBox">
-    <input type="text" formControlName="rssUrl" required />
+    <input type="text" id="rssUrl" formControlName="rssUrl" />
+
     <span>URL du flux rss</span>
+    <div *ngIf="rssCreateForm.invalid && isFormSubmitted" class="error-msg">
+      <p [hidden]="!rssCreateForm.controls['rssUrl'].errors?.['required']">Le champ RSS URL est requis.</p>
+    </div>
   </div>
   <div class="modal-buttons">
     <button type="submit">Ajouter</button>

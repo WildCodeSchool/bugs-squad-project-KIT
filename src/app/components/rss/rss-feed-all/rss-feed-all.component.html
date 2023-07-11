@@ -2,7 +2,7 @@
   <div class="rss-item">
     <div class="rss-item__flux-title">
       <ng-container *ngIf="item.feedFavicon">
-        <img [src]="item.feedFavicon" alt="Favicon">
+        <img [src]="item.feedFavicon" alt="Favicon" />
       </ng-container>
       <ng-container *ngIf="!item.feedFavicon">
         <h3>{{ item.feedTitle }}</h3>

@@ -79,6 +79,13 @@ form {
     cursor: pointer;
   }
 }
+.error-msg {
+  p {
+    color: $tertiary-color;
+    font-family: $font;
+    font-size: 0.8em;
+  }
+}
 
 
 
