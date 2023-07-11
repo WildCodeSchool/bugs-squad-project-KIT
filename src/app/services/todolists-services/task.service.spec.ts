@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FavoriteTodoService } from './favorite-todo.service';
+import { TaskService } from './task.service';
 
-describe('FavoriteTodoService', () => {
-  let service: FavoriteTodoService;
+describe('DeleteTaskService', () => {
+  let service: TaskService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FavoriteTodoService);
+    service = TestBed.inject(TaskService);
   });
 
   it('should be created', () => {

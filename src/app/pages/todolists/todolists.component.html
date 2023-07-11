@@ -1,25 +1,8 @@
-<div class="new-list">
+<button mat-raised-button (click)="openDialog('0ms', '0ms')" class="new-list">
   <i class="fa-sharp fa-solid fa-circle-plus"></i>
   Ajouter une nouvelle liste
-</div>
+</button>
 <h1>Mes todo lists</h1>
-
-<div class="form">
-  <h3>Créer une nouvelle liste:</h3>
-  <label>
-    Titre:
-    <input type="text" [formControl]="title" />
-  </label>
-  <label>
-    Description:
-    <input type="text" [formControl]="description" />
-  </label>
-  <label>
-    Lien:
-    <input type="text" [formControl]="tasks" />
-  </label>
-  <button (click)="createTodolist()">Créer une liste</button>
-</div>
 
 <div class="lists">
   <div *ngFor="let todolist of todolists" class="singletodo">

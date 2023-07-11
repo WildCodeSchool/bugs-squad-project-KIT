@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { TodolistsService } from 'src/app/services/todolists-services/todolists.service';
+import { TodoService } from 'src/app/services/todolists-services/todo.service';
 import { ToDoList } from 'src/app/models/ToDoList';
-import { TodoDeleteService } from 'src/app/services/todolists-services/todo-delete.service';
-import { FormControl } from '@angular/forms';
-import { CreateTodoService } from 'src/app/services/todolists-services/create-todo.service';
-import { MatDialog } from '@angular/material/dialog';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { Task } from 'src/app/models/Task';
-
 @Component({
   selector: 'app-todolists',
   templateUrl: './todolists.component.html',
@@ -15,24 +13,25 @@ import { Task } from 'src/app/models/Task';
 export class TodolistsComponent {
   todolists: ToDoList[] = [];
   todolist!: ToDoList;
-  title = new FormControl('');
-  description = new FormControl('');
-  tasks = new FormControl('');
 
-  constructor(
-    private todolistsService: TodolistsService,
-    private todoDeleteService: TodoDeleteService,
-    private todoCreateService: CreateTodoService
-  ) {}
+  constructor(private todoService: TodoService, public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.todolistsService.getLists().subscribe((data) => {
+    this.todoService.getLists().subscribe((data) => {
       this.todolists = data;
     });
   }
 
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(NewListFormComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
   deleteTodolist(todolist: ToDoList): void {
-    this.todoDeleteService.deleteList(todolist.id).subscribe(() => {
+    this.todoService.deleteList(todolist.id).subscribe(() => {
       const index = this.todolists.indexOf(todolist);
       if (index !== -1) {
         this.todolists.splice(index, 1);
@@ -40,29 +39,47 @@ export class TodolistsComponent {
     });
   }
 
-  createTodolist(todoList: ToDoList): void {
-    const title = this.title.value;
-    const description = this.description.value;
-    const tasks = this.tasks.value;
+  addToTodoLists() {
+    this.todolists.push(this.todolist);
+  }
+}
+
+@Component({
+  selector: 'app-new-list-form',
+  templateUrl: './new-list-form.component.html',
+  styleUrls: ['./new-list-form.component.scss'],
+  standalone: true,
+  imports: [MatButtonModule, ReactiveFormsModule],
+})
+export class NewListFormComponent {
+  constructor(public dialogRef: MatDialogRef<NewListFormComponent>, private todoService: TodoService) {}
+  todolists: ToDoList[] = [];
+  todolist!: ToDoList;
+  title = new FormControl('');
+  description = new FormControl('');
+  tasks = new FormControl('');
+
+  close(): void {
+    this.dialogRef.close();
+  }
+
+  createTodolist(): void {
+    const title = this.title.value as string;
+    const description = this.description.value as string;
     const favorite = this.todolist.favorite;
 
     const body = {
       title: title,
       description: description,
-      tasks: [tasks],
       favorite: favorite,
     };
 
-    this.todoCreateService.createList(body).subscribe((data) => {
+    this.todoService.createList(body).subscribe((data) => {
       this.todolist = data;
 
-      this.todolist = new ToDoList(title as string, [new Task(description as string, false)], description as string);
+      this.todolist = new ToDoList(this.todolist.id, title as string, [], description as string, false);
 
-      this.addToTodoLists();
+      this.todolists.push(this.todolist);
     });
-  }
-
-  addToTodoLists() {
-    this.todolists.push(this.todolist);
   }
 }

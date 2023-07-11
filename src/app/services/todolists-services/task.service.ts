@@ -6,10 +6,10 @@ import { Task } from '../../models/Task';
 @Injectable({
   providedIn: 'root',
 })
-export class DeleteTaskService {
+export class TaskService {
   constructor(private http: HttpClient) {}
 
-  deleteTask(taskid: number) {
+  deleteTask(taskid: number | undefined) {
     const dataSource = `http://localhost:8080/api/todo-lists/tasks/${taskid}`;
     return this.http.delete(dataSource) as Observable<Task>;
   }
