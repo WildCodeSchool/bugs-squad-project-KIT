@@ -2,27 +2,29 @@
 
 .rss-item {
   display: flex;
-  justify-content: space-between;
   border: 1px solid $quaternary-color;
-  margin: 1em;
   border-radius: 6px;
+  margin: 0.5em;
   box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
   h3 {
-    color: white;
+    color: $main-color;
     margin-bottom: 0;
     font-family: $font;
   }
   .rss-item__flux-title {
-    flex : 1;
+    width: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: $quaternary-color;
     padding: 0 0.5em;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
   .rss-item__description {
-    flex : 6;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -30,14 +32,10 @@
     padding: 0 0.5em;
     margin: 0 0.5em;
     h3 {
-      display: flex;
       width: 100%;
-      align-items: center;
-      justify-content: center;
-      color: $secondary-color;
-      text-align: center;
+      color: $quaternary-color;
+      font-size: 1em;
       margin: 0.5em 0;
-      font-weight: bold;
     }
     p {
       color : $grey-color;
@@ -67,12 +65,19 @@
       color : $grey-color;
     }
     a {
+      padding: 0.3em 1em;
+      border-radius: 6px;
+      background-color: $main-color;
+      border: 1px solid $main-color;
       font-size: 0.8em;
-      color: $quaternary-color;
+      color: white;
       margin-right: 0.5em;
       font-family: $font;
+      transition: 0.2s;
       &:hover {
-        color: $main-color;
+        color: $quaternary-color;
+        border: 1px solid $quaternary-color;
+        background-color: #FFFFFF;
       }
     }
   }
@@ -100,4 +105,3 @@
     }
   }
 }
-
