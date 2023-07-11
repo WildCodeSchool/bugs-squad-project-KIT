@@ -6,6 +6,7 @@ import { faPencil, faLink } from '@fortawesome/free-solid-svg-icons';
 import { CollectionsService } from '../../services/collections.service';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { LinksService } from '../../services/links.service';
 
 @Component({
   selector: 'app-collections',
@@ -25,6 +26,13 @@ export class CollectionsComponent implements OnInit {
     this.collectionsService.getCollections().subscribe((data) => {
       this.collections = data;
     });
+
+    this.collectionsService.currentCollectionData.subscribe((collection) => {
+      if (collection) {
+        this.collection = collection;
+        this.addToCollections();
+      }
+    });
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -33,6 +41,10 @@ export class CollectionsComponent implements OnInit {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+  }
+
+  addToCollections() {
+    this.collections.push(this.collection);
   }
 }
 
@@ -46,45 +58,46 @@ export class CollectionsComponent implements OnInit {
 export class CollectionsFormComponent {
   constructor(
     public dialogRef: MatDialogRef<CollectionsFormComponent>,
-    private collectionsService: CollectionsService
+    private collectionsService: CollectionsService,
+    private linkService: LinksService
   ) {}
 
   collections: Collection[] = [];
   collection!: Collection;
+  newLink!: Link;
+  id = new FormControl();
   title = new FormControl('');
   description = new FormControl('');
-  link = new FormControl('');
+  link = new FormControl([]);
   comment = new FormControl('');
   collectionColor = new FormControl('#FFFFFF');
 
-  addToCollections() {
-    this.collections.push(this.collection);
-  }
-
   createCollection() {
+    const id = this.id.value;
     const title = this.title.value;
     const description = this.description.value;
-    const link = this.link.value;
-    const comment = this.comment.value;
     const collectionColor = this.collectionColor.value;
 
     const body = {
+      id: id,
       title: title,
       description: description,
-      link: [link],
-      comment: comment,
       color: collectionColor,
     };
 
     this.collectionsService.createCollection(body).subscribe((data) => {
       this.collection = data;
-    });
+      console.log(this.collection);
 
-    this.collection = new Collection(
-      this.title.value as string,
-      [new Link(this.link.value as string, this.comment.value as string)],
-      this.description.value as string
-    );
-    this.addToCollections();
+      this.collection = new Collection(
+        this.collection.id,
+        this.title.value as string,
+        null,
+        this.collectionColor.value as string,
+        this.description.value as string
+      );
+      this.collectionsService.updateCollectionData(this.collection);
+      this.dialogRef.close();
+    });
   }
 }

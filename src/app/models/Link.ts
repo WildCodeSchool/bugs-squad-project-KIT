@@ -1,3 +1,3 @@
 export class Link {
-  constructor(public url: string, public comment?: string) {}
+  constructor(public id: number, public url: string, public comment: string | null, public collectionId: number) {}
 }
