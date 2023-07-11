@@ -12,9 +12,9 @@ import { APP_ROUTES_API } from '../../../data/apiRoutes';
 export class RssFeedService {
   private rssFeedsUpdatedSubject: Subject<void> = new Subject<void>();
   constructor(private http: HttpClient) {}
-  addRssLink(url: string): Observable<any> {
+  addRssLink(url: string): Observable<RssFeed> {
     const rssFeedData: { url: string } = { url: url };
-    return this.http.post(APP_ROUTES_API.RSS, rssFeedData).pipe(
+    return this.http.post<RssFeed>(APP_ROUTES_API.RSS, rssFeedData).pipe(
       catchError((error: any) => {
         console.error("Une erreur s'est produite lors de la requête POST", error);
         throw error;

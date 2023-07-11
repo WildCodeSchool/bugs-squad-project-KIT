@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RssFeedService } from '../../../services/RssFeedService/rss.service';
+import {RssFeed} from "../../../models/RssFeed";
 
 @Component({
   selector: 'app-rss-feed-all',
@@ -19,8 +20,8 @@ export class RssFeedAllComponent implements OnInit {
 
   getRssData(): void {
     this.rssFeedService.getAllRssFeeds().subscribe({
-      next: (response: any[]): void => {
-        this.rssLink = response.map((rssFeed: any) => rssFeed.url);
+      next: (response: RssFeed[]): void => {
+        this.rssLink = response.map((rssFeed: RssFeed) => rssFeed.url);
         this.fetchRssData();
       },
       error: (error: any): void => {
