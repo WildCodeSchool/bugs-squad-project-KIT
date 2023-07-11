@@ -2,9 +2,9 @@
 
 .rss__myFlux {
   display: flex;
-  width: 90%;
+  width: 100%;
   gap: 0.5em;
-  margin: 1em 4em;
+  justify-content: space-between;
   .rss__myFlux-header {
     display: flex;
     width: 100%;
@@ -32,11 +32,12 @@
 }
 .rss_myFlux-content{
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0.5rem;
+  margin: 1em 1.5em 0 1.5em;
 }
 
 @media screen and (max-width: 800px) {

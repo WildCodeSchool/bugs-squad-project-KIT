@@ -1,6 +1,6 @@
 <div class="sidebar-feedGlobal" [ngClass]="{ open: isOpen }">
   <div class="sidebar-feedGlobal__toggle">
-    <h2 *ngIf="!isOpen">Flux RSS</h2>
+    <h2 *ngIf="!isOpen">MES FLUX RSS</h2>
     <i
       id="toggleButton"
       class="fas"
@@ -10,13 +10,23 @@
   </div>
   <div class="rssFeed-global">
     <div *ngFor="let feed of rssData">
-      <div class="link-icons">
-        <i class="fa-solid fa-pencil" title="Modifier"></i>
-        <i class="fa-solid fa-trash" title="Supprimer"></i>
+      <div class="rssFeed-global__header">
+        <div class="rssFeed-global__header-title">
+          <ng-container *ngIf="feed.image; else noImage">
+            <img [src]="feed.image" alt="rss feed image" />
+          </ng-container>
+          <ng-template #noImage>
+            <div>
+              <i class="fa-sharp fa-solid fa-rss"></i>
+            </div>
+          </ng-template>
+          <h3>{{ feed.title }}</h3>
+        </div>
+        <div class="link-icons">
+          <i class="fa-solid fa-pencil" title="Modifier"></i>
+          <i class="fa-solid fa-trash" title="Supprimer"></i>
+        </div>
       </div>
-      <div class=""></div>
-      <img *ngIf="feed.image" [src]="feed.image" alt="rss feed image" />
-      <h3>{{ feed.title }}</h3>
       <p>{{ feed.description }}</p>
       <a href="{{ feed.link }}" target="_blank">Consulter le site→</a>
       <p></p>
