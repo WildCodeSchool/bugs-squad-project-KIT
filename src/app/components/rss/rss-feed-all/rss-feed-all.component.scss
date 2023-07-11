@@ -35,7 +35,7 @@
       width: 100%;
       color: $quaternary-color;
       font-size: 1em;
-      margin: 0.5em 0;
+      margin: 0.5em 0 0 0;
     }
     p {
       color : $grey-color;
@@ -47,6 +47,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       font-family: $font;
+      margin-bottom: 0.2em;
     }
   }
   .rss-item__footer {

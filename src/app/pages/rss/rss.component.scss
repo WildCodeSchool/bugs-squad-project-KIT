@@ -1,10 +1,10 @@
 @use "src/_imports.scss" as *;
 
 .rss__myFlux {
-  flex-direction: column;
+  display: flex;
+  width: 90%;
+  gap: 0.5em;
   margin: 1em 4em;
-  padding: 2em;
-  overflow: auto;
   .rss__myFlux-header {
     display: flex;
     width: 100%;

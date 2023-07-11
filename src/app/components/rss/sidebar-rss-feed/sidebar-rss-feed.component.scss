@@ -1,13 +1,42 @@
-.sidebar {
-  width: 200px;
+@use '/src/imports' as *;
+
+.sidebar-feedGlobal {
+  width: 300px;
   height: 100%;
-  position: fixed;
-  top: 0;
-  left: -200px;
   background-color: #f0f0f0;
-  transition: left 0.3s ease;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5em;
+  .sidebar-feedGlobal__toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &.open {
+      justify-content: flex-end;
+    }
+    h2 {
+      margin: 0.5em;
+      padding: 0;
+      font-weight: $font-weight-medium;
+      color: $main-color;
+    }
+    i {
+      margin: 0.5em;
+      color: $main-color;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+  }
 }
 
-.sidebar.open {
-  left: 0;
+.sidebar-feedGlobal.open {
+  width: 100px;
+  transition: 0.5s;
+  .sidebar-feedGlobal__toggle {
+    justify-content: center;
+  }
 }
