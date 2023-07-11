@@ -7,6 +7,7 @@
   overflow: auto;
   .rss__myFlux-header {
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1em;
@@ -25,6 +26,7 @@
       font-weight: $font-weight-medium;
       margin-bottom: 0;
       margin-left: 1em;
+      text-align: center;
     }
   }
 }
@@ -50,10 +52,28 @@
     }
     h2 {
       font-size: 1.1em;
+      margin-left: 0 !important;
     }
   }
   .rss_myFlux-content{
     margin: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .rss__myFlux-header {
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 0.5em;
+    button {
+      width: 100%;
+      padding: 0.25em;
+      font-size: 0.9em;
+      margin-left: 1em !important;
+    }
+    h2 {
+      font-size: 1.1em;
+      margin-left: 0 !important;
+    }
   }
 }
 

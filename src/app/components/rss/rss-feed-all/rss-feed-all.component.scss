@@ -85,6 +85,14 @@
 @media screen and (max-width: 800px) {
   .rss-item {
     flex-direction: column;
+    .rss-item__flux-title {
+      margin-top: 0.5em;
+      width: 100%;
+      img {
+        max-width: 50%;
+        max-height: 50%;
+      }
+    }
     .rss-item__description {
       h3 {
         font-size: 0.9em;
@@ -102,6 +110,22 @@
     align-items: flex-start !important;
     span {
     font-size: 0.6em !important;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .rss-item__description {
+    width: 100% !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 !important;
+  }
+  .rss-item__footer {
+    a {
+      width: 100%;
+      text-align: center;
+
     }
   }
 }
