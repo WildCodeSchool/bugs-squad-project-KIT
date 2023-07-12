@@ -4,7 +4,7 @@
   <div class="collection-infos">
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier"></i>
-      <i class="fa-solid fa-trash" title="Supprimer"></i>
+      <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteCollection()"></i>
       <i class="fa-regular fa-star" title="Ajouter aux favoris"></i>
     </div>
     <div class="meta">
@@ -14,7 +14,7 @@
     <div class="links-section">
       <ul>
         <li>
-          <i class="fa-sharp fa-solid fa-circle-plus"></i>
+          <i class="fa-sharp fa-solid fa-circle-plus" (click)="addLink()"></i>
           Ajouter un lien
         </li>
         <li *ngFor="let link of collection.links">
@@ -23,7 +23,7 @@
               <a [href]="[link.url]" target="_blank">{{ getLinkComment(link) }}</a>
             </div>
             <div class="link-icons">
-              <i class="fa-solid fa-pencil" title="Modifier"></i>
+              <i class="fa-solid fa-pencil" title="Modifier" (click)="updateLink()"></i>
               <i class="fa-solid fa-trash" title="Supprimer"></i>
             </div>
           </div>

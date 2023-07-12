@@ -23,15 +23,15 @@ export class CollectionsComponent implements OnInit {
   faLink = faLink;
 
   ngOnInit() {
+    this.getAllCollections();
+    this.collectionsService.currentCollectionData.subscribe((collection) => {
+      this.getAllCollections();
+    });
+  }
+
+  getAllCollections() {
     this.collectionsService.getCollections().subscribe((data) => {
       this.collections = data;
-    });
-
-    this.collectionsService.currentCollectionData.subscribe((collection) => {
-      if (collection) {
-        this.collection = collection;
-        this.addToCollections();
-      }
     });
   }
 
@@ -87,7 +87,6 @@ export class CollectionsFormComponent {
 
     this.collectionsService.createCollection(body).subscribe((data) => {
       this.collection = data;
-      console.log(this.collection);
 
       this.collection = new Collection(
         this.collection.id,

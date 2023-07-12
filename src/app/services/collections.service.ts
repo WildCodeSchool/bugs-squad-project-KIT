@@ -25,4 +25,8 @@ export class CollectionsService {
   updateCollectionData(collection: Collection) {
     this.collectionData.next(collection);
   }
+
+  deleteCollection(id: number) {
+    return this.http.delete(`${this.dataSource}/${id}`);
+  }
 }

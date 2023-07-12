@@ -4,6 +4,7 @@ import { Link } from 'src/app/models/Link';
 import { faPencil, faLink } from '@fortawesome/free-solid-svg-icons';
 import { LinksService } from '../../services/links.service';
 import { FormControl } from '@angular/forms';
+import { CollectionsService } from '../../services/collections.service';
 
 @Component({
   selector: 'app-collection',
@@ -15,10 +16,11 @@ export class CollectionComponent {
   faLink = faLink;
   public color = '#FFFFFF';
 
-  constructor(private linksService: LinksService) {}
+  constructor(private linksService: LinksService, private collectionService: CollectionsService) {}
 
   links: Link[] = [];
   link!: Link;
+  private i = 9999;
   id = new FormControl();
   url = new FormControl('');
   comment = new FormControl('');
@@ -32,7 +34,7 @@ export class CollectionComponent {
     return link.comment ? link.comment : link.url;
   }
 
-  createLink() {
+  updateLink() {
     const id = this.id.value;
     const url: string = this.url.value as string;
     const comment = this.comment.value;
@@ -48,13 +50,13 @@ export class CollectionComponent {
     this.linksService.createLink(body).subscribe((data) => {
       this.link = data;
 
-      this.link = new Link(
-        this.link.id,
-        this.url.value as string,
-        this.comment.value as string,
-        this.collectionId.value as number
-      );
       this.linksService.updateLinkData(this.link);
+    });
+  }
+
+  deleteCollection() {
+    this.collectionService.deleteCollection(this.collection.id).subscribe((data) => {
+      return this.collectionService.updateCollectionData(this.collection);
     });
   }
 }
