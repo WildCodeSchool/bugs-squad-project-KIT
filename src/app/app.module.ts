@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
 import { CollectionComponent } from './components/collection/collection.component';
 import { CollectionsComponent } from './pages/collections/collections.component';
 import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
@@ -92,6 +92,19 @@ import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sideb
     MatCheckboxModule,
     MatMenuModule,
     ToastrModule.forRoot(),
+    AuthModule.forRoot({
+      config: {
+        authority: 'https://accounts.google.com',
+        redirectUrl: window.location.origin + '/dashboard',
+        postLogoutRedirectUri: window.location.origin + '/home',
+        clientId: '734363817336-u22h0urol9chonde49e1lq3o3f3i12sf.apps.googleusercontent.com',
+        scope: 'openid profile email',
+        responseType: 'code',
+        silentRenew: true,
+        useRefreshToken: true,
+        logLevel: LogLevel.Debug,
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

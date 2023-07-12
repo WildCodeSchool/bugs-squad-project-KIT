@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-homeform',
@@ -19,6 +22,13 @@ export class HomeformComponent {
     password: new FormControl('', [Validators.required, this.passwordStrengthValidator()]),
   });
 
+  constructor(
+    public oidcSecurityService: OidcSecurityService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
+
+
   passwordStrengthValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const password = control.value;
@@ -32,13 +42,16 @@ export class HomeformComponent {
   }
 
   login() {
-    // CALL API with username and password
     if (this.loginForm.invalid) return;
-    alert('Calling backend to login');
+    this.toastr.error('Erreur : Une erreur est survenue !');
   }
 
   register() {
     if (this.registerForm.invalid) return;
-    alert('Calling backend to register');
+    this.toastr.error('Erreur : Une erreur est survenue !');
+  }
+
+  loginWithGoogle() {
+    this.oidcSecurityService.authorize();
   }
 }

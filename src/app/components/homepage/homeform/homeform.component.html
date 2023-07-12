@@ -39,8 +39,12 @@
                                     </div>
                                 </div>
                             </form>
+                          <div class="google-login">
+                            <button class="btn btn-google" (click)="loginWithGoogle()">Connexion avec Google</button>
+                          </div>
 
-                            // card register
+
+                          // card register
 
                             <form [formGroup]="registerForm" (submit)="register()" autocomplete="off" class="card-back">
                                 <div class="center-wrap">
