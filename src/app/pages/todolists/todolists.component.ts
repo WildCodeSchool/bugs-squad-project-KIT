@@ -73,7 +73,6 @@ export class NewListFormComponent {
       this.todolist = data;
       this.todolist = new ToDoList(this.todolist.id, title as string, [], description as string, false);
       this.todolists.push(this.todolist);
-      console.log(this.todolist);
     });
   }
 }
