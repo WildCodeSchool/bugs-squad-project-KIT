@@ -29,4 +29,12 @@ export class CollectionsService {
   deleteCollection(id: number) {
     return this.http.delete(`${this.dataSource}/${id}`);
   }
+
+  updateCollection(id: number, body: { color: string; description: string | undefined; title: string }) {
+    return this.http.put(`${this.dataSource}/${id}`, body);
+  }
+
+  patchFavorite(id: number, favorite: boolean) {
+    return this.http.patch(`${this.dataSource}/${id}`, favorite);
+  }
 }

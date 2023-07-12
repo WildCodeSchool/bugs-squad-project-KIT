@@ -5,7 +5,18 @@
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier"></i>
       <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteCollection()"></i>
-      <i class="fa-regular fa-star" title="Ajouter aux favoris"></i>
+      <i
+        *ngIf="!collection.favorite"
+        class="fa-regular fa-star"
+        title="Ajouter aux favoris"
+        (click)="patchFavorite()"
+      ></i>
+      <i
+        *ngIf="collection.favorite"
+        class="fa-solid fa-star"
+        title="Ajouter aux favoris"
+        (click)="patchFavorite()"
+      ></i>
     </div>
     <div class="meta">
       <h3 class="title">{{ collection.title }}</h3>

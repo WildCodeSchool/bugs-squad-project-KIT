@@ -64,7 +64,6 @@ export class CollectionsFormComponent {
 
   collections: Collection[] = [];
   collection!: Collection;
-  newLink!: Link;
   id = new FormControl();
   title = new FormControl('');
   description = new FormControl('');
@@ -93,6 +92,7 @@ export class CollectionsFormComponent {
         this.title.value as string,
         null,
         this.collectionColor.value as string,
+        false,
         this.description.value as string
       );
       this.collectionsService.updateCollectionData(this.collection);
