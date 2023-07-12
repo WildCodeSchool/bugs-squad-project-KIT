@@ -1,33 +1,28 @@
-<div class="sidebar-feedGlobal" [ngClass]="{ open: isOpen }">
-  <div class="sidebar-feedGlobal__toggle">
-    <div *ngIf="!isOpen" class="sidebar-feedGlobal__toggle-title">
+<div class="sidebar-feedGlobal">
+  <div class="sidebar-feedGlobal__content">
+    <div class="sidebar-feedGlobal__toggle-title">
       <i class="fa-sharp fa-solid fa-rss"></i>
       <h2>MES FLUX RSS</h2>
     </div>
-    <i
-      id="toggleButton"
-      class="fas"
-      [ngClass]="{ 'fa-bars': isOpen, 'fa-xmark': !isOpen }"
-      (click)="toggleSidebar()"
-    ></i>
-  </div>
-  <div class="rssFeed-global">
-    <div *ngFor="let feed of rssData">
-      <div class="rssFeed-global__header">
-        <div class="rssFeed-global__header-title">
-          <ng-container *ngIf="feed.image; else noImage">
-            <img *ngIf="!isOpen" [src]="feed.image" alt="rss feed image" />
-          </ng-container>
-          <ng-template #noImage>
-            <div>
-              <i *ngIf="!isOpen" class="fa-sharp fa-solid fa-rss"></i>
-            </div>
-          </ng-template>
-          <h3>{{ feed.title }}</h3>
-        </div>
-        <div *ngIf="!isOpen" class="rssFeed-global__header-icon">
-          <i class="fa-solid fa-pencil" title="Modifier"></i>
-          <i class="fa-solid fa-trash" title="Supprimer"></i>
+    <div class="rssFeed-global">
+      <div *ngFor="let feed of rssData">
+        <div class="rssFeed-global__header">
+          <div class="rssFeed-global__header-title">
+            <ng-container *ngIf="feed.image; else noImage">
+              <img [src]="feed.image" alt="rss feed image" />
+            </ng-container>
+            <ng-template #noImage>
+              <div>
+                <i class="fa-sharp fa-solid fa-rss"></i>
+              </div>
+            </ng-template>
+            <h3>{{ feed.title }}</h3>
+          </div>
+          <div class="rssFeed-global__header-icon">
+            <i class="fa-solid fa-heart" title="Favori"></i>
+            <i class="fa-solid fa-pencil" title="Modifier"></i>
+            <i class="fa-solid fa-trash" title="Supprimer"></i>
+          </div>
         </div>
       </div>
     </div>

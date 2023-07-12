@@ -1,11 +1,10 @@
 @use '/src/imports' as *;
 
 .sidebar-feedGlobal {
-  height: 100%;
-  background: rgb(53,92,125);
-  background: linear-gradient(286deg, rgba(53,92,125,1) 15%, rgba(120,170,212,1) 100%, rgba(53,92,125,1) 100%);
-  transition: 0.5s;
   display: flex;
+  background: $quaternary-color;
+  height: 100%;
+  transition: 0.5s;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -13,45 +12,38 @@
   margin-top: 1em;
   padding-left: 1em;
   border-top-right-radius: 30px;
-
-  .sidebar-feedGlobal__toggle {
+  .sidebar-feedGlobal__toggle-title {
     margin-top: 0.5em;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     margin-bottom: 0.5em;
-    .sidebar-feedGlobal__toggle-title {
-      display: flex;
-      align-items: center;
-      i:hover {
-        color: white;
-        cursor: auto;
-      }
-    }
-    h2 {
-      padding: 0;
-      font-weight: $font-weight-medium;
+    i:hover {
       color: white;
-      margin-bottom: 0;
-    }
-    i {
-      margin: 0.5em;
-      color: white;
-      font-size: 1.5em;
-      cursor: pointer;
-      &:hover {
-        color: $main-color;
-      }
+      cursor: auto;
     }
   }
-
+  h2 {
+    padding: 0;
+    font-weight: $font-weight-medium;
+    color: white;
+    margin-bottom: 0;
+  }
+  i {
+    margin: 0.5em;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    &:hover {
+      color: $main-color;
+    }
+  }
   .rssFeed-global__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1em;
-
     .rssFeed-global__header-title {
       display: flex;
       align-items: center;
@@ -78,7 +70,6 @@
     .rssFeed-global__header-icon {
       display: flex;
       justify-content: flex-end;
-      gap: 0.8em;
       margin-right: 1em;
 
       i {
@@ -92,12 +83,5 @@
         }
       }
     }
-  }
-}
-.sidebar-feedGlobal.open {
-  transition: 0.5s;
-
-  .sidebar-feedGlobal__toggle {
-    justify-content: space-evenly;
   }
 }

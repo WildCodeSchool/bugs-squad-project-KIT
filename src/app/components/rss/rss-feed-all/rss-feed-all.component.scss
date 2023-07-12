@@ -2,6 +2,7 @@
 
 .rss-item {
   display: flex;
+  max-height: 100vh;
   border: 1px solid $quaternary-color;
   border-radius: 6px;
   margin: 0.5em;
