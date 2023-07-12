@@ -4,7 +4,6 @@ import { ToDoList } from 'src/app/models/ToDoList';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { Task } from 'src/app/models/Task';
 @Component({
   selector: 'app-todolists',
   templateUrl: './todolists.component.html',
