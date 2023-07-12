@@ -14,7 +14,7 @@ export class TaskService {
     return this.http.delete(dataSource) as Observable<Task>;
   }
 
-  updateTask(task: Task) {
+  updateTask(body: { description: string }, task: Task) {
     const dataSource = `http://localhost:8080/api/todo-lists/tasks/${task.id}`;
     return this.http.put(dataSource, task) as Observable<Task>;
   }

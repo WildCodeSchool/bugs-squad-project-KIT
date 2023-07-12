@@ -4,9 +4,9 @@ import { TodoService } from 'src/app/services/todolists-services/todo.service';
 import { Task } from '../../models/Task';
 import { TaskService } from 'src/app/services/todolists-services/task.service';
 import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { UpdateTaskComponent } from './modals/update-task.component';
+import { UpdateTodoComponent } from './modals/update-todo.component';
+import { AddNewTaskComponent } from './modals/new-task.component';
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
@@ -37,7 +37,8 @@ export class TodolistComponent {
       }
     });
   }
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+
+  openDialogAdd(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(AddNewTaskComponent, {
       width: '300px',
       height: '300px',
@@ -48,38 +49,32 @@ export class TodolistComponent {
       },
     });
   }
-}
-@Component({
-  selector: 'app-new-list-form',
-  templateUrl: './new-task-form.component.html',
-  styleUrls: ['./todolist.component.scss'],
-  standalone: true,
-  imports: [MatButtonModule, ReactiveFormsModule, MatDialogModule],
-})
-export class AddNewTaskComponent {
-  constructor(
-    public dialogRef: MatDialogRef<AddNewTaskComponent>,
-    private taskService: TaskService,
-    @Inject(MAT_DIALOG_DATA) public data: { todolist: ToDoList }
-  ) {}
-  todolist!: ToDoList;
-  task!: Task;
-  description = new FormControl('');
-  id = new FormControl();
 
-  addTask(): void {
-    const description = this.description.value as string;
-    const todolist = this.data.todolist;
+  openUpdateTask(task: Task): void {
+    this.openDialogUpdateTask('100ms', '100ms', task);
+  }
 
-    const body = {
-      todolist_id: todolist.id,
-      description: description,
-    };
+  openDialogUpdateTask(enterAnimationDuration: string, exitAnimationDuration: string, task: Task): void {
+    this.dialog.open(UpdateTaskComponent, {
+      width: '300px',
+      height: '300px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        task: task,
+      },
+    });
+  }
 
-    this.taskService.createTask(body, todolist.id).subscribe((data) => {
-      this.task = data;
-      this.task = new Task(todolist.id, description as string, false);
-      todolist.tasks.push(this.task);
+  openDialogUpdateTodo(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(UpdateTodoComponent, {
+      width: '300px',
+      height: '300px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        todolist: this.todolist,
+      },
     });
   }
 }
