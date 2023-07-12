@@ -19,8 +19,10 @@
     <h2 class="title">{{ todolist.title }}</h2>
     <p class="description">{{ todolist.description }}</p>
     <div class="new-task">
-      <i class="fa-sharp fa-solid fa-circle-plus"></i>
-      Nouvelle tâche
+      <button mat-raised-button (click)="openDialog('0ms', '0ms')" class="new-task">
+        <i class="fa-sharp fa-solid fa-circle-plus"></i>
+        Nouvelle tâche
+      </button>
     </div>
   </div>
   <div class="tasks">
