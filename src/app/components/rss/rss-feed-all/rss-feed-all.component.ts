@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RssFeedService } from '../../../services/rssFeedService/rss.service';
-import { RssFeed } from '../../../models/RssFeed';
+import {RssFeed} from "../../../models/RssFeed";
 
 @Component({
   selector: 'app-rss-feed-all',
