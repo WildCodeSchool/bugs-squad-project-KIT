@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RssModalComponent } from '../../components/modals/rss-modal/rss-modal.component';
-import { RssFeedService } from '../../services/RssFeedService/rss.service';
+import { RssFeedService } from '../../services/rssFeedService/rss.service';
 import { ToastrService } from 'ngx-toastr';
 import { RssResponse } from '../../interface/RssResponse';
 

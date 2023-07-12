@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment.development';
 import { RssFeed } from '../../models/RssFeed';
 import { catchError } from 'rxjs/operators';
 import { APP_ROUTES_API } from '../../../data/apiRoutes';
+import { Task } from '../../models/Task';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,9 @@ export class RssFeedService {
   getAllRssFeeds(): Observable<RssFeed[]> {
     return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS);
   }
-
+  deleteRssFeed(id: number | undefined) {
+    return this.http.delete(APP_ROUTES_API.RSS + `/${id}`) as Observable<RssFeed>;
+  }
   getRssData(url: string, count?: number, orderBy?: string): Observable<any> {
     let rssApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${url}&api_key=${environment.keyApi}`;
     if (count) {
