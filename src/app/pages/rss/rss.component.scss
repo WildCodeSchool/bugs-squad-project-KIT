@@ -47,11 +47,10 @@
     display: none;
   }
 }
-
 @media screen and (max-width: 800px) {
   .rss__myFlux {
-    margin: 0.5em;
-    padding: 0.5em;
+    margin: 0.5em 0.5em 0.5em 0;
+    padding: 0.5em 0.5em 0.5em 0;
   }
   .rss__myFlux-header {
     margin-bottom: 0.5em;
@@ -69,6 +68,9 @@
   }
 }
 @media screen and (max-width: 600px) {
+  .rss__myFlux{
+    flex-direction: column;
+  }
   .rss__myFlux-header {
     flex-direction: column;
     gap: 1em;

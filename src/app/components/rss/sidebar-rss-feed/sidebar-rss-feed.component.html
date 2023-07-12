@@ -1,3 +1,23 @@
+<div class="sidebar-feedGlobal__mobile">
+  <div class="sidebar-feedGlobal__mobile-title">
+    <h2>MES FLUX RSS</h2>
+    <i class="fa-sharp fa-solid" [class.fa-bars]="!isOpen" [class.fa-xmark]="isOpen" (click)="toggleSidebar()"></i>
+  </div>
+  <div *ngIf="isOpen" class="sidebar-feedGlobal__mobile-content">
+    <div *ngFor="let feed of rssData">
+      <div class="sidebar-feedGlobal__mobile-content-title">
+        <div class="sidebar-feedGlobal__mobile-content-nameRss">
+          <i class="fa-sharp fa-solid fa-rss"></i>
+          <h3>{{ feed.title }}</h3>
+        </div>
+        <div class="sidebar-feedGlobal__mobile-ellipsis">
+          <i class="fa-solid fa-ellipsis" title="Ellipsis"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="sidebar-feedGlobal">
   <div class="sidebar-feedGlobal__content">
     <div class="sidebar-feedGlobal__toggle-title">
@@ -12,6 +32,9 @@
               <i class="fa-sharp fa-solid fa-rss"></i>
             </div>
             <h3>{{ feed.title }}</h3>
+          </div>
+          <div class="rssFeed-global__header-icon__point">
+            <i class="fa-solid fa-ellipsis-vertical" title="Ellipsis"></i>
           </div>
           <div class="rssFeed-global__header-icon">
             <i class="fa-solid fa-heart" title="Favori"></i>
