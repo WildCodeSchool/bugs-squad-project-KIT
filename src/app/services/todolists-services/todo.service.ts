@@ -11,7 +11,7 @@ export class TodoService {
   constructor(private http: HttpClient) {}
   private dataSource = 'http://localhost:8080/api/todo-lists';
 
-  createList(body: { title: string; description: string | null; favorite: boolean }) {
+  createList(body: { title: string; description: string | null }) {
     const dataSource = `http://localhost:8080/api/todo-lists`;
     return this.http.post(dataSource, body) as Observable<ToDoList>;
   }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TodoService } from 'src/app/services/todolists-services/todo.service';
 import { ToDoList } from 'src/app/models/ToDoList';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { Task } from 'src/app/models/Task';
 @Component({
@@ -24,7 +24,8 @@ export class TodolistsComponent {
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(NewListFormComponent, {
-      width: '250px',
+      width: '300px',
+      height: '400px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
@@ -49,7 +50,7 @@ export class TodolistsComponent {
   templateUrl: './new-list-form.component.html',
   styleUrls: ['./new-list-form.component.scss'],
   standalone: true,
-  imports: [MatButtonModule, ReactiveFormsModule],
+  imports: [MatButtonModule, ReactiveFormsModule, MatDialogModule],
 })
 export class NewListFormComponent {
   constructor(public dialogRef: MatDialogRef<NewListFormComponent>, private todoService: TodoService) {}
@@ -59,26 +60,18 @@ export class NewListFormComponent {
   description = new FormControl('');
   tasks = new FormControl('');
 
-  close(): void {
-    this.dialogRef.close();
-  }
-
   createTodolist(): void {
     const title = this.title.value as string;
     const description = this.description.value as string;
-    const favorite = this.todolist.favorite;
 
     const body = {
       title: title,
       description: description,
-      favorite: favorite,
     };
 
     this.todoService.createList(body).subscribe((data) => {
       this.todolist = data;
-
       this.todolist = new ToDoList(this.todolist.id, title as string, [], description as string, false);
-
       this.todolists.push(this.todolist);
     });
   }
