@@ -1,21 +1,21 @@
 @use '/src/imports' as *;
 .todolist {
-  border: 2px solid $quaternary-color;
+  border: 3px solid $quaternary-color;
   width: 280px;
   margin: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 8px;
-  padding: 0.5rem;
   height: 360px;
-  overflow-y: auto;
+
 
   .icons {
     display: flex;
     justify-content: flex-end;
     width: 100%;
     margin-bottom: 1rem;
+    padding-top: 0.5rem;
     .fa-solid, .fa-regular {
       cursor: pointer;
       color: $secondary-color;
@@ -26,6 +26,10 @@
 
   .meta {
     text-align: center;
+    width: 100%;
+    margin: 0.5rem 0;
+
+
     .title {
       font-size: 1.5rem;
       font-weight: 500;
@@ -37,11 +41,33 @@
       font-style: italic;
       margin-top: 0;
     }
+    .newtask {
+      display: flex;
+      justify-content: center;
+
+    }
+    .fa-sharp {
+      text-align: center;
+      color: $secondary-color;
+      margin: 0 1rem;
+      cursor: pointer;
+    }
     }
 
 
-  ul {
+  .tasks {
     width: 100%;
+    padding: 0;
+    overflow: auto;
+
+    .button {
+      position: sticky;
+      right: 0;
+    }
+    .checkbox {
+      position: sticky;
+      left: 0;
+    }
 
     .done {
       text-decoration: line-through;
@@ -51,8 +77,14 @@
     li {
       display: flex;
       align-items: center;
-      p {
+      width: 100%;
+      margin: 0 0 0.5rem 0;
+
+      .task {
         margin: 0;
+        width: 70%;
+        overflow-wrap: break-word;
+        overflow: hidden;
       }
 
       .mat-mdc-icon-button {
@@ -61,8 +93,9 @@
     }
     }
 
+
 }
 
-.todolist::-webkit-scrollbar{
+.tasks::-webkit-scrollbar{
   display: none;
 }
