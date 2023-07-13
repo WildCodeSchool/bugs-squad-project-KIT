@@ -83,8 +83,8 @@ export class TodolistComponent {
 
   updateIsDone(task: Task): void {
     this.taskService.updateisDone(task, !task.isDone).subscribe(() => {
-      console.log(task);
       task.isDone = !task.isDone;
+      console.log(task);
     });
   }
 }
