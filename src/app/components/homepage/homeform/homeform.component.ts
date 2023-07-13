@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { GoogleApiService } from '../../../services/google-api.service';
 
 @Component({
   selector: 'app-homeform',
@@ -31,6 +32,10 @@ export class HomeformComponent {
     };
   }
 
+  constructor(private readonly googleApiService: GoogleApiService) {
+    this.googleApiService = googleApiService;
+  }
+
   login() {
     // CALL API with username and password
     if (this.loginForm.invalid) return;
@@ -40,5 +45,9 @@ export class HomeformComponent {
   register() {
     if (this.registerForm.invalid) return;
     alert('Calling backend to register');
+  }
+
+  loginWithGoogle() {
+    this.googleApiService.connectWithGoogle();
   }
 }

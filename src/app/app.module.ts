@@ -42,6 +42,8 @@ import { TodolistComponent } from './components/todolist/todolist.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
 import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
+
 
 @NgModule({
   declarations: [
@@ -92,6 +94,7 @@ import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sideb
     MatCheckboxModule,
     MatMenuModule,
     ToastrModule.forRoot(),
+    OAuthModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
