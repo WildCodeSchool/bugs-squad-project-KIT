@@ -1,9 +1,12 @@
 <div class="rss__myFlux">
-  <div class="rss__myFlux-header">
-    <h2>MES FLUX</h2>
-    <button (click)="openModal()">+ Ajouter un flux RSS</button>
+  <div>
+    <app-sidebar-rss-feed></app-sidebar-rss-feed>
   </div>
   <div class="rss_myFlux-content">
-    <app-rss-feed-all [rssLink]="rssFeedService"></app-rss-feed-all>
+    <div class="rss__myFlux-header">
+      <h2>ARTICLES DES FLUX</h2>
+      <button (click)="openModal()">+ Ajouter un flux RSS</button>
+    </div>
+    <app-rss-feed-all></app-rss-feed-all>
   </div>
 </div>

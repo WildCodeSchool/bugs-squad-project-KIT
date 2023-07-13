@@ -1,25 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
+import { RssFeed } from '../../models/RssFeed';
+import { catchError } from 'rxjs/operators';
+import { APP_ROUTES_API } from '../../../data/apiRoutes';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RssFeedService {
-  rssLinks: string[] = [
-    'https://sharadcodes.github.io/feed.xml',
-    'https://openai.com/blog/rss.xml',
-    'https://css-tricks.com/feed/',
-    'https://www.webdesignernews.com/feed',
-  ];
+  private rssFeedsUpdatedSubject: Subject<void> = new Subject<void>();
   constructor(private http: HttpClient) {}
-  addRssLink(link: string): void {
-    this.rssLinks.push(link);
+  addRssLink(url: string): Observable<RssFeed> {
+    const rssFeedData: { url: string } = { url: url };
+    return this.http.post<RssFeed>(APP_ROUTES_API.RSS, rssFeedData).pipe(
+      catchError((error: any) => {
+        console.error("Une erreur s'est produite lors de la requête POST", error);
+        throw error;
+      })
+    );
   }
-  getRssLinks(): string[] {
-    return this.rssLinks;
+  getAllRssFeeds(): Observable<RssFeed[]> {
+    return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS);
   }
+
   getRssData(url: string, count?: number, orderBy?: string): Observable<any> {
     let rssApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${url}&api_key=${environment.keyApi}`;
     if (count) {
@@ -31,11 +36,13 @@ export class RssFeedService {
     return this.http.get(rssApiUrl);
   }
 
-  addFeedTitleToItems(rssData: any): void {
+  addFeedTitleFaviconToItems(rssData: any): void {
     if (Array.isArray(rssData?.items)) {
       const feedTitle = rssData.feed.title;
+      const feedFavicon = rssData.feed.image;
       rssData.items.forEach((item: any): void => {
         item.feedTitle = feedTitle;
+        item.feedFavicon = feedFavicon;
       });
     }
   }
@@ -59,5 +66,13 @@ export class RssFeedService {
       month: 'long',
       day: 'numeric',
     });
+  }
+
+  rssFeedsUpdated(): void {
+    this.rssFeedsUpdatedSubject.next();
+  }
+
+  onRssFeedsUpdated(): Observable<void> {
+    return this.rssFeedsUpdatedSubject.asObservable();
   }
 }

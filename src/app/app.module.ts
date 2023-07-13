@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ToastrModule } from 'ngx-toastr';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +41,7 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
 import { TodolistComponent } from './components/todolist/todolist.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
+import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { TodolistsComponent } from './pages/todolists/todolists.component';
     TodolistComponent,
     TodolistsFavComponent,
     TodolistsComponent,
+    SidebarRssFeedComponent,
   ],
 
   imports: [
@@ -88,6 +91,7 @@ import { TodolistsComponent } from './pages/todolists/todolists.component';
     MatMenuModule,
     MatCheckboxModule,
     MatMenuModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
