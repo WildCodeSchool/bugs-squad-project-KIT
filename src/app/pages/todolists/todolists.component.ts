@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/services/todolists-services/todo.service';
 import { ToDoList } from 'src/app/models/ToDoList';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './todolists.component.html',
   styleUrls: ['./todolists.component.scss'],
 })
-export class TodolistsComponent {
+export class TodolistsComponent implements OnInit {
   todolists: ToDoList[] = [];
   todolist!: ToDoList;
 
@@ -18,6 +18,7 @@ export class TodolistsComponent {
   ngOnInit() {
     this.todoService.getLists().subscribe((data) => {
       this.todolists = data;
+      console.log(this.todolists);
     });
   }
 

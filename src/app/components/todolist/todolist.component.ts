@@ -4,6 +4,9 @@ import { TodoService } from 'src/app/services/todolists-services/todo.service';
 import { Task } from '../../models/Task';
 import { TaskService } from 'src/app/services/todolists-services/task.service';
 import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatButton } from '@angular/material/button';
+import { MatMenu } from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UpdateTaskComponent } from './modals/update-task.component';
 import { UpdateTodoComponent } from './modals/update-todo.component';
 import { AddNewTaskComponent } from './modals/new-task.component';
@@ -75,6 +78,13 @@ export class TodolistComponent {
       data: {
         todolist: this.todolist,
       },
+    });
+  }
+
+  updateIsDone(task: Task): void {
+    this.taskService.updateisDone(task, !task.isDone).subscribe(() => {
+      console.log(task);
+      task.isDone = !task.isDone;
     });
   }
 }

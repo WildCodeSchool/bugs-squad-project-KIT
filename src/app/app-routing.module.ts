@@ -33,7 +33,7 @@ const routes: Routes = [
     component: CollectionsComponent,
   },
   {
-    path: 'todo',
+    path: 'todolists',
     component: TodolistsComponent,
   },
   {
