@@ -29,4 +29,9 @@ export class TodoService {
   getLists() {
     return this.http.get(this.dataSource) as Observable<ToDoList[]>;
   }
+
+  updateTodo(body: { title: string; description: string }, id: number) {
+    const dataSource = `http://localhost:8080/api/todo-lists/${id}`;
+    return this.http.put(dataSource, body) as Observable<ToDoList>;
+  }
 }

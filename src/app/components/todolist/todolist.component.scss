@@ -99,3 +99,28 @@
 .tasks::-webkit-scrollbar{
   display: none;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: $secondary-color;
+  }
+
+
+  label {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 2rem;
+
+    input {
+      margin-top: 0.5rem;
+    }
+
+  }
+}
