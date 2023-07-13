@@ -23,7 +23,6 @@ export class UpdateTaskComponent {
   description = new FormControl(this.data.task.description);
 
   updateTask(): void {
-    console.log('Je suis dans update');
     const description = this.description.value as string;
     const task = this.data.task;
 

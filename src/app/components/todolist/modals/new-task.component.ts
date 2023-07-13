@@ -26,7 +26,6 @@ export class AddNewTaskComponent {
   id = new FormControl();
 
   addTask(): void {
-    console.log('Je suis dans add');
     const description = this.description.value as string;
     const todolist = this.data.todolist;
 
