@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GridStack } from 'gridstack';
 declare let $: any;
 
@@ -8,9 +8,6 @@ declare let $: any;
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  // @ViewChild('item1', { static: true }) item1!: ElementRef;
-  // @ViewChild('item2', { static: true }) item2!: ElementRef;
-  // @ViewChild('item3', { static: true }) item3!: ElementRef;
   ngOnInit(): void {
     setTimeout(() => {
       const grid = GridStack.init({
