@@ -8,6 +8,7 @@ import { CollectionsService } from '../../services/collections.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CollectionsFormComponent } from '../collection-form/collection-form.component';
 import { CollectionFormUpdateComponent } from '../collection-form-update/collection-form-update.component';
+import { LinksComponent } from '../links/links.component';
 
 @Component({
   selector: 'app-collection',
@@ -30,41 +31,35 @@ export class CollectionComponent {
   private i = 9999;
   id = new FormControl();
   url = new FormControl('');
-  comment = new FormControl('');
+  title = new FormControl('');
   collectionId = new FormControl();
 
   @Input() collection!: Collection;
 
-  // If there is a comment in the Link of the Collection, the comment is displayed. Else, the url is displayed
+  // If there is a title in the Link of the Collection, the title is displayed. Else, the url is displayed
 
   getLinkComment(link: Link) {
-    return link.comment ? link.comment : link.url;
+    return link.title ? link.title : link.url;
   }
 
   updateLink() {
     const id = this.id.value;
     const url: string = this.url.value as string;
-    const comment = this.comment.value;
+    const title = this.title.value as string;
     const collectionId = this.collectionId.value;
 
     const body = {
       id: id,
       url: url,
-      comment: comment,
+      title: title,
       collectionId: collectionId,
     };
 
-    this.linksService.createLink(body).subscribe((data) => {
+    this.linksService.createLink(collectionId, body).subscribe((data) => {
       this.link = data;
 
       this.linksService.updateLinkData(this.link);
     });
-  }
-
-  addLink() {
-    if (this.collection.links) {
-      this.collection.links.push({ id: this.i++, url: '', comment: '', collectionId: this.collection.id });
-    }
   }
 
   deleteCollection() {
@@ -83,6 +78,17 @@ export class CollectionComponent {
 
   openDialogUpdate(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(CollectionFormUpdateComponent, {
+      width: '280px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        collection: this.collection,
+      },
+    });
+  }
+
+  openDialogCreateLink(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(LinksComponent, {
       width: '280px',
       enterAnimationDuration,
       exitAnimationDuration,

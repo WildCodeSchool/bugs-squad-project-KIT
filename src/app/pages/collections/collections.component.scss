@@ -3,6 +3,12 @@
 .body {
   margin: 2rem;
 
+  .collections {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
   .add-collection {
     display: flex;
     margin-bottom: 2rem;
@@ -47,9 +53,4 @@
       padding: 0 1rem;
       }
   }
-    .collections {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-    }
 }

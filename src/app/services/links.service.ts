@@ -7,7 +7,7 @@ import { Link } from '../models/Link';
   providedIn: 'root',
 })
 export class LinksService {
-  private dataSource = 'http://localhost:8080/api/links/';
+  private dataSource = 'http://localhost:8080/api/links';
   private linkData = new BehaviorSubject<Link | null>(null);
   currentLinkData = this.linkData.asObservable();
 
@@ -17,8 +17,8 @@ export class LinksService {
     return this.http.get(this.dataSource) as Observable<Link[]>;
   }
 
-  createLink(body: { id: number; url: string; comment: string | null; collectionId: number }) {
-    return this.http.post(this.dataSource, body) as Observable<Link>;
+  createLink(id: number, body: { url: string; title: string | null }) {
+    return this.http.post(`${this.dataSource}/${id}`, body) as Observable<Link>;
   }
 
   updateLinkData(link: Link) {

@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Nouveau lien</h1>
+<div mat-dialog-content>
+  <!-- Formulaire de création de lien -->
+  <div class="form">
+    <h3>Créer un nouveau lien:</h3>
+    <label>
+      Titre:
+      <input type="text" [formControl]="url" />
+    </label>
+    <label>
+      Description:
+      <input type="text" [formControl]="title" />
+    </label>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button mat-dialog-close (click)="createLink()">Confirmer</button>
+</div>
