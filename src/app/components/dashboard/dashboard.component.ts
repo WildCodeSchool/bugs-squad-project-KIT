@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GoogleApiService, UserInfo } from '../../services/google-api.service';
 
 @Component({
@@ -6,14 +6,18 @@ import { GoogleApiService, UserInfo } from '../../services/google-api.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
-
-
+export class DashboardComponent implements OnInit {
   userInfo?: UserInfo;
 
-  constructor(private readonly googleApiService: GoogleApiService) {
-    this.googleApiService.userProfileSubject.subscribe((info) => {
-      this.userInfo = info;
+  constructor(private readonly googleApiService: GoogleApiService) {}
+
+  ngOnInit() {
+    const accessToken = this.googleApiService.getAccessToken();
+    // Utilisez le token d'accès comme vous le souhaitez
+    console.log(accessToken);
+
+    this.googleApiService.userProfileSubject.subscribe((userInfo) => {
+      this.userInfo = userInfo;
     });
   }
 
