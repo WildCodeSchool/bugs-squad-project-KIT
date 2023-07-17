@@ -7,6 +7,7 @@ import { FormControl } from '@angular/forms';
 import { CollectionsService } from '../../services/collections.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CollectionsFormComponent } from '../collection-form/collection-form.component';
+import { CollectionFormUpdateComponent } from '../collection-form-update/collection-form-update.component';
 
 @Component({
   selector: 'app-collection',
@@ -80,19 +81,14 @@ export class CollectionComponent {
     });
   }
 
-  patchCollection() {
-    const color = this.collection.color;
-    const title = this.collection.title;
-    const description = this.collection.description;
-
-    const body = {
-      color: color,
-      description: description,
-      title: title,
-    };
-
-    this.collectionService.updateCollection(this.collection.id, body).subscribe(() => {
-      return this.collectionService.updateCollectionData(this.collection);
+  openDialogUpdate(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(CollectionFormUpdateComponent, {
+      width: '280px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        collection: this.collection,
+      },
     });
   }
 

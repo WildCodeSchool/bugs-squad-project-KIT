@@ -30,7 +30,14 @@ export class CollectionsService {
     return this.http.delete(`${this.dataSource}/${id}`);
   }
 
-  updateCollection(id: number, body: { color: string; description: string | undefined; title: string }) {
+  updateCollection(
+    id: number,
+    body: {
+      color: string | null;
+      description: string | null | undefined;
+      title: string | null;
+    }
+  ) {
     return this.http.put(`${this.dataSource}/${id}`, body);
   }
 

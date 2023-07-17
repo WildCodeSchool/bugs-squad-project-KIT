@@ -42,6 +42,7 @@ import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.
 import { TodolistsComponent } from './pages/todolists/todolists.component';
 import { LinksComponent } from './components/links/links.component';
 import { CollectionsFormComponent } from './components/collection-form/collection-form.component';
+import { CollectionFormUpdateComponent } from './components/collection-form-update/collection-form-update.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { CollectionsFormComponent } from './components/collection-form/collectio
     TodolistsFavComponent,
     TodolistsComponent,
     LinksComponent,
+    CollectionFormUpdateComponent,
   ],
 
   imports: [
