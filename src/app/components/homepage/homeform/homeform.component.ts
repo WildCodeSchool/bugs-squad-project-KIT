@@ -43,10 +43,11 @@ export class HomeformComponent {
     const { email, password } = this.loginForm.value;
     this.authService.login(email, password).subscribe(
       (response) => {
-        localStorage.setItem('principal', JSON.stringify(response));
-        this.router.navigate(['/dashboard']);
+        console.log(response);
+        this.toastr.success('Login successful!');
       },
       (error) => {
+        console.log(error);
         this.toastr.error('An error occurred during login!');
       }
     );
@@ -59,49 +60,42 @@ export class HomeformComponent {
       return;
     }
     const { username, email, password } = this.registerForm.value;
+    console.log(username, email, password);
     this.authService.register(username, email, password).subscribe(
       (response) => {
-        // Handle successful registration if needed
+        console.log(response);
       },
       (error) => {
+        console.log(error);
         this.toastr.error('An error occurred during registration!');
       }
     );
   }
-
-  // LoggingGoogle function
   LoggingGoogle(): void {
     const popupWindow = window.open(
-      'https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&client_id=734363817336-u22h0urol9chonde49e1lq3o3f3i12sf.apps.googleusercontent.com&scope=openid%20profile%20email&state=esmJQnBOL6iFhhsxnFB2FRYblK8VPFDW7FirqbZfuNc%3D&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fapi%2Flogin%2Foauth2%2Fcode%2Fgoogle&nonce=Ni6OVMyikryp8PBDe0uGc20Kd-7zVJDgvZvpafQz-zA&service=lso&o2v=2&flowName=GeneralOAuthFlow',
+      'http://localhost:8080/api/oauth2/authorization/google',
       '_blank',
       'width=600,height=800'
     );
-
     if (popupWindow) {
-      const intervalId = setInterval(() => {
-        try {
-          if (popupWindow.closed) {
-            clearInterval(intervalId);
-          } else if (popupWindow.location.href.includes('http://localhost:8080/api/login/oauth2/code/google?')) {
-            clearInterval(intervalId);
-            this.authService.LoggingGoogle().subscribe(
-              (response) => {
-                // Handle successful login with Google response here
-                console.log(response);
-              },
-              (error) => {
-                this.toastr.error('An error occurred during Google login!');
-              }
-            );
-            popupWindow.close();
-          }
-        } catch (error) {
-          // Catch any error that occurs while accessing the popup window
-          console.error('Error:', error);
+      console.log(popupWindow);
+      const origin = window.location.origin;
+      console.log(origin);
+      const eventListener = (event: any) => {
+        console.log("je rentre dans l'event listener");
+        // si le status est ok alors on enregistre le token dans le local storage
+        if (
+          event.origin === 'http://localhost:8080' ||
+          event.origin === 'https://accounts.google.com/o/oauth2/v2/auth'
+        ) {
+          console.log(event.data);
+          console.log(origin);
+          localStorage.setItem('token', event.data.token);
+          this.router.navigate(['/dashboard']);
+          popupWindow.close();
         }
-      }, 1000);
-    } else {
-      console.error('Failed to open popup window.');
+      };
+      eventListener(event);
     }
   }
 }
