@@ -40,6 +40,8 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
 import { TodolistComponent } from './components/todolist/todolist.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
+import { LinksComponent } from './components/links/links.component';
+import { CollectionsFormComponent } from './components/collection-form/collection-form.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { TodolistsComponent } from './pages/todolists/todolists.component';
     TodolistComponent,
     TodolistsFavComponent,
     TodolistsComponent,
+    LinksComponent,
   ],
 
   imports: [
@@ -87,6 +90,7 @@ import { TodolistsComponent } from './pages/todolists/todolists.component';
     MatDialogModule,
     MatMenuModule,
     MatCheckboxModule,
+    CollectionsFormComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

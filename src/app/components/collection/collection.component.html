@@ -3,7 +3,7 @@
 <div class="collection" [style.backgroundColor]="collection.color">
   <div class="collection-infos">
     <div class="icons">
-      <i class="fa-solid fa-pencil" title="Modifier"></i>
+      <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialog('0ms', '0ms')"></i>
       <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteCollection()"></i>
       <i
         *ngIf="!collection.favorite"
@@ -11,12 +11,7 @@
         title="Ajouter aux favoris"
         (click)="patchFavorite()"
       ></i>
-      <i
-        *ngIf="collection.favorite"
-        class="fa-solid fa-star"
-        title="Ajouter aux favoris"
-        (click)="patchFavorite()"
-      ></i>
+      <i *ngIf="collection.favorite" class="fa-solid fa-star" title="Ajouter aux favoris" (click)="patchFavorite()"></i>
     </div>
     <div class="meta">
       <h3 class="title">{{ collection.title }}</h3>

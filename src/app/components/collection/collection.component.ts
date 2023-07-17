@@ -5,6 +5,8 @@ import { faLink, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { LinksService } from '../../services/links.service';
 import { FormControl } from '@angular/forms';
 import { CollectionsService } from '../../services/collections.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CollectionsFormComponent } from '../collection-form/collection-form.component';
 
 @Component({
   selector: 'app-collection',
@@ -16,7 +18,11 @@ export class CollectionComponent {
   faLink = faLink;
   public color = '#FFFFFF';
 
-  constructor(private linksService: LinksService, private collectionService: CollectionsService) {}
+  constructor(
+    private linksService: LinksService,
+    private collectionService: CollectionsService,
+    public dialog: MatDialog
+  ) {}
 
   links: Link[] = [];
   link!: Link;
@@ -54,9 +60,23 @@ export class CollectionComponent {
     });
   }
 
+  addLink() {
+    if (this.collection.links) {
+      this.collection.links.push({ id: this.i++, url: '', comment: '', collectionId: this.collection.id });
+    }
+  }
+
   deleteCollection() {
     this.collectionService.deleteCollection(this.collection.id).subscribe((data) => {
       return this.collectionService.updateCollectionData(this.collection);
+    });
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(CollectionsFormComponent, {
+      width: '280px',
+      enterAnimationDuration,
+      exitAnimationDuration,
     });
   }
 
