@@ -33,7 +33,7 @@ const routes: Routes = [
     component: CollectionsComponent,
   },
   {
-    path: 'todo',
+    path: 'todolists',
     component: TodolistsComponent,
   },
   {
@@ -42,6 +42,10 @@ const routes: Routes = [
   },
   {
     path: 'about',
+    component: AboutComponent,
+  },
+  {
+    path: 'contact',
     component: AboutComponent,
   },
   {
@@ -60,7 +64,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
