@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RssFeedService } from '../../../services/RssFeedService/rss.service';
-import {RssFeed} from "../../../models/RssFeed";
+import { RssFeed } from '../../../models/RssFeed';
+import { RssResponse } from '../../../interface/RssResponse';
 
 @Component({
-  selector: 'app-rss-feed-all',
-  templateUrl: './rss-feed-all.component.html',
-  styleUrls: ['./rss-feed-all.component.scss'],
+  selector: 'app-sidebar-rss-feed',
+  templateUrl: './sidebar-rss-feed.component.html',
+  styleUrls: ['./sidebar-rss-feed.component.scss'],
 })
-export class RssFeedAllComponent implements OnInit {
+export class SidebarRssFeedComponent {
+  isOpen = false;
   rssLink!: string[];
-  rssDataItems: any[] = [];
-
+  rssData: any[] = [];
   constructor(public rssFeedService: RssFeedService) {}
-
   ngOnInit(): void {
     this.getRssData();
     this.subscribeToRssFeedsUpdated();
@@ -29,15 +29,11 @@ export class RssFeedAllComponent implements OnInit {
       },
     });
   }
-
   fetchRssData(): void {
     this.rssLink.forEach((link: string) => {
       this.rssFeedService.getRssData(link).subscribe({
-        next: (response: any): void => {
-          const rssData = response;
-          this.rssFeedService.addFeedTitleFaviconToItems(rssData);
-          this.rssDataItems?.push(...rssData.items);
-          this.rssFeedService.sortRssDataItemsByDate(this.rssDataItems);
+        next: (response: RssResponse): void => {
+          this.rssData?.push(response.feed);
         },
         error: (error: any): void => {
           console.error('Erreur lors de la récupération du flux RSS', error);
@@ -45,14 +41,12 @@ export class RssFeedAllComponent implements OnInit {
       });
     });
   }
-
+  toggleSidebar() {
+    this.isOpen = !this.isOpen;
+  }
   subscribeToRssFeedsUpdated(): void {
     this.rssFeedService.onRssFeedsUpdated().subscribe(() => {
       this.getRssData();
     });
-  }
-
-  getClean(description: string): string {
-    return description.replace(/<[^>]+>/g, '');
   }
 }

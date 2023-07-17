@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -8,6 +8,8 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./rss-modal.component.scss'],
 })
 export class RssModalComponent {
+  isFormSubmitted = false;
+
   rssCreateForm = this.fb.group({
     rssUrl: ['', Validators.required],
   });
@@ -15,6 +17,7 @@ export class RssModalComponent {
   constructor(private dialogRef: MatDialogRef<RssModalComponent>, private fb: FormBuilder) {}
 
   closeModal(): void {
+    this.isFormSubmitted = true;
     if (this.rssCreateForm.invalid) {
       return;
     }
