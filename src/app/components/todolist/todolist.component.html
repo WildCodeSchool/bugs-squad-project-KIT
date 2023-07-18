@@ -26,8 +26,8 @@
     </div>
   </div>
   <div class="tasks">
-    <ul>
-      <li *ngFor="let task of todolist.tasks">
+    <ul cdkDropList (cdkDropListDropped)="drop($event)">
+      <li *ngFor="let task of todolist.tasks" cdkDrag>
         <div class="checkbox">
           <mat-checkbox (click)="updateIsDone(task)" [checked]="task.isDone"></mat-checkbox>
         </div>
