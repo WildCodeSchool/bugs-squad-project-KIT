@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleApiService, UserInfo } from '../../services/google-api.service';
-import { OAuthService } from 'angular-oauth2-oidc';
+import {AuthConfig, OAuthService} from 'angular-oauth2-oidc';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,23 +11,28 @@ import { OAuthService } from 'angular-oauth2-oidc';
 export class DashboardComponent implements OnInit {
   userInfo?: UserInfo;
 
-  constructor(private readonly googleApiService: GoogleApiService, private oauthService: OAuthService) {}
+  constructor(
+    private readonly googleApiService: GoogleApiService,
+    private oauthService: OAuthService,
+    private httpClient: HttpClient
+  ) {}
 
   ngOnInit(): void {
+    this.httpClient.get('https://www.googleapis.com/oauth2/v3/certs').subscribe((data) => {
+      console.log(data);
+    });
+    this.httpClient.get('https://oauth2.googleapis.com/token').subscribe((token) => {
+      console.log(token);
+    });
+    this.httpClient.get('https://openidconnect.googleapis.com/v1/userinfo').subscribe((info) => {
+      console.log(info);
+    });
     this.googleApiService.userProfileSubject.subscribe((userInfo) => {
       this.userInfo = userInfo;
-      console.log(this.userInfo);
-      console.log('je suis dans le dashboard');
-      this.oauthService.getIdToken();
-      console.log(this.oauthService.getIdToken());
     });
   }
-
   isLoggedIn(): boolean {
     return this.googleApiService.isLoggedIn();
   }
-
-  signOut() {
-    this.googleApiService.signOut();
-  }
 }
+

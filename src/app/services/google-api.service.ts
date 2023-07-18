@@ -1,19 +1,13 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OAuthErrorEvent, OAuthService } from 'angular-oauth2-oidc';
-import { JwksValidationHandler } from 'angular-oauth2-oidc-jwks';
+import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
-const authgoogle = {
+const authCodeFlowConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
   strictDiscoveryDocumentValidation: false,
   redirectUri: 'http://localhost:4200/dashboard',
-  userinfoEndpoint: 'https://openidconnect.googleapis.com/v1/userinfo',
   clientId: '734363817336-u22h0urol9chonde49e1lq3o3f3i12sf.apps.googleusercontent.com',
-  client_secret: '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',
-  tokenEndpoint: 'https://oauth2.googleapis.com/token',
-  responseType: 'code',
   scope: 'openid profile email ',
 };
 
@@ -31,37 +25,44 @@ export interface UserInfo {
 })
 export class GoogleApiService {
   userProfileSubject = new Subject<UserInfo>();
-  constructor(private oauthService: OAuthService, private router: Router, private httpClient: HttpClient) {
-    // Useful for debugging:
-    this.oauthService.events.subscribe((event) => {
-      if (event instanceof OAuthErrorEvent) {
-        console.error('OAuthErrorEvent Object:', event);
-      } else {
-        console.warn('OAuthEvent Object:', event);
-      }
+
+  constructor(private readonly oAuthService: OAuthService, private readonly httpClient: HttpClient) {
+    // confiure oauth2 service
+    oAuthService.configure(authCodeFlowConfig);
+    // manually configure a logout url, because googles discovery document does not provide it
+    oAuthService.logoutUrl = 'https://www.google.com/accounts/Logout';
+
+    // loading the discovery document from google, which contains all relevant URL for
+    // the OAuth flow, e.g. login url
+    oAuthService.loadDiscoveryDocument().then(() => {
+      // // This method just tries to parse the token(s) within the url when
+      // // the auth-server redirects the user back to the web-app
+      // // It doesn't send the user the the login page
+      oAuthService.tryLoginImplicitFlow().then(() => {
+        // when not logged in, redirecvt to google for login
+        // else load user profile
+        if (!oAuthService.hasValidAccessToken()) {
+          oAuthService.initLoginFlow();
+        } else {
+          oAuthService.loadUserProfile().then((userProfile) => {
+            this.userProfileSubject.next(userProfile as UserInfo);
+          });
+        }
+      });
     });
   }
 
   isLoggedIn(): boolean {
-    return this.oauthService.hasValidAccessToken();
+    return this.oAuthService.hasValidAccessToken();
   }
 
   signOut() {
-    this.oauthService.revokeTokenAndLogout().then(() => this.router.navigate(['/home']));
+    this.oAuthService.logOut();
   }
-  connectWithGoogle() {
-    this.oauthService.configure(authgoogle);
-    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
 
-    this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
-      if (this.oauthService.hasValidAccessToken()) {
-        this.oauthService.loadUserProfile().then((userProfile) => {
-          this.userProfileSubject.next(userProfile as UserInfo);
-          this.router.navigate(['/dashboard']);
-        });
-      } else {
-        this.oauthService.initImplicitFlow();
-      }
+  private authHeader(): HttpHeaders {
+    return new HttpHeaders({
+      Authorization: `Bearer ${this.oAuthService.getAccessToken()}`,
     });
   }
 }

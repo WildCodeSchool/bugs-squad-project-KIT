@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { GoogleApiService } from '../../../services/google-api.service';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-homeform',
@@ -32,7 +33,8 @@ export class HomeformComponent {
     };
   }
 
-  constructor(private readonly googleApiService: GoogleApiService) {
+
+  constructor(private readonly googleApiService: GoogleApiService, private readonly oauthService: OAuthService) {
     this.googleApiService = googleApiService;
   }
 
@@ -48,6 +50,6 @@ export class HomeformComponent {
   }
 
   loginWithGoogle() {
-    this.googleApiService.connectWithGoogle();
+    this.oauthService.initLoginFlow();
   }
 }

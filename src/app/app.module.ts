@@ -9,20 +9,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ToastrModule } from 'ngx-toastr';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { CollectionComponent } from './components/collection/collection.component';
 import { CollectionsComponent } from './pages/collections/collections.component';
 import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
-
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PresentationComponent } from './components/homepage/presentation/presentation.component';
 import { HomeformComponent } from './components/homepage/homeform/homeform.component';
-
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
 import { RssFeedAllComponent } from './components/rss/rss-feed-all/rss-feed-all.component';
@@ -42,8 +38,11 @@ import { TodolistComponent } from './components/todolist/todolist.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
 import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
-import { OAuthModule } from 'angular-oauth2-oidc';
+import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 
+export function storageFactory(): OAuthStorage {
+  return localStorage;
+}
 
 @NgModule({
   declarations: [
@@ -96,7 +95,9 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     ToastrModule.forRoot(),
     OAuthModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    { provide: OAuthStorage, useFactory: storageFactory }
+  ],
   bootstrap: [AppComponent],
   exports: [],
 })
