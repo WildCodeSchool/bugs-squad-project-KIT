@@ -1,16 +1,67 @@
+/* Validated */
+
 #trash {
   display: flex;
   height: 100px;
   width: 200px;
   margin: 20px;
   border-radius: 0.5rem;
-  background: #cc6857;
+  border: 2px dashed #cc6857;
+  background: #e3a59a;
   text-align: center;
   align-content: center;
   justify-content: center;
   flex-direction: column;
   color: #ffffff;
   text-decoration: none solid rgb(255, 255, 255);
+}
+
+.btn-remove {
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f67280;
+  border-radius: 0.5rem;
+  border: 1px solid #f67280;
+  color: #ffffff;
+  text-decoration: none solid rgb(255, 255, 255);
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #c06c84;
+    border: 1px solid #c06c84;
+    transform: translateY(2px);
+  }
+  i {
+    margin-bottom: 5px;
+  }
+}
+
+.btn-save {
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #18bc9c;
+  border-radius: 0.5rem;
+  border: 1px solid #18bc9c;
+  color: #ffffff;
+  text-decoration: none solid rgb(255, 255, 255);
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #1e824c;
+    border: 1px solid #1e824c;
+    transform: translateY(2px);
+  }
+  i {
+    margin-bottom: 5px;
+  }
 }
 
 .grid-stack-item-removing {
@@ -24,8 +75,7 @@
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #96d2c6;
-  border: 2px dashed green;
+  background-color: #18bc9c;
   border-radius: 0.5rem;
   height: 100px;
   width: 200px;
@@ -69,6 +119,7 @@
   border-radius: 0.5rem;
   height: auto;
   width: auto;
+  // padding: 10px;
   margin: 10px;
   cursor: grab;
   &:active {
@@ -96,21 +147,22 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   min-height: 550px;
-  margin: 0 20px;
+  margin: 20px;
 }
 
+//   border: 2px dashed green;
+
+/* make nested grid have slightly darker bg take almost all space (need some to tell them apart) so items inside can have similar to external size+margin */
 .grid-stack > .grid-stack-item.grid-stack-sub-grid > .grid-stack-item-content {
   background: rgba(0, 0, 0, 0.1);
   inset: 0 2px;
-  cursor: grab;
-  &:active {
-    cursor: grabbing;
-  }
 }
 .grid-stack.grid-stack-nested {
   background: none;
+  background-color: red;
+  /* take entire space */
   position: absolute;
-  inset: 0;
+  inset: 0; /* TODO change top: if you have content in nested grid */
 }
 
 .dashboard__content-module {

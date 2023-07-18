@@ -9,7 +9,15 @@
           <span>Glissez ici l'élément à retirer</span>
         </div>
       </div>
-      <div class="newWidget grid-stack-item">
+      <button class="btn-remove" (click)="viderGridStack()">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        <span>Vider tout le Grid-Stack</span>
+      </button>
+      <button class="btn-save" (click)="saveGridStack()">
+        <i class="fa-solid fa-floppy-disk" title="Sauvegarder"></i>
+        <span>Sauvegarder le Grid-Stack</span>
+      </button>
+      <!-- <div class="newWidget grid-stack-item">
         <div class="grid-stack-item-content">
           <div class="icon">
             <i class="fa-sharp fa-solid fa-hand"></i>
@@ -18,7 +26,7 @@
             <span>Créer un nouveau widget à glisser</span>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="newWidget grid-stack-item">
         <div class="dashboard__content-module">
           <img
@@ -62,7 +70,7 @@
     </div>
     <div class="grid-container">
       <div class="grid-stack">
-        <div class="grid-stack-item" id="item1" #item1>
+        <div class="grid-stack-item" id="item1" #item1 data-gs-width="1" data-gs-height="1" data-gs-x="0" data-gs-y="0">
           <div class="dashboard__content-module">
             <img
               src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80"
@@ -72,7 +80,7 @@
             </div>
           </div>
         </div>
-        <div class="grid-stack-item" id="item2" #item2>
+        <div class="grid-stack-item" id="item2" #item2 data-gs-width="1" data-gs-height="1" data-gs-x="1" data-gs-y="0">
           <div class="dashboard__content-module">
             <img
               src="https://images.unsplash.com/photo-1604128311556-816dfb846a54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
@@ -82,7 +90,7 @@
             </div>
           </div>
         </div>
-        <div class="grid-stack-item" id="item3" #item3>
+        <div class="grid-stack-item" id="item3" #item3 data-gs-width="1" data-gs-height="1" data-gs-x="0" data-gs-y="1">
           <div class="dashboard__content-module">
             <img
               src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
@@ -92,7 +100,7 @@
             </div>
           </div>
         </div>
-        <div class="grid-stack-item" id="item4" #item4>
+        <div class="grid-stack-item" id="item4" #item4 data-gs-width="1" data-gs-height="1" data-gs-x="1" data-gs-y="1">
           <div class="dashboard__content-module large-height">
             <img
               src="https://images.unsplash.com/photo-1611988615248-5d4f0b9ac31e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
