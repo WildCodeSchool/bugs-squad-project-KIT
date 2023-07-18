@@ -33,12 +33,14 @@ export class TodolistComponent {
   }
 
   deleteTask(task: Task) {
-    this.taskService.deleteTask(task.id).subscribe(() => {
-      const index = this.todolist.tasks.indexOf(task);
-      if (index !== -1) {
-        this.todolist.tasks.splice(index, 1);
-      }
-    });
+    if (window.confirm('Êtes-vous sûr.e de vouloir supprimer cette tâche ?')) {
+      this.taskService.deleteTask(task.id).subscribe(() => {
+        const index = this.todolist.tasks.indexOf(task);
+        if (index !== -1) {
+          this.todolist.tasks.splice(index, 1);
+        }
+      });
+    }
   }
 
   openDialogAdd(enterAnimationDuration: string, exitAnimationDuration: string): void {
