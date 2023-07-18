@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RssModalComponent } from '../../components/modals/rss-modal/rss-modal.component';
-import { RssFeedService } from '../../services/rssFeedService/rss.service';
+import { RssFeedService } from '../../services/rssService/rss.service';
 import { ToastrService } from 'ngx-toastr';
-import { RssResponse } from '../../interface/RssResponse';
+import { RssFeed } from '../../models/RssFeed';
+import { RssDataFeeds, RssResponse } from '../../interface/rss.interface';
 
 @Component({
   selector: 'app-rss',
@@ -11,7 +12,45 @@ import { RssResponse } from '../../interface/RssResponse';
   styleUrls: ['./rss.component.scss'],
 })
 export class RssComponent {
-  constructor(private dialog: MatDialog, private rssService: RssFeedService, private toastr: ToastrService) {}
+  constructor(private dialog: MatDialog, public rssService: RssFeedService, private toastr: ToastrService) {}
+
+  ngOnInit(): void {
+    this.loadRssFeeds();
+  }
+
+  loadRssFeeds(): void {
+    this.rssService.getAllRssFeeds().subscribe({
+      next: (rssFeeds: RssFeed): void => {
+        this.rssService.rssFeeds = rssFeeds;
+        this.loadRssDataItems();
+      },
+      error: (error: any): void => {
+        console.error('Erreur lors de la récupération des flux RSS', error);
+      },
+    });
+  }
+
+  loadRssDataItems(): void {
+    const urls: string[] = Object.values(this.rssService.rssFeeds).map((rssFeed: RssFeed) => rssFeed.url);
+    urls.forEach((url: string) => {
+      this.rssService.getRssData(url).subscribe({
+        next: (response: RssResponse): void => {
+          if (response) {
+            this.rssService.addFeedTitleFaviconToItems(response);
+            const rssFeeds = {
+              status: response.status,
+              feed: response.feed,
+            };
+            const rssItems = {
+              items: response.items,
+            };
+            this.rssService.rssDataFeeds.push(rssFeeds);
+            this.rssService.rssDataItems.push(rssItems);
+          }
+        },
+      });
+    });
+  }
 
   openModal(): void {
     const dialogRef = this.dialog.open(RssModalComponent, {
