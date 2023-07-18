@@ -36,7 +36,7 @@ export class AddNewTaskComponent {
 
     this.taskService.createTask(body, todolist.id).subscribe((data) => {
       this.task = data;
-      this.task = new Task(todolist.id, description as string, false);
+      this.task = new Task(todolist.id, description as string, false, todolist.tasks.length);
       todolist.tasks.push(this.task);
     });
   }
