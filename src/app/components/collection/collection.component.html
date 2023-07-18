@@ -1,4 +1,3 @@
-<!-- Collection créée à partir du formulaire -->
 
 <div class="collection" [style.backgroundColor]="collection.color">
   <div class="collection-infos">
@@ -23,17 +22,19 @@
           <i class="fa-sharp fa-solid fa-circle-plus" (click)="openDialogCreateLink('0ms', '0ms')"></i>
           Ajouter un lien
         </li>
-        <li *ngFor="let link of collection.links">
-          <div class="links">
-            <div class="link">
-              <a [href]="[link.url]" target="_blank">{{ getLinkComment(link) }}</a>
+        <div cdkDropList class="box" (cdkDropListDropped)="drop($event)">
+          <li *ngFor="let link of collection.links" cdkDrag>
+            <div class="links">
+              <div class="link">
+                <a [href]="[link.url]" target="_blank">{{ getLinkComment(link) }}</a>
+              </div>
+              <div class="link-icons">
+                <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdateLink(link, '0ms', '0ms')"></i>
+                <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteLink(link.id)"></i>
+              </div>
             </div>
-            <div class="link-icons">
-              <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdateLink(link, '0ms', '0ms')"></i>
-              <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteLink(link.id)"></i>
-            </div>
-          </div>
-        </li>
+          </li>
+        </div>
       </ul>
     </div>
   </div>

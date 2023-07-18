@@ -10,7 +10,7 @@ export class LinksService {
   private dataSource = 'http://localhost:8080/api/links';
 
   private linkData = new BehaviorSubject<Link | null>(null);
-  currentLinkData = this.linkData.asObservable();
+  currentLinkData$ = this.linkData.asObservable();
 
   constructor(private http: HttpClient) {}
 

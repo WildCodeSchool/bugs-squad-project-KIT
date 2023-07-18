@@ -20,7 +20,6 @@ export class LinksComponent implements OnInit {
   links: Link[] = [];
   collections: Collection[] = [];
   link!: Link;
-  private i = 9999;
   id = new FormControl();
   url = new FormControl('');
   title = new FormControl('');
@@ -30,7 +29,7 @@ export class LinksComponent implements OnInit {
 
   ngOnInit() {
     this.getAllLinks();
-    this.linksService.currentLinkData.subscribe(() => {
+    this.linksService.currentLinkData$.subscribe(() => {
       this.getAllLinks();
     });
   }

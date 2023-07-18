@@ -9,26 +9,24 @@
   border-radius: 8px;
   height: 400px;
 
-
   .icons {
     display: flex;
     justify-content: flex-end;
     width: 100%;
     margin-bottom: 1rem;
     padding-top: 0.5rem;
-    .fa-solid, .fa-regular {
+    .fa-solid,
+    .fa-regular {
       cursor: pointer;
       color: $secondary-color;
       margin: 0 0.5rem;
     }
   }
 
-
   .meta {
     text-align: center;
     width: 100%;
     margin: 0.5rem 0;
-
 
     .title {
       font-size: 1.5rem;
@@ -44,7 +42,6 @@
     .newtask {
       display: flex;
       justify-content: center;
-
     }
     .fa-sharp {
       text-align: center;
@@ -52,8 +49,7 @@
       margin: 0 1rem;
       cursor: pointer;
     }
-    }
-
+  }
 
   .tasks {
     width: 100%;
@@ -91,12 +87,10 @@
         margin: 0;
       }
     }
-    }
-
-
+  }
 }
 
-.tasks::-webkit-scrollbar{
+.tasks::-webkit-scrollbar {
   display: none;
 }
 
@@ -111,7 +105,6 @@
     color: $secondary-color;
   }
 
-
   label {
     display: flex;
     flex-direction: column;
@@ -121,6 +114,5 @@
     input {
       margin-top: 0.5rem;
     }
-
   }
 }

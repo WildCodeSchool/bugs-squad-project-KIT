@@ -8,9 +8,8 @@ describe('CollectionFormUpdateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CollectionFormUpdateComponent ]
-    })
-    .compileComponents();
+      declarations: [CollectionFormUpdateComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CollectionFormUpdateComponent);
     component = fixture.componentInstance;

@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CollectionFormUpdateComponent } from '../collection-form-update/collection-form-update.component';
 import { LinksComponent } from '../links/links.component';
 import { LinkFormUpdateComponent } from '../link-form-update/link-form-update.component';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-collection',
@@ -35,8 +36,6 @@ export class CollectionComponent {
   collectionId = new FormControl();
 
   @Input() collection!: Collection;
-
-  // If there is a title in the Link of the Collection, the title is displayed. Else, the url is displayed
 
   getLinkComment(link: Link) {
     return link.title ? link.title : link.url;
@@ -92,5 +91,11 @@ export class CollectionComponent {
     this.linksService.deleteLink(id).subscribe(() => {
       return this.collectionService.updateCollectionData(this.collection);
     });
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event);
+    // @ts-ignore
+    moveItemInArray(this.collection.links, event.previousIndex, event.currentIndex);
   }
 }

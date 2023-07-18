@@ -21,7 +21,7 @@ export class CollectionsComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCollections();
-    this.collectionsService.currentCollectionData.subscribe(() => {
+    this.collectionsService.currentCollectionData$.subscribe(() => {
       this.getAllCollections();
     });
   }

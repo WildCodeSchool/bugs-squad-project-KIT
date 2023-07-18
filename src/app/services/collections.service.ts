@@ -10,7 +10,7 @@ export class CollectionsService {
   private dataSource = 'http://localhost:8080/api/collections';
 
   private collectionData = new BehaviorSubject<Collection | null>(null);
-  currentCollectionData = this.collectionData.asObservable();
+  currentCollectionData$ = this.collectionData.asObservable();
 
   constructor(private http: HttpClient) {}
 

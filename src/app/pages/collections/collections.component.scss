@@ -24,12 +24,12 @@
     justify-content: center;
     align-items: center;
 
-      h3 {
-        text-align: center;
-        margin-top: 0.5rem;
-      }
+    h3 {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
 
-      label {
+    label {
       display: flex;
       flex-direction: column;
 
@@ -37,13 +37,13 @@
         border: 1px solid $secondary-color;
         width: 15rem;
       }
-        .color {
-          width: 3rem;
-          border: none;
-          background-color: $bg-color;
-        }
+      .color {
+        width: 3rem;
+        border: none;
+        background-color: $bg-color;
       }
-      button {
+    }
+    button {
       background-color: $quaternary-color;
       border: none;
       height: 2rem;
@@ -51,6 +51,6 @@
       margin: 1rem;
       color: white;
       padding: 0 1rem;
-      }
+    }
   }
 }
