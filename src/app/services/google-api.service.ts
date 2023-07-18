@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { OAuthErrorEvent, OAuthService } from 'angular-oauth2-oidc';
 import { JwksValidationHandler } from 'angular-oauth2-oidc-jwks';
-import { Observable, Subject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 const authgoogle = {
@@ -31,12 +31,6 @@ export interface UserInfo {
 })
 export class GoogleApiService {
   userProfileSubject = new Subject<UserInfo>();
-
-  private getJwtToken() {
-    const idToken = this.oauthService.getIdToken();
-    return idToken ? idToken.split('.')[1] : null;
-  }
-
   constructor(private oauthService: OAuthService, private router: Router, private httpClient: HttpClient) {
     // Useful for debugging:
     this.oauthService.events.subscribe((event) => {
@@ -48,69 +42,26 @@ export class GoogleApiService {
     });
   }
 
-  getAccessToken(): Promise<string> {
-    return this.httpClient
-      .get('https://oauth2.googleapis.com/token', {
-        headers: this.authHeader(),
-      })
-      .toPromise() as Promise<string>;
-  }
-
-  private getRefreshToken(): string {
-    console.log(this.oauthService.getRefreshToken());
-    return this.oauthService.getRefreshToken();
-  }
-
   isLoggedIn(): boolean {
     return this.oauthService.hasValidAccessToken();
   }
 
   signOut() {
-    this.oauthService.revokeTokenAndLogout();
+    this.oauthService.revokeTokenAndLogout().then(() => this.router.navigate(['/home']));
   }
-
-  private authHeader(): HttpHeaders {
-    return new HttpHeaders({
-      Authorization: `Bearer ${this.oauthService.getAccessToken()}`,
-    });
-  }
-
   connectWithGoogle() {
     this.oauthService.configure(authgoogle);
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
       if (this.oauthService.hasValidAccessToken()) {
-        this.getUserInfo().subscribe((userInfo) => {
-          this.userProfileSubject.next(userInfo);
+        this.oauthService.loadUserProfile().then((userProfile) => {
+          this.userProfileSubject.next(userProfile as UserInfo);
           this.router.navigate(['/dashboard']);
         });
       } else {
-        this.oauthService.initLoginFlow();
+        this.oauthService.initImplicitFlow();
       }
-    });
-  }
-
-  private getUserInfo() {
-    return this.httpClient.get('https://openidconnect.googleapis.com/v1/userinfo', {
-      headers: this.authHeader(),
-    }) as Observable<UserInfo>;
-  }
-
-  getGoogleCalendarEvents() {
-    return this.httpClient.get('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
-      headers: this.authHeader(),
-    });
-  }
-
-  getGoogleCalendarList() {
-    return this.httpClient.get('https://www.googleapis.com/calendar/v3/users/me/calendarList', {
-      headers: this.authHeader(),
-    });
-  }
-
-  getGoogleCalendarEventById(id: string) {
-    return this.httpClient.get(`https://www.googleapis.com/calendar/v3/calendars/primary/events/${id}`, {
-      headers: this.authHeader(),
     });
   }
 }
