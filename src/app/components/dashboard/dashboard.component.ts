@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GridStack } from 'gridstack';
-// import * as $ from 'jquery';
 
 @Component({
   selector: 'app-dashboard',
