@@ -1,4 +1,7 @@
 @use '/src/imports' as *;
+
+// TODOLIST
+
 .todolist {
   border: 3px solid $quaternary-color;
   width: 280px;
@@ -7,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 8px;
-  height: 360px;
+  height: 400px;
 
 
   .icons {
@@ -99,6 +102,8 @@
 .tasks::-webkit-scrollbar{
   display: none;
 }
+
+// MODALS
 
 .form {
   display: flex;

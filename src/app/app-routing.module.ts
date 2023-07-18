@@ -9,6 +9,7 @@ import { Page404Component } from './pages/page404/page404.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
+import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
     component: CollectionsComponent,
   },
   {
-    path: 'todo',
+    path: 'todolists',
     component: TodolistsComponent,
   },
   {
@@ -45,12 +46,20 @@ const routes: Routes = [
     component: AboutComponent,
   },
   {
+    path: 'contact',
+    component: AboutComponent,
+  },
+  {
     path: '404',
     component: Page404Component,
   },
   {
     path: '500',
     component: Page500Component,
+  },
+  {
+    path: 'fav-todos',
+    component: TodolistsFavComponent,
   },
   {
     path: '**',
@@ -60,7 +69,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
