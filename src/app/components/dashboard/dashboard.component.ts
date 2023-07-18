@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleApiService, UserInfo } from '../../services/google-api.service';
-import {AuthConfig, OAuthService} from 'angular-oauth2-oidc';
+import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -35,4 +35,3 @@ export class DashboardComponent implements OnInit {
     return this.googleApiService.isLoggedIn();
   }
 }
-

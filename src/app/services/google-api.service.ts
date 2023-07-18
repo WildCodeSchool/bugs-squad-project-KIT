@@ -8,7 +8,9 @@ const authCodeFlowConfig: AuthConfig = {
   strictDiscoveryDocumentValidation: false,
   redirectUri: 'http://localhost:4200/dashboard',
   clientId: '734363817336-u22h0urol9chonde49e1lq3o3f3i12sf.apps.googleusercontent.com',
-  scope: 'openid profile email ',
+  scope:
+    'openid profile email https://www.googleapis.com/auth/userinfo.profile' +
+    ' https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events',
 };
 
 export interface UserInfo {
@@ -41,13 +43,9 @@ export class GoogleApiService {
       oAuthService.tryLoginImplicitFlow().then(() => {
         // when not logged in, redirecvt to google for login
         // else load user profile
-        if (!oAuthService.hasValidAccessToken()) {
-          oAuthService.initLoginFlow();
-        } else {
-          oAuthService.loadUserProfile().then((userProfile) => {
-            this.userProfileSubject.next(userProfile as UserInfo);
-          });
-        }
+        oAuthService.loadUserProfile().then((userProfile) => {
+          this.userProfileSubject.next(userProfile as UserInfo);
+        });
       });
     });
   }
