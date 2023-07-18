@@ -1,4 +1,7 @@
 @use '/src/imports' as *;
+
+// TODOLIST
+
 .todolist {
   border: 3px solid $quaternary-color;
   width: 280px;
@@ -93,6 +96,8 @@
 .tasks::-webkit-scrollbar {
   display: none;
 }
+
+// MODALS
 
 .form {
   display: flex;
