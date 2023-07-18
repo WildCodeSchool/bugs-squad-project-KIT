@@ -1,0 +1,24 @@
+@use '/src/imports' as *;
+
+.new-list {
+  margin: 2rem;
+  font-size: 1.1rem;
+  .fa-sharp {
+    color: $secondary-color;
+    cursor: pointer;
+    font-size: large;
+  }
+}
+
+  h1 {
+    text-align: center;
+    margin: 2rem;
+    color: $quaternary-color;
+    font-size: 2rem;
+  }
+
+.lists {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

@@ -1,0 +1,15 @@
+<div class="form" mat-dialog-content>
+  <h3>Modifier la liste:</h3>
+  <label>
+    Titre:
+    <input type="text" [formControl]="title" />
+  </label>
+  <label>
+    Description:
+    <input type="text" [formControl]="description" />
+  </label>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Annuler</button>
+    <button mat-button mat-dialog-close (click)="updateTodo()">Confirmer</button>
+  </div>
+</div>

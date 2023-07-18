@@ -45,6 +45,10 @@ const routes: Routes = [
     component: AboutComponent,
   },
   {
+    path: 'contact',
+    component: AboutComponent,
+  },
+  {
     path: '404',
     component: Page404Component,
   },
@@ -60,7 +64,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

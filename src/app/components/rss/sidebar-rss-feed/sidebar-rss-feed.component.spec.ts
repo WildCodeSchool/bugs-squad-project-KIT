@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FavoriteFeedsComponent } from './favorite-feeds.component';
+import { SidebarRssFeedComponent } from './sidebar-rss-feed.component';
 
-describe('FavoriteFeedsComponent', () => {
-  let component: FavoriteFeedsComponent;
-  let fixture: ComponentFixture<FavoriteFeedsComponent>;
+describe('SidebarRssFeedComponent', () => {
+  let component: SidebarRssFeedComponent;
+  let fixture: ComponentFixture<SidebarRssFeedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FavoriteFeedsComponent ]
+      declarations: [ SidebarRssFeedComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FavoriteFeedsComponent);
+    fixture = TestBed.createComponent(SidebarRssFeedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ToastrModule } from 'ngx-toastr';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +25,7 @@ import { HomeformComponent } from './components/homepage/homeform/homeform.compo
 
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
-import { RssFeedsComponent } from './pages/rss/rss-feeds/rss-feeds.component';
+import { RssFeedAllComponent } from './components/rss/rss-feed-all/rss-feed-all.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgOptimizedImage } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -44,6 +45,7 @@ import { LinksComponent } from './components/links/links.component';
 import { CollectionsFormComponent } from './components/collection-form/collection-form.component';
 import { CollectionFormUpdateComponent } from './components/collection-form-update/collection-form-update.component';
 import { LinkFormUpdateComponent } from './components/link-form-update/link-form-update.component';
+import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,7 @@ import { LinkFormUpdateComponent } from './components/link-form-update/link-form
     DashCollectionsComponent,
     RssComponent,
     RssModalComponent,
-    RssFeedsComponent,
+    RssFeedAllComponent,
     AboutComponent,
     MentionLegalesComponent,
     TodolistComponent,
@@ -70,6 +72,7 @@ import { LinkFormUpdateComponent } from './components/link-form-update/link-form
     LinksComponent,
     CollectionFormUpdateComponent,
     LinkFormUpdateComponent,
+    SidebarRssFeedComponent,
   ],
 
   imports: [
@@ -95,6 +98,8 @@ import { LinkFormUpdateComponent } from './components/link-form-update/link-form
     MatMenuModule,
     MatCheckboxModule,
     CollectionsFormComponent,
+    MatMenuModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
