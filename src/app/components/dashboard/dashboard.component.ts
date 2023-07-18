@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  viderGridStack() {
+  cleanGridStack() {
     if (this.grid) {
       this.grid.removeAll();
       this.initializeGrid();
