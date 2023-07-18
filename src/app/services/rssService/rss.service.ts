@@ -66,9 +66,10 @@ export class RssFeedService {
     );
   }
 
-  deleteRssFeed(id: number | undefined) {
-    return this.http.delete(APP_ROUTES_API.RSS + `/${id}`) as Observable<RssFeed>;
+  deleteRssFeed(id: number | undefined): Observable<any> {
+    return this.http.delete(APP_ROUTES_API.RSS + `/${id}`);
   }
+
   addFeedTitleFaviconToItems(rssData: RssResponse): void {
     if (Array.isArray(rssData?.items)) {
       const feedTitle = rssData.feed.title;
@@ -82,19 +83,15 @@ export class RssFeedService {
     }
   }
 
-  // sortRssDataItemsByDate(rssDataItems: RssDataItems): void {
-  //   rssDataItems.items?.sort((a, b) => {
-  //     const dateA: Date = new Date(a.pubDate);
-  //     const dateB: Date = new Date(b.pubDate);
-  //     if (dateA > dateB) {
-  //       return -1;
-  //     } else if (dateA < dateB) {
-  //       return 1;
-  //     } else {
-  //       return 0;
-  //     }
-  //   });
-  // }
+  sortRssDataItemsByDate(rssDataItems: RssDataItems[]): void {
+    rssDataItems.forEach((rssDataItem) => {
+      rssDataItem.items.sort((a, b) => {
+        const dateA = new Date(a.pubDate);
+        const dateB = new Date(b.pubDate);
+        return dateB.getTime() - dateA.getTime();
+      });
+    });
+  }
 
   formatDate(date: string): string {
     return new Date(date).toLocaleDateString('fr-FR', {

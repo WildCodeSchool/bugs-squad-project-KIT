@@ -1,16 +1,20 @@
-export interface RssDataItems {
-  items: {
-    title: string;
-    pubDate: string;
-    link: string;
-    description?: string;
-    author?: string;
-    feedTitle?: string;
-    feedFavicon?: string;
-  }[];
+export interface RssItems {
+  title: string;
+  pubDate: string;
+  link: string;
+  feedTitle?: string;
+  feedFavicon?: string;
+  description?: string;
+  author?: string;
 }
+
+export interface RssDataItems {
+  items: RssItems[];
+}
+
 export interface RssDataFeeds {
   status: string;
+  id: number;
   feed: {
     url: string;
     title: string;
@@ -20,6 +24,7 @@ export interface RssDataFeeds {
     image: string;
   };
 }
+
 export interface RssResponse {
   status: string;
   feed: {
@@ -30,10 +35,5 @@ export interface RssResponse {
     description: string;
     image: string;
   };
-  items: {
-    title: string;
-    pubDate: string;
-    link: string;
-  }[];
+  items: RssItems[];
 }
-

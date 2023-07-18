@@ -13,13 +13,11 @@ export class RssFeedAllComponent implements OnInit {
   constructor(public rssService: RssFeedService) {}
 
   ngOnInit(): void {
-    console.log(this.rssDataItems);
     this.subscribeToRssFeedsUpdated();
   }
 
   subscribeToRssFeedsUpdated(): void {
     this.rssService.onRssFeedsUpdated().subscribe(() => {
-      // this.getRssData();
     });
   }
 

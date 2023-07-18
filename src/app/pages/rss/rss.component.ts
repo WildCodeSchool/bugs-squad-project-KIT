@@ -4,7 +4,7 @@ import { RssModalComponent } from '../../components/modals/rss-modal/rss-modal.c
 import { RssFeedService } from '../../services/rssService/rss.service';
 import { ToastrService } from 'ngx-toastr';
 import { RssFeed } from '../../models/RssFeed';
-import { RssDataFeeds, RssResponse } from '../../interface/rss.interface';
+import { RssDataFeeds, RssDataItems, RssItems, RssResponse } from '../../interface/rss.interface';
 
 @Component({
   selector: 'app-rss',
@@ -31,25 +31,40 @@ export class RssComponent {
   }
 
   loadRssDataItems(): void {
-    const urls: string[] = Object.values(this.rssService.rssFeeds).map((rssFeed: RssFeed) => rssFeed.url);
-    urls.forEach((url: string) => {
+    this.rssService.rssDataFeeds = [];
+    this.rssService.rssDataItems = [];
+
+    Object.entries(this.rssService.rssFeeds).forEach(([id, rssFeed]: [string, RssFeed]) => {
+      const url = rssFeed.url;
       this.rssService.getRssData(url).subscribe({
         next: (response: RssResponse): void => {
           if (response) {
             this.rssService.addFeedTitleFaviconToItems(response);
-            const rssFeeds = {
+            const rssFeeds: RssDataFeeds = {
+              id: Number(id),
               status: response.status,
               feed: response.feed,
             };
-            const rssItems = {
-              items: response.items,
+            const rssItems: RssItems[] = response.items.map((item) => ({
+              title: item.title,
+              pubDate: item.pubDate,
+              link: item.link,
+              feedTitle: item.feedTitle,
+              feedFavicon: item.feedFavicon,
+              description: item.description,
+              author: item.author,
+            }));
+            const rssDataItems: RssDataItems = {
+              items: rssItems,
             };
             this.rssService.rssDataFeeds.push(rssFeeds);
-            this.rssService.rssDataItems.push(rssItems);
+            this.rssService.rssDataItems.push(rssDataItems);
           }
         },
       });
     });
+    console.log(this.rssService.rssDataFeeds);
+    this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
   }
 
   openModal(): void {
@@ -63,9 +78,9 @@ export class RssComponent {
           next: (response: RssResponse): void => {
             if (response) {
               this.rssService.addRssLink(result).subscribe({
-                next: (postResponse: any): void => {
+                next: (postResponse: RssFeed): void => {
                   this.toastr.success('Le flux ' + response.feed.title + ' est ajouté!', 'Succès!!');
-                  this.rssService.rssFeedsUpdated();
+                  this.updateRssData();
                 },
                 error: (postError: any): void => {
                   this.toastr.error("Une erreur s'est produite lors de l'enregistrement du flux Rss", 'Erreur!!');
@@ -81,5 +96,9 @@ export class RssComponent {
         });
       }
     });
+  }
+
+  private updateRssData(): void {
+    this.loadRssFeeds();
   }
 }
