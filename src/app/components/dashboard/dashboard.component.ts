@@ -15,18 +15,13 @@ export class DashboardComponent implements OnInit {
     private readonly googleApiService: GoogleApiService,
     private oauthService: OAuthService,
     private httpClient: HttpClient
-  ) {}
+  ) {
+    this.googleApiService = googleApiService;
+    this.oauthService = oauthService;
+    this.httpClient = httpClient;
+  }
 
   ngOnInit(): void {
-    this.httpClient.get('https://www.googleapis.com/oauth2/v3/certs').subscribe((data) => {
-      console.log(data);
-    });
-    this.httpClient.get('https://oauth2.googleapis.com/token').subscribe((token) => {
-      console.log(token);
-    });
-    this.httpClient.get('https://openidconnect.googleapis.com/v1/userinfo').subscribe((info) => {
-      console.log(info);
-    });
     this.googleApiService.userProfileSubject.subscribe((userInfo) => {
       this.userInfo = userInfo;
     });
