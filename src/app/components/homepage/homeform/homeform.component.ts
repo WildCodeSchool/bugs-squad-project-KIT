@@ -33,7 +33,6 @@ export class HomeformComponent {
     };
   }
 
-
   constructor(private readonly googleApiService: GoogleApiService, private readonly oauthService: OAuthService) {
     this.googleApiService = googleApiService;
   }
