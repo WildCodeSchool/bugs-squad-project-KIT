@@ -71,13 +71,13 @@ export class CollectionComponent {
     });
   }
 
-  openDialogUpdateLink(id: number, enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openDialogUpdateLink(link: Link, enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(LinkFormUpdateComponent, {
       width: '280px',
       enterAnimationDuration,
       exitAnimationDuration,
       data: {
-        id: id,
+        link: link,
       },
     });
   }

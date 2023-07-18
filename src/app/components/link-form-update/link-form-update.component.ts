@@ -16,16 +16,16 @@ export class LinkFormUpdateComponent {
     public dialogRef: MatDialogRef<LinkFormUpdateComponent>,
     private linksService: LinksService,
     private collectionService: CollectionsService,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number }
+    @Inject(MAT_DIALOG_DATA) public data: { link: Link }
   ) {}
 
   link!: Link;
-  url = new FormControl('');
-  title = new FormControl('');
+  url = new FormControl(this.data.link.url);
+  title = new FormControl(this.data.link.title);
   @Input() collection!: Collection;
 
   updateLink() {
-    const id = this.data.id;
+    const id = this.data.link.id;
     const url: string = this.url.value as string;
     const title = this.title.value as string;
 
