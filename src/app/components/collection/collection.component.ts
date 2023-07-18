@@ -6,9 +6,9 @@ import { LinksService } from '../../services/links.service';
 import { FormControl } from '@angular/forms';
 import { CollectionsService } from '../../services/collections.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CollectionsFormComponent } from '../collection-form/collection-form.component';
 import { CollectionFormUpdateComponent } from '../collection-form-update/collection-form-update.component';
 import { LinksComponent } from '../links/links.component';
+import { LinkFormUpdateComponent } from '../link-form-update/link-form-update.component';
 
 @Component({
   selector: 'app-collection',
@@ -42,37 +42,10 @@ export class CollectionComponent {
     return link.title ? link.title : link.url;
   }
 
-  updateLink() {
-    const id = this.id.value;
-    const url: string = this.url.value as string;
-    const title = this.title.value as string;
-    const collectionId = this.collectionId.value;
-
-    const body = {
-      id: id,
-      url: url,
-      title: title,
-      collectionId: collectionId,
-    };
-
-    this.linksService.createLink(collectionId, body).subscribe((data) => {
-      this.link = data;
-
-      this.linksService.updateLinkData(this.link);
-    });
-  }
-
   deleteCollection() {
     this.collectionService.deleteCollection(this.collection.id).subscribe((data) => {
+      console.log(this.collection);
       return this.collectionService.updateCollectionData(this.collection);
-    });
-  }
-
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(CollectionsFormComponent, {
-      width: '280px',
-      enterAnimationDuration,
-      exitAnimationDuration,
     });
   }
 
@@ -98,9 +71,26 @@ export class CollectionComponent {
     });
   }
 
+  openDialogUpdateLink(id: number, enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(LinkFormUpdateComponent, {
+      width: '280px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        id: id,
+      },
+    });
+  }
+
   patchFavorite() {
     this.collectionService.patchFavorite(this.collection.id, !this.collection.favorite).subscribe(() => {
       return (this.collection.favorite = !this.collection.favorite);
+    });
+  }
+
+  deleteLink(id: number) {
+    this.linksService.deleteLink(id).subscribe(() => {
+      return this.collectionService.updateCollectionData(this.collection);
     });
   }
 }

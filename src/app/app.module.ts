@@ -43,6 +43,7 @@ import { TodolistsComponent } from './pages/todolists/todolists.component';
 import { LinksComponent } from './components/links/links.component';
 import { CollectionsFormComponent } from './components/collection-form/collection-form.component';
 import { CollectionFormUpdateComponent } from './components/collection-form-update/collection-form-update.component';
+import { LinkFormUpdateComponent } from './components/link-form-update/link-form-update.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { CollectionFormUpdateComponent } from './components/collection-form-upda
     TodolistsComponent,
     LinksComponent,
     CollectionFormUpdateComponent,
+    LinkFormUpdateComponent,
   ],
 
   imports: [
