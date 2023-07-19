@@ -1,89 +1,124 @@
 <!-- eslint-disable prettier/prettier -->
 
 <div class="homeform">
-    <div class="container">
-        <div class="row">
-            <div class="underow">
-                <div class="choice">
-                    <h3 class="choice-text">
-                        <span>S'identifier</span>
-                        <span>S'enregistrer</span>
-                    </h3>
-                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
-                    <label for="reg-log"></label>
-                    <div class="card-3d-wrap">
-                        <div class="card-3d-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="underow">
+        <div class="choice">
+          <h3 class="choice-text">
+            <span>S'identifier</span>
+            <span>S'enregistrer</span>
+          </h3>
+          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+          <label for="reg-log"></label>
+          <div class="card-3d-wrap">
+            <div class="card-3d-wrapper">
+              // card Log in
 
-                            // card Log in
-
-                            <form [formGroup]="loginForm" (submit)="login()" autocomplete="new-password"
-                                class="card-front">
-                                <div class="center-wrap">
-                                    <div class="form-section">
-                                        <h4 class="form-title">S'identifier</h4>
-                                        <div class="form-group">
-                                            <input formControlName="email" type="email" name="logemail"
-                                                class="form-style" placeholder="Email" id="email"
-                                                autocomplete="new-password" />
-                                            <i class=" input-icon fa-solid fa-at"></i>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="logpass" class="form-style"
-                                                formControlName="password" placeholder="Mot de passe" id="password"
-                                                autocomplete="new-password" />
-                                            <i class="input-icon fa-solid fa-lock"></i>
-                                        </div>
-                                        <!-- <button type="submit" class="btn">soumettre</button> -->
-                                        <a href="dashboard" class="btn">soumettre</a>
-                                        <p class="password"><a href="#0" class="link-pw">Mot de passe oublié ?</a></p>
-                                    </div>
-                                </div>
-                            </form>
-
-                            // card register
-
-                            <form [formGroup]="registerForm" (submit)="register()" autocomplete="off" class="card-back">
-                                <div class="center-wrap">
-                                    <div class="form-section">
-                                        <h4 class="form-title">S'enregistrer</h4>
-                                        <div class="form-group">
-                                            <input type="text" formControlName="firstname" name="firstname"
-                                                class="form-style" placeholder="Prénom" id="firstname"
-                                                autocomplete="off" />
-                                            <i class="input-icon fa-regular fa-user"></i>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" formControlName="lastname" name="lastname"
-                                                class="form-style" placeholder="Nom" id="lastname" autocomplete="off" />
-                                            <i class="input-icon fa-regular fa-user"></i>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" formControlName="email" name="email" class="form-style"
-                                                placeholder="Email" id="email" autocomplete="off" />
-                                            <i class=" input-icon fa-solid fa-at"></i>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" formControlName="password" name="password"
-                                                class="form-style" placeholder="Mot de passe" id="password"
-                                                autocomplete="off" />
-                                            <i class="input-icon fa-solid fa-lock"></i>
-                                        </div>
-                                        <div *ngIf="registerForm.get('email')?.errors?.['email']" class="error-message">
-                                            L'adresse e-mail est invalide.
-                                        </div>
-                                        <div *ngIf="registerForm.get('password')?.errors?.['passwordStrength']"
-                                            class="error-message">
-                                            Le mot de passe doit comporter au moins 8 caractères, une lettre majuscule,
-                                            une lettre minuscule et un chiffre.
-                                        </div>
-                                        <button type="submit" class="btn mt-4">submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+              <form [formGroup]="loginForm" (submit)="login()" autocomplete="new-password" class="card-front">
+                <div class="center-wrap">
+                  <div class="form-section">
+                    <h4 class="form-title">S'identifier</h4>
+                    <div class="form-group">
+                      <input
+                        formControlName="email"
+                        type="email"
+                        name="logemail"
+                        class="form-style"
+                        placeholder="Email"
+                        id="email"
+                        autocomplete="new-password"
+                      />
+                      <i class="input-icon fa-solid fa-at"></i>
                     </div>
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        name="logpass"
+                        class="form-style"
+                        formControlName="password"
+                        placeholder="Mot de passe"
+                        id="password"
+                        autocomplete="new-password"
+                      />
+                      <i class="input-icon fa-solid fa-lock"></i>
+                    </div>
+                    <!-- <button type="submit" class="btn">soumettre</button> -->
+                    <a href="dashboard" class="btn">soumettre</a>
+                    <p class="password"><a href="#0" class="link-pw">Mot de passe oublié ?</a></p>
+                  </div>
                 </div>
+              </form>
+
+              // card register
+
+              <form [formGroup]="registerForm" (submit)="register()" autocomplete="off" class="card-back">
+                <div class="center-wrap">
+                  <div class="form-section">
+                    <h4 class="form-title">S'enregistrer</h4>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        formControlName="firstname"
+                        name="firstname"
+                        class="form-style"
+                        placeholder="Prénom"
+                        id="firstname"
+                        autocomplete="off"
+                      />
+                      <i class="input-icon fa-regular fa-user"></i>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        formControlName="lastname"
+                        name="lastname"
+                        class="form-style"
+                        placeholder="Nom"
+                        id="lastname"
+                        autocomplete="off"
+                      />
+                      <i class="input-icon fa-regular fa-user"></i>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        formControlName="email"
+                        name="email"
+                        class="form-style"
+                        placeholder="Email"
+                        id="email"
+                        autocomplete="off"
+                      />
+                      <i class="input-icon fa-solid fa-at"></i>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        formControlName="password"
+                        name="password"
+                        class="form-style"
+                        placeholder="Mot de passe"
+                        id="password"
+                        autocomplete="off"
+                      />
+                      <i class="input-icon fa-solid fa-lock"></i>
+                    </div>
+                    <div *ngIf="registerForm.get('email')?.errors?.['email']" class="error-message">
+                      L'adresse e-mail est invalide.
+                    </div>
+                    <div *ngIf="registerForm.get('password')?.errors?.['passwordStrength']" class="error-message">
+                      Le mot de passe doit comporter au moins 8 caractères, une lettre majuscule, une lettre minuscule
+                      et un chiffre.
+                    </div>
+                    <button type="submit" class="btn mt-4">submit</button>
+                  </div>
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
