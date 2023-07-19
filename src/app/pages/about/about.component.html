@@ -78,7 +78,7 @@
       </div>
     </div>
   </div>
-  <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+  <form [formGroup]="contactForm" (ngSubmit)="submitForm()" id="contact">
     <h1>CONTACTEZ-NOUS</h1>
     <label>Email:</label>
     <input type="email" formControlName="email" required />

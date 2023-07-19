@@ -1,0 +1,11 @@
+<div class="form" mat-dialog-content>
+  <h3>Ajouter une tâche</h3>
+  <label>
+    Description:
+    <input type="text" [formControl]="description" />
+  </label>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Annuler</button>
+    <button mat-button mat-dialog-close (click)="addTask()">Confirmer</button>
+  </div>
+</div>

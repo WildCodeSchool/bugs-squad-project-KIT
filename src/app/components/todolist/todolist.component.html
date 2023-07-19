@@ -1,7 +1,7 @@
 <div class="todolist">
   <div class="meta">
     <div class="icons">
-      <i class="fa-solid fa-pencil" title="Modifier"></i>
+      <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdateTodo('0ms', '0ms')"></i>
       <i class="fa-solid fa-trash delete" title="Supprimer" (click)="deleteTodolistFn(todolist)"></i>
       <i
         *ngIf="!todolist.favorite"
@@ -19,23 +19,25 @@
     <h2 class="title">{{ todolist.title }}</h2>
     <p class="description">{{ todolist.description }}</p>
     <div class="new-task">
-      <i class="fa-sharp fa-solid fa-circle-plus"></i>
-      Nouvelle tâche
+      <button mat-raised-button (click)="openDialogAdd('0ms', '0ms')" class="new-task">
+        <i class="fa-sharp fa-solid fa-circle-plus"></i>
+        Nouvelle tâche
+      </button>
     </div>
   </div>
   <div class="tasks">
     <ul>
       <li *ngFor="let task of todolist.tasks">
         <div class="checkbox">
-          <mat-checkbox></mat-checkbox>
+          <mat-checkbox (click)="updateIsDone(task)" [checked]="task.isDone"></mat-checkbox>
         </div>
-        <div class="task">{{ task.description }}</div>
+        <div class="task" [ngClass]="task.isDone ? 'done' : 'none'">{{ task.description }}</div>
         <div class="button">
           <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="openUpdateTask(task)" class="update-task">
               <i class="fa-solid fa-pencil" title="Modifier"></i>
               Modifier
             </button>

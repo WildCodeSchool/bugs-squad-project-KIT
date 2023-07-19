@@ -1,4 +1,7 @@
 @use '/src/imports' as *;
+
+// TODOLIST
+
 .todolist {
   border: 3px solid $quaternary-color;
   width: 280px;
@@ -7,8 +10,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 8px;
-  height: 360px;
-
+  height: 400px;
 
   .icons {
     display: flex;
@@ -16,19 +18,18 @@
     width: 100%;
     margin-bottom: 1rem;
     padding-top: 0.5rem;
-    .fa-solid, .fa-regular {
+    .fa-solid,
+    .fa-regular {
       cursor: pointer;
       color: $secondary-color;
       margin: 0 0.5rem;
     }
   }
 
-
   .meta {
     text-align: center;
     width: 100%;
     margin: 0.5rem 0;
-
 
     .title {
       font-size: 1.5rem;
@@ -44,7 +45,6 @@
     .newtask {
       display: flex;
       justify-content: center;
-
     }
     .fa-sharp {
       text-align: center;
@@ -52,8 +52,7 @@
       margin: 0 1rem;
       cursor: pointer;
     }
-    }
-
+  }
 
   .tasks {
     width: 100%;
@@ -91,11 +90,34 @@
         margin: 0;
       }
     }
-    }
-
-
+  }
 }
 
-.tasks::-webkit-scrollbar{
+.tasks::-webkit-scrollbar {
   display: none;
+}
+
+// MODALS
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: $secondary-color;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 2rem;
+
+    input {
+      margin-top: 0.5rem;
+    }
+  }
 }
