@@ -27,7 +27,7 @@ import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
 import { RssFeedAllComponent } from './components/rss/rss-feed-all/rss-feed-all.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { NgOptimizedImage } from '@angular/common';
+import { NgFor, NgOptimizedImage } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -41,8 +41,14 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
 import { TodolistComponent } from './components/todolist/todolist.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
+import { LinksComponent } from './components/links/links.component';
+import { CollectionsFormComponent } from './components/collection-form/collection-form.component';
+import { CollectionFormUpdateComponent } from './components/collection-form-update/collection-form-update.component';
+import { LinkFormUpdateComponent } from './components/link-form-update/link-form-update.component';
 import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
 import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-modal/confirm-delete-modal.component';
+import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
+
 
 @NgModule({
   declarations: [
@@ -66,6 +72,9 @@ import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-
     TodolistComponent,
     TodolistsFavComponent,
     TodolistsComponent,
+    LinksComponent,
+    CollectionFormUpdateComponent,
+    LinkFormUpdateComponent,
     SidebarRssFeedComponent,
     ConfirmDeleteModalComponent,
   ],
@@ -92,8 +101,12 @@ import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-
     MatDialogModule,
     MatMenuModule,
     MatCheckboxModule,
+    CollectionsFormComponent,
     MatMenuModule,
     ToastrModule.forRoot(),
+    CdkDrag,
+    CdkDropList,
+    NgFor,
   ],
   providers: [],
   bootstrap: [AppComponent],

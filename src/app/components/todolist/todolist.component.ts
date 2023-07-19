@@ -10,6 +10,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UpdateTaskComponent } from './modals/update-task.component';
 import { UpdateTodoComponent } from './modals/update-todo.component';
 import { AddNewTaskComponent } from './modals/new-task.component';
+import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
+import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
@@ -21,6 +23,10 @@ export class TodolistComponent {
   task!: Task;
 
   constructor(private todoService: TodoService, private taskService: TaskService, public dialog: MatDialog) {}
+
+  ngOnInit() {
+    this.todolist.tasks.sort((a, b) => a.position - b.position);
+  }
 
   deleteTodolistFromParent(todolist: ToDoList): void {
     this.deleteTodolistFn(todolist);
@@ -89,4 +95,13 @@ export class TodolistComponent {
     });
   }
 
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.todolist.tasks, event.previousIndex, event.currentIndex);
+    this.todolist.tasks.forEach((task, index) => {
+      task.position = index;
+    });
+    const tasks = this.todolist.tasks;
+    tasks.sort((a, b) => a.position - b.position);
+    this.todoService.updateTasksPosition(tasks, this.todolist.id).subscribe(() => console.log(this.todolist.tasks));
+  }
 }
