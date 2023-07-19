@@ -84,9 +84,10 @@ Website project created wih Angular for the front and Spring for the back. The g
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| main-color | ![#64172A](https://via.placeholder.com/10/64172A?text=+) #64172A |
-| secondary-color | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
-
+| main-color | ![#F67280](https://via.placeholder.com/10/F67280?text=+) #F67280 |
+| secondary-color | ![#C06C84](https://via.placeholder.com/10/C06C84?text=+) #C06C84 |
+| tertiary-color | ![#6C5B7B](https://via.placeholder.com/10/6C5B7B?text=+) #6C5B7B |
+| quaternary-color | ![#355C7D](https://via.placeholder.com/10/355C7D?text=+) #355C7D |
 
 <br />
 
@@ -187,7 +188,7 @@ If when you add files to a .gitignore they still appear in the git status, try t
 
 ### Key features
 * Connexion page
-* Homepage with animation
+* Dashboard
 * Database with 2 tables
 * Display of data on 2 front pages : Knights and Quests
 * Modal for further informations of data elements
