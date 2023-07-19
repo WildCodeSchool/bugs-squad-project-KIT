@@ -6,6 +6,7 @@ import { RssFeed } from '../../models/RssFeed';
 import { catchError } from 'rxjs/operators';
 import { APP_ROUTES_API } from '../../../data/apiRoutes';
 import { RssDataFeeds, RssDataItems, RssResponse } from '../../interface/rss.interface';
+import { Task } from '../../models/Task';
 
 @Injectable({
   providedIn: 'root',
@@ -56,9 +57,8 @@ export class RssFeedService {
     }
     return this.http.get(rssApiUrl);
   }
-  addRssLink(url: string): Observable<RssFeed> {
-    const rssFeedData: { url: string } = { url: url };
-    return this.http.post<RssFeed>(APP_ROUTES_API.RSS, rssFeedData).pipe(
+  addRssLink(rssFeed: { url: string; title: string }): Observable<RssFeed> {
+    return this.http.post<RssFeed>(APP_ROUTES_API.RSS, rssFeed).pipe(
       catchError((error: any) => {
         console.error("Une erreur s'est produite lors de la requête POST", error);
         throw error;
@@ -66,8 +66,8 @@ export class RssFeedService {
     );
   }
 
-  deleteRssFeed(id: number | undefined): Observable<any> {
-    return this.http.delete(APP_ROUTES_API.RSS + `/${id}`);
+  deleteRssFeed(feedId: number | undefined) {
+    return this.http.delete(`${APP_ROUTES_API.RSS}/${feedId}`) as Observable<Task>;
   }
 
   addFeedTitleFaviconToItems(rssData: RssResponse): void {

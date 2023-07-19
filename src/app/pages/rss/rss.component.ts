@@ -77,8 +77,14 @@ export class RssComponent {
         this.rssService.getRssData(result).subscribe({
           next: (response: RssResponse): void => {
             if (response) {
-              this.rssService.addRssLink(result).subscribe({
+              const updatedResult = {
+                url: result,
+                title: response.feed.title,
+              };
+              console.log(updatedResult);
+              this.rssService.addRssLink(updatedResult).subscribe({
                 next: (postResponse: RssFeed): void => {
+                  console.log(postResponse);
                   this.toastr.success('Le flux ' + response.feed.title + ' est ajouté!', 'Succès!!');
                   this.updateRssData();
                 },
