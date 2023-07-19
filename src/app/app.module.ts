@@ -41,6 +41,10 @@ import { MentionLegalesComponent } from './pages/mention-legales/mention-legales
 import { TodolistComponent } from './components/todolist/todolist.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
+import { LinksComponent } from './components/links/links.component';
+import { CollectionsFormComponent } from './components/collection-form/collection-form.component';
+import { CollectionFormUpdateComponent } from './components/collection-form-update/collection-form-update.component';
+import { LinkFormUpdateComponent } from './components/link-form-update/link-form-update.component';
 import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 
@@ -66,6 +70,9 @@ import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk
     TodolistComponent,
     TodolistsFavComponent,
     TodolistsComponent,
+    LinksComponent,
+    CollectionFormUpdateComponent,
+    LinkFormUpdateComponent,
     SidebarRssFeedComponent,
   ],
 
@@ -91,11 +98,13 @@ import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk
     MatDialogModule,
     MatMenuModule,
     MatCheckboxModule,
+    CollectionsFormComponent,
     MatMenuModule,
     ToastrModule.forRoot(),
     CdkDrag,
     CdkDropList,
     NgFor,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

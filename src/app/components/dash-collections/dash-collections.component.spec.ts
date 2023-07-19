@@ -8,9 +8,8 @@ describe('DashCollectionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashCollectionsComponent ]
-    })
-    .compileComponents();
+      declarations: [DashCollectionsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DashCollectionsComponent);
     component = fixture.componentInstance;
