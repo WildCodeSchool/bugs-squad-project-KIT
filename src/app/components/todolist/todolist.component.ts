@@ -95,7 +95,6 @@ export class TodolistComponent {
     });
   }
 
-
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.todolist.tasks, event.previousIndex, event.currentIndex);
     this.todolist.tasks.forEach((task, index) => {

@@ -104,7 +104,6 @@ import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk
     CdkDrag,
     CdkDropList,
     NgFor,
-
   ],
   providers: [],
   bootstrap: [AppComponent],
