@@ -128,6 +128,9 @@
         font-size: 1em;
         cursor: pointer;
         transition: 0.3s;
+        &[class*="favorite"] {
+          color: $main-color;
+        }
         &:hover {
           color: $main-color;
         }
@@ -135,6 +138,9 @@
 
     }
   }
+}
+.favorite {
+  color: $main-color;
 }
 @media screen and (max-width: 950px) {
     .rssFeed-global__header-icon__point {

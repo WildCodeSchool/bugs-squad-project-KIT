@@ -19,6 +19,23 @@ export class SidebarRssFeedComponent {
   toggleSidebar() {
     this.isOpen = !this.isOpen;
   }
+  toggleFavorite(feed: RssFeed): void {
+    feed.favorite = !feed.favorite;
+    this.rssService.updateRssFeed(feed.id, feed).subscribe(
+      (response) => {
+        if (feed.favorite) {
+          this.toastr.success(`Le flux ${feed.title} a été mis en favori !`);
+        } else {
+          this.toastr.info(`Le flux ${feed.title} a été retiré des favoris !`);
+        }
+        console.log('Réponse de la requête PUT :', response);
+      },
+      (error) => {
+        console.error("Une erreur s'est produite lors de la requête PUT", error);
+      }
+    );
+  }
+
   openConfirmationModal(rssFeed: RssFeed): void {
     const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
       width: '400px',
