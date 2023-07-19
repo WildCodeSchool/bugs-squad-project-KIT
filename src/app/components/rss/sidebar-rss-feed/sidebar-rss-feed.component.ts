@@ -28,7 +28,6 @@ export class SidebarRssFeedComponent {
         } else {
           this.toastr.info(`Le flux ${feed.title} a été retiré des favoris !`);
         }
-        console.log('Réponse de la requête PUT :', response);
       },
       (error) => {
         console.error("Une erreur s'est produite lors de la requête PUT", error);

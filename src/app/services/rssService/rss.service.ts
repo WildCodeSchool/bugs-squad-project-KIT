@@ -61,7 +61,6 @@ export class RssFeedService {
   }
   updateRssFeed(feedId: number | undefined, updateData: RssFeed): Observable<RssFeed> {
     const url = `${APP_ROUTES_API.RSS}/${feedId}`;
-    console.log(updateData);
     return this.http.put<RssFeed>(url, updateData );
   }
 
