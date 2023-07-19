@@ -1,6 +1,6 @@
 <div align='center'>
     <h1 id="top"><b>🧱 K.I.T. 🧱 </b></h1>
-    <img src='src/assets/images/logo.png'  />
+    <img src='src/assets/logo/logohome.png'  />
     <p>WCS PROJECT [POEC project]</b></p>
 
 ![Size](https://img.shields.io/github/languages/code-size/WildCodeSchool/bugs-squad-project-KIT.svg)
