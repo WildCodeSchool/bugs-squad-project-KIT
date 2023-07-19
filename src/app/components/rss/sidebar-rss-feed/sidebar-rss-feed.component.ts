@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { RssFeed } from '../../../models/RssFeed';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDeleteModalComponent } from '../../modals/confirm-delete-modal/confirm-delete-modal.component';
+import { RssItem } from '../../../interface/rss.interface';
 
 @Component({
   selector: 'app-sidebar-rss-feed',
@@ -39,11 +40,9 @@ export class SidebarRssFeedComponent {
       const deletedFeedTitle = this.rssService.rssFeeds[deletedFeedIndex].title;
       this.rssService.deleteRssFeed(rssFeed.id).subscribe(() => {
         this.rssService.rssFeeds.splice(deletedFeedIndex, 1);
-        this.rssService.rssDataItems = this.rssService.rssDataItems.map((dataItem) => {
-          return {
-            items: dataItem.items.filter((item) => item.feedTitle !== deletedFeedTitle),
-          };
-        });
+        this.rssService.rssDataItems = this.rssService.rssDataItems.filter(
+          (dataItem: RssItem) => dataItem.feedTitle !== deletedFeedTitle
+        );
         this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
         this.toastr.success('Le flux a été supprimé !');
       });

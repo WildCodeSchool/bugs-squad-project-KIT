@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RssFeedService } from '../../../services/rssService/rss.service';
-import { RssDataItems } from '../../../interface/rss.interface';
+import { RssItem } from '../../../interface/rss.interface';
 
 @Component({
   selector: 'app-rss-feed-all',
@@ -8,7 +8,7 @@ import { RssDataItems } from '../../../interface/rss.interface';
   styleUrls: ['./rss-feed-all.component.scss'],
 })
 export class RssFeedAllComponent implements OnInit {
-  @Input() rssDataItems!: RssDataItems[];
+  @Input() rssDataItems!: RssItem[];
 
   constructor(public rssService: RssFeedService) {}
 
@@ -17,8 +17,7 @@ export class RssFeedAllComponent implements OnInit {
   }
 
   subscribeToRssFeedsUpdated(): void {
-    this.rssService.onRssFeedsUpdated().subscribe(() => {
-    });
+    this.rssService.onRssFeedsUpdated().subscribe(() => {});
   }
 
   getClean(description: string): string {

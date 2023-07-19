@@ -5,8 +5,7 @@ import { environment } from '../../../environments/environment.development';
 import { RssFeed } from '../../models/RssFeed';
 import { catchError } from 'rxjs/operators';
 import { APP_ROUTES_API } from '../../../data/apiRoutes';
-import { RssDataItems, RssResponse } from '../../interface/rss.interface';
-import { Task } from '../../models/Task';
+import { RssItem, RssResponse } from '../../interface/rss.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +13,7 @@ import { Task } from '../../models/Task';
 export class RssFeedService {
   private rssFeedsUpdatedSubject: Subject<void> = new Subject<void>();
   private _rssFeeds: RssFeed[] = [];
-  private _rssDataItems: RssDataItems[] = [];
+  private _rssDataItems: RssItem[] = [];
 
   get rssFeeds(): RssFeed[] {
     return this._rssFeeds;
@@ -24,11 +23,11 @@ export class RssFeedService {
     this._rssFeeds = value;
   }
 
-  get rssDataItems(): RssDataItems[] {
+  get rssDataItems(): RssItem[] {
     return this._rssDataItems;
   }
 
-  set rssDataItems(value: RssDataItems[]) {
+  set rssDataItems(value: RssItem[]) {
     this._rssDataItems = value;
   }
 
@@ -74,13 +73,11 @@ export class RssFeedService {
     }
   }
 
-  sortRssDataItemsByDate(rssDataItems: RssDataItems[]): void {
-    rssDataItems.forEach((rssDataItem) => {
-      rssDataItem.items.sort((a, b) => {
-        const dateA = new Date(a.pubDate);
-        const dateB = new Date(b.pubDate);
-        return dateB.getTime() - dateA.getTime();
-      });
+  sortRssDataItemsByDate(rssDataItems: RssItem[]): void {
+    rssDataItems.sort((a, b) => {
+      const dateA = new Date(a.pubDate);
+      const dateB = new Date(b.pubDate);
+      return dateB.getTime() - dateA.getTime();
     });
   }
 

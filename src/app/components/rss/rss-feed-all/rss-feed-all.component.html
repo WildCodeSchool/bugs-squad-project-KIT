@@ -1,24 +1,22 @@
-<div *ngFor="let obj of rssDataItems">
-  <div *ngFor="let item of obj.items" class="rss-item">
-    <!-- Contenu de l'élément -->
-    <div class="rss-item__flux-title">
-      <ng-container *ngIf="item.feedFavicon">
-        <img [src]="item.feedFavicon" alt="Favicon" />
-      </ng-container>
-      <ng-container *ngIf="!item.feedFavicon">
-        <h3>{{ item.feedTitle }}</h3>
-      </ng-container>
-    </div>
-    <div class="rss-item__description">
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description ? getClean(item.description) : 'Aucune description disponible...' }}</p>
-      <div class="rss-item__footer">
-        <span>
-          Date de publication : {{ this.rssService.formatDate(item.pubDate) }} - Auteur :
-          {{ item.author ? item.author : 'Inconnu' }}
-        </span>
-        <a href="{{ item.link }}" target="_blank">Consulter l'article →</a>
-      </div>
+<div *ngFor="let item of rssDataItems" class="rss-item">
+  <!-- Contenu de l'élément -->
+  <div class="rss-item__flux-title">
+    <ng-container *ngIf="item.feedFavicon">
+      <img [src]="item.feedFavicon" alt="Favicon" />
+    </ng-container>
+    <ng-container *ngIf="!item.feedFavicon">
+      <h3>{{ item.feedTitle }}</h3>
+    </ng-container>
+  </div>
+  <div class="rss-item__description">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.description ? getClean(item.description) : 'Aucune description disponible...' }}</p>
+    <div class="rss-item__footer">
+      <span>
+        Date de publication : {{ rssService.formatDate(item.pubDate) }} - Auteur :
+        {{ item.author ? item.author : 'Inconnu' }}
+      </span>
+      <a href="{{ item.link }}" target="_blank">Consulter l'article →</a>
     </div>
   </div>
 </div>

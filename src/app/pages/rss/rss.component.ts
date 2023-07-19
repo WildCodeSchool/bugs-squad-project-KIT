@@ -4,7 +4,7 @@ import { RssModalComponent } from '../../components/modals/rss-modal/rss-modal.c
 import { RssFeedService } from '../../services/rssService/rss.service';
 import { ToastrService } from 'ngx-toastr';
 import { RssFeed } from '../../models/RssFeed';
-import { RssDataItems, RssItems, RssResponse } from '../../interface/rss.interface';
+import { RssResponse } from '../../interface/rss.interface';
 
 @Component({
   selector: 'app-rss',
@@ -37,19 +37,7 @@ export class RssComponent {
         next: (response: RssResponse): void => {
           if (response) {
             this.rssService.addFeedTitleFaviconToItems(response);
-            const rssItems: RssItems[] = response.items.map((item) => ({
-              title: item.title,
-              pubDate: item.pubDate,
-              link: item.link,
-              feedTitle: item.feedTitle,
-              feedFavicon: item.feedFavicon,
-              description: item.description,
-              author: item.author,
-            }));
-            const rssDataItems: RssDataItems = {
-              items: rssItems,
-            };
-            this.rssService.rssDataItems.push(rssDataItems);
+            this.rssService.rssDataItems.push(...response.items);
             this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
           }
         },

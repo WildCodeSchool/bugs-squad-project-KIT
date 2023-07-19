@@ -1,4 +1,4 @@
-export interface RssItems {
+export interface RssItem {
   title: string;
   pubDate: string;
   link: string;
@@ -8,9 +8,6 @@ export interface RssItems {
   author?: string;
 }
 
-export interface RssDataItems {
-  items: RssItems[];
-}
 
 export interface RssDataFeeds {
   status: string;
@@ -35,5 +32,5 @@ export interface RssResponse {
     description: string;
     image: string;
   };
-  items: RssItems[];
+  items: RssItem[];
 }
