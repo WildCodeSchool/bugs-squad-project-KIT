@@ -35,7 +35,12 @@ export class TodoService {
     return this.http.put(dataSource, body) as Observable<ToDoList>;
   }
 
+  updateTasksPosition(tasks: Task[], id: number) {
+    const dataSource = `http://localhost:8080/api/todo-lists/${id}/tasks`;
+    return this.http.patch(dataSource, tasks) as Observable<ToDoList>;
+  }
+
   getFavoriteLists() {
-    return this.http.get(this.dataSource + '?isfavorite=true' ) as Observable<ToDoList[]>;
+    return this.http.get(this.dataSource + '?isfavorite=true') as Observable<ToDoList[]>;
   }
 }
