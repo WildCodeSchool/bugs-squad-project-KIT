@@ -40,7 +40,7 @@ export class SidebarRssFeedComponent {
       width: '400px',
       data: {
         rssFeed,
-        message: 'Etes-vous sûr de vouloir supprimer ce flux RSS ?',
+        message: `Etes-vous sûr de vouloir supprimer le  flux RSS ${rssFeed.title} ?`,
       },
     });
 
