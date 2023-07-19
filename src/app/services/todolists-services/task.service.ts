@@ -28,5 +28,4 @@ export class TaskService {
     const dataSource = `http://localhost:8080/api/todo-lists/tasks/${task.id}`;
     return this.http.patch(dataSource, isDone) as Observable<Task>;
   }
-
 }
