@@ -1,4 +1,3 @@
-
 <div class="collection" [style.backgroundColor]="collection.color">
   <div class="collection-infos">
     <div class="icons">
@@ -22,8 +21,8 @@
           <i class="fa-sharp fa-solid fa-circle-plus" (click)="openDialogCreateLink('0ms', '0ms')"></i>
           Ajouter un lien
         </li>
-        <div cdkDropList class="box" (cdkDropListDropped)="drop($event)">
-          <li *ngFor="let link of collection.links" cdkDrag>
+        <div cdkDropList class="drag-list" (cdkDropListDropped)="drop($event)">
+          <li class="drag-box" *ngFor="let link of collection.links" cdkDrag>
             <div class="links">
               <div class="link">
                 <a [href]="[link.url]" target="_blank">{{ getLinkComment(link) }}</a>
