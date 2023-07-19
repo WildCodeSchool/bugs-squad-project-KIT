@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -40,6 +40,7 @@ import { TodolistsComponent } from './pages/todolists/todolists.component';
 import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { AuthInterceptor } from './pipes/auth.interceptor';
 
 export function storageFactory(): OAuthStorage {
   return localStorage;
@@ -97,7 +98,14 @@ export function storageFactory(): OAuthStorage {
     ToastrModule.forRoot(),
     OAuthModule.forRoot(),
   ],
-  providers: [{ provide: OAuthStorage, useFactory: storageFactory }],
+  providers: [
+    { provide: OAuthStorage, useFactory: storageFactory },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
   exports: [],
 })

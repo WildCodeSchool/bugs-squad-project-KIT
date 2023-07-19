@@ -21,14 +21,15 @@ export class DashboardComponent implements OnInit {
     this.httpClient = httpClient;
   }
 
+  isLoggedIn(): boolean {
+    return this.googleApiService.isLoggedIn();
+  }
+
   ngOnInit(): void {
     this.oauthService.loadDiscoveryDocument().then(() => {
       this.googleApiService.userProfileSubject.subscribe((userInfo) => {
         this.userInfo = userInfo;
       });
     });
-  }
-  isLoggedIn(): boolean {
-    return this.googleApiService.isLoggedIn();
   }
 }
