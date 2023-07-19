@@ -93,11 +93,15 @@ export class TodolistComponent {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.todolist.tasks, event.previousIndex, event.currentIndex);
+    console.log(this.todolist.tasks);
     this.todolist.tasks.forEach((task, index) => {
       task.position = index;
       console.log(task.position);
     });
     const tasks = this.todolist.tasks;
+    tasks.splice(event.currentIndex - 1, 0, tasks[event.previousIndex]);
+    tasks.splice(event.previousIndex, 1);
+    console.log(tasks);
     this.todoService.updateTasksPosition(tasks, this.todolist.id).subscribe(() => console.log(this.todolist.tasks));
   }
 }
