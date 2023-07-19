@@ -24,6 +24,7 @@
     "@fortawesome/angular-fontawesome": "^0.12.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@googleapis/calendar": "^9.0.0",
     "angular-oauth2-oidc": "^15.0.1",
     "angular-oauth2-oidc-jwks": "^15.0.1",
     "ngx-device-detector": "^5.0.1",

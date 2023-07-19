@@ -22,8 +22,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.googleApiService.userProfileSubject.subscribe((userInfo) => {
-      this.userInfo = userInfo;
+    this.oauthService.loadDiscoveryDocument().then(() => {
+      this.googleApiService.userProfileSubject.subscribe((userInfo) => {
+        this.userInfo = userInfo;
+      });
     });
   }
   isLoggedIn(): boolean {

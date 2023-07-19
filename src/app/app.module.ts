@@ -39,6 +39,7 @@ import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.
 import { TodolistsComponent } from './pages/todolists/todolists.component';
 import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 export function storageFactory(): OAuthStorage {
   return localStorage;
@@ -67,6 +68,7 @@ export function storageFactory(): OAuthStorage {
     TodolistsFavComponent,
     TodolistsComponent,
     SidebarRssFeedComponent,
+    CalendarComponent,
   ],
 
   imports: [
@@ -95,9 +97,7 @@ export function storageFactory(): OAuthStorage {
     ToastrModule.forRoot(),
     OAuthModule.forRoot(),
   ],
-  providers: [
-    { provide: OAuthStorage, useFactory: storageFactory }
-  ],
+  providers: [{ provide: OAuthStorage, useFactory: storageFactory }],
   bootstrap: [AppComponent],
   exports: [],
 })

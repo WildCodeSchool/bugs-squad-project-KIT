@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { Subject } from 'rxjs';
@@ -46,11 +46,5 @@ export class GoogleApiService {
 
   signOut() {
     this.oAuthService.logOut();
-  }
-
-  private authHeader(): HttpHeaders {
-    return new HttpHeaders({
-      Authorization: `Bearer ${this.oAuthService.getAccessToken()}`,
-    });
   }
 }
