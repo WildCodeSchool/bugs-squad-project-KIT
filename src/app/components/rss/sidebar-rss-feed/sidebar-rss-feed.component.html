@@ -4,15 +4,13 @@
     <i class="fa-sharp fa-solid" [class.fa-bars]="!isOpen" [class.fa-xmark]="isOpen" (click)="toggleSidebar()"></i>
   </div>
   <div *ngIf="isOpen" class="sidebar-feedGlobal__mobile-content">
-    <div *ngFor="let feed of rssDataFeeds">
-      <div class="sidebar-feedGlobal__mobile-content-title">
-        <div class="sidebar-feedGlobal__mobile-content-nameRss">
-          <i class="fa-sharp fa-solid fa-rss"></i>
-          <h3>{{ feed.feed.title }}</h3>
-        </div>
-        <div class="sidebar-feedGlobal__mobile-ellipsis">
-          <i class="fa-solid fa-ellipsis" title="Ellipsis"></i>
-        </div>
+    <div *ngFor="let feed of rssFeeds" class="sidebar-feedGlobal__mobile-content-title">
+      <div class="sidebar-feedGlobal__mobile-content-nameRss">
+        <i class="fa-sharp fa-solid fa-rss"></i>
+        <h3>{{ feed.title }}</h3>
+      </div>
+      <div class="sidebar-feedGlobal__mobile-ellipsis">
+        <i class="fa-solid fa-ellipsis" title="Ellipsis"></i>
       </div>
     </div>
   </div>
@@ -25,22 +23,20 @@
       <h2>MES FLUX RSS</h2>
     </div>
     <div class="rssFeed-global">
-      <div *ngFor="let feed of rssDataFeeds">
-        <div class="rssFeed-global__header">
-          <div class="rssFeed-global__header-title">
-            <div>
-              <i class="fa-sharp fa-solid fa-rss"></i>
-            </div>
-            <h3>{{ feed.feed.title }}</h3>
+      <div *ngFor="let feed of rssFeeds" class="rssFeed-global__header">
+        <div class="rssFeed-global__header-title">
+          <div>
+            <i class="fa-sharp fa-solid fa-rss"></i>
           </div>
-          <div class="rssFeed-global__header-icon__point">
-            <i class="fa-solid fa-ellipsis-vertical" title="Ellipsis"></i>
-          </div>
-          <div class="rssFeed-global__header-icon">
-            <i class="fa-solid fa-heart" title="Favori"></i>
-            <i class="fa-solid fa-pencil" title="Modifier"></i>
-            <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteRssFeed(feed.id)"></i>
-          </div>
+          <h3>{{ feed.title }}</h3>
+        </div>
+        <div class="rssFeed-global__header-icon__point">
+          <i class="fa-solid fa-ellipsis-vertical" title="Ellipsis"></i>
+        </div>
+        <div class="rssFeed-global__header-icon">
+          <i class="fa-solid fa-heart" title="Favori"></i>
+          <i class="fa-solid fa-pencil" title="Modifier"></i>
+          <i class="fa-solid fa-trash" title="Supprimer" (click)="openConfirmationModal(feed)"></i>
         </div>
       </div>
     </div>

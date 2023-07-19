@@ -42,6 +42,7 @@ import { TodolistComponent } from './components/todolist/todolist.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
 import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
+import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-modal/confirm-delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sideb
     TodolistsFavComponent,
     TodolistsComponent,
     SidebarRssFeedComponent,
+    ConfirmDeleteModalComponent,
   ],
 
   imports: [

@@ -4,7 +4,7 @@ import { RssModalComponent } from '../../components/modals/rss-modal/rss-modal.c
 import { RssFeedService } from '../../services/rssService/rss.service';
 import { ToastrService } from 'ngx-toastr';
 import { RssFeed } from '../../models/RssFeed';
-import { RssDataFeeds, RssDataItems, RssItems, RssResponse } from '../../interface/rss.interface';
+import { RssDataItems, RssItems, RssResponse } from '../../interface/rss.interface';
 
 @Component({
   selector: 'app-rss',
@@ -20,8 +20,9 @@ export class RssComponent {
 
   loadRssFeeds(): void {
     this.rssService.getAllRssFeeds().subscribe({
-      next: (rssFeeds: RssFeed): void => {
+      next: (rssFeeds: any): void => {
         this.rssService.rssFeeds = rssFeeds;
+        console.log(this.rssService.rssFeeds);
         this.loadRssDataItems();
       },
       error: (error: any): void => {
@@ -29,22 +30,16 @@ export class RssComponent {
       },
     });
   }
-
   loadRssDataItems(): void {
-    this.rssService.rssDataFeeds = [];
     this.rssService.rssDataItems = [];
-
-    Object.entries(this.rssService.rssFeeds).forEach(([id, rssFeed]: [string, RssFeed]) => {
+    console.log(this.rssService.rssFeeds);
+    Object.entries(this.rssService.rssFeeds).forEach(([_, rssFeed]: [string, RssFeed]) => {
       const url = rssFeed.url;
+      console.log(url);
       this.rssService.getRssData(url).subscribe({
         next: (response: RssResponse): void => {
           if (response) {
             this.rssService.addFeedTitleFaviconToItems(response);
-            const rssFeeds: RssDataFeeds = {
-              id: Number(id),
-              status: response.status,
-              feed: response.feed,
-            };
             const rssItems: RssItems[] = response.items.map((item) => ({
               title: item.title,
               pubDate: item.pubDate,
@@ -57,13 +52,11 @@ export class RssComponent {
             const rssDataItems: RssDataItems = {
               items: rssItems,
             };
-            this.rssService.rssDataFeeds.push(rssFeeds);
             this.rssService.rssDataItems.push(rssDataItems);
           }
         },
       });
     });
-    console.log(this.rssService.rssDataFeeds);
     this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
   }
 
@@ -81,10 +74,8 @@ export class RssComponent {
                 url: result,
                 title: response.feed.title,
               };
-              console.log(updatedResult);
               this.rssService.addRssLink(updatedResult).subscribe({
                 next: (postResponse: RssFeed): void => {
-                  console.log(postResponse);
                   this.toastr.success('Le flux ' + response.feed.title + ' est ajouté!', 'Succès!!');
                   this.updateRssData();
                 },

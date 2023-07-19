@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment.development';
 import { RssFeed } from '../../models/RssFeed';
 import { catchError } from 'rxjs/operators';
 import { APP_ROUTES_API } from '../../../data/apiRoutes';
-import { RssDataFeeds, RssDataItems, RssResponse } from '../../interface/rss.interface';
+import { RssDataItems, RssResponse } from '../../interface/rss.interface';
 import { Task } from '../../models/Task';
 
 @Injectable({
@@ -13,24 +13,15 @@ import { Task } from '../../models/Task';
 })
 export class RssFeedService {
   private rssFeedsUpdatedSubject: Subject<void> = new Subject<void>();
-  private _rssFeeds!: RssFeed;
-  private _rssDataFeeds: RssDataFeeds[] = [];
+  private _rssFeeds: RssFeed[] = [];
   private _rssDataItems: RssDataItems[] = [];
 
-  get rssFeeds(): RssFeed {
+  get rssFeeds(): RssFeed[] {
     return this._rssFeeds;
   }
 
-  set rssFeeds(value: RssFeed) {
+  set rssFeeds(value: RssFeed[]) {
     this._rssFeeds = value;
-  }
-
-  get rssDataFeeds(): RssDataFeeds[] {
-    return this._rssDataFeeds;
-  }
-
-  set rssDataFeeds(value: RssDataFeeds[]) {
-    this._rssDataFeeds = value;
   }
 
   get rssDataItems(): RssDataItems[] {
@@ -67,7 +58,7 @@ export class RssFeedService {
   }
 
   deleteRssFeed(feedId: number | undefined) {
-    return this.http.delete(`${APP_ROUTES_API.RSS}/${feedId}`) as Observable<Task>;
+    return this.http.delete(`${APP_ROUTES_API.RSS}/${feedId}`) as Observable<RssFeed>;
   }
 
   addFeedTitleFaviconToItems(rssData: RssResponse): void {
