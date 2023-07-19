@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { RssFeedService } from '../../../services/rssService/rss.service';
 import { ToastrService } from 'ngx-toastr';
 import { RssFeed } from '../../../models/RssFeed';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDeleteModalComponent } from '../../modals/confirm-delete-modal/confirm-delete-modal.component';
 
 @Component({
@@ -17,9 +17,6 @@ export class SidebarRssFeedComponent {
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;
-  }
-  ngOnInit(): void {
-    console.log(this.rssService.rssFeeds);
   }
   openConfirmationModal(rssFeed: RssFeed): void {
     const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
@@ -37,7 +34,6 @@ export class SidebarRssFeedComponent {
     });
   }
   deleteRssFeed(rssFeed: RssFeed) {
-    const confirmMessage = 'Êtes-vous sûr de vouloir supprimer ce flux RSS ?';
     const deletedFeedIndex = this.rssService.rssFeeds.findIndex((feed) => feed.id === rssFeed.id);
     if (deletedFeedIndex !== -1) {
       const deletedFeedTitle = this.rssService.rssFeeds[deletedFeedIndex].title;

@@ -22,7 +22,6 @@ export class RssComponent {
     this.rssService.getAllRssFeeds().subscribe({
       next: (rssFeeds: any): void => {
         this.rssService.rssFeeds = rssFeeds;
-        console.log(this.rssService.rssFeeds);
         this.loadRssDataItems();
       },
       error: (error: any): void => {
@@ -32,10 +31,8 @@ export class RssComponent {
   }
   loadRssDataItems(): void {
     this.rssService.rssDataItems = [];
-    console.log(this.rssService.rssFeeds);
     Object.entries(this.rssService.rssFeeds).forEach(([_, rssFeed]: [string, RssFeed]) => {
       const url = rssFeed.url;
-      console.log(url);
       this.rssService.getRssData(url).subscribe({
         next: (response: RssResponse): void => {
           if (response) {
@@ -53,11 +50,11 @@ export class RssComponent {
               items: rssItems,
             };
             this.rssService.rssDataItems.push(rssDataItems);
+            this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
           }
         },
       });
     });
-    this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
   }
 
   openModal(): void {
@@ -97,5 +94,6 @@ export class RssComponent {
 
   private updateRssData(): void {
     this.loadRssFeeds();
+    this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
   }
 }
