@@ -31,7 +31,7 @@ export class RssComponent {
   }
   loadRssDataItems(): void {
     this.rssService.rssDataItems = [];
-    Object.entries(this.rssService.rssFeeds).forEach(([_, rssFeed]: [string, RssFeed]) => {
+    this.rssService.rssFeeds.forEach((rssFeed: RssFeed) => {
       const url = rssFeed.url;
       this.rssService.getRssData(url).subscribe({
         next: (response: RssResponse): void => {
