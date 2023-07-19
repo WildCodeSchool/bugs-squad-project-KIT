@@ -24,7 +24,7 @@ export class SidebarRssFeedComponent {
     this.rssService.updateRssFeed(feed.id, feed).subscribe(
       (response) => {
         if (feed.favorite) {
-          this.toastr.success(`Le flux ${feed.title} a été mis en favori !`);
+          this.toastr.success(`Le flux ${feed.title} a été mis dans vos favoris !`);
         } else {
           this.toastr.info(`Le flux ${feed.title} a été retiré des favoris !`);
         }
