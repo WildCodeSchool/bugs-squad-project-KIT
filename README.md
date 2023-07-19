@@ -11,12 +11,12 @@
 </div>
 
  <p align="center">
-    <a href="https://newaluigi.github.io/bugs-squad-project-KIT/"><strong>Explore the website »</strong></a>
+    <a href="https://WildCodeSchool.github.io/bugs-squad-project-KIT/"><strong>Explore the website »</strong></a>
     <br />
     <br />
-    <a href="https://newaluigi.github.io/KaamelottQuests.svg/issues">Report Bug</a>
+    <a href="https://WildCodeSchool.github.io/bugs-squad-project-KIT.svg/issues">Report Bug</a>
     ·
-    <a href="https://newaluigi.github.io/KaamelottQuests.svg/issues">Request Feature</a>
+    <a href="https://WildCodeSchool.github.io/bugs-squad-project-KIT.svg/issues">Request Feature</a>
   </p>
 </div>
 
@@ -78,7 +78,8 @@ Website project created wih Angular for the front and Spring for the back. The g
 ### Figma
 
 <br />
-<img src='src/assets/readme/figma.jpg'  />
+<img src='src/assets/readme/figma.jpg' alt="screen figma"  />
+
 
 ### Color Reference
 
@@ -95,7 +96,7 @@ Website project created wih Angular for the front and Spring for the back. The g
 
 | Font             | Ref                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| main-font | **Eagle Lake** |
+| main-font | **Rubik** |
 
 <br />
 
@@ -110,7 +111,7 @@ Website project created wih Angular for the front and Spring for the back. The g
 1. clone the repo
 
 ```
-git clone https://github.com/Newaluigi/KaamelottQuests.git
+git clone https://github.com/WildCodeSchool/bugs-squad-project-backend.git
 ```
 
 2. cd into cloned repo
@@ -127,17 +128,21 @@ npm install
 
 ### Launch Back-end
 
-4. cd into cloned repoBACK
+4. clone repoBACK
+
+```
+git clone https://github.com/WildCodeSchool/bugs-squad-project-KIT.git
+```
+
+5. cd into cloned repoBACK
 
 ```
 cd repoBACK
 ```
 
-5. install dependencies
+6. Run the back
 
-```
-node index.js
-```
+Follow the readme instruction of the repository and be sure to have already installed java on your computer
 
 ## AngularTemplate
 
@@ -187,11 +192,12 @@ If when you add files to a .gitignore they still appear in the git status, try t
 ## 🔎 **SHOWCASE**
 
 ### Key features
-* Connexion page
-* Dashboard
-* Database with 2 tables
-* Display of data on 2 front pages : Knights and Quests
-* Modal for further informations of data elements
+* Homepage with connexion & sign up
+* Dashboard with drag & drop
+* Collections with a CRUD
+* Todolist with a CRUD
+* RSS feed
+* Contact page with a mailer
 
 
 <br />
@@ -201,20 +207,20 @@ If when you add files to a .gitignore they still appear in the git status, try t
 <br />
 
 #### Homepage
-You begin the experience with a login page.
-<br />
-<br />
-<p align="center"> 
-<img src='/src/assets/readme/login.jpg' alt="screen login">
-</p>
-On the homepage you have a little animation of Excalibur and the navbar present on every page as well on the right side with the logo of the Kaamelott TV show
+The homepage presents list the main features available in this product in a catchy way. The button enter scroll down to the login section.
 <br />
 <br />
 <p align="center"> 
 <img src='/src/assets/readme/home.jpg' alt="screen home">
 </p>
+On the homepage you have a little animation of Excalibur and the navbar present on every page as well on the right side with the logo of the Kaamelott TV show
+<br />
+<br />
+<p align="center"> 
+<img src='/src/assets/readme/login.jpg' alt="screen login">
+</p>
 
-#### Knights page
+#### Dashboard
 Here we have all the knights of the database, and we can open a new page with more details for each of them
 <br />
 <br />
@@ -226,20 +232,35 @@ Here we have all the knights of the database, and we can open a new page with mo
 <img src='/src/assets/readme/knight-detail.jpg' alt="screen knight details">
 </p>
 
-#### Quests page
-Here we have all the quests of the database, and we can open a modal with more details for each of them
+#### Collection
+The main feauture of the website is this page were the user can manage all his ressources, organize them in collections. He can add them, modify, custom, delete and add to his favs.
 <br />
 <br />
 <p align="center"> 
-<img src='/src/assets/readme/quests.jpg' alt="screen quests">
+<img src='/src/assets/readme/collection.jpg' alt="screen collection">
 </p>
 <br />
-<p align="center"> 
-<img src='/src/assets/readme/quest-detail.jpg' alt="screen quest details">
-</p>
 
-#### Contact & Team
-At the end of the navbar there are two bonus page : the presentation of the knights of the SQL table with a little animation that reveal the social links of each and the contact page with a little cool sound effect
+#### Todolist
+Here the user can add, modify, delete todolist, and add to his favs.
+<br />
+<br />
+<p align="center"> 
+<img src='/src/assets/readme/todolist.jpg' alt="screen todolist">
+</p>
+<br />
+
+#### RSS feed page
+On this page the user can add a rss feed to follow, with a card of each article and their links. He can manage the list of feed and add some in favorite.
+<br />
+<br />
+<p align="center"> 
+<img src='/src/assets/readme/rssfeed.jpg' alt="screen rssfeed">
+</p>
+<br />
+
+#### About & contact
+On the footer you have links to the About us page here you can find a presentation of the team with a link to our social media and a QR code for a team link. There is also a contact form.
 <br />
 <p align="center"> 
 <img src='/src/assets/readme/contact.jpg' alt="screen contact">
@@ -256,20 +277,15 @@ At the end of the navbar there are two bonus page : the presentation of the knig
 
 ## 📚 **RESSOURCES**
 
-### Data base
+### Libraries
+* Font-awesome : https://fontawesome.com/
+* ToastR : https://www.npmjs.com/package/ngx-toastr
+* Grid-stack : https://gridstackjs.com/
 
-
-### Back
-* CRUD integration
-* Connexion
-
-### Modal
-
-
-### CSS Tips
-* Lateral navbar :
-* Object animation :
-* Glassmorphism :
+### Features
+* Authentification : https://www.youtube.com/watch?v=us0VjFiHogo
+* Dashboard drag&drop : https://www.linkedin.com/pulse/creating-responsive-dashboard-under-10-minutes-angular-basim-wangde/
+* Reactive form : https://www.youtube.com/watch?v=RRu_8NJlCeQ
 
 <br />
 
@@ -279,13 +295,9 @@ At the end of the navbar there are two bonus page : the presentation of the knig
 
 ## 🔨 **GO FURTHER**
 
-* Bug user connexion
-* Improve knight details css
-* Contact form effective
-* Add Post method
-* Add one picture for each quest or a more generic logo
-* Add a possibility to attibute one quest to a knight
-* Add more sound effects like the generic music
+* Sharing collections
+* Memes section
+* Meteo section
 
 <br />
 
@@ -305,6 +317,10 @@ No specific licence
 
 ## ✉️ **CONTACT**
 
+[<img alt="Github" src="https://img.shields.io/badge/Tylyfox-%23181717.svg?style=for-the-badge&logo=github&logoColor=white" />](https://github.com/Tylyfox)
+[<img alt="Github" src="https://img.shields.io/badge/emmirose-%23181717.svg?style=for-the-badge&logo=github&logoColor=white" />](https://github.com/emmirose)
+[<img alt="Github" src="https://img.shields.io/badge/MatteiT-%23181717.svg?style=for-the-badge&logo=github&logoColor=white" />](https://github.com/MatteiT)
+[<img alt="Github" src="https://img.shields.io/badge/emericb-%23181717.svg?style=for-the-badge&logo=github&logoColor=white" />](https://github.com/emericb)
 [<img alt="Github" src="https://img.shields.io/badge/Newaluigi-%23181717.svg?style=for-the-badge&logo=github&logoColor=white" />](https://github.com/Newaluigi/)
 
 <br />
