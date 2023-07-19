@@ -100,7 +100,7 @@ export class TodolistComponent {
     this.todolist.tasks.forEach((task, index) => {
       task.position = index;
     });
-    let tasks = this.todolist.tasks;
+    const tasks = this.todolist.tasks;
     tasks.sort((a, b) => a.position - b.position);
     this.todoService.updateTasksPosition(tasks, this.todolist.id).subscribe(() => console.log(this.todolist.tasks));
   }
