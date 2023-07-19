@@ -33,8 +33,8 @@ export class RssFeedService {
 
   constructor(private http: HttpClient) {}
 
-  getAllRssFeeds(): Observable<RssFeed> {
-    return this.http.get<RssFeed>(APP_ROUTES_API.RSS);
+  getAllRssFeeds(): Observable<RssFeed[]> {
+    return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS);
   }
 
   getRssData(url: string, count?: number, orderBy?: string): Observable<any> {
