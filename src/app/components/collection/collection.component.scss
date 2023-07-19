@@ -2,6 +2,7 @@
 
 .collection {
   width: 260px;
+  // or 20rem
   outline: solid 2px $quaternary-color;
   border-radius: 8px;
   height: 320px;
@@ -11,6 +12,7 @@
   .collection-infos {
     height: 100%;
     width: 244px;
+    // or 18rem
     background-color: $bg-color;
     padding: 0.5rem;
 
@@ -20,14 +22,15 @@
 
     .icons {
       display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    margin-bottom: 1rem;
-    .fa-solid, .fa-regular {
-      cursor: pointer;
-      color: $secondary-color;
-      margin: 0 0.5rem;
-    }
+      justify-content: flex-end;
+      width: 100%;
+      margin-bottom: 1rem;
+      .fa-solid,
+      .fa-regular {
+        cursor: pointer;
+        color: $secondary-color;
+        margin: 0 0.5rem;
+      }
     }
 
     .meta {
@@ -52,7 +55,6 @@
       width: 100%;
       color: $bg-color;
 
-
       li {
         width: 90%;
         height: 2rem;
@@ -66,7 +68,7 @@
           height: 1.5rem;
           align-items: center;
           padding: 0.5rem;
-          gap : 0.5rem;
+          gap: 0.5rem;
 
           .link {
             overflow: hidden;
@@ -78,7 +80,8 @@
           .link-icons {
             display: flex;
             gap: 0.5rem;
-            .fa-solid, .fa-regular {
+            .fa-solid,
+            .fa-regular {
               color: white;
               font-size: 0.8rem;
               cursor: pointer;
@@ -95,6 +98,6 @@
   }
 }
 
-.links-section::-webkit-scrollbar{
+.links-section::-webkit-scrollbar {
   display: none;
 }

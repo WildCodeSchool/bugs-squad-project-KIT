@@ -5,20 +5,20 @@
   flex-direction: column;
   width: 100%;
   border-radius: 6px;
-  background-color: $quaternary-color ;
+  background-color: $quaternary-color;
   .sidebar-feedGlobal__mobile-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     margin: 0.5em 0 1em 0;
-    h2{
-      color: #FFFFFF;
+    h2 {
+      color: #ffffff;
       margin-bottom: 0;
       margin-left: 0.5em;
     }
     i {
-      color: #FFFFFF;
+      color: #ffffff;
       font-size: 1.5em;
       margin-right: 0.5em;
       cursor: pointer;
@@ -27,7 +27,7 @@
       }
     }
   }
-  .sidebar-feedGlobal__mobile-content{
+  .sidebar-feedGlobal__mobile-content {
     display: flex;
     flex-direction: column;
     .sidebar-feedGlobal__mobile-content-title {
@@ -40,18 +40,18 @@
         display: flex;
         align-items: center;
         gap: 0.5em;
-        h3{
+        h3 {
           margin-bottom: 0;
-          color: #FFFFFF;
+          color: #ffffff;
         }
         i {
-          color: #FFFFFF;
+          color: #ffffff;
         }
       }
       .sidebar-feedGlobal__mobile-ellipsis {
         margin-right: 0.5em;
         i {
-          color: #FFFFFF;
+          color: #ffffff;
           font-size: 1.5em;
           cursor: pointer;
           &:hover {
@@ -118,7 +118,7 @@
     .rssFeed-global__header-icon__point {
       display: none;
       cursor: pointer;
-     }
+    }
     .rssFeed-global__header-icon {
       display: flex;
       justify-content: flex-end;
@@ -132,25 +132,25 @@
           color: $main-color;
         }
       }
-
     }
   }
 }
 @media screen and (max-width: 950px) {
-    .rssFeed-global__header-icon__point {
+  .rssFeed-global__header-icon__point {
     display: block !important;
-    }
-    .rssFeed-global__header-icon {
-     display: none !important;
-    }
+  }
+  .rssFeed-global__header-icon {
+    display: none !important;
+  }
   .rssFeed-global__header {
     margin-right: 1em;
   }
-}@media screen and (max-width: 600px) {
+}
+@media screen and (max-width: 600px) {
   .sidebar-feedGlobal__mobile {
     display: block;
   }
- .sidebar-feedGlobal {
-   display: none;
- }
+  .sidebar-feedGlobal {
+    display: none;
+  }
 }

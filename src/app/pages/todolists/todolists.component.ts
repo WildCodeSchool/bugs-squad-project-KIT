@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { TodoService } from 'src/app/services/todolists-services/todo.service';
 import { ToDoList } from 'src/app/models/ToDoList';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { NewListFormComponent } from './new-list.component';
+import { NewListFormComponent } from './modal/new-list.component';
 
 @Component({
   selector: 'app-todolists',
@@ -36,12 +37,14 @@ export class TodolistsComponent implements OnInit {
   }
 
   deleteTodolist(todolist: ToDoList): void {
-    this.todoService.deleteList(todolist.id).subscribe(() => {
-      const index = this.todolists.indexOf(todolist);
-      if (index !== -1) {
-        this.todolists.splice(index, 1);
-      }
-    });
+    if (window.confirm('Êtes-vous sûr.e de vouloir supprimer cette liste ?')) {
+      this.todoService.deleteList(todolist.id).subscribe(() => {
+        const index = this.todolists.indexOf(todolist);
+        if (index !== -1) {
+          this.todolists.splice(index, 1);
+        }
+      });
+    }
   }
 
   addToTodoLists() {
