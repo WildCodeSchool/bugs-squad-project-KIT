@@ -88,5 +88,4 @@ export class TodolistComponent {
       task.isDone = !task.isDone;
     });
   }
-
 }

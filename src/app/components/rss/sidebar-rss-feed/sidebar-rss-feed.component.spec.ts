@@ -8,9 +8,8 @@ describe('SidebarRssFeedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidebarRssFeedComponent ]
-    })
-    .compileComponents();
+      declarations: [SidebarRssFeedComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SidebarRssFeedComponent);
     component = fixture.componentInstance;

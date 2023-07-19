@@ -8,9 +8,8 @@ describe('RssComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RssComponent ]
-    })
-    .compileComponents();
+      declarations: [RssComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RssComponent);
     component = fixture.componentInstance;

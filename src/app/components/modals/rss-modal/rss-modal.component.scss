@@ -40,8 +40,8 @@ form {
     text-transform: uppercase;
     transition: 0.5s;
   }
-  input:valid ~span,
-  input:focus ~span {
+  input:valid ~ span,
+  input:focus ~ span {
     color: white;
     transform: translateX(10px) translateY(-10px);
     font-size: 0.7em;
@@ -60,7 +60,7 @@ form {
   justify-content: center;
   align-items: center;
   gap: 1em;
-  button[type="submit"] {
+  button[type='submit'] {
     font-family: $font;
     padding: 0.5em 1em;
     background-color: $quaternary-color;
@@ -86,6 +86,3 @@ form {
     font-size: 0.8em;
   }
 }
-
-
-
