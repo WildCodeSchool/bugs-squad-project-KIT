@@ -215,13 +215,3 @@
     cursor: grabbing;
   }
 }
-
-/* Styles pour masquer la barre latérale */
-.hide-sidebar .sidebar {
-  display: none;
-}
-
-/* Styles pour afficher la barre latérale */
-.show-sidebar .sidebar {
-  display: block;
-}

@@ -15,9 +15,8 @@ export class DashboardComponent implements OnInit {
   private grid!: GridStack;
   private isInitialWidgetAdded = false;
 
-  constructor(private gridStackService: GridStackService) {}
-
   constructor(
+    private gridStackService: GridStackService,
     private readonly googleApiService: GoogleApiService,
     private oauthService: OAuthService,
     private httpClient: HttpClient
