@@ -1,12 +1,12 @@
 <div class="rss__myFlux">
   <div>
-    <app-sidebar-rss-feed></app-sidebar-rss-feed>
+    <app-sidebar-rss-feed [rssFeeds]="rssService.rssFeeds"></app-sidebar-rss-feed>
   </div>
   <div class="rss_myFlux-content">
     <div class="rss__myFlux-header">
       <h2>ARTICLES DES FLUX</h2>
       <button (click)="openModal()">+ Ajouter un flux RSS</button>
     </div>
-    <app-rss-feed-all></app-rss-feed-all>
+    <app-rss-feed-all [rssDataItems]="this.rssService.rssDataItems"></app-rss-feed-all>
   </div>
 </div>

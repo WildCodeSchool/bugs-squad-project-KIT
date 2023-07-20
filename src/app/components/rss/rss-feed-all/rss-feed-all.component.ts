@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { RssFeedService } from '../../../services/RssFeedService/rss.service';
-import { RssFeed } from '../../../models/RssFeed';
+import { Component, Input, OnInit } from '@angular/core';
+import { RssFeedService } from '../../../services/rssService/rss.service';
+import { RssItem } from '../../../interface/rss.interface';
 
 @Component({
   selector: 'app-rss-feed-all',
@@ -8,48 +8,16 @@ import { RssFeed } from '../../../models/RssFeed';
   styleUrls: ['./rss-feed-all.component.scss'],
 })
 export class RssFeedAllComponent implements OnInit {
-  rssLink!: string[];
-  rssDataItems: any[] = [];
+  @Input() rssDataItems!: RssItem[];
 
-  constructor(public rssFeedService: RssFeedService) {}
+  constructor(public rssService: RssFeedService) {}
 
   ngOnInit(): void {
-    this.getRssData();
     this.subscribeToRssFeedsUpdated();
   }
 
-  getRssData(): void {
-    this.rssFeedService.getAllRssFeeds().subscribe({
-      next: (response: RssFeed[]): void => {
-        this.rssLink = response.map((rssFeed: RssFeed) => rssFeed.url);
-        this.fetchRssData();
-      },
-      error: (error: any): void => {
-        console.error('Erreur lors de la récupération des flux RSS', error);
-      },
-    });
-  }
-
-  fetchRssData(): void {
-    this.rssLink.forEach((link: string) => {
-      this.rssFeedService.getRssData(link).subscribe({
-        next: (response: any): void => {
-          const rssData = response;
-          this.rssFeedService.addFeedTitleFaviconToItems(rssData);
-          this.rssDataItems?.push(...rssData.items);
-          this.rssFeedService.sortRssDataItemsByDate(this.rssDataItems);
-        },
-        error: (error: any): void => {
-          console.error('Erreur lors de la récupération du flux RSS', error);
-        },
-      });
-    });
-  }
-
   subscribeToRssFeedsUpdated(): void {
-    this.rssFeedService.onRssFeedsUpdated().subscribe(() => {
-      this.getRssData();
-    });
+    this.rssService.onRssFeedsUpdated().subscribe(() => {});
   }
 
   getClean(description: string): string {

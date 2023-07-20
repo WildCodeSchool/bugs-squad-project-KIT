@@ -27,6 +27,8 @@
     "@googleapis/calendar": "^9.0.0",
     "angular-oauth2-oidc": "^15.0.1",
     "angular-oauth2-oidc-jwks": "^15.0.1",
+    "gridstack": "^8.3.0",
+    "jquery": "^3.7.0",
     "ngx-device-detector": "^5.0.1",
     "ngx-toastr": "16.2.0",
     "node.js": "^0.0.1-security",

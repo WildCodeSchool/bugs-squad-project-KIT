@@ -5,22 +5,34 @@ import { environment } from '../../../environments/environment.development';
 import { RssFeed } from '../../models/RssFeed';
 import { catchError } from 'rxjs/operators';
 import { APP_ROUTES_API } from '../../../data/apiRoutes';
+import { RssItem, RssResponse } from '../../interface/rss.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RssFeedService {
   private rssFeedsUpdatedSubject: Subject<void> = new Subject<void>();
-  constructor(private http: HttpClient) {}
-  addRssLink(url: string): Observable<RssFeed> {
-    const rssFeedData: { url: string } = { url: url };
-    return this.http.post<RssFeed>(APP_ROUTES_API.RSS, rssFeedData).pipe(
-      catchError((error: any) => {
-        console.error("Une erreur s'est produite lors de la requête POST", error);
-        throw error;
-      })
-    );
+  private _rssFeeds: RssFeed[] = [];
+  private _rssDataItems: RssItem[] = [];
+
+  get rssFeeds(): RssFeed[] {
+    return this._rssFeeds;
   }
+
+  set rssFeeds(value: RssFeed[]) {
+    this._rssFeeds = value;
+  }
+
+  get rssDataItems(): RssItem[] {
+    return this._rssDataItems;
+  }
+
+  set rssDataItems(value: RssItem[]) {
+    this._rssDataItems = value;
+  }
+
+  constructor(private http: HttpClient) {}
+
   getAllRssFeeds(): Observable<RssFeed[]> {
     return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS);
   }
@@ -35,31 +47,40 @@ export class RssFeedService {
     }
     return this.http.get(rssApiUrl);
   }
+  addRssLink(rssFeed: { url: string; title: string }): Observable<RssFeed> {
+    return this.http.post<RssFeed>(APP_ROUTES_API.RSS, rssFeed).pipe(
+      catchError((error: any) => {
+        console.error("Une erreur s'est produite lors de la requête POST", error);
+        throw error;
+      })
+    );
+  }
 
-  addFeedTitleFaviconToItems(rssData: any): void {
+  deleteRssFeed(feedId: number | undefined) {
+    return this.http.delete(`${APP_ROUTES_API.RSS}/${feedId}`) as Observable<RssFeed>;
+  }
+
+  addFeedTitleFaviconToItems(rssData: RssResponse): void {
     if (Array.isArray(rssData?.items)) {
       const feedTitle = rssData.feed.title;
       const feedFavicon = rssData.feed.image;
-      rssData.items.forEach((item: any): void => {
-        item.feedTitle = feedTitle;
-        item.feedFavicon = feedFavicon;
-      });
+      rssData.items.forEach(
+        (item: { title: string; pubDate: string; link: string; feedTitle?: string; feedFavicon?: string }) => {
+          item.feedTitle = feedTitle;
+          item.feedFavicon = feedFavicon;
+        }
+      );
     }
   }
 
-  sortRssDataItemsByDate(rssDataItems: any[]): void {
-    rssDataItems?.sort((a, b) => {
-      const dateA: Date = new Date(a.pubDate);
-      const dateB: Date = new Date(b.pubDate);
-      if (dateA > dateB) {
-        return -1;
-      } else if (dateA < dateB) {
-        return 1;
-      } else {
-        return 0;
-      }
+  sortRssDataItemsByDate(rssDataItems: RssItem[]): void {
+    rssDataItems.sort((a, b) => {
+      const dateA = new Date(a.pubDate);
+      const dateB = new Date(b.pubDate);
+      return dateB.getTime() - dateA.getTime();
     });
   }
+
   formatDate(date: string): string {
     return new Date(date).toLocaleDateString('fr-FR', {
       year: 'numeric',

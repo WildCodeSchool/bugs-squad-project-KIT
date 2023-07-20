@@ -77,7 +77,10 @@
       display: flex;
       align-items: center;
       width: 100%;
-      margin: 0 0 0.5rem 0;
+      padding: 0 0 0.5rem 0;
+      cursor: move;
+      border-bottom: 1px solid rgb(189, 188, 188);
+      border-top: 1px solid rgb(189, 188, 188);
 
       .task {
         margin: 0;
@@ -95,6 +98,35 @@
 
 .tasks::-webkit-scrollbar {
   display: none;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  .task {
+    margin: 0;
+    width: 70%;
+    overflow-wrap: break-word;
+    overflow: hidden;
+  }
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 // MODALS
