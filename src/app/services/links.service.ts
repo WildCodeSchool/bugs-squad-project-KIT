@@ -18,7 +18,7 @@ export class LinksService {
     return this.http.get(this.dataSource) as Observable<Link[]>;
   }
 
-  createLink(id: number, body: { url: string; title: string | null }) {
+  createLink(id: number, body: { url: string; title: string | null; position: number }) {
     return this.http.post(`${this.dataSource}/${id}`, body) as Observable<Link>;
   }
 

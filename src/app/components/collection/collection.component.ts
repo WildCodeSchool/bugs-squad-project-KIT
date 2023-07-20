@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Collection } from 'src/app/models/Collection';
 import { Link } from 'src/app/models/Link';
 import { faLink, faPencil } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +16,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   templateUrl: './collection.component.html',
   styleUrls: ['./collection.component.scss'],
 })
-export class CollectionComponent {
+export class CollectionComponent implements OnInit {
   faPencil = faPencil;
   faLink = faLink;
   public color = '#FFFFFF';
@@ -29,7 +29,6 @@ export class CollectionComponent {
 
   links: Link[] = [];
   link!: Link;
-  private i = 9999;
   id = new FormControl();
   url = new FormControl('');
   title = new FormControl('');
@@ -37,13 +36,16 @@ export class CollectionComponent {
 
   @Input() collection!: Collection;
 
+  ngOnInit() {
+    this.collection.links?.sort((a, b) => a.position - b.position);
+  }
+
   getLinkComment(link: Link) {
     return link.title ? link.title : link.url;
   }
 
   deleteCollection() {
     this.collectionService.deleteCollection(this.collection.id).subscribe((data) => {
-      console.log(this.collection);
       return this.collectionService.updateCollectionData(this.collection);
     });
   }
@@ -94,8 +96,18 @@ export class CollectionComponent {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log(event);
-    // @ts-ignore
-    moveItemInArray(this.collection.links, event.previousIndex, event.currentIndex);
+    if (this.collection.links) {
+      moveItemInArray(this.collection.links, event.previousIndex, event.currentIndex);
+      this.collection.links?.forEach((link, index) => {
+        link.position = index;
+      });
+      const links = this.collection.links;
+      if (links) {
+        links.sort((a, b) => a.position - b.position);
+        this.collectionService.updateLinksPosition(this.collection.id, links).subscribe(() => {
+          return this.collectionService.updateCollectionData(this.collection);
+        });
+      }
+    }
   }
 }

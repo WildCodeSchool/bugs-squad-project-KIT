@@ -44,11 +44,13 @@ export class LinksComponent implements OnInit {
     if (this.data.collection.links) {
       const url: string = this.url.value as string;
       const title = this.title.value as string;
+      const position = this.data.collection.links.length;
       const collectionId = this.data.collection.id;
 
       const body = {
         url: url,
         title: title,
+        position: position,
       };
 
       this.linksService.createLink(collectionId, body).subscribe((data) => {
@@ -58,6 +60,7 @@ export class LinksComponent implements OnInit {
             id: this.link.id,
             url: this.link.url,
             title: this.link.title,
+            position: position,
             collectionId: this.link.collectionId,
           });
           this.linksService.updateLinkData(this.link);
