@@ -10,6 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
+import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,10 @@ const routes: Routes = [
   {
     path: 'fav-todos',
     component: TodolistsFavComponent,
+  },
+  {
+    path: 'fav-collections',
+    component: DashCollectionsComponent,
   },
   {
     path: '**',
