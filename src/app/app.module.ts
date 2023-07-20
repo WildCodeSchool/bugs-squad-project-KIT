@@ -46,6 +46,8 @@ import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-modal/confirm-delete-modal.component';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
+import { DayPilotModule } from '@daypilot/daypilot-lite-angular';
+import { DataService } from './services/data.service';
 
 export function storageFactory(): OAuthStorage {
   return localStorage;
@@ -110,10 +112,9 @@ export function storageFactory(): OAuthStorage {
     CdkDropList,
     NgFor,
     OAuthModule.forRoot(),
+    DayPilotModule,
   ],
-  providers: [
-    { provide: OAuthStorage, useFactory: storageFactory },
-  ],
+  providers: [{ provide: OAuthStorage, useFactory: storageFactory }, [DataService]],
   bootstrap: [AppComponent],
   exports: [],
 })
