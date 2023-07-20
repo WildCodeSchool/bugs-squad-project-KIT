@@ -11,10 +11,6 @@ import { GridStackService } from 'src/app/services/grid-stack-service.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  isDivVisible = true;
-  toggleDiv() {
-    this.isDivVisible = !this.isDivVisible;
-  }
   userInfo?: UserInfo;
   private grid!: GridStack;
   private isInitialWidgetAdded = false;
@@ -96,5 +92,9 @@ export class DashboardComponent implements OnInit {
         console.error('Erreur lors de la sauvegarde :', error);
       }
     );
+  }
+  isDivVisible = true;
+  toggleDiv() {
+    this.isDivVisible = !this.isDivVisible;
   }
 }
