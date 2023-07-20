@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { RssFeedService } from '../../../services/rssService/rss.service';
 import { ToastrService } from 'ngx-toastr';
 import { RssFeed } from '../../../models/RssFeed';
@@ -14,13 +14,15 @@ import { RssItem } from '../../../interface/rss.interface';
 export class SidebarRssFeedComponent {
   isOpen = false;
   @Input() rssFeeds!: RssFeed[];
-
+  @Output() feedSelected = new EventEmitter<RssFeed>();
   constructor(public rssService: RssFeedService, private toastr: ToastrService, private dialog: MatDialog) {}
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;
   }
-
+  onFeedSelected(feed: RssFeed): void {
+    this.feedSelected.emit(feed);
+  }
   toggleFavorite(feed: RssFeed): void {
     feed.favorite = !feed.favorite;
     this.rssService.updateRssFeed(feed.id, feed).subscribe(

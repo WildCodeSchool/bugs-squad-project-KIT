@@ -13,11 +13,15 @@ import { RssResponse } from '../../interface/rss.interface';
 })
 export class RssComponent {
   isLargeScreen = true;
+  feedSelected!: RssFeed;
 
   constructor(private dialog: MatDialog, public rssService: RssFeedService, private toastr: ToastrService) {
     this.checkScreenSize();
   }
 
+  onFeedSelected(feed: RssFeed): void {
+    this.feedSelected = feed;
+  }
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.checkScreenSize();

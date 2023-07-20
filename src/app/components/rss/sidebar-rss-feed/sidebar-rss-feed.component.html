@@ -24,7 +24,7 @@
     </div>
     <div class="rssFeed-global">
       <div *ngFor="let feed of rssFeeds" class="rssFeed-global__header">
-        <div class="rssFeed-global__header-title">
+        <div class="rssFeed-global__header-title" (click)="onFeedSelected(feed)">
           <div>
             <i class="fa-sharp fa-solid fa-rss"></i>
           </div>
