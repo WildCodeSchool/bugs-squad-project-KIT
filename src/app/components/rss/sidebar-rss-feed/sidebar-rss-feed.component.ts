@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
-import { RssFeedService } from '../../../services/RssFeedService/rss.service';
+import { Component, Input } from '@angular/core';
+import { RssFeedService } from '../../../services/rssService/rss.service';
+import { ToastrService } from 'ngx-toastr';
 import { RssFeed } from '../../../models/RssFeed';
-import { RssResponse } from '../../../interface/RssResponse';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDeleteModalComponent } from '../../modals/confirm-delete-modal/confirm-delete-modal.component';
+import { RssItem } from '../../../interface/rss.interface';
 
 @Component({
   selector: 'app-sidebar-rss-feed',
@@ -10,43 +13,39 @@ import { RssResponse } from '../../../interface/RssResponse';
 })
 export class SidebarRssFeedComponent {
   isOpen = false;
-  rssLink!: string[];
-  rssData: any[] = [];
-  constructor(public rssFeedService: RssFeedService) {}
-  ngOnInit(): void {
-    this.getRssData();
-    this.subscribeToRssFeedsUpdated();
-  }
+  @Input() rssFeeds!: RssFeed[];
+  constructor(public rssService: RssFeedService, private toastr: ToastrService, private dialog: MatDialog) {}
 
-  getRssData(): void {
-    this.rssFeedService.getAllRssFeeds().subscribe({
-      next: (response: RssFeed[]): void => {
-        this.rssLink = response.map((rssFeed: RssFeed) => rssFeed.url);
-        this.fetchRssData();
-      },
-      error: (error: any): void => {
-        console.error('Erreur lors de la récupération des flux RSS', error);
-      },
-    });
-  }
-  fetchRssData(): void {
-    this.rssLink.forEach((link: string) => {
-      this.rssFeedService.getRssData(link).subscribe({
-        next: (response: RssResponse): void => {
-          this.rssData?.push(response.feed);
-        },
-        error: (error: any): void => {
-          console.error('Erreur lors de la récupération du flux RSS', error);
-        },
-      });
-    });
-  }
   toggleSidebar() {
     this.isOpen = !this.isOpen;
   }
-  subscribeToRssFeedsUpdated(): void {
-    this.rssFeedService.onRssFeedsUpdated().subscribe(() => {
-      this.getRssData();
+  openConfirmationModal(rssFeed: RssFeed): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
+      width: '400px',
+      data: {
+        rssFeed,
+        message: 'Etes-vous sûr de vouloir supprimer ce flux RSS ?',
+      },
     });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteRssFeed(rssFeed);
+      }
+    });
+  }
+  deleteRssFeed(rssFeed: RssFeed) {
+    const deletedFeedIndex = this.rssService.rssFeeds.findIndex((feed) => feed.id === rssFeed.id);
+    if (deletedFeedIndex !== -1) {
+      const deletedFeedTitle = this.rssService.rssFeeds[deletedFeedIndex].title;
+      this.rssService.deleteRssFeed(rssFeed.id).subscribe(() => {
+        this.rssService.rssFeeds.splice(deletedFeedIndex, 1);
+        this.rssService.rssDataItems = this.rssService.rssDataItems.filter(
+          (dataItem: RssItem) => dataItem.feedTitle !== deletedFeedTitle
+        );
+        this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
+        this.toastr.success('Le flux a été supprimé !');
+      });
+    }
   }
 }

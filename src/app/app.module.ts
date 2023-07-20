@@ -46,6 +46,7 @@ import { CollectionsFormComponent } from './components/collection-form/collectio
 import { CollectionFormUpdateComponent } from './components/collection-form-update/collection-form-update.component';
 import { LinkFormUpdateComponent } from './components/link-form-update/link-form-update.component';
 import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
+import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-modal/confirm-delete-modal.component';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -74,6 +75,7 @@ import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk
     CollectionFormUpdateComponent,
     LinkFormUpdateComponent,
     SidebarRssFeedComponent,
+    ConfirmDeleteModalComponent,
   ],
 
   imports: [
