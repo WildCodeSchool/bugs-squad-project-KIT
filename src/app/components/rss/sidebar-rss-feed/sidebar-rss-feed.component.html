@@ -34,8 +34,12 @@
           <i class="fa-solid fa-ellipsis-vertical" title="Ellipsis"></i>
         </div>
         <div class="rssFeed-global__header-icon">
-          <i class="fa-solid fa-heart" title="Favori"></i>
-          <i class="fa-solid fa-pencil" title="Modifier"></i>
+          <i
+            class="fa-solid fa-star"
+            title="Favori"
+            [class.favorite]="feed.favorite"
+            (click)="toggleFavorite(feed)"
+          ></i>
           <i class="fa-solid fa-trash" title="Supprimer" (click)="openConfirmationModal(feed)"></i>
         </div>
       </div>
