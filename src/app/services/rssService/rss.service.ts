@@ -33,8 +33,8 @@ export class RssFeedService {
 
   constructor(private http: HttpClient) {}
 
-  getAllRssFeeds(): Observable<RssFeed> {
-    return this.http.get<RssFeed>(APP_ROUTES_API.RSS);
+  getAllRssFeeds(): Observable<RssFeed[]> {
+    return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS);
   }
 
   getRssData(url: string, count?: number, orderBy?: string): Observable<any> {
@@ -59,11 +59,12 @@ export class RssFeedService {
   deleteRssFeed(feedId: number | undefined) {
     return this.http.delete(`${APP_ROUTES_API.RSS}/${feedId}`) as Observable<RssFeed>;
   }
+  
   updateRssFeed(feedId: number | undefined, updateData: RssFeed): Observable<RssFeed> {
     const url = `${APP_ROUTES_API.RSS}/${feedId}`;
     return this.http.put<RssFeed>(url, updateData );
   }
-
+  
   addFeedTitleFaviconToItems(rssData: RssResponse): void {
     if (Array.isArray(rssData?.items)) {
       const feedTitle = rssData.feed.title;

@@ -20,7 +20,7 @@ export class RssComponent {
 
   loadRssFeeds(): void {
     this.rssService.getAllRssFeeds().subscribe({
-      next: (rssFeeds: any): void => {
+      next: (rssFeeds: RssFeed[]): void => {
         this.rssService.rssFeeds = rssFeeds;
         this.loadRssDataItems();
       },

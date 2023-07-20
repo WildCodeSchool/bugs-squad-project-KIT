@@ -1,5 +1,4 @@
 <div *ngFor="let item of rssDataItems" class="rss-item">
-  <!-- Contenu de l'élément -->
   <div class="rss-item__flux-title">
     <ng-container *ngIf="item.feedFavicon">
       <img [src]="item.feedFavicon" alt="Favicon" />
