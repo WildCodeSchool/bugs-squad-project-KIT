@@ -192,3 +192,8 @@
     opacity: 1;
   }
 }
+
+.sidebar .newWidget.dragged {
+  opacity: 0.4;
+  pointer-events: none;
+}

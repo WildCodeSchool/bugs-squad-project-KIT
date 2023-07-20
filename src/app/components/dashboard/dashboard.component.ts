@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GridStack } from 'gridstack';
+import { GridStackService } from 'src/app/services/grid-stack-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +9,9 @@ import { GridStack } from 'gridstack';
 })
 export class DashboardComponent implements OnInit {
   private grid!: GridStack;
+  private isInitialWidgetAdded = false;
+
+  constructor(private gridStackService: GridStackService) {}
 
   ngOnInit(): void {
     this.initializeGrid();
@@ -24,10 +28,17 @@ export class DashboardComponent implements OnInit {
 
       GridStack.setupDragIn('.newWidget', { appendTo: 'body', helper: 'clone' });
 
-      this.grid.on('added removed change', (e: any, items: any) => {
+      this.grid.on('added', (e: any, items: any) => {
         let str = '';
         items.forEach((item: any) => {
           str += ' (x,y)=' + item.x + ',' + item.y;
+          const element = item.el;
+          if (element.classList.contains('newWidget')) {
+            if (!this.isInitialWidgetAdded) {
+              element.classList.add('dragged');
+              this.isInitialWidgetAdded = true;
+            }
+          }
         });
         console.log(e.type + ' ' + items.length + ' items:' + str);
       });
@@ -50,13 +61,13 @@ export class DashboardComponent implements OnInit {
       width: item.getAttribute('data-gs-width'),
       height: item.getAttribute('data-gs-height'),
     }));
-    // this.gridStackService.saveWidgetsPositions(widgetPositions).subscribe(
-    //   (response) => {
-    //     console.log('Sauvegarde réussie :', response);
-    //   },
-    //   (error) => {
-    //     console.error('Erreur lors de la sauvegarde :', error);
-    //   }
-    // );
+    this.gridStackService.saveWidgetsPositions(widgetPositions).subscribe(
+      (response) => {
+        console.log('Sauvegarde réussie :', response);
+      },
+      (error) => {
+        console.error('Erreur lors de la sauvegarde :', error);
+      }
+    );
   }
 }
