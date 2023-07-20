@@ -81,7 +81,6 @@ export class DashboardComponent implements OnInit {
       width: item.getAttribute('data-gs-width'),
       height: item.getAttribute('data-gs-height'),
     }));
-    console.log(widgetPositions);
     this.gridStackService.saveWidgetsPositions(widgetPositions).subscribe(
       (response) => {
         console.log('Sauvegarde réussie :', response);
