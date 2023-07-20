@@ -62,7 +62,6 @@ export class DashboardComponent implements OnInit {
             }
           }
         });
-        console.log(e.type + ' ' + items.length + ' items:' + str);
       });
     });
   }
