@@ -196,3 +196,15 @@
     cursor: grabbing;
   }
 }
+.hiddenBtn {
+  background-color: #f67280;
+  border-radius: 0.5rem;
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #c06c84;
+    border: 1px solid #c06c84;
+    transform: translateY(2px);
+  }
+}

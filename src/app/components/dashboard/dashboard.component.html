@@ -5,7 +5,8 @@
   </div>
   <div class="dashboard__content">
     <div class="row">
-      <div class="sidebar">
+      <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer</button>
+      <div class="sidebar" *ngIf="isDivVisible">
         <div id="trash">
           <div class="icon">
             <i class="fa-solid fa-trash" title="Supprimer"></i>

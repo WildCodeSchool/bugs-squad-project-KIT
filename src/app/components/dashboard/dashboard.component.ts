@@ -11,6 +11,10 @@ import { GridStackService } from 'src/app/services/grid-stack-service.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  isDivVisible = true;
+  toggleDiv() {
+    this.isDivVisible = !this.isDivVisible;
+  }
   userInfo?: UserInfo;
   private grid!: GridStack;
   private isInitialWidgetAdded = false;
