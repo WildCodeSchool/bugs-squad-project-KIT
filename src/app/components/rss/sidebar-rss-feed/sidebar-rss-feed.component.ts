@@ -14,7 +14,7 @@ import { RssItem } from '../../../interface/rss.interface';
 export class SidebarRssFeedComponent {
   isOpen = false;
   @Input() rssFeeds!: RssFeed[];
-  @Output() feedSelected = new EventEmitter<RssFeed>();
+  @Output() feedSelected = new EventEmitter<RssFeed | null>();
   constructor(public rssService: RssFeedService, private toastr: ToastrService, private dialog: MatDialog) {}
 
   toggleSidebar() {
@@ -22,6 +22,9 @@ export class SidebarRssFeedComponent {
   }
   onFeedSelected(feed: RssFeed): void {
     this.feedSelected.emit(feed);
+  }
+  resetFeedSelection(): void {
+    this.feedSelected.emit(null);
   }
   toggleFavorite(feed: RssFeed): void {
     feed.favorite = !feed.favorite;

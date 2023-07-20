@@ -13,14 +13,15 @@ import { RssResponse } from '../../interface/rss.interface';
 })
 export class RssComponent {
   isLargeScreen = true;
-  feedSelected!: RssFeed;
+  feedSelected: RssFeed | null = null;
 
   constructor(private dialog: MatDialog, public rssService: RssFeedService, private toastr: ToastrService) {
     this.checkScreenSize();
   }
 
-  onFeedSelected(feed: RssFeed): void {
+  onFeedSelected(feed: RssFeed | null): void {
     this.feedSelected = feed;
+    this.loadRssDataItems();
   }
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -45,21 +46,28 @@ export class RssComponent {
     });
   }
   loadRssDataItems(): void {
-    this.rssService.rssDataItems = [];
-    this.rssService.rssFeeds.forEach((rssFeed: RssFeed) => {
-      const url = rssFeed.url;
-      this.rssService.getRssData(url).subscribe({
-        next: (response: RssResponse): void => {
-          if (response) {
-            this.rssService.addFeedTitleFaviconToItems(response);
-            this.rssService.rssDataItems.push(...response.items);
-            this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
-          }
-        },
+    if (this.feedSelected === null) {
+      this.rssService.rssDataItems = [];
+      this.rssService.rssFeeds.forEach((rssFeed: RssFeed) => {
+        const url = rssFeed.url;
+        this.loadRssDataItemsByUrl(url);
       });
+    } else {
+      this.rssService.rssDataItems = [];
+      this.loadRssDataItemsByUrl(this.feedSelected.url);
+    }
+  }
+  loadRssDataItemsByUrl(url: string): void {
+    this.rssService.getRssData(url).subscribe({
+      next: (response: RssResponse): void => {
+        if (response) {
+          this.rssService.addFeedTitleFaviconToItems(response);
+          this.rssService.rssDataItems.push(...response.items);
+          this.rssService.sortRssDataItemsByDate(this.rssService.rssDataItems);
+        }
+      },
     });
   }
-
   openModal(): void {
     const dialogRef = this.dialog.open(RssModalComponent, {
       width: '50%',
