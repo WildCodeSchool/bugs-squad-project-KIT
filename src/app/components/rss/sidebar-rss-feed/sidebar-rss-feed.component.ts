@@ -14,6 +14,7 @@ import { RssItem } from '../../../interface/rss.interface';
 export class SidebarRssFeedComponent {
   isOpen = false;
   @Input() rssFeeds!: RssFeed[];
+
   constructor(public rssService: RssFeedService, private toastr: ToastrService, private dialog: MatDialog) {}
 
   toggleSidebar() {
@@ -35,6 +36,7 @@ export class SidebarRssFeedComponent {
       }
     );
   }
+
   openConfirmationModal(rssFeed: RssFeed): void {
     const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
       width: '400px',
@@ -49,6 +51,7 @@ export class SidebarRssFeedComponent {
         this.deleteRssFeed(rssFeed);
       }
     });
+  }
   deleteRssFeed(rssFeed: RssFeed) {
     const deletedFeedIndex = this.rssService.rssFeeds.findIndex((feed) => feed.id === rssFeed.id);
     if (deletedFeedIndex !== -1) {
