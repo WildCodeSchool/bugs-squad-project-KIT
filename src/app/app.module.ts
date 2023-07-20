@@ -9,20 +9,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ToastrModule } from 'ngx-toastr';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { CollectionComponent } from './components/collection/collection.component';
 import { CollectionsComponent } from './pages/collections/collections.component';
 import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
-
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PresentationComponent } from './components/homepage/presentation/presentation.component';
 import { HomeformComponent } from './components/homepage/homeform/homeform.component';
-
 import { RssComponent } from './pages/rss/rss.component';
 import { RssModalComponent } from './components/modals/rss-modal/rss-modal.component';
 import { RssFeedAllComponent } from './components/rss/rss-feed-all/rss-feed-all.component';
@@ -48,13 +44,12 @@ import { LinkFormUpdateComponent } from './components/link-form-update/link-form
 import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sidebar-rss-feed.component';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { AuthInterceptor } from './pipes/auth.interceptor';
+import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-modal/confirm-delete-modal.component';
+import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 
 export function storageFactory(): OAuthStorage {
   return localStorage;
 }
-import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-modal/confirm-delete-modal.component';
-import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -118,11 +113,6 @@ import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk
   ],
   providers: [
     { provide: OAuthStorage, useFactory: storageFactory },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
   ],
   bootstrap: [AppComponent],
   exports: [],
