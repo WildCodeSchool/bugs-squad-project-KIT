@@ -59,6 +59,10 @@ export class RssFeedService {
   deleteRssFeed(feedId: number | undefined) {
     return this.http.delete(`${APP_ROUTES_API.RSS}/${feedId}`) as Observable<RssFeed>;
   }
+  updateRssFeed(feedId: number | undefined, updateData: RssFeed): Observable<RssFeed> {
+    const url = `${APP_ROUTES_API.RSS}/${feedId}`;
+    return this.http.put<RssFeed>(url, updateData );
+  }
 
   addFeedTitleFaviconToItems(rssData: RssResponse): void {
     if (Array.isArray(rssData?.items)) {

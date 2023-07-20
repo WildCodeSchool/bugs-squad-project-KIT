@@ -19,12 +19,28 @@ export class SidebarRssFeedComponent {
   toggleSidebar() {
     this.isOpen = !this.isOpen;
   }
+  toggleFavorite(feed: RssFeed): void {
+    feed.favorite = !feed.favorite;
+    this.rssService.updateRssFeed(feed.id, feed).subscribe(
+      (response) => {
+        if (feed.favorite) {
+          this.toastr.success(`Le flux ${feed.title} a été mis dans vos favoris !`);
+        } else {
+          this.toastr.info(`Le flux ${feed.title} a été retiré des favoris !`);
+        }
+      },
+      (error) => {
+        console.error("Une erreur s'est produite lors de la requête PUT", error);
+      }
+    );
+  }
+
   openConfirmationModal(rssFeed: RssFeed): void {
     const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
       width: '400px',
       data: {
         rssFeed,
-        message: 'Etes-vous sûr de vouloir supprimer ce flux RSS ?',
+        message: `Etes-vous sûr de vouloir supprimer le  flux RSS ${rssFeed.title} ?`,
       },
     });
 
