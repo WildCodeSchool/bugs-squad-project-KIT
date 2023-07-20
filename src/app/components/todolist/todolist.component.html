@@ -1,4 +1,4 @@
-<div class="todolist">
+<div class="todolist" [ngClass]="{ 'fav-todolist': isFavList }">
   <div class="meta">
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdateTodo('0ms', '0ms')"></i>

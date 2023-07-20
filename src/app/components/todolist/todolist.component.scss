@@ -94,6 +94,23 @@
       }
     }
   }
+
+  &.fav-todolist {
+    width: 200px;
+    height: 260px;
+    .icons {
+      display: none;
+    }
+    .meta {
+      .title {
+        font-size: 1.2rem;
+      }
+      .description {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
 }
 
 .tasks::-webkit-scrollbar {

@@ -6,6 +6,10 @@
 
 <div class="lists">
   <div *ngFor="let todolist of todolists" class="singletodo">
-    <app-todolist [todolist]="todolist" [deleteTodolistFn]="deleteTodolist.bind(this)"></app-todolist>
+    <app-todolist
+      [todolist]="todolist"
+      [deleteTodolistFn]="deleteTodolist.bind(this)"
+      style="width: 100px"
+    ></app-todolist>
   </div>
 </div>
