@@ -36,8 +36,10 @@
     .meta {
       margin: 1rem 0 0 1rem;
 
-      h3 {
+      h3, .description {
         margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .links-section {

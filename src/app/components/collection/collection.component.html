@@ -12,8 +12,8 @@
       <i *ngIf="collection.favorite" class="fa-solid fa-star" title="Ajouter aux favoris" (click)="patchFavorite()"></i>
     </div>
     <div class="meta">
-      <h3 class="title">{{ collection.title }}</h3>
-      <p class="description">{{ collection.description }}</p>
+      <h3 class="title" title="{{ collection.title }}">{{ collection.title }}</h3>
+      <p class="description" title="{{ collection.description }}">{{ collection.description }}</p>
     </div>
     <div class="links-section">
       <ul>

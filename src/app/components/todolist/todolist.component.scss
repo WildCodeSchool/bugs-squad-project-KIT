@@ -35,23 +35,40 @@
     .title {
       font-size: 1.5rem;
       font-weight: 500;
-      margin-bottom: 0;
     }
     .description {
       font-size: 1rem;
       font-weight: 400;
       font-style: italic;
-      margin-top: 0;
     }
-    .newtask {
+
+    .title, .description {
+      margin: 0 0.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .new-task {
       display: flex;
       justify-content: center;
-    }
-    .fa-sharp {
-      text-align: center;
-      color: $secondary-color;
-      margin: 0 1rem;
-      cursor: pointer;
+
+      .new-task-button {
+        background-color: $quaternary-color;
+        border-radius: 16px;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        color: white;
+        width: 80%;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .fa-sharp {
+        text-align: center;
+        color: $bg-color;
+      }
     }
   }
 
