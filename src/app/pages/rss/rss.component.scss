@@ -7,6 +7,11 @@
   gap: 0.5em;
   justify-content: space-between;
   margin-bottom: 0.5em;
+  .rss__myFlux--head {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+  }
   .rss__myFlux-header {
     display: flex;
     width: 100%;
@@ -33,16 +38,18 @@
   }
 }
 .rss_myFlux-content {
-  display: block;
+  display: flex;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   width: 100%;
+  height: 100%;
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 1em 1.5em 0 1.5em;
+  margin: 1em 2em 0 1.5em;
+  padding-right: 2em;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -68,13 +75,11 @@
   }
 }
 @media screen and (max-width: 600px) {
-  .rss__myFlux {
-    flex-direction: column;
-  }
   .rss__myFlux-header {
     flex-direction: column;
     gap: 1em;
     margin-bottom: 0.5em;
+    margin-top: 0;
     button {
       width: 100%;
       padding: 0.25em;
@@ -85,5 +90,11 @@
       font-size: 1.1em;
       margin-left: 0 !important;
     }
+  }
+  .rss_myFlux-content {
+    padding-right: 0;
+  }
+  .sidebar {
+    width: 100%;
   }
 }
