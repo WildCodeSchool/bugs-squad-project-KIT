@@ -19,6 +19,7 @@ export class SidebarRssFeedComponent {
   toggleSidebar() {
     this.isOpen = !this.isOpen;
   }
+
   toggleFavorite(feed: RssFeed): void {
     feed.favorite = !feed.favorite;
     this.rssService.updateRssFeed(feed.id, feed).subscribe(
@@ -34,7 +35,6 @@ export class SidebarRssFeedComponent {
       }
     );
   }
-
   openConfirmationModal(rssFeed: RssFeed): void {
     const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
       width: '400px',
@@ -49,7 +49,6 @@ export class SidebarRssFeedComponent {
         this.deleteRssFeed(rssFeed);
       }
     });
-  }
   deleteRssFeed(rssFeed: RssFeed) {
     const deletedFeedIndex = this.rssService.rssFeeds.findIndex((feed) => feed.id === rssFeed.id);
     if (deletedFeedIndex !== -1) {
