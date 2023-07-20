@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleApiService, UserInfo } from '../../services/google-api.service';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { HttpClient } from '@angular/common/http';
 import { GridStack } from 'gridstack';
 
 @Component({
@@ -7,9 +10,29 @@ import { GridStack } from 'gridstack';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  userInfo?: UserInfo;
   private grid!: GridStack;
 
+  constructor(
+    private readonly googleApiService: GoogleApiService,
+    private oauthService: OAuthService,
+    private httpClient: HttpClient
+  ) {
+    this.googleApiService = googleApiService;
+    this.oauthService = oauthService;
+    this.httpClient = httpClient;
+  }
+
+  isLoggedIn(): boolean {
+    return this.googleApiService.isLoggedIn();
+  }
+
   ngOnInit(): void {
+    this.oauthService.loadDiscoveryDocument().then(() => {
+      this.googleApiService.userProfileSubject.subscribe((userInfo) => {
+        this.userInfo = userInfo;
+      });
+    });
     this.initializeGrid();
   }
 
@@ -22,7 +45,7 @@ export class DashboardComponent implements OnInit {
         float: true,
       });
 
-      GridStack.setupDragIn('.newWidget', { appendTo: 'body', helper: 'clone' });
+      GridStack.setupDragIn('.newWidget', {appendTo: 'body', helper: 'clone'});
 
       this.grid.on('added removed change', (e: any, items: any) => {
         let str = '';
@@ -43,7 +66,7 @@ export class DashboardComponent implements OnInit {
 
   saveGridStack() {
     const gridItems = this.grid.getGridItems();
-    const widgetPositions = gridItems.map((item) => ({
+    const widgetPositions = gridItems.map((item: { getAttribute: (arg0: string) => any; }) => ({
       id: item.getAttribute('data-gs-id'),
       x: item.getAttribute('data-gs-x'),
       y: item.getAttribute('data-gs-y'),
@@ -58,5 +81,13 @@ export class DashboardComponent implements OnInit {
     //     console.error('Erreur lors de la sauvegarde :', error);
     //   }
     // );
+
+
   }
 }
+
+
+
+
+
+
