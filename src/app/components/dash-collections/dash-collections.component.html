@@ -1,1 +1,5 @@
-<app-collection></app-collection>
+<div class="collections">
+  <div *ngFor="let collection of favCollections" class="singletodo">
+    <app-collection *ngIf="collection.favorite" [collection]="collection" [isFavCollection]="true"></app-collection>
+  </div>
+</div>

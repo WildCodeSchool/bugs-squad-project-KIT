@@ -1,4 +1,4 @@
-<div class="collection" [style.backgroundColor]="collection.color">
+<div class="collection" [style.backgroundColor]="collection.color" [ngClass]="{ 'fav-collection': isFavCollection }">
   <div class="collection-infos">
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdate('0ms', '0ms')"></i>
