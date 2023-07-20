@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Collection } from '../models/Collection';
+import { Link } from '../models/Link';
 
 @Injectable({
   providedIn: 'root',
@@ -43,5 +44,9 @@ export class CollectionsService {
 
   patchFavorite(id: number, favorite: boolean) {
     return this.http.patch(`${this.dataSource}/${id}`, favorite);
+  }
+
+  updateLinksPosition(id: number, links: Link[]) {
+    return this.http.patch(`${this.dataSource}/${id}/links`, links) as Observable<Link[]>;
   }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleApiService, UserInfo } from '../../services/google-api.service';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { HttpClient } from '@angular/common/http';
 import { GridStack } from 'gridstack';
 import { GridStackService } from 'src/app/services/grid-stack-service.service';
 
@@ -8,12 +11,32 @@ import { GridStackService } from 'src/app/services/grid-stack-service.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  userInfo?: UserInfo;
   private grid!: GridStack;
   private isInitialWidgetAdded = false;
 
   constructor(private gridStackService: GridStackService) {}
 
+  constructor(
+    private readonly googleApiService: GoogleApiService,
+    private oauthService: OAuthService,
+    private httpClient: HttpClient
+  ) {
+    this.googleApiService = googleApiService;
+    this.oauthService = oauthService;
+    this.httpClient = httpClient;
+  }
+
+  isLoggedIn(): boolean {
+    return this.googleApiService.isLoggedIn();
+  }
+
   ngOnInit(): void {
+    this.oauthService.loadDiscoveryDocument().then(() => {
+      this.googleApiService.userProfileSubject.subscribe((userInfo) => {
+        this.userInfo = userInfo;
+      });
+    });
     this.initializeGrid();
   }
 
@@ -54,7 +77,7 @@ export class DashboardComponent implements OnInit {
 
   saveGridStack() {
     const gridItems = this.grid.getGridItems();
-    const widgetPositions = gridItems.map((item) => ({
+    const widgetPositions = gridItems.map((item: { getAttribute: (arg0: string) => any }) => ({
       id: item.getAttribute('data-gs-id'),
       x: item.getAttribute('data-gs-x'),
       y: item.getAttribute('data-gs-y'),

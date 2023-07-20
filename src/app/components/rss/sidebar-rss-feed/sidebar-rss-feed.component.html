@@ -1,18 +1,16 @@
 <div class="sidebar-feedGlobal__mobile">
-  <div class="sidebar-feedGlobal__mobile-title">
+  <div class="sidebar-feedGlobal__mobile-title" title="Afficher tous les flux" (click)="resetFeedSelection()">
     <h2>MES FLUX RSS</h2>
     <i class="fa-sharp fa-solid" [class.fa-bars]="!isOpen" [class.fa-xmark]="isOpen" (click)="toggleSidebar()"></i>
   </div>
   <div *ngIf="isOpen" class="sidebar-feedGlobal__mobile-content">
-    <div *ngFor="let feed of rssData">
-      <div class="sidebar-feedGlobal__mobile-content-title">
-        <div class="sidebar-feedGlobal__mobile-content-nameRss">
-          <i class="fa-sharp fa-solid fa-rss"></i>
-          <h3>{{ feed.title }}</h3>
-        </div>
-        <div class="sidebar-feedGlobal__mobile-ellipsis">
-          <i class="fa-solid fa-ellipsis" title="Ellipsis"></i>
-        </div>
+    <div *ngFor="let feed of rssFeeds" class="sidebar-feedGlobal__mobile-content-title">
+      <div class="sidebar-feedGlobal__mobile-content-nameRss" title="Afficher les articles du flux" (click)="onFeedSelected(feed)">
+        <i class="fa-sharp fa-solid fa-rss"></i>
+        <h3>{{ feed.title }}</h3>
+      </div>
+      <div class="sidebar-feedGlobal__mobile-ellipsis">
+        <i class="fa-solid fa-ellipsis" title="Ellipsis"></i>
       </div>
     </div>
   </div>
@@ -20,27 +18,29 @@
 
 <div class="sidebar-feedGlobal">
   <div class="sidebar-feedGlobal__content">
-    <div class="sidebar-feedGlobal__toggle-title">
+    <div class="sidebar-feedGlobal__toggle-title" title="Afficher tous les flux" (click)="resetFeedSelection()">
       <i class="fa-sharp fa-solid fa-rss"></i>
       <h2>MES FLUX RSS</h2>
     </div>
     <div class="rssFeed-global">
-      <div *ngFor="let feed of rssData">
-        <div class="rssFeed-global__header">
-          <div class="rssFeed-global__header-title">
-            <div>
-              <i class="fa-sharp fa-solid fa-rss"></i>
-            </div>
-            <h3>{{ feed.title }}</h3>
+      <div *ngFor="let feed of rssFeeds" class="rssFeed-global__header">
+        <div class="rssFeed-global__header-title" title="Afficher les articles du flux" (click)="onFeedSelected(feed)">
+          <div>
+            <i class="fa-sharp fa-solid fa-rss"></i>
           </div>
-          <div class="rssFeed-global__header-icon__point">
-            <i class="fa-solid fa-ellipsis-vertical" title="Ellipsis"></i>
-          </div>
-          <div class="rssFeed-global__header-icon">
-            <i class="fa-solid fa-heart" title="Favori"></i>
-            <i class="fa-solid fa-pencil" title="Modifier"></i>
-            <i class="fa-solid fa-trash" title="Supprimer"></i>
-          </div>
+          <h3>{{ feed.title }}</h3>
+        </div>
+        <div class="rssFeed-global__header-icon__point">
+          <i class="fa-solid fa-ellipsis-vertical" title="Ellipsis"></i>
+        </div>
+        <div class="rssFeed-global__header-icon">
+          <i
+            class="fa-solid fa-star"
+            title="Favori"
+            [class.favorite]="feed.favorite"
+            (click)="toggleFavorite(feed)"
+          ></i>
+          <i class="fa-solid fa-trash" title="Supprimer" (click)="openConfirmationModal(feed)"></i>
         </div>
       </div>
     </div>
