@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RssModalComponent } from '../../components/modals/rss-modal/rss-modal.component';
 import { RssFeedService } from '../../services/rssService/rss.service';
@@ -12,12 +12,23 @@ import { RssResponse } from '../../interface/rss.interface';
   styleUrls: ['./rss.component.scss'],
 })
 export class RssComponent {
-  constructor(private dialog: MatDialog, public rssService: RssFeedService, private toastr: ToastrService) {}
+  isLargeScreen = true;
 
+  constructor(private dialog: MatDialog, public rssService: RssFeedService, private toastr: ToastrService) {
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isLargeScreen = window.innerWidth >= 600;
+  }
   ngOnInit(): void {
     this.loadRssFeeds();
   }
-
   loadRssFeeds(): void {
     this.rssService.getAllRssFeeds().subscribe({
       next: (rssFeeds: RssFeed[]): void => {
