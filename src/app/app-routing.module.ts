@@ -9,6 +9,7 @@ import { Page404Component } from './pages/page404/page404.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MentionLegalesComponent } from './pages/mention-legales/mention-legales.component';
 import { TodolistsComponent } from './pages/todolists/todolists.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'todolists',
     component: TodolistsComponent,
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent,
   },
   {
     path: 'legalNotices',
