@@ -75,10 +75,8 @@
   flex-direction: column;
   background-color: #18bc9c;
   border-radius: 0.5rem;
-  height: 100px;
-  width: 200px;
-  padding: 10px;
-  margin: 20px;
+  height: auto;
+  width: auto;
   cursor: grab;
   &:active {
     cursor: grabbing;
@@ -103,10 +101,10 @@
   }
 }
 
-.grid-container {
-  flex-basis: 0;
-  flex-grow: 1;
-}
+// .grid-container {
+//   flex-basis: 0;
+//   flex-grow: 1;
+// }
 
 .dashboard__content-module {
   display: flex;
@@ -137,39 +135,43 @@
 }
 
 .grid-stack {
+  display: flex;
   background: rgba(53, 92, 125, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
   -webkit-backdrop-filter: blur(8.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  min-height: 550px;
+  min-height: 100vh;
   margin: 20px;
+  // padding: 50px;
 }
 
-.grid-stack > .grid-stack-item.grid-stack-sub-grid > .grid-stack-item-content {
-  background: rgba(0, 0, 0, 0.1);
-  inset: 0 2px;
-}
-.grid-stack.grid-stack-nested {
-  background: none;
-  position: absolute;
-  inset: 0;
-}
+// .grid-stack > .grid-stack-item.grid-stack-sub-grid > .grid-stack-item-content {
+//   background: rgba(0, 0, 0, 0.1);
+//   inset: 0 2px;
+// }
+// .grid-stack.grid-stack-nested {
+//   background: none;
+//   position: absolute;
+//   inset: 0;
+// }
 
 .dashboard__content-module {
   position: relative;
-  margin: 1em;
+  width: auto;
+  height: 80%;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease-in-out;
 
   img {
-    width: 100%;
+    width: auto;
     height: 100%;
+    box-sizing: border-box;
     border-radius: 4px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 
@@ -196,4 +198,30 @@
 .sidebar .newWidget.dragged {
   opacity: 0.4;
   pointer-events: none;
+}
+
+.grid-stack > .grid-stack-item {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  // width: 100%;
+  // height: auto;
+  border: 1px solid #f67280;
+  color: #ffffff;
+  text-decoration: none solid rgb(255, 255, 255);
+  // padding: 10px;
+  margin: 20px;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+/* Styles pour masquer la barre latérale */
+.hide-sidebar .sidebar {
+  display: none;
+}
+
+/* Styles pour afficher la barre latérale */
+.show-sidebar .sidebar {
+  display: block;
 }

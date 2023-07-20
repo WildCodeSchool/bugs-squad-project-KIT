@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   private initializeGrid() {
     setTimeout(() => {
       this.grid = GridStack.init({
-        cellHeight: 150,
+        // cellHeight: 150,
         acceptWidgets: true,
         removable: '#trash',
         float: true,
