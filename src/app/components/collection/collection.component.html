@@ -17,12 +17,14 @@
     </div>
     <div class="links-section">
       <ul>
-        <li>
-          <i class="fa-sharp fa-solid fa-circle-plus" (click)="openDialogCreateLink('0ms', '0ms')"></i>
-          Ajouter un lien
+        <li class="new-link">
+          <button class="new-link-btn" (click)="openDialogCreateLink('0ms', '0ms')">
+            <i class="fa-sharp fa-solid fa-circle-plus"></i>
+            Ajouter un lien
+          </button>
         </li>
         <div cdkDropList class="drag-list" (cdkDropListDropped)="drop($event)">
-          <li class="drag-box" *ngFor="let link of collection.links" cdkDrag>
+          <li *ngFor="let link of collection.links" cdkDrag>
             <div class="links">
               <div class="link">
                 <a [href]="[link.url]" target="_blank">{{ getLinkComment(link) }}</a>
