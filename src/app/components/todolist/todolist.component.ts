@@ -11,6 +11,7 @@ import { UpdateTaskComponent } from './modals/update-task.component';
 import { UpdateTodoComponent } from './modals/update-todo.component';
 import { AddNewTaskComponent } from './modals/new-task.component';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ToastrService } from 'ngx-toastr';
 import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-todolist',
@@ -23,7 +24,12 @@ export class TodolistComponent {
   task!: Task;
   @Input() isFavList = false;
 
-  constructor(private todoService: TodoService, private taskService: TaskService, public dialog: MatDialog) {}
+  constructor(
+    private todoService: TodoService,
+    private taskService: TaskService,
+    public dialog: MatDialog,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.todolist.tasks.sort((a, b) => a.position - b.position);
@@ -46,6 +52,7 @@ export class TodolistComponent {
         if (index !== -1) {
           this.todolist.tasks.splice(index, 1);
         }
+        this.toastr.success(`La tâche ${task.description} a été supprimée !`);
       });
     }
   }
@@ -103,6 +110,6 @@ export class TodolistComponent {
     });
     const tasks = this.todolist.tasks;
     tasks.sort((a, b) => a.position - b.position);
-    this.todoService.updateTasksPosition(tasks, this.todolist.id).subscribe(() => console.log(this.todolist.tasks));
+    this.todoService.updateTasksPosition(tasks, this.todolist.id).subscribe();
   }
 }
