@@ -2,17 +2,17 @@
 
 .collection {
   width: 260px;
-  // or 20rem
+
   outline: solid 2px $quaternary-color;
   border-radius: 8px;
-  height: 320px;
+  height: 400px;
   display: flex;
   justify-content: flex-end;
+  margin: 2rem;
 
   .collection-infos {
     height: 100%;
-    width: 244px;
-    // or 18rem
+    width: 15rem;
     background-color: $bg-color;
     padding: 0.5rem;
 
@@ -36,8 +36,10 @@
     .meta {
       margin: 1rem 0 0 1rem;
 
-      h3 {
+      h3, .description {
         margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .links-section {
@@ -56,9 +58,9 @@
       color: $bg-color;
 
       li {
-        width: 90%;
         height: 2rem;
         margin-top: 0.5rem;
+        width: 14rem;
 
         .links {
           display: flex;
@@ -94,6 +96,20 @@
       text-align: center;
       color: $secondary-color;
       cursor: pointer;
+    }
+  }
+  &.fav-collection {
+    width: 200px;
+    height: 260px;
+    margin: 1rem;
+    .collection-infos {
+      width: 12rem;
+      .icons {
+        display: none;
+      }
+      ul li {
+        width: 10rem;
+      }
     }
   }
 }

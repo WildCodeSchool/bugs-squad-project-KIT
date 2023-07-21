@@ -21,6 +21,7 @@ export class TodolistComponent {
   @Input() todolist!: ToDoList;
   @Input() deleteTodolistFn!: (todolist: ToDoList) => void;
   task!: Task;
+  @Input() isFavList = false;
 
   constructor(private todoService: TodoService, private taskService: TaskService, public dialog: MatDialog) {}
 
