@@ -8,7 +8,6 @@ export interface RssItem {
   author?: string;
 }
 
-
 export interface RssDataFeeds {
   status: string;
   id: number;

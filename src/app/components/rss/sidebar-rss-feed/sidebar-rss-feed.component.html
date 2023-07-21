@@ -5,7 +5,11 @@
   </div>
   <div *ngIf="isOpen" class="sidebar-feedGlobal__mobile-content">
     <div *ngFor="let feed of rssFeeds" class="sidebar-feedGlobal__mobile-content-title">
-      <div class="sidebar-feedGlobal__mobile-content-nameRss" title="Afficher les articles du flux" (click)="onFeedSelected(feed)">
+      <div
+        class="sidebar-feedGlobal__mobile-content-nameRss"
+        title="Afficher les articles du flux"
+        (click)="onFeedSelected(feed)"
+      >
         <i class="fa-sharp fa-solid fa-rss"></i>
         <h3>{{ feed.title }}</h3>
       </div>

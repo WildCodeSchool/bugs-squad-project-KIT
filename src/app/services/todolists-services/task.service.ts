@@ -19,7 +19,7 @@ export class TaskService {
 
     return this.http.put(dataSource, body) as Observable<Task>;
   }
-  createTask(body: { todolist_id: number; description: string, position: number }, listId: number) {
+  createTask(body: { todolist_id: number; description: string; position: number }, listId: number) {
     const dataSource = `http://localhost:8080/api/lists/${listId}/tasks`;
     return this.http.post(dataSource, body) as Observable<Task>;
   }

@@ -74,13 +74,25 @@ export class DashboardComponent implements OnInit {
 
   saveGridStack() {
     const gridItems = this.grid.getGridItems();
-    const widgetPositions = gridItems.map((item: { getAttribute: (arg0: string) => any }) => ({
+    const widgetPositions = gridItems.map((item: { getAttribute: (gridstackNode: string) => any }) => ({
       id: item.getAttribute('data-gs-id'),
       x: item.getAttribute('data-gs-x'),
       y: item.getAttribute('data-gs-y'),
       width: item.getAttribute('data-gs-width'),
       height: item.getAttribute('data-gs-height'),
     }));
+    for (const gridItem of gridItems) {
+      // @ts-ignore
+      console.log(gridItem.gridstackNode.x);
+      // @ts-ignore
+      console.log(gridItem.gridstackNode.y);
+      // @ts-ignore
+      console.log(gridItem.gridstackNode.w);
+      // @ts-ignore
+      console.log(gridItem.gridstackNode.h);
+      // @ts-ignore
+      console.log(gridItem.gridstackNode._id);
+    }
   }
   isDivVisible = true;
   toggleDiv() {
