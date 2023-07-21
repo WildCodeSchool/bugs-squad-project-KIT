@@ -49,4 +49,8 @@ export class CollectionsService {
   updateLinksPosition(id: number, links: Link[]) {
     return this.http.patch(`${this.dataSource}/${id}/links`, links) as Observable<Link[]>;
   }
+
+  getFavoriteCollections() {
+    return this.http.get(this.dataSource + '?isfavorite=true') as Observable<Collection[]>;
+  }
 }
