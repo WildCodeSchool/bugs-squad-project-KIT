@@ -8,29 +8,17 @@ export interface RssItem {
   author?: string;
 }
 
-
-export interface RssDataFeeds {
-  status: string;
-  id: number;
-  feed: {
-    url: string;
-    title: string;
-    link: string;
-    author: string;
-    description: string;
-    image: string;
-  };
+export interface RssDataFeed {
+  url: string;
+  title: string;
+  link: string;
+  author: string;
+  description: string;
+  image: string;
 }
 
 export interface RssResponse {
   status: string;
-  feed: {
-    url: string;
-    title: string;
-    link: string;
-    author: string;
-    description: string;
-    image: string;
-  };
+  feed: RssDataFeed;
   items: RssItem[];
 }

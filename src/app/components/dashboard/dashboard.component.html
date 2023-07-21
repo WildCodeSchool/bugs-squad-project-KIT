@@ -1,142 +1,58 @@
 <div class="dashboard__content">
   <div *ngIf="isLoggedIn()">
-    <p>Welcome, {{ userInfo?.info?.name }}</p>
+    <h1>Welcome, {{ userInfo?.info?.name }}</h1>
     <p>Email: {{ userInfo?.info?.email }}</p>
   </div>
-
-  <div class="dashboard__content-group_module">
-    <div class="dashboard__content-module">
-      <img
-        src="https://images.unsplash.com/photo-1611988615248-5d4f0b9ac31e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-        alt="google calendar"
-        class="dashboard__content-module-img"
-      />
-      <div class="dashboard__content-group_module-middle">
-        <a routerLink="/calendar">Google Calendar</a>
-      </div>
-    </div>
-    <div class="dashboard__content-module">
-      <img
-        src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-        alt="flux rss"
-        class="dashboard__content-module-img"
-      />
-      <div class="dashboard__content-group_module-middle">
-        <a routerLink="/rss">Flux RSS</a>
-      </div>
-    </div>
-  </div>
-  <div class="dashboard__content-group_module">
-    <div class="dashboard__content-module">
-      <img
-        src="https://images.unsplash.com/photo-1604128311556-816dfb846a54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-        alt="collections"
-        class="dashboard__content-module-img"
-      />
-      <div class="dashboard__content-group_module-middle">
-        <a routerLink="/collections">Collections</a>
-  <div class="row">
-    <div class="sidebar">
-      <div id="trash">
-        <div class="icon">
-          <i class="fa-solid fa-trash" title="Supprimer"></i>
-        </div>
-        <div>
-          <span>Glissez ici l'élément à retirer</span>
-        </div>
-      </div>
-      <button class="btn-remove" (click)="cleanGridStack()">
-        <i class="fa-solid fa-arrows-rotate"></i>
-        <span>Vider tout le Grid-Stack</span>
-      </button>
-      <button class="btn-save" (click)="saveGridStack()">
-        <i class="fa-solid fa-floppy-disk" title="Sauvegarder"></i>
-        <span>Sauvegarder le Grid-Stack</span>
-      </button>
-      <div class="newWidget grid-stack-item">
-        <div class="dashboard__content-module">
-          <img
-            src="https://images.unsplash.com/photo-1611988615248-5d4f0b9ac31e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-            alt="google calendar" class="dashboard__content-module-img" />
-          <div class="dashboard__content-group_module-middle">
-            <a routerLink="/dashboard">Google Calendar</a>
+  <div class="dashboard__content">
+    <div class="row">
+      <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer</button>
+      <div class="sidebar" *ngIf="isDivVisible">
+        <div id="trash">
+          <div class="icon">
+            <i class="fa-solid fa-trash" title="Supprimer"></i>
+          </div>
+          <div>
+            <span>Glissez ici l'élément à retirer</span>
           </div>
         </div>
-      </div>
-      <div class="newWidget grid-stack-item">
-        <div class="dashboard__content-module">
-          <img
-            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-            alt="flux rss" class="dashboard__content-module-img" />
-          <div class="dashboard__content-group_module-middle">
-            <a routerLink="/rss">Flux RSS</a>
+        <button class="btn-remove" (click)="cleanGridStack()">
+          <div class="icon">
+            <i class="fa-solid fa-arrows-rotate"></i>
           </div>
-        </div>
-      </div>
-      <div class="newWidget grid-stack-item">
-        <div class="dashboard__content-module">
-          <img
-            src="https://images.unsplash.com/photo-1604128311556-816dfb846a54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-            alt="collections" class="dashboard__content-module-img" />
-          <div class="dashboard__content-group_module-middle">
-            <a routerLink="/collections">Collections</a>
+          <div>
+            <span>Vider tout le Grid-Stack</span>
           </div>
-        </div>
-      </div>
-      <div class="newWidget grid-stack-item">
-        <div class="dashboard__content-module">
-          <img
-            src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80"
-            alt="todo List" class="dashboard__content-module-img" />
-          <div class="dashboard__content-group_module-middle">
-            <a routerLink="/dashboard">TodoList</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="grid-container">
-      <div class="grid-stack">
-        <div class="grid-stack-item" id="item1" #item1 data-gs-width="1" data-gs-height="1" data-gs-x="0" data-gs-y="0">
+        </button>
+        <button class="btn-save" (click)="saveGridStack()">
+          <i class="fa-solid fa-floppy-disk" title="Sauvegarder"></i>
+          <span>Sauvegarder le Grid-Stack</span>
+        </button>
+        <div class="newWidget grid-stack-item" id="item4" #item4>
           <div class="dashboard__content-module">
-            <img
-              src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80"
-              alt="todo List" class="dashboard__content-module-img" />
-            <div class="dashboard__content-group_module-middle">
-              <a routerLink="/dashboard">TodoList</a>
-            </div>
-          </div>
-        </div>
-        <div class="grid-stack-item" id="item2" #item2 data-gs-width="1" data-gs-height="1" data-gs-x="1" data-gs-y="0">
-          <div class="dashboard__content-module">
-            <img
-              src="https://images.unsplash.com/photo-1604128311556-816dfb846a54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-              alt="collections" class="dashboard__content-module-img" />
-            <div class="dashboard__content-group_module-middle">
-              <a routerLink="/collections">Collections</a>
-            </div>
-          </div>
-        </div>
-        <div class="grid-stack-item" id="item3" #item3 data-gs-width="1" data-gs-height="1" data-gs-x="0" data-gs-y="1">
-          <div class="dashboard__content-module">
-            <img
-              src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-              alt="flux rss" class="dashboard__content-module-img" />
-            <div class="dashboard__content-group_module-middle">
-              <a routerLink="/rss">Flux RSS</a>
-            </div>
-          </div>
-        </div>
-        <div class="grid-stack-item" id="item4" #item4 data-gs-width="1" data-gs-height="1" data-gs-x="1" data-gs-y="1">
-          <div class="dashboard__content-module large-height">
-            <img
-              src="https://images.unsplash.com/photo-1611988615248-5d4f0b9ac31e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-              alt="google calendar" class="dashboard__content-module-img" />
+            Google Calendar
             <div class="dashboard__content-group_module-middle">
               <a routerLink="/dashboard">Google Calendar</a>
             </div>
           </div>
         </div>
+        <div class="newWidget grid-stack-item" id="item3" #item3>
+          <h2>Mes flux favoris</h2>
+          <app-favorite-rss-feed></app-favorite-rss-feed>
+          <a routerLink="/rss">Voir plus</a>
+        </div>
+        <div class="newWidget grid-stack-item" id="item2" #item2>
+          <h2>Mes collections</h2>
+          <app-dash-collections></app-dash-collections>
+          <a routerLink="/collections">Voir plus</a>
+        </div>
+        <div class="newWidget grid-stack-item" id="item1" #item1>
+          <h2>Mes todolists</h2>
+          <app-todolists-fav></app-todolists-fav>
+          <a routerLink="/todolists">Voir plus</a>
+        </div>
       </div>
+
+      <div class="grid-stack"></div>
     </div>
   </div>
 </div>

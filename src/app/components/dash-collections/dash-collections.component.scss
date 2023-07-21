@@ -1,1 +1,6 @@
 @use '/src/imports' as *;
+.collections {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

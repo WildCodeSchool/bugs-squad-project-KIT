@@ -1,5 +1,5 @@
 <div class="lists">
   <div *ngFor="let todolist of favTodolists" class="singletodo">
-    <app-todolist *ngIf="todolist.favorite" [todolist]="todolist"></app-todolist>
+    <app-todolist *ngIf="todolist.favorite" [todolist]="todolist" [isFavList]="true"></app-todolist>
   </div>
 </div>

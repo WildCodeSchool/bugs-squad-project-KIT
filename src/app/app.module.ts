@@ -46,6 +46,7 @@ import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-modal/confirm-delete-modal.component';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
+import { FavoriteRssFeedComponent } from './components/rss/favorite-rss-feed/favorite-rss-feed.component';
 
 export function storageFactory(): OAuthStorage {
   return localStorage;
@@ -79,6 +80,7 @@ export function storageFactory(): OAuthStorage {
     SidebarRssFeedComponent,
     CalendarComponent,
     ConfirmDeleteModalComponent,
+    FavoriteRssFeedComponent,
   ],
 
   imports: [
@@ -111,9 +113,7 @@ export function storageFactory(): OAuthStorage {
     NgFor,
     OAuthModule.forRoot(),
   ],
-  providers: [
-    { provide: OAuthStorage, useFactory: storageFactory },
-  ],
+  providers: [{ provide: OAuthStorage, useFactory: storageFactory }],
   bootstrap: [AppComponent],
   exports: [],
 })

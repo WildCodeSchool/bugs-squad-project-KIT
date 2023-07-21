@@ -1,4 +1,4 @@
-<div class="collection" [style.backgroundColor]="collection.color">
+<div class="collection" [style.backgroundColor]="collection.color" [ngClass]="{ 'fav-collection': isFavCollection }">
   <div class="collection-infos">
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdate('0ms', '0ms')"></i>
@@ -12,17 +12,19 @@
       <i *ngIf="collection.favorite" class="fa-solid fa-star" title="Ajouter aux favoris" (click)="patchFavorite()"></i>
     </div>
     <div class="meta">
-      <h3 class="title">{{ collection.title }}</h3>
-      <p class="description">{{ collection.description }}</p>
+      <h3 class="title" title="{{ collection.title }}">{{ collection.title }}</h3>
+      <p class="description" title="{{ collection.description }}">{{ collection.description }}</p>
     </div>
     <div class="links-section">
       <ul>
-        <li>
-          <i class="fa-sharp fa-solid fa-circle-plus" (click)="openDialogCreateLink('0ms', '0ms')"></i>
-          Ajouter un lien
+        <li class="new-link">
+          <button class="new-link-btn" (click)="openDialogCreateLink('0ms', '0ms')">
+            <i class="fa-sharp fa-solid fa-circle-plus"></i>
+            Ajouter un lien
+          </button>
         </li>
         <div cdkDropList class="drag-list" (cdkDropListDropped)="drop($event)">
-          <li class="drag-box" *ngFor="let link of collection.links" cdkDrag>
+          <li *ngFor="let link of collection.links" cdkDrag>
             <div class="links">
               <div class="link">
                 <a [href]="[link.url]" target="_blank">{{ getLinkComment(link) }}</a>

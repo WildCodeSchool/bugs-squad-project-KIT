@@ -32,6 +32,9 @@ export class RssComponent {
     this.isLargeScreen = window.innerWidth >= 600;
   }
   ngOnInit(): void {
+    if (this.rssService.selectedRssFeed !== null) {
+      this.feedSelected = this.rssService.selectedRssFeed;
+    }
     this.loadRssFeeds();
   }
   loadRssFeeds(): void {
