@@ -1,6 +1,7 @@
-@use "/src/imports" as *;
+@use '/src/imports' as *;
 
 .navbar {
+  position: sticky;
   background-color: $quaternary-color;
   display: flex;
   align-items: center;

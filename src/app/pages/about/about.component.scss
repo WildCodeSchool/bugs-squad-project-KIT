@@ -1,10 +1,11 @@
-@use "/src/imports" as *;
+@use '/src/imports' as *;
 
 .aboutPage {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0.5em;
 
   .presentation {
     text-align: center;
@@ -50,7 +51,7 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.2s ease-in-out;
 
-      h4{
+      h4 {
         font-size: 0.8rem;
         margin-bottom: 0.5rem;
       }
@@ -63,7 +64,6 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
 
-
       .links {
         display: flex;
         flex-direction: row;
@@ -73,7 +73,7 @@
         a {
           color: $quaternary-color;
           text-decoration: none;
-          font-size:1rem;
+          font-size: 1rem;
           transition: color 0.2s ease-in-out;
           margin: 0 0.5rem;
 
@@ -98,82 +98,80 @@
   }
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75%;
+  border: 2px solid #f67280;
+  border-radius: 10px;
+  padding: 1rem;
 
+  h1 {
+    color: $main-color;
+    text-align: center;
+  }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 75%;
-    border: 2px solid #f67280;
-    border-radius: 10px;
-    padding: 1rem;
+  label {
+    font-weight: $font-weight-bold;
+    margin-bottom: 1rem;
+  }
 
-    h1 {
-      color: $main-color;
-      text-align: center;
-    }
+  input[type='email'],
+  textarea {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s ease-in-out;
 
-    label {
-      font-weight: $font-weight-bold;
-      margin-bottom: 1rem;
-    }
-
-    input[type='email'],
-    textarea {
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 2px solid #ccc;
-      border-radius: 4px;
-      transition: border-color 0.2s ease-in-out;
-
-      &:focus {
-        outline: none;
-        border-color: #6b48ff;
-      }
-    }
-
-    input[type='email'] {
-      width: 100%;
-    }
-
-    textarea {
-      width: 100%;
-      height: 8rem;
-    }
-    .error {
-      color: red;
-      font-size: 0.75rem;
-    }
-
-    button[type='submit'] {
-      padding: 0.5rem;
-      width: 10rem;
-      align-self: center;
-      border: none;
-      border-radius: 4px;
-      background-color: $quaternary-color;
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.2s ease-in-out;
-
-      &:hover {
-        background-color: #482880;
-      }
-    }
-
-    .invalid {
-      color: red;
-      font-size: 0.75rem;
-      margin-bottom: 0.5rem;
-
-      div:not(:last-child) {
-        margin-bottom: 0.25rem;
-      }
+    &:focus {
+      outline: none;
+      border-color: #6b48ff;
     }
   }
+
+  input[type='email'] {
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+    height: 8rem;
+  }
+  .error {
+    color: red;
+    font-size: 0.75rem;
+  }
+
+  button[type='submit'] {
+    padding: 0.5rem;
+    width: 10rem;
+    align-self: center;
+    border: none;
+    border-radius: 4px;
+    background-color: $quaternary-color;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #482880;
+    }
+  }
+
+  .invalid {
+    color: red;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+
+    div:not(:last-child) {
+      margin-bottom: 0.25rem;
+    }
+  }
+}
 
 @media screen and (max-width: 760px) {
   .presentation {
@@ -186,13 +184,13 @@
       flex-direction: row;
     }
 
-  .team-member {
+    .team-member {
       width: 5rem;
-        height: 5rem;
-  }
-      .team-container {
-        width: 100%;
-  }
+      height: 5rem;
+    }
+    .team-container {
+      width: 100%;
+    }
     h1 {
       font-size: 1.5rem;
     }
@@ -233,7 +231,6 @@
       font-size: 0.875rem;
       width: auto;
     }
-
   }
 
   .team-container {
@@ -242,5 +239,4 @@
     justify-content: center;
     align-items: center;
   }
-
 }

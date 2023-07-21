@@ -1,8 +1,93 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GoogleApiService, UserInfo } from '../../services/google-api.service';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { HttpClient } from '@angular/common/http';
+import { GridStack } from 'gridstack';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {}
+export class DashboardComponent implements OnInit {
+  userInfo?: UserInfo;
+  private grid!: GridStack;
+
+  constructor(
+    private readonly googleApiService: GoogleApiService,
+    private oauthService: OAuthService,
+    private httpClient: HttpClient
+  ) {
+    this.googleApiService = googleApiService;
+    this.oauthService = oauthService;
+    this.httpClient = httpClient;
+  }
+
+  isLoggedIn(): boolean {
+    return this.googleApiService.isLoggedIn();
+  }
+
+  ngOnInit(): void {
+    this.oauthService.loadDiscoveryDocument().then(() => {
+      this.googleApiService.userProfileSubject.subscribe((userInfo) => {
+        this.userInfo = userInfo;
+      });
+    });
+    this.initializeGrid();
+  }
+
+  private initializeGrid() {
+    setTimeout(() => {
+      this.grid = GridStack.init({
+        cellHeight: 150,
+        acceptWidgets: true,
+        removable: '#trash',
+        float: true,
+      });
+
+      GridStack.setupDragIn('.newWidget', {appendTo: 'body', helper: 'clone'});
+
+      this.grid.on('added removed change', (e: any, items: any) => {
+        let str = '';
+        items.forEach((item: any) => {
+          str += ' (x,y)=' + item.x + ',' + item.y;
+        });
+        console.log(e.type + ' ' + items.length + ' items:' + str);
+      });
+    });
+  }
+
+  cleanGridStack() {
+    if (this.grid) {
+      this.grid.removeAll();
+      this.initializeGrid();
+    }
+  }
+
+  saveGridStack() {
+    const gridItems = this.grid.getGridItems();
+    const widgetPositions = gridItems.map((item: { getAttribute: (arg0: string) => any; }) => ({
+      id: item.getAttribute('data-gs-id'),
+      x: item.getAttribute('data-gs-x'),
+      y: item.getAttribute('data-gs-y'),
+      width: item.getAttribute('data-gs-width'),
+      height: item.getAttribute('data-gs-height'),
+    }));
+    // this.gridStackService.saveWidgetsPositions(widgetPositions).subscribe(
+    //   (response) => {
+    //     console.log('Sauvegarde réussie :', response);
+    //   },
+    //   (error) => {
+    //     console.error('Erreur lors de la sauvegarde :', error);
+    //   }
+    // );
+
+
+  }
+}
+
+
+
+
+
+

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Collection } from 'src/app/models/Collection';
-import { Link } from 'src/app/models/Link';
 import { faPencil, faLink } from '@fortawesome/free-solid-svg-icons';
 import { CollectionsService } from '../../services/collections.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CollectionsFormComponent } from '../../components/collection-form/collection-form.component';
 
 @Component({
   selector: 'app-collections',
@@ -13,33 +13,30 @@ import { CollectionsService } from '../../services/collections.service';
 export class CollectionsComponent implements OnInit {
   collections: Collection[] = [];
   collection!: Collection;
-  title = new FormControl('');
-  description = new FormControl('');
-  link = new FormControl('');
-  comment = new FormControl('');
-  collectionColor = new FormControl('#FFFFFF');
 
-  constructor(private collectionsService: CollectionsService) {}
+  constructor(private collectionsService: CollectionsService, public dialog: MatDialog) {}
 
   faPencil = faPencil;
   faLink = faLink;
 
-  addToCollections() {
-    this.collections.push(this.collection);
-  }
-
-  createCollection() {
-    this.collection = new Collection(
-      this.title.value as string,
-      [new Link(this.link.value as string, this.comment.value as string)],
-      this.description.value as string
-    );
-    this.addToCollections();
-  }
-
   ngOnInit() {
+    this.getAllCollections();
+    this.collectionsService.currentCollectionData$.subscribe(() => {
+      this.getAllCollections();
+    });
+  }
+
+  getAllCollections() {
     this.collectionsService.getCollections().subscribe((data) => {
       this.collections = data;
+    });
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(CollectionsFormComponent, {
+      width: '280px',
+      enterAnimationDuration,
+      exitAnimationDuration,
     });
   }
 }

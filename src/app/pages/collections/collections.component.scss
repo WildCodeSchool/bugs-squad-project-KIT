@@ -2,6 +2,18 @@
 
 .body {
   margin: 2rem;
+
+  .collections {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .add-collection {
+    display: flex;
+    margin-bottom: 2rem;
+  }
+
   .form {
     width: 260px;
     outline: solid 2px $quaternary-color;
@@ -12,12 +24,12 @@
     justify-content: center;
     align-items: center;
 
-      h3 {
-        text-align: center;
-        margin-top: 0.5rem;
-      }
+    h3 {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
 
-      label {
+    label {
       display: flex;
       flex-direction: column;
 
@@ -25,13 +37,13 @@
         border: 1px solid $secondary-color;
         width: 15rem;
       }
-        .color {
-          width: 3rem;
-          border: none;
-          background-color: $bg-color;
-        }
+      .color {
+        width: 3rem;
+        border: none;
+        background-color: $bg-color;
       }
-      button {
+    }
+    button {
       background-color: $quaternary-color;
       border: none;
       height: 2rem;
@@ -39,13 +51,6 @@
       margin: 1rem;
       color: white;
       padding: 0 1rem;
-      }
-  }
-    .collections {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      padding: 2rem;
-      margin: 3rem;
     }
+  }
 }

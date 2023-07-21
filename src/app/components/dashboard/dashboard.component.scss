@@ -1,16 +1,160 @@
-.dashboard__content {
+#trash {
+  display: flex;
+  height: 100px;
+  width: 200px;
+  margin: 20px;
+  border-radius: 0.5rem;
+  border: 2px dashed #cc6857;
+  background: #e3a59a;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #ffffff;
+  text-decoration: none solid rgb(255, 255, 255);
+}
+
+.btn-remove {
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f67280;
+  border-radius: 0.5rem;
+  border: 1px solid #f67280;
+  color: #ffffff;
+  text-decoration: none solid rgb(255, 255, 255);
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #c06c84;
+    border: 1px solid #c06c84;
+    transform: translateY(2px);
+  }
+  i {
+    margin-bottom: 5px;
+  }
+}
+
+.btn-save {
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #18bc9c;
+  border-radius: 0.5rem;
+  border: 1px solid #18bc9c;
+  color: #ffffff;
+  text-decoration: none solid rgb(255, 255, 255);
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #1e824c;
+    border: 1px solid #1e824c;
+    transform: translateY(2px);
+  }
+  i {
+    margin-bottom: 5px;
+  }
+}
+
+.grid-stack-item-removing {
+  opacity: 0.8;
+  filter: blur(5px);
+}
+
+.grid-stack-item-content {
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #18bc9c;
+  border-radius: 0.5rem;
+  height: 100px;
+  width: 200px;
+  padding: 10px;
+  margin: 20px;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.sidebar {
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: space-evenly;
+  padding: 10px;
+  height: auto;
+  text-align: center;
+  flex-direction: row;
+  margin: 15px;
+  border: 1px solid #f67280;
+  border-radius: 0.5rem;
+  & > * {
+    height: 100px;
+    width: 200px;
+  }
+}
+
+.grid-container {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.dashboard__content-module {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  flex-basis: auto;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  height: auto;
+  width: auto;
+  margin: 10px;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+  .dashboard__content-module-img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+  }
+
+  &:hover .dashboard__content-module-img {
+    opacity: 0.3;
+  }
 }
-.dashboard__content-group_module{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 63%;
+
+.grid-stack {
+  background: rgba(53, 92, 125, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  min-height: 550px;
+  margin: 20px;
+}
+
+.grid-stack > .grid-stack-item.grid-stack-sub-grid > .grid-stack-item-content {
+  background: rgba(0, 0, 0, 0.1);
+  inset: 0 2px;
+}
+.grid-stack.grid-stack-nested {
+  background: none;
+  position: absolute;
+  inset: 0;
 }
 
 .dashboard__content-module {
@@ -34,15 +178,11 @@
   }
 
   .dashboard__content-group_module-middle {
-     transition: .5s ease;
-     opacity: 0;
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     text-align: center;
-     font-size: 1em;
-     transform: translate(-50%, -50%);
-     -ms-transform: translate(-50%, -50%)
+    transition: 0.5s ease;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    font-size: 1em;
   }
   .dashboard__content-group_module-middle a {
     padding: 1em;
@@ -51,29 +191,4 @@
   &:hover .dashboard__content-group_module-middle {
     opacity: 1;
   }
-
-
-  .dashboard__content-module-img{
-    opacity: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
-  }
-
-  &:hover .dashboard__content-module-img {
-    opacity: 0.3;
-  }
 }
-
-@media screen and (max-width: 760px) {
-  .dashboard__content {
-
-  }
-  .dashboard__content-group_module {
-    flex-direction: column;
-    width: 90%;
-  }
-}
-

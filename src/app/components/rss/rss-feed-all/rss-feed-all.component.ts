@@ -1,36 +1,25 @@
-import { Component, Input } from '@angular/core';
-import { RssFeedService } from '../../../services/RssFeedService/rss.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { RssFeedService } from '../../../services/rssService/rss.service';
+import { RssItem } from '../../../interface/rss.interface';
 
 @Component({
   selector: 'app-rss-feed-all',
   templateUrl: './rss-feed-all.component.html',
   styleUrls: ['./rss-feed-all.component.scss'],
 })
-export class RssFeedAllComponent {
-  @Input() rssLink!: string[];
-  rssDataItems: any[] = [];
+export class RssFeedAllComponent implements OnInit {
+  @Input() rssDataItems!: RssItem[];
 
-  constructor(public rssFeedService: RssFeedService) {}
+  constructor(public rssService: RssFeedService) {}
 
   ngOnInit(): void {
-    this.getRssData();
+    this.subscribeToRssFeedsUpdated();
   }
 
-  getRssData(): void {
-    this.rssLink.forEach((link: string) => {
-      this.rssFeedService.getRssData(link, 20).subscribe({
-        next: (response: any): void => {
-          const rssData = response;
-          this.rssFeedService.addFeedTitleToItems(rssData);
-          this.rssDataItems?.push(...rssData.items);
-          this.rssFeedService.sortRssDataItemsByDate(this.rssDataItems);
-        },
-        error: (error: any): void => {
-          console.error('Erreur lors de la récupération du flux RSS', error);
-        },
-      });
-    });
+  subscribeToRssFeedsUpdated(): void {
+    this.rssService.onRssFeedsUpdated().subscribe(() => {});
   }
+
   getClean(description: string): string {
     return description.replace(/<[^>]+>/g, '');
   }
