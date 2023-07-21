@@ -81,14 +81,6 @@ export class DashboardComponent implements OnInit {
       width: item.getAttribute('data-gs-width'),
       height: item.getAttribute('data-gs-height'),
     }));
-    this.gridStackService.saveWidgetsPositions(widgetPositions).subscribe(
-      (response) => {
-        console.log('Sauvegarde réussie :', response);
-      },
-      (error) => {
-        console.error('Erreur lors de la sauvegarde :', error);
-      }
-    );
   }
   isDivVisible = true;
   toggleDiv() {
