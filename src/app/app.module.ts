@@ -113,9 +113,7 @@ export function storageFactory(): OAuthStorage {
     NgFor,
     OAuthModule.forRoot(),
   ],
-  providers: [
-    { provide: OAuthStorage, useFactory: storageFactory },
-  ],
+  providers: [{ provide: OAuthStorage, useFactory: storageFactory }],
   bootstrap: [AppComponent],
   exports: [],
 })

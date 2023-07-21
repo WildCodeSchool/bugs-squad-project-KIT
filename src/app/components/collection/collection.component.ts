@@ -20,6 +20,7 @@ export class CollectionComponent implements OnInit {
   faPencil = faPencil;
   faLink = faLink;
   public color = '#FFFFFF';
+  @Input() isFavCollection = false;
 
   constructor(
     private linksService: LinksService,

@@ -14,6 +14,7 @@ export class RssFeedService {
   private rssFeedsUpdatedSubject: Subject<void> = new Subject<void>();
   private _rssFeeds: RssFeed[] = [];
   private _rssDataItems: RssItem[] = [];
+  private _selectedRssFeed: RssFeed | null = null;
 
   get rssFeeds(): RssFeed[] {
     return this._rssFeeds;
@@ -29,6 +30,13 @@ export class RssFeedService {
 
   set rssDataItems(value: RssItem[]) {
     this._rssDataItems = value;
+  }
+  get selectedRssFeed(): RssFeed | null {
+    return this._selectedRssFeed;
+  }
+
+  set selectedRssFeed(value: RssFeed | null) {
+    this._selectedRssFeed = value;
   }
 
   constructor(private http: HttpClient) {}
@@ -103,4 +111,5 @@ export class RssFeedService {
   onRssFeedsUpdated(): Observable<void> {
     return this.rssFeedsUpdatedSubject.asObservable();
   }
+
 }

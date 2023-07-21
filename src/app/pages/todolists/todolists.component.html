@@ -1,11 +1,15 @@
-<button mat-raised-button (click)="openDialog('0ms', '0ms')" class="new-list">
+<button (click)="openDialog('0ms', '0ms')" class="new-list">
   <i class="fa-sharp fa-solid fa-circle-plus"></i>
   Ajouter une nouvelle liste
 </button>
-<h1>Mes todo lists</h1>
+<h1>MES TODOS LISTS</h1>
 
 <div class="lists">
   <div *ngFor="let todolist of todolists" class="singletodo">
-    <app-todolist [todolist]="todolist" [deleteTodolistFn]="deleteTodolist.bind(this)"></app-todolist>
+    <app-todolist
+      [todolist]="todolist"
+      [deleteTodolistFn]="deleteTodolist.bind(this)"
+      style="width: 100px"
+    ></app-todolist>
   </div>
 </div>
