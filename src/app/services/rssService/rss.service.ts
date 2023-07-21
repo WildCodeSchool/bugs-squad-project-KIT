@@ -62,9 +62,11 @@ export class RssFeedService {
 
   updateRssFeed(feedId: number | undefined, updateData: RssFeed): Observable<RssFeed> {
     const url = `${APP_ROUTES_API.RSS}/${feedId}`;
-    return this.http.put<RssFeed>(url, updateData );
+    return this.http.put<RssFeed>(url, updateData);
   }
-
+  getFavoriteRssFeeds(): Observable<RssFeed[]> {
+    return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS + '/favorites');
+  }
   addFeedTitleFaviconToItems(rssData: RssResponse): void {
     if (Array.isArray(rssData?.items)) {
       const feedTitle = rssData.feed.title;
