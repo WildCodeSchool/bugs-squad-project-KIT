@@ -1,0 +1,12 @@
+<div class="cards__rssFavorite">
+  <div *ngFor="let data of favoriteRssFeeds" title="Voir les articles" class="card__rssFavorite">
+    <div class="card__rssFavorite--title" (click)="selectedRssFeed(data)">
+      <h3>{{ data.title }}</h3>
+    </div>
+    <div class="go-corner">
+      <div class="go-arrow" title="Voir les articles" (click)="selectedRssFeed(data)">
+        <i class="fa-sharp fa-solid fa-arrow-right"></i>
+      </div>
+    </div>
+  </div>
+</div>
