@@ -45,8 +45,9 @@ import { SidebarRssFeedComponent } from './components/rss/sidebar-rss-feed/sideb
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-modal/confirm-delete-modal.component';
-import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { FavoriteRssFeedComponent } from './components/rss/favorite-rss-feed/favorite-rss-feed.component';
+import { GoogleEmailComponent } from './pages/google-email/google-email.component';
 
 export function storageFactory(): OAuthStorage {
   return localStorage;
@@ -81,6 +82,7 @@ export function storageFactory(): OAuthStorage {
     CalendarComponent,
     ConfirmDeleteModalComponent,
     FavoriteRssFeedComponent,
+    GoogleEmailComponent,
   ],
 
   imports: [

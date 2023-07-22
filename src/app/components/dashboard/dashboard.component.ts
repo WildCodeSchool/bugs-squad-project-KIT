@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
     this.oauthService.loadDiscoveryDocument().then(() => {
       this.googleApiService.userProfileSubject.subscribe((userInfo) => {
         this.userInfo = userInfo;
+        localStorage.setItem('user', JSON.stringify(userInfo));
       });
     });
     this.initializeGrid();

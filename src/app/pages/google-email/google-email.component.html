@@ -1,0 +1,12 @@
+<div *ngIf="isLoggedIn()">
+  <div class="container">Hi and Welcome in your gmail box!</div>
+  <div class="container">
+    <button (click)="getEmails()">List Emails</button>
+  </div>
+  <div class="container" *ngFor="let snippet of mailSnippets">
+    {{ snippet }}
+  </div>
+  <div class="container">
+    <button (click)="logout()">Logout from Google</button>
+  </div>
+</div>
