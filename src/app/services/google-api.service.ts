@@ -71,4 +71,12 @@ export class GoogleApiService {
       Authorization: `Bearer ${this.oAuthService.getAccessToken()}`,
     });
   }
+
+  async deleteEmail(id: any) {
+    const accessToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${accessToken}`);
+    return this.httpClient
+      .delete<any>(`https://www.googleapis.com/gmail/v1/users/me/messages/${id}`, { headers })
+      .toPromise();
+  }
 }

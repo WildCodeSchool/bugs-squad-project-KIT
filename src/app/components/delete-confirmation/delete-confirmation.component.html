@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Confirmation de suppression</h2>
+<mat-dialog-content>
+  <p>Êtes-vous sûr de vouloir supprimer cet e-mail ?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button color="warn" (click)="onYesClick()">Supprimer</button>
+</mat-dialog-actions>

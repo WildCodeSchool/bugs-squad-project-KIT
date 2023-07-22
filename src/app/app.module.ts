@@ -48,6 +48,7 @@ import { ConfirmDeleteModalComponent } from './components/modals/confirm-delete-
 import { CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { FavoriteRssFeedComponent } from './components/rss/favorite-rss-feed/favorite-rss-feed.component';
 import { GoogleEmailComponent } from './pages/google-email/google-email.component';
+import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
 
 export function storageFactory(): OAuthStorage {
   return localStorage;
@@ -83,6 +84,7 @@ export function storageFactory(): OAuthStorage {
     ConfirmDeleteModalComponent,
     FavoriteRssFeedComponent,
     GoogleEmailComponent,
+    DeleteConfirmationComponent,
   ],
 
   imports: [

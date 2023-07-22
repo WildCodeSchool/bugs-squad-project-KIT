@@ -12,12 +12,14 @@
       <div class="spinner">Chargement en cours...</div>
     </div>
     <ng-container *ngIf="!loading">
-      <div *ngIf="mailDetails.length > 0">
+      <div *ngIf="mailDetails.length > 0;">
         <div class="email" *ngFor="let mailDetail of mailDetails">
           <p><strong>Expéditeur:</strong> {{ mailDetail.sender }}</p>
           <p><strong>Objet:</strong> {{ mailDetail.snippet }}</p>
           <p><strong>Contenu:</strong></p>
           <p>{{ mailDetail.body }}</p>
+          <!-- Bouton de suppression -->
+          <button mat-raised-button color="warn" (click)="confirmDelete(mailDetail)">Supprimer</button>
           <hr>
         </div>
         <div class="pagination">

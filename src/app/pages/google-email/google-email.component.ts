@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInfo } from 'angular-oauth2-oidc';
 import { GoogleApiService } from '../../services/google-api.service';
-import { lastValueFrom } from 'rxjs';
+import { async, lastValueFrom } from 'rxjs';
+import { DeleteConfirmationComponent } from '../../components/delete-confirmation/delete-confirmation.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-google-email',
@@ -18,7 +20,10 @@ export class GoogleEmailComponent implements OnInit {
   totalPages: number | undefined;
   loading = false;
 
-  constructor(private readonly googleApi: GoogleApiService) {}
+  constructor(private readonly googleApi: GoogleApiService, public dialog: MatDialog) {
+    this.googleApi = googleApi;
+    this.dialog = dialog;
+  }
 
   ngOnInit() {
     const user = localStorage.getItem('user');
@@ -27,6 +32,26 @@ export class GoogleEmailComponent implements OnInit {
     }
     // Charger les e-mails lors du chargement du composant
     this.getEmails();
+  }
+
+  async confirmDelete(mailDetail: any) {
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+      width: '300px',
+    });
+
+    dialogRef.afterClosed().subscribe(async (result: any) => {
+      if (result) {
+        try {
+          // Mettez ici l'appel à l'API pour supprimer l'e-mail avec mailDetail.id
+          // Exemple fictif pour illustrer :
+          await this.googleApi.deleteEmail(mailDetail.id);
+          // Après la suppression réussie de l'e-mail, mettez à jour la liste des e-mails
+          this.mailDetails = this.mailDetails.filter((mail) => mail !== mailDetail);
+        } catch (error) {
+          console.error("Erreur lors de la suppression de l'e-mail :", error);
+        }
+      }
+    });
   }
 
   async getEmails() {
@@ -52,8 +77,8 @@ export class GoogleEmailComponent implements OnInit {
       const detailsPromises = messages.messages.map(async (message: any) => {
         const mail = await lastValueFrom(this.googleApi.getMail(userId, message.id));
         const sender = mail.payload.headers.find((header: { name: string }) => header.name === 'From')?.value || '';
-        const snippet = message.snippet || '';
-        const body = this.extractBodyFromMail(mail);
+        const snippet = this.decodeHTMLEntities(mail.snippet);
+        const body = this.decodeHTMLEntities(this.extractBodyFromMail(mail));
         return { sender, snippet, body };
       });
 
@@ -68,8 +93,13 @@ export class GoogleEmailComponent implements OnInit {
 
   extractBodyFromMail(mail: any): string {
     // Le contenu du mail peut être encodé en base64, à vous de le décoder si nécessaire
-    // Dans cet exemple, je suppose que le contenu n'est pas encodé en base64
     return mail.snippet || '';
+  }
+
+  decodeHTMLEntities(text: string): string {
+    const parser = new DOMParser();
+    const decodedText = parser.parseFromString(`<!doctype html><body>${text}`, 'text/html').body.textContent || '';
+    return decodedText;
   }
 
   nextPage() {
