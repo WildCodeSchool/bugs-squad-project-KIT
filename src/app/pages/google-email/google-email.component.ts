@@ -4,6 +4,7 @@ import { GoogleApiService } from '../../services/google-api.service';
 import { async, lastValueFrom } from 'rxjs';
 import { DeleteConfirmationComponent } from '../../components/delete-confirmation/delete-confirmation.component';
 import { MatDialog } from '@angular/material/dialog';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-google-email',
@@ -11,7 +12,14 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./google-email.component.scss'],
 })
 export class GoogleEmailComponent implements OnInit {
-  mailDetails: { sender: string; snippet: string; body: string }[] = [];
+  mailDetails: {
+    labels: any;
+    date: Date;
+    id: string;
+    sender: string;
+    snippet: string;
+    body: string;
+  }[] = [];
   userInfo?: UserInfo;
   currentPage = 1;
   pageSize = 10; // Nombre d'e-mails à charger par page
@@ -20,10 +28,7 @@ export class GoogleEmailComponent implements OnInit {
   totalPages: number | undefined;
   loading = false;
 
-  constructor(private readonly googleApi: GoogleApiService, public dialog: MatDialog) {
-    this.googleApi = googleApi;
-    this.dialog = dialog;
-  }
+  constructor(private readonly googleApi: GoogleApiService, public dialog: MatDialog) {}
 
   ngOnInit() {
     const user = localStorage.getItem('user');
@@ -36,17 +41,16 @@ export class GoogleEmailComponent implements OnInit {
 
   async confirmDelete(mailDetail: any) {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
-      width: '300px',
+      width: '75%',
     });
 
     dialogRef.afterClosed().subscribe(async (result: any) => {
       if (result) {
         try {
           // Mettez ici l'appel à l'API pour supprimer l'e-mail avec mailDetail.id
-          // Exemple fictif pour illustrer :
-          await this.googleApi.deleteEmail(mailDetail.id);
+          await this.googleApi.deleteEmail(this.userInfo!['info'].sub, mailDetail.id);
           // Après la suppression réussie de l'e-mail, mettez à jour la liste des e-mails
-          this.mailDetails = this.mailDetails.filter((mail) => mail !== mailDetail);
+          this.mailDetails = this.mailDetails.filter((mail) => mail.id !== mailDetail.id);
         } catch (error) {
           console.error("Erreur lors de la suppression de l'e-mail :", error);
         }
@@ -63,9 +67,6 @@ export class GoogleEmailComponent implements OnInit {
 
     try {
       const userId = this.userInfo['info'].sub;
-      console.log(userId);
-
-      // Charger les e-mails paginés
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const messages = await lastValueFrom(this.googleApi.emails(userId, this.pageSize, startIndex));
       console.log(messages);
@@ -79,10 +80,10 @@ export class GoogleEmailComponent implements OnInit {
         const sender = mail.payload.headers.find((header: { name: string }) => header.name === 'From')?.value || '';
         const snippet = this.decodeHTMLEntities(mail.snippet);
         const body = this.decodeHTMLEntities(this.extractBodyFromMail(mail));
-        return { sender, snippet, body };
+        const date = this.formatDate(mail.internalDate);
+        const labels = mail.labelIds;
+        return { id: message.id, sender, snippet, body, date, labels };
       });
-
-      // Attendre que toutes les promesses d'appels soient résolues
       this.mailDetails = await Promise.all(detailsPromises);
     } catch (error) {
       console.error(error);
@@ -90,9 +91,18 @@ export class GoogleEmailComponent implements OnInit {
 
     this.loadingEmails = false;
   }
+  // creer la fonction formatDate pour convertir horodatage en millisecondes en date lisible par l'humain
+  formatDate(internalDate: string): Date {
+    return new Date(+internalDate);
+  }
+
+  sortByLabel(label: string) {
+    this.mailDetails = this.mailDetails.filter((mail) => mail.labels.includes(label));
+  }
 
   extractBodyFromMail(mail: any): string {
     // Le contenu du mail peut être encodé en base64, à vous de le décoder si nécessaire
+    // Dans cet exemple, je suppose que le contenu n'est pas encodé en base64
     return mail.snippet || '';
   }
 

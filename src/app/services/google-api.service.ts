@@ -14,7 +14,8 @@ const authCodeFlowConfig: AuthConfig = {
     ' https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/gmail.readonly' +
     '  https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/gmail.compose' +
     ' https://www.googleapis.com/auth/gmail.modify' +
-    ' https://www.googleapis.com/auth/gmail.labels https://www.googleapis.com/auth/gmail.settings.basic',
+    ' https://www.googleapis.com/auth/gmail.labels https://www.googleapis.com/auth/gmail.settings.basic' +
+    ' https://mail.google.com/',
 };
 
 export interface UserInfo {
@@ -44,6 +45,7 @@ export class GoogleApiService {
       });
     });
   }
+
   getUserInfos(): Observable<UserInfo> {
     return this.userProfileSubject.asObservable();
   }
@@ -72,11 +74,17 @@ export class GoogleApiService {
     });
   }
 
-  async deleteEmail(id: any) {
+  async deleteEmail(userId: string, id: string): Promise<void> {
     const accessToken = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${accessToken}`);
-    return this.httpClient
-      .delete<any>(`https://www.googleapis.com/gmail/v1/users/me/messages/${id}`, { headers })
-      .toPromise();
+    await this.httpClient
+      .delete(`${this.gmail}/gmail/v1/users/${userId}/messages/${id}`, { headers })
+      .toPromise()
+      .then((res: any) => {
+        console.log('Email deleted successfully', res);
+      })
+      .catch((error) => {
+        console.error('Error deleting email:', error);
+      });
   }
 }
