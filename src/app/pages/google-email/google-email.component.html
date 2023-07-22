@@ -1,12 +1,31 @@
-<div *ngIf="isLoggedIn()">
-  <div class="container">Hi and Welcome in your gmail box!</div>
-  <div class="container">
-    <button (click)="getEmails()">List Emails</button>
+<div class="email-component">
+  <div class="component-title">
+    <h2>Boîte de réception Gmail</h2>
+    <p>
+      Bienvenue dans le composant de la boîte de réception Gmail. Ici, vous pouvez récupérer et afficher une liste d'e-mails à partir de votre compte Gmail.
+    </p>
   </div>
-  <div class="container" *ngFor="let snippet of mailSnippets">
-    {{ snippet }}
-  </div>
-  <div class="container">
-    <button (click)="logout()">Logout from Google</button>
+
+  <div class="email-list">
+    <div *ngIf="loading">
+      <!-- Afficher le spinner ici pendant le chargement -->
+      <div class="spinner">Chargement en cours...</div>
+    </div>
+    <ng-container *ngIf="!loading">
+      <div *ngIf="mailDetails.length > 0">
+        <div class="email" *ngFor="let mailDetail of mailDetails">
+          <p><strong>Expéditeur:</strong> {{ mailDetail.sender }}</p>
+          <p><strong>Objet:</strong> {{ mailDetail.snippet }}</p>
+          <p><strong>Contenu:</strong></p>
+          <p>{{ mailDetail.body }}</p>
+          <hr>
+        </div>
+        <div class="pagination">
+          <button (click)="prevPage()" [disabled]="currentPage === 1">Précédent</button>
+          <span>{{ currentPage }} / {{ totalPages }}</span>
+          <button (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant</button>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>

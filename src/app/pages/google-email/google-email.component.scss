@@ -1,0 +1,66 @@
+.email-component {
+  max-width: 600px;
+  margin: 0 auto;
+
+  .component-title {
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #666;
+    }
+  }
+
+  .email-list {
+    .spinner {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .email {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+
+      p {
+        margin: 0;
+      }
+
+      hr {
+        margin: 10px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+      }
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+
+      button {
+        cursor: pointer;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        margin: 0 5px;
+        &:disabled {
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+      }
+
+      span {
+        margin: 0 10px;
+      }
+    }
+  }
+}

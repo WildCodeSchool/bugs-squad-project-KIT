@@ -9,8 +9,14 @@ import { lastValueFrom } from 'rxjs';
   styleUrls: ['./google-email.component.scss'],
 })
 export class GoogleEmailComponent implements OnInit {
-  mailSnippets: string[] = [];
+  mailDetails: { sender: string; snippet: string; body: string }[] = [];
   userInfo?: UserInfo;
+  currentPage = 1;
+  pageSize = 10; // Nombre d'e-mails à charger par page
+  totalEmails = 0;
+  loadingEmails = false;
+  totalPages: number | undefined;
+  loading = false;
 
   constructor(private readonly googleApi: GoogleApiService) {}
 
@@ -19,39 +25,64 @@ export class GoogleEmailComponent implements OnInit {
     if (user) {
       this.userInfo = JSON.parse(user);
     }
-  }
-
-  isLoggedIn(): boolean {
-    return this.googleApi.isLoggedIn();
-  }
-
-  logout() {
-    this.googleApi.signOut();
+    // Charger les e-mails lors du chargement du composant
+    this.getEmails();
   }
 
   async getEmails() {
-    if (!this.userInfo) {
+    if (!this.userInfo || this.loadingEmails) {
       return;
     }
 
-    const userId = this.userInfo['info'].sub;
-    console.log(userId);
+    this.loadingEmails = true;
 
-    const messages = await lastValueFrom(this.googleApi.emails(userId));
-    console.log(messages);
+    try {
+      const userId = this.userInfo['info'].sub;
+      console.log(userId);
 
-    for (const message of messages.messages) {
-      const mail = await lastValueFrom(this.googleApi.getMail(userId, message.id));
-      const sender = mail.payload.headers.find((header: { name: string }) => header.name === 'From')?.value || '';
-      const subject = mail.payload.headers.find((header: { name: string }) => header.name === 'Subject')?.value || '';
-      const snippet = message.snippet || '';
-      const date = mail.payload.headers.find((header: { name: string }) => header.name === 'Date')?.value || '';
+      // Charger les e-mails paginés
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const messages = await lastValueFrom(this.googleApi.emails(userId, this.pageSize, startIndex));
+      console.log(messages);
 
-      console.log('Sender:', sender);
-      console.log('Subject:', subject);
-      console.log('Snippet:', snippet);
-      console.log('Date:', date);
+      this.totalEmails = messages.resultSizeEstimate;
+      this.totalPages = Math.ceil(this.totalEmails / this.pageSize);
+
+      // Récupérer les détails pour chaque message
+      const detailsPromises = messages.messages.map(async (message: any) => {
+        const mail = await lastValueFrom(this.googleApi.getMail(userId, message.id));
+        const sender = mail.payload.headers.find((header: { name: string }) => header.name === 'From')?.value || '';
+        const snippet = message.snippet || '';
+        const body = this.extractBodyFromMail(mail);
+        return { sender, snippet, body };
+      });
+
+      // Attendre que toutes les promesses d'appels soient résolues
+      this.mailDetails = await Promise.all(detailsPromises);
+    } catch (error) {
+      console.error(error);
     }
-    this.mailSnippets = messages.messages.map((message: { snippet: string }) => message.snippet);
+
+    this.loadingEmails = false;
+  }
+
+  extractBodyFromMail(mail: any): string {
+    // Le contenu du mail peut être encodé en base64, à vous de le décoder si nécessaire
+    // Dans cet exemple, je suppose que le contenu n'est pas encodé en base64
+    return mail.snippet || '';
+  }
+
+  nextPage() {
+    if (this.currentPage * this.pageSize < this.totalEmails) {
+      this.currentPage++;
+      this.getEmails();
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.getEmails();
+    }
   }
 }

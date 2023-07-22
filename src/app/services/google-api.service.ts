@@ -48,7 +48,7 @@ export class GoogleApiService {
     return this.userProfileSubject.asObservable();
   }
 
-  emails(userId: string): Observable<any> {
+  emails(userId: string, pageSize: number, startIndex: number): Observable<any> {
     return this.httpClient.get(`${this.gmail}/gmail/v1/users/${userId}/messages`, { headers: this.authHeader() });
   }
 
