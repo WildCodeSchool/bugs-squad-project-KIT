@@ -4,6 +4,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient } from '@angular/common/http';
 import { GridStack } from 'gridstack';
 import { GridStackService } from 'src/app/services/grid-stack-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,22 +20,28 @@ export class DashboardComponent implements OnInit {
     private gridStackService: GridStackService,
     private readonly googleApiService: GoogleApiService,
     private oauthService: OAuthService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private Toaster: ToastrService
   ) {
     this.googleApiService = googleApiService;
     this.oauthService = oauthService;
     this.httpClient = httpClient;
+    this.Toaster = Toaster;
   }
 
-  isLoggedIn(): boolean {
-    return this.googleApiService.isLoggedIn();
-  }
+  alertUser = false;
 
   ngOnInit(): void {
     this.oauthService.loadDiscoveryDocument().then(() => {
       this.googleApiService.userProfileSubject.subscribe((userInfo) => {
         this.userInfo = userInfo;
         localStorage.setItem('user', JSON.stringify(userInfo));
+        this.alertUser = true;
+        if (this.alertUser && userInfo['info'].name != null) {
+          this.Toaster.success('Bienvenue ' + userInfo['info'].name + ' !', 'Connexion réussie !');
+          this.Toaster.info("Vous pouvez désormais utiliser l'application", 'Informations');
+          this.alertUser = false;
+        }
       });
     });
     this.initializeGrid();

@@ -41,14 +41,8 @@
           </p>
           <p><strong>Contenu:</strong></p>
           <p>{{ mailDetail.body }}</p>
-          <!-- Bouton de suppression -->
           <button mat-raised-button color="warn" (click)="confirmDelete(mailDetail)">Supprimer</button>
           <hr />
-        </div>
-        <div class="pagination">
-          <button (click)="prevPage()" [disabled]="currentPage === 1">Précédent</button>
-          <span>{{ currentPage }} / {{ totalPages }}</span>
-          <button (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant</button>
         </div>
       </div>
     </ng-container>

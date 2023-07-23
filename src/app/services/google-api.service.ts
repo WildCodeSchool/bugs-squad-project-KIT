@@ -45,12 +45,7 @@ export class GoogleApiService {
       });
     });
   }
-
-  getUserInfos(): Observable<UserInfo> {
-    return this.userProfileSubject.asObservable();
-  }
-
-  emails(userId: string, pageSize: number, startIndex: number): Observable<any> {
+  emails(userId: string): Observable<any> {
     return this.httpClient.get(`${this.gmail}/gmail/v1/users/${userId}/messages`, { headers: this.authHeader() });
   }
 
