@@ -28,17 +28,18 @@
           <span>Sauvegarder le Grid-Stack</span>
         </button>
         <div class="newWidget grid-stack-item" id="item4" #item4>
-          <div class="dashboard__content-module">
-            Google Calendar
-            <div class="dashboard__content-group_module-middle">
-              <a routerLink="/dashboard" class="dashlink">Google Calendar</a>
-            </div>
+          <h2>Mes mails google</h2>
+          <button class="float-right" (click)="toggleMail()">Afficher le contenu</button>
+          <div [@slideInOut]="mailOpen" class="d-inline-block">
+            <br />
+            <app-favorite-rss-feed></app-favorite-rss-feed>
+            <a routerLink="/mail" class="dashlink">Voir plus</a>
           </div>
         </div>
         <div class="newWidget grid-stack-item" id="item3" #item3>
           <h2>Mes flux favoris</h2>
-          <button class="float-right" (click)="toggleHelpMenu()">Afficher le contenu</button>
-          <div [@slideInOut]="collecOpen" class="d-inline-block">
+          <button class="float-right" (click)="toggleRSS()">Afficher le contenu</button>
+          <div [@slideInOut]="rssOpen" class="d-inline-block">
             <br />
             <app-favorite-rss-feed></app-favorite-rss-feed>
             <a routerLink="/rss" class="dashlink">Voir plus</a>
