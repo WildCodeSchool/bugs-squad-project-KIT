@@ -24,7 +24,8 @@ export class LinksComponent implements OnInit {
   link!: Link;
   id = new FormControl();
   url = new FormControl('', [
-    (Validators.required, Validators.pattern('^(https?://)?[a-zA-Z0-9-.]+\\.[a-zA-Z]{2,}(\\S*)?$')),
+    Validators.required,
+    Validators.pattern('^(https?://)?[a-zA-Z0-9-.]+\\.[a-zA-Z]{2,}(\\S*)?$'),
   ]);
   title = new FormControl('');
   collectionId = new FormControl();

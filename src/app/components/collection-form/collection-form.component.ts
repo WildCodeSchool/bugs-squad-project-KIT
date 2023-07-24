@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CollectionsService } from '../../services/collections.service';
 import { LinksService } from '../../services/links.service';
 import { Collection } from '../../models/Collection';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-collections-form',
   templateUrl: 'collection-form.component.html',
   styleUrls: ['./collection-form.component.scss'],
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule, ReactiveFormsModule],
+  imports: [MatDialogModule, MatButtonModule, ReactiveFormsModule, CommonModule],
 })
 export class CollectionsFormComponent {
   constructor(
@@ -25,11 +26,15 @@ export class CollectionsFormComponent {
   collections: Collection[] = [];
   collection!: Collection;
   id = new FormControl();
-  title = new FormControl('');
+  title = new FormControl('', [Validators.required]);
   description = new FormControl('');
   collectionColor = new FormControl('#FFFFFF');
 
   createCollection() {
+    if (this.title.invalid) {
+      this.toastr.error('Le titre est obligatoire');
+      return;
+    }
     const id = this.id.value;
     const title = this.title.value;
     const description = this.description.value;

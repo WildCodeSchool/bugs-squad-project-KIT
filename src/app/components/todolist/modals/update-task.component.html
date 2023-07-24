@@ -3,9 +3,12 @@
   <div class="inputBox">
     <input type="text" [formControl]="description" />
     <span>Description:</span>
-    <div class="modal-buttons">
-      <button class="cancel" mat-dialog-close>Annuler</button>
-      <button class="submit" mat-dialog-close (click)="updateTask()">Confirmer</button>
+    <div *ngIf="description.invalid && (description.dirty || description.touched)">
+      <div *ngIf="description.errors?.['required']">La description est obligatoire</div>
     </div>
+  </div>
+  <div class="modal-buttons">
+    <button class="cancel" mat-dialog-close>Annuler</button>
+    <button class="submit" mat-dialog-close (click)="updateTask()">Confirmer</button>
   </div>
 </div>

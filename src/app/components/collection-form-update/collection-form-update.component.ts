@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CollectionsService } from '../../services/collections.service';
 import { Collection } from '../../models/Collection';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -19,11 +19,15 @@ export class CollectionFormUpdateComponent {
   ) {}
 
   collection!: Collection;
-  title = new FormControl(this.data.collection.title);
+  title = new FormControl(this.data.collection.title, [Validators.required]);
   description = new FormControl(this.data.collection.description);
   collectionColor = new FormControl(this.data.collection.color);
 
   updateCollection() {
+    if (this.title.invalid) {
+      this.toastr.error('Le titre est obligatoire');
+      return;
+    }
     const title = this.title.value;
     const description: string = this.description.value as string;
     const collectionColor = this.collectionColor.value;

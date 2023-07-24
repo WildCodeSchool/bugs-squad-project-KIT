@@ -3,6 +3,9 @@
   <div class="inputBox">
     <input type="text" [formControl]="title" />
     <span>Titre:</span>
+    <div *ngIf="title.invalid && (title.dirty || title.touched)">
+      <div *ngIf="title.errors?.['required']">Le titre est obligatoire</div>
+    </div>
   </div>
   <div class="inputBox">
     <input type="text" [formControl]="description" />

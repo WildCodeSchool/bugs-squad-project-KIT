@@ -1,8 +1,12 @@
 <div class="form">
-  <h3>Modifier un lien:</h3>
+  <h2>Modifier un lien:</h2>
   <div class="inputBox">
     <input type="text" [formControl]="url" />
     <span>Url:</span>
+    <div *ngIf="url.invalid && (url.dirty || url.touched)">
+      <div *ngIf="url.errors?.['required']">L'URL est obligatoire</div>
+      <div *ngIf="url.errors?.['pattern']">L'URL est invalide</div>
+    </div>
   </div>
   <div class="inputBox">
     <input type="text" [formControl]="title" />

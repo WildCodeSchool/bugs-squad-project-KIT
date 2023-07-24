@@ -5,15 +5,16 @@ import { TaskService } from 'src/app/services/todolists-services/task.service';
 import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-new-list-form',
   templateUrl: './new-task-form.component.html',
   styleUrls: ['../todolist.component.scss'],
   standalone: true,
-  imports: [MatButtonModule, ReactiveFormsModule, MatDialogModule],
+  imports: [MatButtonModule, ReactiveFormsModule, MatDialogModule, CommonModule],
 })
 export class AddNewTaskComponent {
   constructor(
@@ -24,7 +25,7 @@ export class AddNewTaskComponent {
   ) {}
   todolist!: ToDoList;
   task!: Task;
-  description = new FormControl('');
+  description = new FormControl('', [Validators.required]);
   id = new FormControl();
 
   addTask(): void {

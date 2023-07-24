@@ -2,7 +2,7 @@ import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LinksService } from '../../services/links.service';
 import { Link } from '../../models/Link';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { CollectionsService } from '../../services/collections.service';
 import { Collection } from '../../models/Collection';
 import { ToastrService } from 'ngx-toastr';
@@ -22,7 +22,10 @@ export class LinkFormUpdateComponent {
   ) {}
 
   link!: Link;
-  url = new FormControl(this.data.link.url);
+  url = new FormControl(this.data.link.url, [
+    Validators.required,
+    Validators.pattern('^(https?://)?[a-zA-Z0-9-.]+\\.[a-zA-Z]{2,}(\\S*)?$'),
+  ]);
   title = new FormControl(this.data.link.title);
   @Input() collection!: Collection;
 
