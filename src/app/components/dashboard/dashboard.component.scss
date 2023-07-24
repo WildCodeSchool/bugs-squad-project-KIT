@@ -261,4 +261,11 @@
 
 .dashlink {
   color: #355c7d;
+  &:hover {
+    color: #6c5b7b;
+  }
+}
+
+.dashPresentation {
+  padding: 1em;
 }
