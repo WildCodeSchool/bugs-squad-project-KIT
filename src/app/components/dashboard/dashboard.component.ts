@@ -117,16 +117,6 @@ export class DashboardComponent implements OnInit {
       height: item.getAttribute('data-gs-height'),
     }));
     for (const gridItem of gridItems) {
-      // @ts-ignore
-      console.log(gridItem.gridstackNode.x);
-      // @ts-ignore
-      console.log(gridItem.gridstackNode.y);
-      // @ts-ignore
-      console.log(gridItem.gridstackNode.w);
-      // @ts-ignore
-      console.log(gridItem.gridstackNode.h);
-      // @ts-ignore
-      console.log(gridItem.gridstackNode._id);
     }
   }
   isDivVisible = true;
