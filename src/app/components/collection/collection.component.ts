@@ -10,6 +10,7 @@ import { CollectionFormUpdateComponent } from '../collection-form-update/collect
 import { LinksComponent } from '../links/links.component';
 import { LinkFormUpdateComponent } from '../link-form-update/link-form-update.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-collection',
@@ -25,7 +26,8 @@ export class CollectionComponent implements OnInit {
   constructor(
     private linksService: LinksService,
     private collectionService: CollectionsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private toastr: ToastrService
   ) {}
 
   links: Link[] = [];
@@ -47,7 +49,8 @@ export class CollectionComponent implements OnInit {
 
   deleteCollection() {
     this.collectionService.deleteCollection(this.collection.id).subscribe((data) => {
-      return this.collectionService.updateCollectionData(this.collection);
+      this.collectionService.updateCollectionData(this.collection);
+      this.toastr.success(`La collection ${this.collection.title} a été supprimée !`);
     });
   }
 

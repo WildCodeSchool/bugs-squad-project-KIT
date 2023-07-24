@@ -6,7 +6,7 @@
   <div class="dashboard__content">
     <div class="row">
       <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer</button>
-      <div class="sidebar" *ngIf="isDivVisible" (dragleave)="handleMoveToGridStack()" #sidebar>
+      <div class="sidebar" *ngIf="isDivVisible">
         <div id="trash">
           <div class="icon">
             <i class="fa-solid fa-trash" title="Supprimer"></i>
@@ -31,36 +31,39 @@
           <div class="dashboard__content-module">
             Google Calendar
             <div class="dashboard__content-group_module-middle">
-              <a routerLink="/dashboard">Google Calendar</a>
+              <a routerLink="/dashboard" class="dashlink">Google Calendar</a>
             </div>
           </div>
         </div>
         <div class="newWidget grid-stack-item" id="item3" #item3>
-          <div class="dashboard__content-module">
-            Flux RSS
-            <div class="dashboard__content-group_module-middle">
-              <a routerLink="/rss">Flux RSS</a>
-            </div>
+          <h2>Mes flux favoris</h2>
+          <button class="float-right" (click)="toggleHelpMenu()">Afficher le contenu</button>
+          <div [@slideInOut]="collecOpen" class="d-inline-block">
+            <br />
+            <app-favorite-rss-feed></app-favorite-rss-feed>
+            <a routerLink="/rss" class="dashlink">Voir plus</a>
           </div>
         </div>
         <div class="newWidget grid-stack-item" id="item2" #item2>
           <h2>Mes collections</h2>
           <div class="dashboard__content-group_module-middle">
             <button class="float-right" (click)="toggleHelpMenu()">Afficher le contenu</button>
-            <div [@slideInOut]="helpMenuOpen" class="d-inline-block">
+            <div [@slideInOut]="collecOpen" class="d-inline-block">
               <br />
               <app-dash-collections></app-dash-collections>
-              <a routerLink="/collections">Voir plus</a>
+              <a routerLink="/collections" class="dashlink">Voir plus</a>
             </div>
           </div>
         </div>
         <div class="newWidget grid-stack-item" id="item1" #item1>
           <h2>Mes todolists</h2>
           <div class="dashboard__content-group_module-middle">
-            <button class="float-right" (click)="toggleHelpMenu()">Afficher le contenu</button>
-            <app-todolists-fav></app-todolists-fav>
+            <button class="float-right" (click)="toggletodo()">Afficher le contenu</button>
+            <div [@slideInOut]="todoOpen" class="d-inline-block">
+              <app-todolists-fav></app-todolists-fav>
+              <a routerLink="/todolists" class="dashlink">Voir plus</a>
+            </div>
           </div>
-          <a routerLink="/todolists">Voir plus</a>
         </div>
       </div>
 

@@ -1,8 +1,10 @@
-<div class="body">
-  <button class="add-collection" mat-raised-button (click)="openDialog('0ms', '0ms')">Nouvelle Collection</button>
-  <div class="collections">
-    <div *ngFor="let collection of collections" class="singleCollection">
-      <app-collection [collection]="collection"></app-collection>
-    </div>
+<button class="add-collection" (click)="openDialog('0ms', '0ms')">
+  <i class="fa-sharp fa-solid fa-circle-plus"></i>
+  Nouvelle Collection
+</button>
+<h1>MES COLLECTIONS</h1>
+<div class="collections">
+  <div *ngFor="let collection of collections" class="singleCollection">
+    <app-collection [collection]="collection"></app-collection>
   </div>
 </div>

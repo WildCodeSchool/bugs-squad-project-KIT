@@ -39,7 +39,8 @@ export class DashboardComponent implements OnInit {
   private grid!: GridStack;
   private isInitialWidgetAdded = false;
   private initialWidgets: Element[] = [];
-  helpMenuOpen!: string;
+  collecOpen!: string;
+  todoOpen!: string;
 
   constructor(
     private gridStackService: GridStackService,
@@ -63,7 +64,8 @@ export class DashboardComponent implements OnInit {
       });
     });
     this.initializeGrid();
-    this.helpMenuOpen = 'out';
+    this.collecOpen = 'out';
+    this.todoOpen = 'out';
   }
 
   private initializeGrid() {
@@ -76,24 +78,21 @@ export class DashboardComponent implements OnInit {
 
       GridStack.setupDragIn('.newWidget', {
         appendTo: 'body',
-        // helper: 'clone'
       });
 
       this.grid.on('added', (e: any, items: any) => {
+        let str = '';
         items.forEach((item: any) => {
+          str += ' (x,y)=' + item.x + ',' + item.y;
           const element = item.el;
           if (element.classList.contains('newWidget')) {
-            // Vérifier si l'élément est déjà présent dans le tableau initialWidgets
-            if (!this.initialWidgets.includes(element)) {
-              this.initialWidgets.push(element);
+            if (!this.isInitialWidgetAdded) {
               element.classList.add('dragged');
+              this.isInitialWidgetAdded = true;
             }
           }
         });
       });
-
-      const sidebarElement = this.sidebarElement.nativeElement as HTMLElement;
-      this.initialWidgets = Array.from(sidebarElement.querySelectorAll('.newWidget'));
     });
   }
 
@@ -131,19 +130,10 @@ export class DashboardComponent implements OnInit {
     this.isDivVisible = !this.isDivVisible;
   }
 
-  // Ajoutez un ViewChild pour obtenir une référence à l'élément avec la classe "sidebar"
-  @ViewChild('sidebar', { static: true }) sidebarElement!: ElementRef;
-
-  showContent = true; // Nouvelle variable pour contrôler la visibilité du contenu
-  // Méthode pour gérer l'événement de déplacement du widget de la classe "sidebar" à "grid-stack"
-  handleMoveToGridStack() {
-    // Vérifiez si la hauteur du parent dépasse 200px
-    const parentHeight = this.sidebarElement.nativeElement.offsetHeight;
-    if (parentHeight > 200) {
-      this.showContent = false;
-    }
-  }
   toggleHelpMenu(): void {
-    this.helpMenuOpen = this.helpMenuOpen === 'out' ? 'in' : 'out';
+    this.collecOpen = this.collecOpen === 'out' ? 'in' : 'out';
+  }
+  toggletodo(): void {
+    this.todoOpen = this.todoOpen === 'out' ? 'in' : 'out';
   }
 }

@@ -224,7 +224,9 @@
   display: flex;
   text-align: center;
   align-content: center;
-
+  overflow-y: scroll;
+  scrollbar-color: #f67280 #ffffff;
+  scrollbar-width: thin;
   align-items: center;
   flex-direction: column;
 }
@@ -246,8 +248,17 @@
   padding: 0.5rem;
   color: white;
   cursor: pointer;
+  &:hover {
+    background-color: #6c5b7b;
+    border: 1px solid #6c5b7b;
+    transform: translateY(2px);
+  }
 }
 
 .componentContainer {
   display: flex;
+}
+
+.dashlink {
+  color: #355c7d;
 }

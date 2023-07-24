@@ -1,17 +1,33 @@
 @use '/src/imports' as *;
 
-.body {
-  margin: 2rem;
 
   .collections {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    justify-content: center;
   }
 
   .add-collection {
-    display: flex;
-    margin-bottom: 2rem;
+    margin: 2rem;
+    font-size: 1.1rem;
+    background-color: $quaternary-color;
+    padding: 1.2rem;
+    border-radius: 4px;
+    color: $bg-color;
+    cursor: pointer;
+    .fa-sharp {
+      color: $bg-color;
+      font-size: large;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    margin: 2rem;
+    color: $secondary-color;
+    font-size: 2rem;
+    font-weight: bold;
   }
 
   .form {
@@ -53,4 +69,3 @@
       padding: 0 1rem;
     }
   }
-}
