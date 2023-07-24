@@ -6,7 +6,7 @@
   <div class="dashboard__content">
     <div class="row">
       <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer</button>
-      <div class="sidebar" *ngIf="isDivVisible">
+      <div class="sidebar" *ngIf="isDivVisible" (dragleave)="handleMoveToGridStack()" #sidebar>
         <div id="trash">
           <div class="icon">
             <i class="fa-solid fa-trash" title="Supprimer"></i>
@@ -45,12 +45,21 @@
         </div>
         <div class="newWidget grid-stack-item" id="item2" #item2>
           <h2>Mes collections</h2>
-          <app-dash-collections></app-dash-collections>
-          <a routerLink="/collections">Voir plus</a>
+          <div class="dashboard__content-group_module-middle">
+            <button class="float-right" (click)="toggleHelpMenu()">Afficher le contenu</button>
+            <div [@slideInOut]="helpMenuOpen" class="d-inline-block">
+              <br />
+              <app-dash-collections></app-dash-collections>
+              <a routerLink="/collections">Voir plus</a>
+            </div>
+          </div>
         </div>
         <div class="newWidget grid-stack-item" id="item1" #item1>
           <h2>Mes todolists</h2>
-          <app-todolists-fav></app-todolists-fav>
+          <div class="dashboard__content-group_module-middle">
+            <button class="float-right" (click)="toggleHelpMenu()">Afficher le contenu</button>
+            <app-todolists-fav></app-todolists-fav>
+          </div>
           <a routerLink="/todolists">Voir plus</a>
         </div>
       </div>
