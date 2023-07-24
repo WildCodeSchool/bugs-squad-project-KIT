@@ -35,7 +35,7 @@ export class GoogleEmailComponent implements OnInit {
 
   async confirmDelete(mailDetail: any) {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
-      width: '75%',
+      width: '50%',
     });
     dialogRef.afterClosed().subscribe(async (result: any) => {
       if (result) {

@@ -55,10 +55,11 @@ export class GoogleApiService {
     });
   }
 
-  isLoggedIn(): boolean {
-    return this.oAuthService.hasValidAccessToken();
+  sendMail(userId: string, mail: any): Observable<any> {
+    return this.httpClient.post(`${this.gmail}/gmail/v1/users/${userId}/messages/send`, mail, {
+      headers: this.authHeader(),
+    });
   }
-
   signOut() {
     this.oAuthService.logOut();
   }
