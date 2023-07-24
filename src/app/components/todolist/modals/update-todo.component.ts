@@ -5,6 +5,7 @@ import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angu
 
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-list-form',
@@ -17,6 +18,7 @@ export class UpdateTodoComponent {
   constructor(
     public dialogRef: MatDialogRef<UpdateTodoComponent>,
     private todoService: TodoService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: { todolist: ToDoList }
   ) {}
   title = new FormControl(this.data.todolist.title);
@@ -35,6 +37,7 @@ export class UpdateTodoComponent {
     this.todoService.updateTodo(body, todolist.id).subscribe(() => {
       todolist.title = title as string;
       todolist.description = description as string;
+      this.toastr.success(`La liste ${todolist.title} a été modifiée !`);
     });
   }
 }

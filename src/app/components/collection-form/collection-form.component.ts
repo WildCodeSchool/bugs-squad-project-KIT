@@ -5,6 +5,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CollectionsService } from '../../services/collections.service';
 import { LinksService } from '../../services/links.service';
 import { Collection } from '../../models/Collection';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-collections-form',
@@ -17,7 +18,8 @@ export class CollectionsFormComponent {
   constructor(
     public dialogRef: MatDialogRef<CollectionsFormComponent>,
     private collectionsService: CollectionsService,
-    private linkService: LinksService
+    private linkService: LinksService,
+    private toastr: ToastrService
   ) {}
 
   collections: Collection[] = [];
@@ -53,6 +55,7 @@ export class CollectionsFormComponent {
       );
       this.collectionsService.updateCollectionData(this.collection);
       this.dialogRef.close();
+      this.toastr.success(`La collection ${this.collection.title} a été créée !`);
     });
   }
 }

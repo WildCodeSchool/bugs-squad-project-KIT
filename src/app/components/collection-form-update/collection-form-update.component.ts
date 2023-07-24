@@ -3,16 +3,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CollectionsService } from '../../services/collections.service';
 import { Collection } from '../../models/Collection';
 import { FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-collection-form-update',
   templateUrl: './collection-form-update.component.html',
-  styleUrls: ['./collection-form-update.component.scss'],
+  styleUrls: ['../collection-form/collection-form.component.scss'],
 })
 export class CollectionFormUpdateComponent {
   constructor(
     public dialogRef: MatDialogRef<CollectionFormUpdateComponent>,
     private collectionsService: CollectionsService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: { collection: Collection }
   ) {}
 
@@ -36,6 +38,7 @@ export class CollectionFormUpdateComponent {
     this.collectionsService.updateCollection(collection.id, body).subscribe(() => {
       this.collectionsService.updateCollectionData(this.collection);
       this.dialogRef.close();
+      this.toastr.success(`La collection ${collection.title} a été modifiée !`);
     });
   }
 }

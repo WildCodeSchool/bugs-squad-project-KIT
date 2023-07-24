@@ -1,18 +1,15 @@
-<h1 mat-dialog-title>Lien</h1>
-<div mat-dialog-content>
-  <div class="form">
-    <h3>Modifier un lien:</h3>
-    <label>
-      Url:
-      <input type="text" [formControl]="url" />
-    </label>
-    <label>
-      Description:
-      <input type="text" [formControl]="title" />
-    </label>
+<div class="form">
+  <h3>Modifier un lien:</h3>
+  <div class="inputBox">
+    <input type="text" [formControl]="url" />
+    <span>Url:</span>
   </div>
-</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Annuler</button>
-  <button mat-button mat-dialog-close (click)="updateLink()">Confirmer</button>
+  <div class="inputBox">
+    <input type="text" [formControl]="title" />
+    <span>Description:</span>
+  </div>
+  <div class="modal-buttons">
+    <button class="cancel" mat-dialog-close>Annuler</button>
+    <button class="submit" mat-dialog-close (click)="updateLink()">Confirmer</button>
+  </div>
 </div>

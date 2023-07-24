@@ -5,6 +5,7 @@ import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angu
 
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-list-form',
@@ -17,6 +18,7 @@ export class UpdateTaskComponent {
   constructor(
     public dialogRef: MatDialogRef<UpdateTaskComponent>,
     private taskService: TaskService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: { task: Task }
   ) {}
 
@@ -32,6 +34,7 @@ export class UpdateTaskComponent {
 
     this.taskService.updateTask(body, task).subscribe(() => {
       task.description = description as string;
+      this.toastr.success(`La tâche ${task.description} a été modifiée !`);
     });
   }
 }

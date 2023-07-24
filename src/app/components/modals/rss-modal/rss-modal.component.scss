@@ -67,9 +67,14 @@ form {
     border-radius: 6px;
     color: white;
     cursor: pointer;
-    transition: 0.2s;
+    opacity: 0.8;
+    transition: 0.3s ease;
   }
-  .button__cancel {
+  button[type='submit']:hover {
+      opacity: 1;
+  }
+
+  .cancel {
     font-family: $font;
     font-size: 0.8em;
     border: 1px solid $secondary-color;
@@ -77,6 +82,10 @@ form {
     padding: 0.3em 0.5em;
     color: $secondary-color;
     cursor: pointer;
+  }
+  .cancel:hover {
+    background-color: $secondary-color;
+    color: white;
   }
 }
 .error-msg {

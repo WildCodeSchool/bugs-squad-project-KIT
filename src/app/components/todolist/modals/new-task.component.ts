@@ -6,6 +6,7 @@ import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angu
 
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-list-form',
@@ -18,6 +19,7 @@ export class AddNewTaskComponent {
   constructor(
     public dialogRef: MatDialogRef<AddNewTaskComponent>,
     private taskService: TaskService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: { todolist: ToDoList }
   ) {}
   todolist!: ToDoList;
@@ -32,13 +34,14 @@ export class AddNewTaskComponent {
     const body = {
       todolist_id: todolist.id,
       description: description,
-      position: todolist.tasks.length
+      position: todolist.tasks.length,
     };
 
     this.taskService.createTask(body, todolist.id).subscribe((data) => {
       this.task = data;
       this.task = new Task(todolist.id, description as string, false, todolist.tasks.length);
       todolist.tasks.push(this.task);
+      this.toastr.success(`La tâche ${this.task.description} a été créée !`);
     });
   }
 }

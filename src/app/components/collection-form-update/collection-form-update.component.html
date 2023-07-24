@@ -1,22 +1,19 @@
-<h1 mat-dialog-title>Collection</h1>
-<div mat-dialog-content>
-  <div class="form">
-    <h3>Modifier une collection:</h3>
-    <label>
-      Titre:
-      <input type="text" [formControl]="title" />
-    </label>
-    <label>
-      Description:
-      <input type="text" [formControl]="description" />
-    </label>
-    <label>
-      Couleur:
-      <input class="color" type="color" [formControl]="collectionColor" />
-    </label>
+<div class="form">
+  <h2>Modifier une collection:</h2>
+  <div class="inputBox">
+    <input type="text" [formControl]="title" />
+    <span>Titre:</span>
   </div>
-</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Annuler</button>
-  <button mat-button mat-dialog-close (click)="updateCollection()">Confirmer</button>
+  <div class="inputBox">
+    <input type="text" [formControl]="description" />
+    <span>Description:</span>
+  </div>
+  <div class="inputBox">
+    <input class="color" type="color" [formControl]="collectionColor" />
+    <span>Couleur:</span>
+  </div>
+  <div class="modal-buttons">
+    <button class="cancel" mat-dialog-close>Annuler</button>
+    <button class="submit" mat-dialog-close (click)="updateCollection()">Confirmer</button>
+  </div>
 </div>

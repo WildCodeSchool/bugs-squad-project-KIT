@@ -89,7 +89,8 @@ export class CollectionComponent implements OnInit {
 
   patchFavorite() {
     this.collectionService.patchFavorite(this.collection.id, !this.collection.favorite).subscribe(() => {
-      return (this.collection.favorite = !this.collection.favorite);
+      this.collection.favorite = !this.collection.favorite;
+      this.toastr.success(`La collection ${this.collection.title} a été ajoutée aux favoris !`);
     });
   }
 
