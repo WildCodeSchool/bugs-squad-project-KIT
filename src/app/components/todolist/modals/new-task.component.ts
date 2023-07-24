@@ -32,12 +32,11 @@ export class AddNewTaskComponent {
     const body = {
       todolist_id: todolist.id,
       description: description,
-      position: todolist.tasks.length
+      position: todolist.tasks.length,
     };
 
     this.taskService.createTask(body, todolist.id).subscribe((data) => {
       this.task = data;
-      this.task = new Task(todolist.id, description as string, false, todolist.tasks.length);
       todolist.tasks.push(this.task);
     });
   }
