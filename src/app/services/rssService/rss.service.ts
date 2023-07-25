@@ -6,6 +6,7 @@ import { RssFeed } from '../../models/RssFeed';
 import { catchError } from 'rxjs/operators';
 import { APP_ROUTES_API } from '../../../data/apiRoutes';
 import { RssItem, RssResponse } from '../../interface/rss.interface';
+import { ApiService } from '../api-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -39,10 +40,10 @@ export class RssFeedService {
     this._selectedRssFeed = value;
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private apiService: ApiService) {}
 
-  getAllRssFeeds(): Observable<RssFeed[]> {
-    return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS);
+  getRssFeedsByUserId(): Observable<RssFeed[]> {
+    return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS + '/user/' + this.apiService.getUserId());
   }
 
   getRssData(url: string, count?: number, orderBy?: string): Observable<any> {
@@ -56,7 +57,7 @@ export class RssFeedService {
     return this.http.get(rssApiUrl);
   }
   addRssLink(rssFeed: { url: string; title: string }): Observable<RssFeed> {
-    return this.http.post<RssFeed>(APP_ROUTES_API.RSS, rssFeed).pipe(
+    return this.http.post<RssFeed>(APP_ROUTES_API.RSS + '/user/' + this.apiService.getUserId(), rssFeed).pipe(
       catchError((error: any) => {
         console.error("Une erreur s'est produite lors de la requête POST", error);
         throw error;
@@ -65,15 +66,17 @@ export class RssFeedService {
   }
 
   deleteRssFeed(feedId: number | undefined) {
-    return this.http.delete(`${APP_ROUTES_API.RSS}/${feedId}`) as Observable<RssFeed>;
+    return this.http.delete(
+      `${APP_ROUTES_API.RSS}/user/${this.apiService.getUserId()}/${feedId}`
+    ) as Observable<RssFeed>;
   }
 
   updateRssFeed(feedId: number | undefined, updateData: RssFeed): Observable<RssFeed> {
-    const url = `${APP_ROUTES_API.RSS}/${feedId}`;
+    const url = `${APP_ROUTES_API.RSS}/user/${this.apiService.getUserId()}/${feedId}`;
     return this.http.put<RssFeed>(url, updateData);
   }
   getFavoriteRssFeeds(): Observable<RssFeed[]> {
-    return this.http.get<RssFeed[]>(APP_ROUTES_API.RSS + '/favorites');
+    return this.http.get<RssFeed[]>(`${APP_ROUTES_API.RSS}/favorites/user/${this.apiService.getUserId()}`);
   }
   addFeedTitleFaviconToItems(rssData: RssResponse): void {
     if (Array.isArray(rssData?.items)) {

@@ -47,10 +47,8 @@ export class ApiService {
   }
 
   getUserId() {
-    const userInfo = this.getUserInfo();
-    console.log(userInfo.id);
-
-    return userInfo ? userInfo.id : null;
+    const userInfo = localStorage.getItem('user');
+    return userInfo ? JSON.parse(userInfo).id : null;
   }
 
   getUserEmail() {

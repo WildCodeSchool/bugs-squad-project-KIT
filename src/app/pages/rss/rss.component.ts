@@ -38,7 +38,7 @@ export class RssComponent {
     this.loadRssFeeds();
   }
   loadRssFeeds(): void {
-    this.rssService.getAllRssFeeds().subscribe({
+    this.rssService.getRssFeedsByUserId().subscribe({
       next: (rssFeeds: RssFeed[]): void => {
         this.rssService.rssFeeds = rssFeeds;
         this.loadRssDataItems();
