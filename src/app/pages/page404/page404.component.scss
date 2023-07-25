@@ -3,3 +3,72 @@
   align-items: center;
   justify-content: center;
 }
+
+.logo404 {
+  height: auto;
+  max-height: 60px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700&display=swap');
+
+$blue: #f67280;
+
+body {
+  font-family: 'Alumni Sans', sans-serif;
+  font-size: 16px;
+}
+
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 2em;
+  background: #212121;
+  color: #fff;
+  text-transform: uppercase;
+  gap: 30px;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-decoration: underline;
+  @media (max-width: 768px) {
+    font-size: 1.3em;
+  }
+}
+
+.text-shadow {
+  font-style: italic;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: #fff;
+  -webkit-text-stroke-width: 1px;
+  text-shadow: 2px 2px 10px $blue;
+  transition: all 0.5s ease-in-out;
+  text-align: center;
+  letter-spacing: 0.2em;
+  animation: flicker 0.5s ease-in-out infinite alternate;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.tags small {
+  @media (max-width: 768px) {
+    font-size: 0.5em;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.5;
+    text-shadow: 2px 2px 10px $blue;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 2px 2px 20px $blue;
+  }
+}

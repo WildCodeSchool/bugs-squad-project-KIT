@@ -193,12 +193,10 @@
 .center-wrap {
   position: absolute;
   width: 100%;
-  // padding: 0 35px;
   top: 50%;
   left: 0;
   transform: translate3d(0, -50%, 35px) perspective(100px);
   z-index: 20;
-  // display: block;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,8 +214,8 @@
   flex-wrap: wrap;
 }
 .form-style {
-  padding: 25px 20px;
-  padding-left: 55px;
+  padding: 25px 75px;
+  margin: 0px 50px;
   height: 28px;
   width: 100%;
   font-weight: 500;
@@ -242,8 +240,8 @@
 .input-icon {
   position: absolute;
   top: 0;
-  left: 18px;
-  height: 48px;
+  left: 72px;
+  height: 50px;
   font-size: 24px;
   line-height: 48px;
   text-align: left;

@@ -1,0 +1,50 @@
+<div class="email-component">
+  <div class="component-title">
+    <h2>Boîte de réception Gmail</h2>
+    <p>
+      Bienvenue dans le composant de la boîte de réception Gmail. Ici, vous pouvez récupérer et afficher une liste
+      d'e-mails à partir de votre compte Gmail.
+    </p>
+  </div>
+
+  <div class="buttons">
+    <button (click)="sortByLabel('inbox')">Inbox</button>
+    <button (click)="sortByLabel('starred')">Starred</button>
+    <button (click)="sortByLabel('important')">Important</button>
+    <button (click)="sortByLabel('sent')">Sent</button>
+    <button (click)="sortByLabel('drafts')">Drafts</button>
+    <button (click)="sortByLabel('spam')">Spam</button>
+    <button (click)="sortByLabel('trash')">Trash</button>
+  </div>
+
+  <div class="email-list">
+    <div *ngIf="loading">
+      <!-- Afficher le spinner ici pendant le chargement -->
+      <div class="spinner">Chargement en cours...</div>
+    </div>
+    <ng-container *ngIf="!loading">
+      <div *ngIf="mailDetails.length > 0">
+        <div class="email" *ngFor="let mailDetail of mailDetails">
+          <p>
+            <strong>Expéditeur:</strong>
+            {{ mailDetail.sender }}
+            <strong>Date:</strong>
+            {{ mailDetail.date }}
+          </p>
+          <p>
+            <strong>Label:</strong>
+            {{ mailDetail.labels }}
+          </p>
+          <p>
+            <strong>Objet:</strong>
+            {{ mailDetail.snippet }}
+          </p>
+          <p><strong>Contenu:</strong></p>
+          <p>{{ mailDetail.body }}</p>
+          <button mat-raised-button color="warn" (click)="confirmDelete(mailDetail)">Supprimer</button>
+          <hr />
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

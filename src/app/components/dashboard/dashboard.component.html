@@ -1,8 +1,4 @@
 <div class="dashboard__content">
-  <div *ngIf="isLoggedIn()">
-    <h1>Welcome, {{ userInfo?.info?.name }}</h1>
-    <p>Email: {{ userInfo?.info?.email }}</p>
-  </div>
   <div class="dashboard__content">
     <div class="row">
       <p class="dashPresentation">
@@ -76,9 +72,58 @@
             </div>
           </div>
         </div>
+  <div class="row">
+    <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer</button>
+    <div class="sidebar" *ngIf="isDivVisible">
+      <div id="trash">
+        <div class="icon">
+          <i class="fa-solid fa-trash" title="Supprimer"></i>
+        </div>
+        <div>
+          <span>Glissez ici l'élément à retirer</span>
+        </div>
       </div>
-
-      <div class="grid-stack"></div>
+      <button class="btn-remove" (click)="cleanGridStack()">
+        <div class="icon">
+          <i class="fa-solid fa-arrows-rotate"></i>
+        </div>
+        <div>
+          <span>Vider tout le Grid-Stack</span>
+        </div>
+      </button>
+      <button class="btn-save" (click)="saveGridStack()">
+        <i class="fa-solid fa-floppy-disk" title="Sauvegarder"></i>
+        <span>Sauvegarder le Grid-Stack</span>
+      </button>
+      <div class="newWidget grid-stack-item" id="item4" #item4>
+        <div class="dashboard__content-module">
+          Google Calendar
+          <div class="dashboard__content-group_module-middle">
+            <a routerLink="/dashboard">Google Calendar</a>
+          </div>
+        </div>
+      </div>
+      <div class="newWidget grid-stack-item" id="item3" #item3>
+        <h2>Mes flux favoris</h2>
+        <app-favorite-rss-feed></app-favorite-rss-feed>
+        <a routerLink="/rss">Voir plus</a>
+      </div>
+      <div class="newWidget grid-stack-item" id="item2" #item2>
+        <h2>Mes collections</h2>
+        <app-dash-collections></app-dash-collections>
+        <a routerLink="/collections">Voir plus</a>
+      </div>
+      <div class="newWidget grid-stack-item" id="item1" #item1>
+        <h2>Mes todolists</h2>
+        <app-todolists-fav></app-todolists-fav>
+        <a routerLink="/todolists">Voir plus</a>
+      </div>
+      <div class="newWidget grid-stack-item" id="item0" #item0>
+        <h2>Mes emails</h2>
+        <a routerLink="/email">Voir plus</a>
+      </div>
     </div>
+
+    <div class="grid-stack"></div>
   </div>
 </div>
