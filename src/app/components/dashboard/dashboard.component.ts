@@ -80,9 +80,7 @@ export class DashboardComponent implements OnInit {
         float: true,
       });
 
-      GridStack.setupDragIn('.newWidget', {
-        appendTo: 'body',
-      });
+      GridStack.setupDragIn('.newWidget', { appendTo: 'body' });
 
       this.grid.on('added', (e: any, items: any) => {
         let str = '';
