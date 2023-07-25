@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { APP_ROUTES } from 'src/data/routes';
 import { Router } from '@angular/router';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +12,19 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   private _appRoutes: string[] = [APP_ROUTES.home];
 
-  constructor(private router: Router) {}
+  isBelow764 = false;
+
+  constructor(private router: Router, private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver
+      .observe([Breakpoints.Handset, Breakpoints.TabletPortrait])
+      .pipe(
+        map(result => result.matches)
+      )
+      .subscribe(result => {
+        this.isBelow764 = result;
+      });
+  }
+
   showOptions() {
     const options = document.querySelector('.profile-btn');
     if (options) options.classList.toggle('active');

@@ -5,24 +5,27 @@ import { TaskService } from 'src/app/services/todolists-services/task.service';
 import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-new-list-form',
   templateUrl: './new-task-form.component.html',
   styleUrls: ['../todolist.component.scss'],
   standalone: true,
-  imports: [MatButtonModule, ReactiveFormsModule, MatDialogModule],
+  imports: [MatButtonModule, ReactiveFormsModule, MatDialogModule, CommonModule],
 })
 export class AddNewTaskComponent {
   constructor(
     public dialogRef: MatDialogRef<AddNewTaskComponent>,
     private taskService: TaskService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: { todolist: ToDoList }
   ) {}
   todolist!: ToDoList;
   task!: Task;
-  description = new FormControl('');
+  description = new FormControl('', [Validators.required]);
   id = new FormControl();
 
   addTask(): void {
@@ -37,8 +40,8 @@ export class AddNewTaskComponent {
 
     this.taskService.createTask(body, todolist.id).subscribe((data) => {
       this.task = data;
-      this.task = new Task(todolist.id, description as string, false, todolist.tasks.length);
       todolist.tasks.push(this.task);
+      this.toastr.success(`La tâche ${this.task.description} a été créée !`);
     });
   }
 }
