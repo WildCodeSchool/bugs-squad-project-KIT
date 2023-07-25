@@ -38,7 +38,7 @@ header {
   color: $main-color;
   overflow: hidden;
   z-index: 3;
-  animation: moveUp 3s ease-in-out 1;
+  animation: moveUp 3s ease-in-out;
   background-color: $quaternary-color;
   font-size: 8rem;
   font-family: $font;
@@ -52,7 +52,7 @@ header {
   background-clip: text;
   -webkit-background-clip: text;
   z-index: 1;
-  animation: moveDown 3s ease-in-out 1;
+  animation: moveDown 3s ease-in-out;
   font-size: 8rem;
   font-family: $font;
 }
@@ -89,4 +89,12 @@ header {
   70% {
     top: 50px;
   }
+}
+
+header:hover .upper {
+  animation: moveUp 4s ease-in-out infinite;
+}
+
+header:hover .lower {
+  animation: moveDown 4s ease-in-out infinite;
 }
