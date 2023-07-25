@@ -38,7 +38,7 @@ export class GoogleEmailComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
       width: '50%',
     });
-    dialogRef.afterClosed().subscribe(async (result: any) => {
+    dialogRef.afterClosed().subscribe(async (result: Result) => {
       if (result) {
         try {
           await this.googleApi.deleteEmail(this.userInfo!['info'].sub, mailDetail.id);
@@ -58,7 +58,7 @@ export class GoogleEmailComponent implements OnInit {
     try {
       const userId = this.userInfo['info'].sub;
       const messages = await lastValueFrom(this.googleApi.emails(userId));
-      const detailsPromises = messages.messages.map(async (message: any) => {
+      const detailsPromises = messages.messages.map(async (message: Message) => {
         const mail = await lastValueFrom(this.googleApi.getMail(userId, message.id));
         const sender = mail.payload.headers.find((header: { name: string }) => header.name === 'From')?.value || '';
         const snippet = this.decodeHTMLEntities(mail.snippet);
@@ -135,4 +135,14 @@ export interface Mail {
   sizeEstimate: number;
   historyId: string;
   internalDate: string;
+}
+interface Message {
+  id: string;
+  threadId: string;
+  labelIds: string[];
+}
+interface Result {
+  messages: Message[];
+  nextPageToken: string;
+  resultSizeEstimate: number;
 }
