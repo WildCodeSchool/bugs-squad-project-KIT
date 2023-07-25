@@ -8,6 +8,11 @@
   justify-content: space-between;
   height: 55px;
 
+  &.below-764 {
+    // Styles spécifiques pour une résolution inférieure à 764px
+    @import 'src/app/components/navbar-mobile/navbar-mobile.component.scss';
+  }
+
   .nav-row {
     display: flex;
     width: 100%;
@@ -15,7 +20,7 @@
     justify-content: space-between;
 
     .logo img {
-      width: 25%;
+      width: 4.5rem;
       padding-left: 1rem;
     }
 
@@ -23,7 +28,6 @@
       display: flex;
       justify-content: flex-end;
       list-style: none;
-      width: 65%;
 
       li {
         margin-right: 1rem;

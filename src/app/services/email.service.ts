@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+// Interface for the Gmail API message object
+interface GmailMessage {
+  id: string;
+  // Add other properties as needed based on the API response
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmailService {
-  emails: any[] = [];
+  emails: GmailMessage[] = [];
   nextPageToken = '';
 
   constructor(private http: HttpClient) {}
 
-  getEmails(): Observable<any[]> {
+  getEmails(): Observable<GmailMessage[]> {
     const accessToken = localStorage.getItem('access_token');
 
     if (accessToken) {
@@ -23,22 +30,25 @@ export class EmailService {
         url += `?pageToken=${this.nextPageToken}`;
       }
 
-      this.http.get<any>(url, { headers }).subscribe((res: any) => {
-        this.emails = this.emails.concat(res.messages);
-        this.nextPageToken = res.nextPageToken;
-      });
+      return this.http.get<{ messages: GmailMessage[]; nextPageToken: string }>(url, { headers }).pipe(
+        map((res) => {
+          this.emails = this.emails.concat(res.messages);
+          this.nextPageToken = res.nextPageToken;
+          return this.emails;
+        })
+      );
     }
 
     return of([]);
   }
 
-  getEmail(emailId: string): Observable<any> | null {
+  getEmail(emailId: string): Observable<GmailMessage> | null {
     const accessToken = localStorage.getItem('access_token');
 
     if (accessToken) {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${accessToken}`);
 
-      return this.http.get<any>(`https://www.googleapis.com/gmail/v1/users/me/messages/${emailId}`, { headers });
+      return this.http.get<GmailMessage>(`https://www.googleapis.com/gmail/v1/users/me/messages/${emailId}`, { headers });
     }
 
     return null;
@@ -51,14 +61,14 @@ export class EmailService {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${accessToken}`);
 
       this.http
-        .delete<any>(`https://www.googleapis.com/gmail/v1/users/me/messages/${emailId}`, { headers })
-        .subscribe((res: any) => {
+        .delete(`https://www.googleapis.com/gmail/v1/users/me/messages/${emailId}`, { headers })
+        .subscribe(() => {
           console.log('Email deleted successfully');
         });
     }
   }
 
-  get selectedEmail(): Observable<any> | null {
+  get selectedEmail(): Observable<GmailMessage> | null {
     const accessToken = localStorage.getItem('access_token');
 
     if (!accessToken || this.emails.length === 0) {
@@ -67,7 +77,7 @@ export class EmailService {
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${accessToken}`);
 
-    return this.http.get<any>(`https://www.googleapis.com/gmail/v1/users/me/messages/${this.emails[0].id}`, {
+    return this.http.get<GmailMessage>(`https://www.googleapis.com/gmail/v1/users/me/messages/${this.emails[0].id}`, {
       headers,
     });
   }

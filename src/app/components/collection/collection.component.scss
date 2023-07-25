@@ -1,7 +1,7 @@
 @use '/src/imports' as *;
 
 .collection {
-  width: 260px;
+  width: 16rem;
 
   outline: solid 2px $quaternary-color;
   border-radius: 8px;
@@ -12,7 +12,7 @@
 
   .collection-infos {
     height: 100%;
-    width: 15rem;
+    width: 92%;
     background-color: $bg-color;
     padding: 0.5rem;
 
@@ -42,9 +42,33 @@
         text-overflow: ellipsis;
       }
     }
+
+    .new-link {
+      display: flex;
+      justify-content: space-around;
+      margin: 1rem 0;
+
+      .new-link-btn {
+        background-color: $secondary-color;
+        border-radius: 16px;
+        padding: 0.5rem;
+        color: white;
+        width: 80%;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .fa-sharp {
+        text-align: center;
+        color: $bg-color;
+      }
+    }
     .links-section {
       overflow: auto;
-      height: 200px;
+      height: 60%;
+      padding: 0.5rem;
     }
 
     ul {
@@ -56,29 +80,6 @@
       padding: 0;
       width: 100%;
       color: $bg-color;
-
-      .new-link {
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 1rem;
-
-        .new-link-btn {
-          background-color: $secondary-color;
-          border-radius: 16px;
-          padding: 1rem;
-          color: white;
-          width: 80%;
-          cursor: pointer;
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-        }
-
-        .fa-sharp {
-          text-align: center;
-          color: $bg-color;
-        }
-      }
 
       li {
         height: 2rem;

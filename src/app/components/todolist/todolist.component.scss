@@ -114,8 +114,8 @@
   }
 
   &.fav-todolist {
-    width: 200px;
-    height: 260px;
+    width: 160px;
+    height: 300px;
     margin: 1rem;
     .icons {
       display: none;
@@ -169,23 +169,92 @@
 
 .form {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-
-  h3 {
-    margin-top: 1rem;
-    font-weight: bold;
-    color: $secondary-color;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0.5em;
+  margin: 1em;
+  h2 {
+    font-family: $font;
+    color: $main-color;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    margin-bottom: 0;
   }
 
-  label {
-    display: flex;
-    flex-direction: column;
+  .inputBox {
+    position: relative;
     width: 90%;
-    margin-bottom: 2rem;
-
     input {
-      margin-top: 0.5rem;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $quaternary-color;
+      border-radius: 5px;
+      outline: none;
+      font-size: 0.9em;
+      font-family: $font;
+      transition: 0.5s;
+    }
+    span {
+      font-family: $font;
+      position: absolute;
+      left: 0;
+      padding: 10px;
+      pointer-events: none;
+      font-size: 1em;
+      color: $quaternary-color;
+      text-transform: uppercase;
+      transition: 0.5s;
+    }
+    input:valid ~ span,
+    input:focus ~ span {
+      color: white;
+      transform: translateX(10px) translateY(-10px);
+      font-size: 0.7em;
+      padding: 0 10px;
+      background-color: $main-color;
+      letter-spacing: 0.2em;
+      border-radius: 5px;
+    }
+    input:valid,
+    input:focus {
+      border-color: $main-color;
+    }
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    .submit {
+      font-family: $font;
+      padding: 0.5em 1em;
+      background-color: $quaternary-color;
+      opacity: 0.8;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .submit:hover {
+      opacity: 1;
+    }
+    .cancel {
+      font-family: $font;
+      font-size: 0.8em;
+      border: 1px solid $secondary-color;
+      border-radius: 6px;
+      padding: 0.3em 0.5em;
+      color: $secondary-color;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .cancel:hover {
+      background-color: $secondary-color;
+      color: white;
     }
   }
 }
