@@ -4,6 +4,7 @@ import { GoogleApiService } from '../../services/google-api.service';
 import { async, lastValueFrom } from 'rxjs';
 import { DeleteConfirmationComponent } from '../../components/delete-confirmation/delete-confirmation.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-google-email',
@@ -23,14 +24,14 @@ export class GoogleEmailComponent implements OnInit {
   loadingEmails = false;
   loading = false;
 
-  constructor(private readonly googleApi: GoogleApiService, public dialog: MatDialog) {}
+  constructor(private readonly googleApi: GoogleApiService, public dialog: MatDialog, public toastr: ToastrService) {}
 
   ngOnInit() {
     const user = localStorage.getItem('user');
     if (user) {
       this.userInfo = JSON.parse(user);
     }
-    this.getEmails().then((r) => console.log(r));
+    this.getEmails();
   }
 
   async confirmDelete(mailDetail: MailDetail) {
@@ -43,7 +44,7 @@ export class GoogleEmailComponent implements OnInit {
           await this.googleApi.deleteEmail(this.userInfo!['info'].sub, mailDetail.id);
           this.mailDetails = this.mailDetails.filter((mail) => mail.id !== mailDetail.id);
         } catch (error) {
-          console.error("Erreur lors de la suppression de l'e-mail :", error);
+          this.toastr.error("Une erreur est survenue lors de la suppression de l'email");
         }
       }
     });
@@ -81,7 +82,7 @@ export class GoogleEmailComponent implements OnInit {
     this.mailDetails = this.mailDetails.filter((mail) => mail.labels.includes(label));
   }
 
-  extractBodyFromMail(mail: any): string {
+  extractBodyFromMail(mail: Mail): string {
     // Le contenu du mail peut être encodé en base64, à vous de le décoder si nécessaire
     // Dans cet exemple, je suppose que le contenu n'est pas encodé en base64
     return mail.snippet || '';
@@ -100,4 +101,38 @@ export interface MailDetail {
   body: string;
   date: Date;
   labels: string[];
+}
+
+export interface Mail {
+  id: string;
+  threadId: string;
+  labelIds: string[];
+  snippet: string;
+  payload: {
+    headers: {
+      name: string;
+      value: string;
+    }[];
+    body: {
+      size: number;
+      data: string;
+    };
+    parts: {
+      partId: string;
+      mimeType: string;
+      filename: string;
+      headers: {
+        name: string;
+        value: string;
+      }[];
+      body: {
+        attachmentId: string;
+        size: number;
+        data: string;
+      };
+    }[];
+  };
+  sizeEstimate: number;
+  historyId: string;
+  internalDate: string;
 }
