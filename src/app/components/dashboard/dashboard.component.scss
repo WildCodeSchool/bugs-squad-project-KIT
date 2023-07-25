@@ -106,6 +106,7 @@
     border: 1px solid #f67280;
     border-radius: 0.5rem;
     cursor: grab;
+    overflow: hidden;
     &:active {
       cursor: grabbing;
     }
@@ -150,24 +151,38 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   min-height: 100vh;
   margin: 20px 20px 40px 20px;
+  .newWidget {
+    border: 1px solid #f67280;
+    border-radius: 0.5rem;
+    cursor: grab;
+    overflow: hidden;
+    &:active {
+      cursor: grabbing;
+    }
+  }
 }
 
 .dashboard__content-module {
   position: relative;
   width: auto;
   height: 80%;
+  box-sizing: border-box;
+  object-fit: contain;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease-in-out;
+  overflow: hidden;
 
-  img {
+  & > * {
     width: auto;
     height: 100%;
     box-sizing: border-box;
     border-radius: 4px;
     object-fit: contain;
     object-position: center;
+    overflow: hidden;
+    display: none;
   }
 
   &:hover {
@@ -206,6 +221,14 @@
   &:active {
     cursor: grabbing;
   }
+  display: flex;
+  text-align: center;
+  align-content: center;
+  overflow-y: scroll;
+  scrollbar-color: #f67280 #ffffff;
+  scrollbar-width: thin;
+  align-items: center;
+  flex-direction: column;
 }
 .hiddenBtn {
   background-color: #f67280;
@@ -218,4 +241,31 @@
     border: 1px solid #c06c84;
     transform: translateY(2px);
   }
+}
+.float-right {
+  background-color: #355c7d;
+  border-radius: 16px;
+  padding: 0.5rem;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background-color: #6c5b7b;
+    border: 1px solid #6c5b7b;
+    transform: translateY(2px);
+  }
+}
+
+.componentContainer {
+  display: flex;
+}
+
+.dashlink {
+  color: #355c7d;
+  &:hover {
+    color: #6c5b7b;
+  }
+}
+
+.dashPresentation {
+  padding: 1em;
 }
