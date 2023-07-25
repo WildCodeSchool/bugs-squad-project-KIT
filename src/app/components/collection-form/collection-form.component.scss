@@ -1,56 +1,93 @@
 @use '/src/imports' as *;
 
-.body {
-  margin: 2rem;
-
-  .add-collection {
-    display: flex;
-    margin-bottom: 2rem;
+.form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0.5em;
+  margin: 1em;
+  h2 {
+    font-family: $font;
+    color: $main-color;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    margin-bottom: 0;
   }
 
-  .form {
-    width: 260px;
-    outline: solid 2px $quaternary-color;
-    border-radius: 8px;
-    height: 320px;
+  .inputBox {
+    position: relative;
+    width: 90%;
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $quaternary-color;
+      border-radius: 5px;
+      outline: none;
+      font-size: 0.9em;
+      font-family: $font;
+      transition: 0.5s;
+    }
+    span {
+      font-family: $font;
+      position: absolute;
+      left: 0;
+      padding: 10px;
+      pointer-events: none;
+      font-size: 1em;
+      color: $quaternary-color;
+      text-transform: uppercase;
+      transition: 0.5s;
+    }
+    input:valid ~ span,
+    input:focus ~ span {
+      color: white;
+      transform: translateX(10px) translateY(-10px);
+      font-size: 0.7em;
+      padding: 0 10px;
+      background-color: $main-color;
+      letter-spacing: 0.2em;
+      border-radius: 5px;
+    }
+    input:valid,
+    input:focus {
+      border-color: $main-color;
+    }
+  }
+
+  .modal-buttons {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    h3 {
-      text-align: center;
-      margin-top: 0.5rem;
-    }
-
-    label {
-      display: flex;
-      flex-direction: column;
-
-      input {
-        border: 1px solid $secondary-color;
-        width: 15rem;
-      }
-      .color {
-        width: 3rem;
-        border: none;
-        background-color: $bg-color;
-      }
-    }
-    button {
+    gap: 1em;
+    .submit {
+      font-family: $font;
+      padding: 0.5em 1em;
       background-color: $quaternary-color;
-      border: none;
-      height: 2rem;
-      border-radius: 4px;
-      margin: 1rem;
+      opacity: 0.8;
+      border-radius: 6px;
       color: white;
-      padding: 0 1rem;
+      cursor: pointer;
+      transition: 0.2s;
     }
-  }
-  .collections {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    justify-items: center;
+    .submit:hover {
+      opacity: 1;
+    }
+    .cancel {
+      font-family: $font;
+      font-size: 0.8em;
+      border: 1px solid $secondary-color;
+      border-radius: 6px;
+      padding: 0.3em 0.5em;
+      color: $secondary-color;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .cancel:hover {
+      background-color: $secondary-color;
+      color: white;
+    }
   }
 }

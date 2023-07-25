@@ -1,4 +1,4 @@
-<nav *ngIf="!hasHeader" class="navbar">
+<nav *ngIf="!hasHeader" class="navbar" [ngClass]="{'below-764': isBelow764}">
   <div class="nav-row">
     <div class="logo">
       <a routerLink="/dashboard">
