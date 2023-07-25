@@ -145,6 +145,11 @@ export class DashboardComponent implements OnInit {
     this.isDivVisible = !this.isDivVisible;
   }
 
+  isInfoVisible = false;
+  toggleInfo() {
+    this.isInfoVisible = !this.isInfoVisible;
+  }
+
   toggleHelpMenu(): void {
     this.collecOpen = this.collecOpen === 'out' ? 'in' : 'out';
   }

@@ -1,12 +1,13 @@
 <div class="dashboard__content">
   <div class="dashboard__content">
     <div class="row">
-      <p class="dashPresentation">
+      <p class="dashPresentation" *ngIf="isInfoVisible">
         Bienvenue sur votre dashboard K.I.T. Vous pouvez glisser dans la partie grisée les différentss éléments K.I.T.
         présents dans la barre d'outils afin d'organiser votre espace d'accueil. Si vous souhaitez augmenter le contenu
         de ces élémnets, vous pouvez en ajouter en favoris depuis les différentes sections du site.
       </p>
       <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer la barre d'outils</button>
+      <button class="infosBtn" (click)="toggleInfo()"><i class="fa-solid fa-info" title="Infos"></i></button>
       <div class="sidebar" *ngIf="isDivVisible">
         <div id="trash">
           <div class="icon">
