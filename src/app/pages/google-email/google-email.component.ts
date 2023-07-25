@@ -83,6 +83,7 @@ export class GoogleEmailComponent implements OnInit {
   }
 
   extractBodyFromMail(mail: Mail): string {
+    // TODO: Gérer les mails avec plusieurs parts
     // Le contenu du mail peut être encodé en base64, à vous de le décoder si nécessaire
     // Dans cet exemple, je suppose que le contenu n'est pas encodé en base64
     return mail.snippet || '';
