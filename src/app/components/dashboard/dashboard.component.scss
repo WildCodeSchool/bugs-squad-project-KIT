@@ -269,3 +269,33 @@
 .dashPresentation {
   padding: 1em;
 }
+
+.presText {
+  font-weight: bolder;
+  color: #f67280;
+}
+
+@media screen and (max-width: 800px) {
+  .sidebar {
+    flex-direction: column;
+    & > * {
+      height: 100px;
+      width: 100%;
+    }
+    #trash {
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .sidebar {
+    flex-direction: column;
+    & > * {
+      height: 100px;
+      width: 100%;
+    }
+    #trash {
+      width: 100%;
+    }
+  }
+}

@@ -6,11 +6,16 @@
   <div class="dashboard__content">
     <div class="row">
       <p class="dashPresentation">
-        Bienvenue sur votre dashboard K.I.T. Vous pouvez glisser dans la partie grisée les différentss éléments K.I.T.
+        Bienvenue sur votre dashboard K.I.T. Vous pouvez glisser dans la partie grisée les différents éléments K.I.T.
         présents dans la barre d'outils afin d'organiser votre espace d'accueil. Si vous souhaitez augmenter le contenu
-        de ces élémnets, vous pouvez en ajouter en favoris depuis les différentes sections du site.
+        de ces élémnets, vous pouvez en ajouter en favoris depuis les différentes sections du site. Une fois glssés dans
+        votre dashboard vous pouvvez déplacer et redimentionner les éléments à votre guise. Le bouton
+        <span class="presText">"Afficher le contenu"</span>
+        vous permet d'afficher le contenu de l'élément une fois glissé dans le dashboard, tandis que le lien
+        <span class="presText">"Voir plus"</span>
+        vous redirigera vers la page correspondante.
       </p>
-      <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer</button>
+      <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer la barre d'outils</button>
       <div class="sidebar" *ngIf="isDivVisible">
         <div id="trash">
           <div class="icon">
@@ -25,12 +30,12 @@
             <i class="fa-solid fa-arrows-rotate"></i>
           </div>
           <div>
-            <span>Vider tout le Grid-Stack</span>
+            <span>Restaurer le dashboard</span>
           </div>
         </button>
         <button class="btn-save" (click)="saveGridStack()">
           <i class="fa-solid fa-floppy-disk" title="Sauvegarder"></i>
-          <span>Sauvegarder le Grid-Stack</span>
+          <span>Sauvegarder le dashboard</span>
         </button>
         <div class="newWidget grid-stack-item" id="item4" #item4>
           <h2>Mes mails google</h2>
