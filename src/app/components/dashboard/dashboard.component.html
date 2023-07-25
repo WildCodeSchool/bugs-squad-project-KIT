@@ -2,14 +2,9 @@
   <div class="dashboard__content">
     <div class="row">
       <p class="dashPresentation">
-        Bienvenue sur votre dashboard K.I.T. Vous pouvez glisser dans la partie grisée les différents éléments K.I.T.
+        Bienvenue sur votre dashboard K.I.T. Vous pouvez glisser dans la partie grisée les différentss éléments K.I.T.
         présents dans la barre d'outils afin d'organiser votre espace d'accueil. Si vous souhaitez augmenter le contenu
-        de ces élémnets, vous pouvez en ajouter en favoris depuis les différentes sections du site. Une fois glssés dans
-        votre dashboard vous pouvvez déplacer et redimentionner les éléments à votre guise. Le bouton
-        <span class="presText">"Afficher le contenu"</span>
-        vous permet d'afficher le contenu de l'élément une fois glissé dans le dashboard, tandis que le lien
-        <span class="presText">"Voir plus"</span>
-        vous redirigera vers la page correspondante.
+        de ces élémnets, vous pouvez en ajouter en favoris depuis les différentes sections du site.
       </p>
       <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer la barre d'outils</button>
       <div class="sidebar" *ngIf="isDivVisible">
@@ -26,20 +21,20 @@
             <i class="fa-solid fa-arrows-rotate"></i>
           </div>
           <div>
-            <span>Restaurer le dashboard</span>
+            <span>Vider tout le Grid-Stack</span>
           </div>
         </button>
         <button class="btn-save" (click)="saveGridStack()">
           <i class="fa-solid fa-floppy-disk" title="Sauvegarder"></i>
-          <span>Sauvegarder le dashboard</span>
+          <span>Sauvegarder le Grid-Stack</span>
         </button>
         <div class="newWidget grid-stack-item" id="item4" #item4>
           <h2>Mes mails google</h2>
           <button class="float-right" (click)="toggleMail()">Afficher le contenu</button>
           <div [@slideInOut]="mailOpen" class="d-inline-block">
             <br />
-            <app-favorite-rss-feed></app-favorite-rss-feed>
-            <a routerLink="/mail" class="dashlink">Voir plus</a>
+            <a routerLink="/email" class="dashlink">Voir plus</a>
+            <app-google-email></app-google-email>
           </div>
         </div>
         <div class="newWidget grid-stack-item" id="item3" #item3>
@@ -72,58 +67,9 @@
             </div>
           </div>
         </div>
-  <div class="row">
-    <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer</button>
-    <div class="sidebar" *ngIf="isDivVisible">
-      <div id="trash">
-        <div class="icon">
-          <i class="fa-solid fa-trash" title="Supprimer"></i>
-        </div>
-        <div>
-          <span>Glissez ici l'élément à retirer</span>
-        </div>
       </div>
-      <button class="btn-remove" (click)="cleanGridStack()">
-        <div class="icon">
-          <i class="fa-solid fa-arrows-rotate"></i>
-        </div>
-        <div>
-          <span>Vider tout le Grid-Stack</span>
-        </div>
-      </button>
-      <button class="btn-save" (click)="saveGridStack()">
-        <i class="fa-solid fa-floppy-disk" title="Sauvegarder"></i>
-        <span>Sauvegarder le Grid-Stack</span>
-      </button>
-      <div class="newWidget grid-stack-item" id="item4" #item4>
-        <div class="dashboard__content-module">
-          Google Calendar
-          <div class="dashboard__content-group_module-middle">
-            <a routerLink="/dashboard">Google Calendar</a>
-          </div>
-        </div>
-      </div>
-      <div class="newWidget grid-stack-item" id="item3" #item3>
-        <h2>Mes flux favoris</h2>
-        <app-favorite-rss-feed></app-favorite-rss-feed>
-        <a routerLink="/rss">Voir plus</a>
-      </div>
-      <div class="newWidget grid-stack-item" id="item2" #item2>
-        <h2>Mes collections</h2>
-        <app-dash-collections></app-dash-collections>
-        <a routerLink="/collections">Voir plus</a>
-      </div>
-      <div class="newWidget grid-stack-item" id="item1" #item1>
-        <h2>Mes todolists</h2>
-        <app-todolists-fav></app-todolists-fav>
-        <a routerLink="/todolists">Voir plus</a>
-      </div>
-      <div class="newWidget grid-stack-item" id="item0" #item0>
-        <h2>Mes emails</h2>
-        <a routerLink="/email">Voir plus</a>
-      </div>
-    </div>
 
-    <div class="grid-stack"></div>
+      <div class="grid-stack"></div>
+    </div>
   </div>
 </div>
