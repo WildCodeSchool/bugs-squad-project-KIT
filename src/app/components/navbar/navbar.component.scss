@@ -5,7 +5,6 @@
   background-color: $quaternary-color;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 55px;
 
   &.below-764 {
@@ -17,7 +16,12 @@
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+
+    .logo {
+      position: fixed;
+      left: 0;
+    }
 
     .logo img {
       width: 4.5rem;
