@@ -1,15 +1,18 @@
-<div class="form" mat-dialog-content>
-  <h3>Modifier la liste:</h3>
-  <label>
-    Titre:
+<div class="form">
+  <h2>Modifier la liste:</h2>
+  <div class="inputBox">
     <input type="text" [formControl]="title" />
-  </label>
-  <label>
-    Description:
+    <span>Titre:</span>
+    <div *ngIf="title.invalid && (title.dirty || title.touched)">
+      <div *ngIf="title.errors?.['required']">Le titre est obligatoire</div>
+    </div>
+  </div>
+  <div class="inputBox">
     <input type="text" [formControl]="description" />
-  </label>
-  <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Annuler</button>
-    <button mat-button mat-dialog-close (click)="updateTodo()">Confirmer</button>
+    <span>Description:</span>
+  </div>
+  <div class="modal-buttons">
+    <button class="cancel" mat-dialog-close>Annuler</button>
+    <button class="submit" mat-dialog-close (click)="updateTodo()">Confirmer</button>
   </div>
 </div>

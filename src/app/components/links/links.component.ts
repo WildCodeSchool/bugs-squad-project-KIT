@@ -2,18 +2,20 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { LinksService } from '../../services/links.service';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Link } from '../../models/Link';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Collection } from '../../models/Collection';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-links',
   templateUrl: './links.component.html',
-  styleUrls: ['./links.component.scss'],
+  styleUrls: ['../collection-form/collection-form.component.scss'],
 })
 export class LinksComponent implements OnInit {
   constructor(
     private linksService: LinksService,
     public dialog: MatDialog,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: { collection: Collection }
   ) {}
 
@@ -21,7 +23,10 @@ export class LinksComponent implements OnInit {
   collections: Collection[] = [];
   link!: Link;
   id = new FormControl();
-  url = new FormControl('');
+  url = new FormControl('', [
+    Validators.required,
+    Validators.pattern('^(https?://)?[a-zA-Z0-9-.]+\\.[a-zA-Z]{2,}(\\S*)?$'),
+  ]);
   title = new FormControl('');
   collectionId = new FormControl();
 
@@ -65,6 +70,7 @@ export class LinksComponent implements OnInit {
           });
           this.linksService.updateLinkData(this.link);
         }
+        this.toastr.success(`Le lien ${this.link.title} a été créé !`);
       });
     }
   }
