@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class GoogleEmailComponent implements OnInit {
   mailDetails: {
-    labels: any;
+    labels: string[];
     date: Date;
     id: string;
     sender: string;
@@ -33,7 +33,7 @@ export class GoogleEmailComponent implements OnInit {
     this.getEmails().then((r) => console.log(r));
   }
 
-  async confirmDelete(mailDetail: any) {
+  async confirmDelete(mailDetail: MailDetail) {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
       width: '50%',
     });
@@ -57,7 +57,6 @@ export class GoogleEmailComponent implements OnInit {
     try {
       const userId = this.userInfo['info'].sub;
       const messages = await lastValueFrom(this.googleApi.emails(userId));
-      console.log(messages);
       const detailsPromises = messages.messages.map(async (message: any) => {
         const mail = await lastValueFrom(this.googleApi.getMail(userId, message.id));
         const sender = mail.payload.headers.find((header: { name: string }) => header.name === 'From')?.value || '';
@@ -67,10 +66,9 @@ export class GoogleEmailComponent implements OnInit {
         const labels = mail.labelIds;
         return { id: message.id, sender, snippet, body, date, labels };
       });
-      console.log(detailsPromises);
       this.mailDetails = await Promise.all(detailsPromises);
     } catch (error) {
-      console.error(error);
+      throw new Error('Method not implemented.');
     }
 
     this.loadingEmails = false;
@@ -94,4 +92,12 @@ export class GoogleEmailComponent implements OnInit {
     const decodedText = parser.parseFromString(`<!doctype html><body>${text}`, 'text/html').body.textContent || '';
     return decodedText;
   }
+}
+export interface MailDetail {
+  id: string;
+  sender: string;
+  snippet: string;
+  body: string;
+  date: Date;
+  labels: string[];
 }
