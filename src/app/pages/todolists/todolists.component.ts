@@ -37,14 +37,12 @@ export class TodolistsComponent implements OnInit {
   }
 
   deleteTodolist(todolist: ToDoList): void {
-    if (window.confirm('Êtes-vous sûr.e de vouloir supprimer cette liste ?')) {
-      this.todoService.deleteList(todolist.id).subscribe(() => {
-        const index = this.todolists.indexOf(todolist);
-        if (index !== -1) {
-          this.todolists.splice(index, 1);
-        }
-      });
-    }
+    this.todoService.deleteList(todolist.id).subscribe(() => {
+      const index = this.todolists.indexOf(todolist);
+      if (index !== -1) {
+        this.todolists.splice(index, 1);
+      }
+    });
   }
 
   addToTodoLists() {

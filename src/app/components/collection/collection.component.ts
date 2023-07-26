@@ -11,6 +11,8 @@ import { LinksComponent } from '../links/links.component';
 import { LinkFormUpdateComponent } from '../link-form-update/link-form-update.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ToastrService } from 'ngx-toastr';
+import { RssFeed } from '../../models/RssFeed';
+import { ConfirmDeleteModalComponent } from '../modals/confirm-delete-modal/confirm-delete-modal.component';
 
 @Component({
   selector: 'app-collection',
@@ -45,6 +47,21 @@ export class CollectionComponent implements OnInit {
 
   getLinkComment(link: Link) {
     return link.title ? link.title : link.url;
+  }
+
+  openConfirmationModal(): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
+      width: '400px',
+      data: {
+        message: `Etes-vous sûr de vouloir supprimer la collection ${this.collection.title} ?`,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteCollection();
+      }
+    });
   }
 
   deleteCollection() {
@@ -93,7 +110,21 @@ export class CollectionComponent implements OnInit {
       this.toastr.success(`La collection ${this.collection.title} a été ajoutée aux favoris !`);
     });
   }
+  openConfirmationLinkModal(link: Link): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
+      width: '400px',
+      data: {
+        link: link,
+        message: `Etes-vous sûr de vouloir supprimer le lien ${link.title} ?`,
+      },
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteLink(link.id);
+      }
+    });
+  }
   deleteLink(id: number) {
     this.linksService.deleteLink(id).subscribe(() => {
       return this.collectionService.updateCollectionData(this.collection);
