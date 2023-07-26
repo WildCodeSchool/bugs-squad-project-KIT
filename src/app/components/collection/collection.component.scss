@@ -92,13 +92,14 @@
           justify-content: space-between;
           background-color: $quaternary-color;
           border-radius: 4px;
-          height: 1.5rem;
+          height: 1.8rem;
           align-items: center;
           padding: 0.5rem;
           gap: 0.5rem;
 
           .link {
             overflow: hidden;
+            white-space: nowrap;
 
             a {
               color: white;
