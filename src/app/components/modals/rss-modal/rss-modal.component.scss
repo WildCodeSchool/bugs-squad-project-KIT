@@ -95,3 +95,13 @@ form {
     font-size: 0.8em;
   }
 }
+@media screen and (max-width: 800px) {
+  .rssFeed__form-inputBox {
+    width: auto;
+    input:valid ~ span,
+    input:focus ~ span {
+      font-size: 0.5em;
+    }
+  }
+
+}
