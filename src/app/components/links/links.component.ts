@@ -46,7 +46,6 @@ export class LinksComponent implements OnInit {
   }
 
   createLink() {
-    console.log(this.data);
     if (this.data.collection.links) {
       const url: string = this.url.value as string;
       const title = this.title.value as string;
