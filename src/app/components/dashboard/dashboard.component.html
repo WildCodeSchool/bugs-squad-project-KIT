@@ -54,13 +54,11 @@
         </div>
         <div class="newWidget grid-stack-item" id="item2" #item2>
           <h2>Mes collections</h2>
-          <div class="dashboard__content-group_module-middle">
-            <button class="float-right" (click)="toggleHelpMenu()">Afficher le contenu</button>
-            <div [@slideInOut]="collecOpen" class="d-inline-block">
-              <br />
-              <app-dash-collections></app-dash-collections>
-              <a routerLink="/collections" class="dashlink">Voir plus</a>
-            </div>
+          <button class="float-right" (click)="toggleHelpMenu()">Afficher le contenu</button>
+          <div [@slideInOut]="collecOpen">
+            <br />
+            <app-dash-collections></app-dash-collections>
+            <a routerLink="/collections" class="dashlink">Voir plus</a>
           </div>
         </div>
         <div class="newWidget grid-stack-item" id="item1" #item1>
