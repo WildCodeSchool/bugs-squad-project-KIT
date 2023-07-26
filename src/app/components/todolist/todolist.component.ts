@@ -40,7 +40,7 @@ export class TodolistComponent {
     const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
       width: '400px',
       data: {
-        message: `Etes-vous sûr de vouloir supprimer la todos list ${todoList.title} ?`,
+        message: `Etes-vous sûr de vouloir supprimer la liste ${todoList.title} ?`,
       },
     });
 
