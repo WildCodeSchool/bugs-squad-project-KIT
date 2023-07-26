@@ -2,7 +2,7 @@
   <div class="collection-infos">
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdate('0ms', '0ms')"></i>
-      <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteCollection()"></i>
+      <i class="fa-solid fa-trash" title="Supprimer" (click)="openConfirmationModal()"></i>
       <i
         *ngIf="!collection.favorite"
         class="fa-regular fa-star"
@@ -15,14 +15,14 @@
       <h3 class="title" title="{{ collection.title }}">{{ collection.title }}</h3>
       <p class="description" title="{{ collection.description }}">{{ collection.description }}</p>
     </div>
+    <div class="new-link">
+      <button class="new-link-btn" (click)="openDialogCreateLink('0ms', '0ms')">
+        <i class="fa-sharp fa-solid fa-circle-plus"></i>
+        Ajouter un lien
+      </button>
+    </div>
     <div class="links-section">
       <ul>
-        <li class="new-link">
-          <button class="new-link-btn" (click)="openDialogCreateLink('0ms', '0ms')">
-            <i class="fa-sharp fa-solid fa-circle-plus"></i>
-            Ajouter un lien
-          </button>
-        </li>
         <div cdkDropList class="drag-list" (cdkDropListDropped)="drop($event)">
           <li *ngFor="let link of collection.links" cdkDrag>
             <div class="links">
@@ -31,7 +31,7 @@
               </div>
               <div class="link-icons">
                 <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdateLink(link, '0ms', '0ms')"></i>
-                <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteLink(link.id)"></i>
+                <i class="fa-solid fa-trash" title="Supprimer" (click)="openConfirmationLinkModal(link)"></i>
               </div>
             </div>
           </li>

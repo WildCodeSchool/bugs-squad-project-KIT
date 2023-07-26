@@ -13,14 +13,11 @@
     align-items: center;
     width: 100%;
     margin: 0.5em 0 1em 0;
-    cursor: pointer;
+    cursor: default;
     h2 {
       color: #ffffff;
       margin-bottom: 0;
       margin-left: 0.5em;
-      &:hover {
-        color: $main-color;
-      }
     }
     i {
       color: #ffffff;
@@ -36,6 +33,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    cursor: pointer;
     .sidebar-feedGlobal__mobile-content-title {
       display: flex;
       justify-content: space-between;
@@ -46,17 +44,22 @@
         display: flex;
         align-items: center;
         gap: 0.5em;
-        cursor: pointer;
+        &:hover {
+        h3 {
+          color: $main-color;
+        }
+        i {
+          color: $main-color;
+        }
+      }
         h3 {
           margin-bottom: 0;
           color: #ffffff;
-          &:hover {
-            color: $main-color;
-          }
         }
         i {
           color: #ffffff;
         }
+
       }
       .sidebar-feedGlobal__mobile-ellipsis {
         margin-right: 0.5em;
@@ -95,16 +98,13 @@
     align-items: center;
     width: 100%;
     margin-bottom: 0.5em;
-    cursor: pointer;
+    cursor: default;
   }
   h2 {
     padding: 0;
     font-weight: $font-weight-medium;
     color: white;
     margin-bottom: 0;
-    &:hover {
-      color: $main-color;
-    }
   }
   i {
     margin: 0.5em;
@@ -126,12 +126,17 @@
       h3 {
         margin-bottom: 0;
         color: white;
-        &:hover {
-          color: $main-color;
-        }
       }
       i {
         font-size: 1em;
+      }
+      &:hover {
+        h3 {
+          color: $main-color;
+        }
+        i {
+          color: $main-color;
+        }
       }
     }
     .rssFeed-global__header-icon__point {
@@ -157,15 +162,48 @@
     }
   }
 }
+.rssFeed-global__allRssFeed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  i{
+    color: white;
+    padding-right: 0.8em;
+    font-size: 1.3em;
+  }
+  &:hover {
+    h3 {
+      color: $main-color;
+    }
+    i {
+      color: $main-color;
+    }
+  }
+  h3 {
+    margin-bottom: 0;
+    color: #FFFFFF;
+  }
+}
+.rssFeed-global__allRssFeed-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 4em;
+  cursor: pointer;
+  margin-bottom: 0.5em;
+  i {
+    font-size: 1em;
+    margin-right: 0;
+  }
+}
 .favorite {
   color: $main-color;
 }
 @media screen and (max-width: 950px) {
   .rssFeed-global__header-icon__point {
     display: block !important;
-  }
-  .rssFeed-global__header-icon {
-    display: none !important;
   }
   .rssFeed-global__header {
     margin-right: 1em;
@@ -177,5 +215,17 @@
   }
   .sidebar-feedGlobal {
     display: none;
+  }
+  .rssFeed-global__allRssFeed {
+    margin-left: 0.5em;
+    i {
+      padding-right: 0.5em;
+    }
+
+    .rssFeed-global__allRssFeed-icon {
+      i {
+        padding-right: 0.8em;
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-<nav *ngIf="!hasHeader" class="navbar">
+<nav *ngIf="!hasHeader" class="navbar" [ngClass]="{'below-764': isBelow764}">
   <div class="nav-row">
     <div class="logo">
       <a routerLink="/dashboard">
@@ -17,7 +17,7 @@
         <div class="dropdown">
           <a routerLink="/profil">Mon profil</a>
           <a routerLink="/settings">Paramètres</a>
-          <a routerLink="/home">Se déconnecter</a>
+          <a routerLink="/home" (click)="logout()">Se déconnecter</a>
         </div>
       </a>
     </div>

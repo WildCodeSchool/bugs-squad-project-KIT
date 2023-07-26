@@ -13,6 +13,8 @@ import { AddNewTaskComponent } from './modals/new-task.component';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ToastrService } from 'ngx-toastr';
 import { NgFor } from '@angular/common';
+import { RssFeed } from '../../models/RssFeed';
+import { ConfirmDeleteModalComponent } from '../modals/confirm-delete-modal/confirm-delete-modal.component';
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
@@ -34,7 +36,20 @@ export class TodolistComponent {
   ngOnInit() {
     this.todolist.tasks.sort((a, b) => a.position - b.position);
   }
+  openConfirmationDeleteTodo(todoList: ToDoList): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
+      width: '400px',
+      data: {
+        message: `Etes-vous sûr de vouloir supprimer la liste ${todoList.title} ?`,
+      },
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteTodolistFromParent(todoList);
+      }
+    });
+  }
   deleteTodolistFromParent(todolist: ToDoList): void {
     this.deleteTodolistFn(todolist);
   }
@@ -42,19 +57,35 @@ export class TodolistComponent {
   updateFavorite(todolist: ToDoList): void {
     this.todoService.updateIsFavorite(todolist.id, !todolist.favorite).subscribe(() => {
       todolist.favorite = !todolist.favorite;
+      if (todolist.favorite) {
+        this.toastr.success(`La liste ${todolist.title} a été ajoutée aux favoris !`);
+      } else {
+        this.toastr.info(`La liste ${todolist.title} a été retirée des favoris !`);
+      }
     });
   }
+  openConfirmationDeleteTask(task: Task): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
+      width: '400px',
+      data: {
+        message: `Etes-vous sûr de vouloir supprimer la tâche ${task.description} ?`,
+      },
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteTask(task);
+      }
+    });
+  }
   deleteTask(task: Task) {
-    if (window.confirm('Êtes-vous sûr.e de vouloir supprimer cette tâche ?')) {
-      this.taskService.deleteTask(task.id).subscribe(() => {
-        const index = this.todolist.tasks.indexOf(task);
-        if (index !== -1) {
-          this.todolist.tasks.splice(index, 1);
-        }
-        this.toastr.success(`La tâche ${task.description} a été supprimée !`);
-      });
-    }
+    this.taskService.deleteTask(task.id).subscribe(() => {
+      const index = this.todolist.tasks.indexOf(task);
+      if (index !== -1) {
+        this.todolist.tasks.splice(index, 1);
+      }
+      this.toastr.success(`La tâche ${task.description} a été supprimée !`);
+    });
   }
 
   openDialogAdd(enterAnimationDuration: string, exitAnimationDuration: string): void {

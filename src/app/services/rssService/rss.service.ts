@@ -111,5 +111,4 @@ export class RssFeedService {
   onRssFeedsUpdated(): Observable<void> {
     return this.rssFeedsUpdatedSubject.asObservable();
   }
-
 }

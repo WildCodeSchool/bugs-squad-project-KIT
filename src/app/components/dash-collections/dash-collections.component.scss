@@ -1,6 +1,8 @@
 @use '/src/imports' as *;
 .collections {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: center;
 }

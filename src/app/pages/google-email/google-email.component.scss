@@ -1,0 +1,116 @@
+@use '/src/imports' as *;
+
+.email-component {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    font-size: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .component-title {
+    text-align: center;
+    margin: 1.5rem;
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #F67280;
+    }
+    p {
+      font-size: 14px;
+      color: #888;
+    }
+  }
+  .spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #888;
+    padding: 20px;
+  }
+
+  .email-list {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    ng-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .emaillist2 {
+      width: 100%;
+    }
+
+    .email {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      p {
+        margin-bottom: 10px;
+      }
+      .meta {
+        background-color: #d6e1f9;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .content {
+
+        margin-top: 0.8rem;
+        padding: 0.5rem;
+      }
+      .details {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 0.4rem;
+      }
+      button {
+        margin: 0.8rem;
+        width: 8rem;
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        &:hover {
+          background-color: #0056b3;
+        }
+        &:disabled {
+          background-color: #ddd;
+          cursor: not-allowed;
+        }
+      }
+      span {
+        margin: 0 10px;
+        font-weight: bold;
+      }
+    }
+  }
+}

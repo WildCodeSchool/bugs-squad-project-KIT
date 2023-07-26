@@ -1,11 +1,14 @@
-<div class="form" mat-dialog-content>
-  <h3>Ajouter une tâche</h3>
-  <label>
-    Description:
+<div class="form">
+  <h2>Ajouter une tâche</h2>
+  <div class="inputBox">
     <input type="text" [formControl]="description" />
-  </label>
-  <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Annuler</button>
-    <button mat-button mat-dialog-close (click)="addTask()">Confirmer</button>
+    <span>Description:</span>
+    <div *ngIf="description.invalid && (description.dirty || description.touched)">
+      <div *ngIf="description.errors?.['required']">La description est obligatoire</div>
+    </div>
+  </div>
+  <div class="modal-buttons">
+    <button class="cancel" mat-dialog-close>Annuler</button>
+    <button class="submit" mat-dialog-close (click)="addTask()">Confirmer</button>
   </div>
 </div>

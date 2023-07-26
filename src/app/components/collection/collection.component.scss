@@ -1,7 +1,7 @@
 @use '/src/imports' as *;
 
 .collection {
-  width: 260px;
+  width: 16rem;
 
   outline: solid 2px $quaternary-color;
   border-radius: 8px;
@@ -12,7 +12,7 @@
 
   .collection-infos {
     height: 100%;
-    width: 15rem;
+    width: 92%;
     background-color: $bg-color;
     padding: 0.5rem;
 
@@ -42,9 +42,34 @@
         text-overflow: ellipsis;
       }
     }
+
+    .new-link {
+      display: flex;
+      justify-content: space-around;
+      margin: 1rem 0;
+
+      .new-link-btn {
+        background-color: $secondary-color;
+        border-radius: 16px;
+        padding: 0.5rem;
+        color: white;
+        width: 80%;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .fa-sharp {
+        text-align: center;
+        color: $bg-color;
+      }
+    }
     .links-section {
       overflow: auto;
-      height: 200px;
+      overflow-x: hidden;
+      height: 60%;
+      padding: 0.5rem;
     }
 
     ul {
@@ -57,29 +82,6 @@
       width: 100%;
       color: $bg-color;
 
-      .new-link {
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 1rem;
-
-        .new-link-btn {
-          background-color: $secondary-color;
-          border-radius: 16px;
-          padding: 1rem;
-          color: white;
-          width: 80%;
-          cursor: pointer;
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-        }
-
-        .fa-sharp {
-          text-align: center;
-          color: $bg-color;
-        }
-      }
-
       li {
         height: 2rem;
         margin-top: 0.5rem;
@@ -90,13 +92,14 @@
           justify-content: space-between;
           background-color: $quaternary-color;
           border-radius: 4px;
-          height: 1.5rem;
+          height: 1.8rem;
           align-items: center;
           padding: 0.5rem;
           gap: 0.5rem;
 
           .link {
             overflow: hidden;
+            white-space: nowrap;
 
             a {
               color: white;
@@ -127,11 +130,13 @@
     margin: 1rem;
     .collection-infos {
       width: 12rem;
+      overflow: hidden;
       .icons {
         display: none;
       }
       ul li {
         width: 10rem;
+        overflow: hidden;
       }
     }
   }

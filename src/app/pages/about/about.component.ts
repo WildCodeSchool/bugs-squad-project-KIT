@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ContactService } from 'src/app/services/contact.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-about',
@@ -8,7 +9,7 @@ import { ContactService } from 'src/app/services/contact.service';
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent {
-  constructor(private fb: FormBuilder, private contactService: ContactService) {}
+  constructor(private fb: FormBuilder, private contactService: ContactService, private toastr: ToastrService) {}
 
   contactForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -30,13 +31,14 @@ export class AboutComponent {
       this.contactService.submitContactForm(formData).subscribe(
         (response) => {
           this.contactForm.reset();
+          this.toastr.success(`Votre mail a été envoyé !`);
         },
         (error) => {
-          console.log('Error:', error);
+          this.toastr.error("Le formulaire n'est pas valide");
         }
       );
     } else {
-      console.log('Form is invalid. Please fix the errors.');
+      this.toastr.error("Le formulaire n'est pas valide");
     }
   }
 }

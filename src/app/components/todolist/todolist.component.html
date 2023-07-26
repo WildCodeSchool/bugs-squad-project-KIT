@@ -2,7 +2,7 @@
   <div class="meta">
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdateTodo('0ms', '0ms')"></i>
-      <i class="fa-solid fa-trash delete" title="Supprimer" (click)="deleteTodolistFn(todolist)"></i>
+      <i class="fa-solid fa-trash delete" title="Supprimer" (click)="openConfirmationDeleteTodo(todolist)"></i>
       <i
         *ngIf="!todolist.favorite"
         class="fa-regular fa-star"
@@ -41,7 +41,7 @@
               <i class="fa-solid fa-pencil" title="Modifier"></i>
               Modifier
             </button>
-            <button mat-menu-item (click)="deleteTask(task)">
+            <button mat-menu-item (click)="openConfirmationDeleteTask(task)">
               <i class="fa-solid fa-trash" title="Supprimer"></i>
               Supprimer
             </button>

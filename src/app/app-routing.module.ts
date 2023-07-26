@@ -12,7 +12,7 @@ import { TodolistsComponent } from './pages/todolists/todolists.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { TodolistsFavComponent } from './components/todolists-fav/todolists-fav.component';
 import { DashCollectionsComponent } from './components/dash-collections/dash-collections.component';
-
+import { GoogleEmailComponent } from './pages/google-email/google-email.component';
 const routes: Routes = [
   {
     path: '',
@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'calendar',
     component: CalendarComponent,
+  },
+  {
+    path: 'email',
+    component: GoogleEmailComponent,
   },
   {
     path: 'legalNotices',

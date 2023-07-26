@@ -1,11 +1,17 @@
 <div class="dashboard__content">
-  <div *ngIf="isLoggedIn()">
-    <h1>Welcome, {{ userInfo?.info?.name }}</h1>
-    <p>Email: {{ userInfo?.info?.email }}</p>
-  </div>
   <div class="dashboard__content">
     <div class="row">
-      <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer</button>
+      <p class="dashPresentation" *ngIf="isInfoVisible">
+        Bienvenue sur votre dashboard K.I.T. Vous pouvez glisser dans la partie grisée les différents éléments K.I.T. présents dans la barre
+        d'outils afin d'organiser votre espace d'accueil. Si vous souhaitez augmenter le contenu de ces éléments, vous pouvez en ajouter en
+        favoris depuis les différentes sections du site. Une fois glissés dans votre dashboard, vous pouvez déplacer et redimensionner les éléments à votre guise. Le bouton
+        <span class="presText">"Afficher le contenu"</span>
+        vous permet d'afficher le contenu de l'élément une fois glissé dans le dashboard, tandis que le lien
+        <span class="presText">"Voir plus"</span>
+        vous redirigera vers la page correspondante.
+      </p>
+      <button class="hiddenBtn" (click)="toggleDiv()">Afficher/Masquer la barre d'outils</button>
+      <button class="infosBtn" (click)="toggleInfo()"><i class="fa-solid fa-info" title="Infos"></i></button>
       <div class="sidebar" *ngIf="isDivVisible">
         <div id="trash">
           <div class="icon">
@@ -28,27 +34,43 @@
           <span>Sauvegarder le Grid-Stack</span>
         </button>
         <div class="newWidget grid-stack-item" id="item4" #item4>
-          <div class="dashboard__content-module">
-            Google Calendar
-            <div class="dashboard__content-group_module-middle">
-              <a routerLink="/dashboard">Google Calendar</a>
-            </div>
+          <h2>Mes mails Google</h2>
+          <button class="float-right" (click)="toggleMail()">Afficher le contenu</button>
+          <div [@slideInOut]="mailOpen" class="d-inline-block">
+            <br />
+            <a routerLink="/email" class="dashlink">Voir plus</a>
+            <app-google-email class="email-component"></app-google-email>
           </div>
         </div>
         <div class="newWidget grid-stack-item" id="item3" #item3>
           <h2>Mes flux favoris</h2>
-          <app-favorite-rss-feed></app-favorite-rss-feed>
-          <a routerLink="/rss">Voir plus</a>
+          <button class="float-right" (click)="toggleRSS()">Afficher le contenu</button>
+          <div [@slideInOut]="rssOpen" class="d-inline-block">
+            <br />
+            <app-favorite-rss-feed></app-favorite-rss-feed>
+            <a routerLink="/rss" class="dashlink">Voir plus</a>
+          </div>
         </div>
         <div class="newWidget grid-stack-item" id="item2" #item2>
           <h2>Mes collections</h2>
-          <app-dash-collections></app-dash-collections>
-          <a routerLink="/collections">Voir plus</a>
+          <div class="dashboard__content-group_module-middle">
+            <button class="float-right" (click)="toggleHelpMenu()">Afficher le contenu</button>
+            <div [@slideInOut]="collecOpen" class="d-inline-block">
+              <br />
+              <app-dash-collections></app-dash-collections>
+              <a routerLink="/collections" class="dashlink">Voir plus</a>
+            </div>
+          </div>
         </div>
         <div class="newWidget grid-stack-item" id="item1" #item1>
           <h2>Mes todolists</h2>
-          <app-todolists-fav></app-todolists-fav>
-          <a routerLink="/todolists">Voir plus</a>
+          <div class="dashboard__content-group_module-middle">
+            <button class="float-right" (click)="toggletodo()">Afficher le contenu</button>
+            <div [@slideInOut]="todoOpen" class="d-inline-block">
+              <app-todolists-fav></app-todolists-fav>
+              <a routerLink="/todolists" class="dashlink">Voir plus</a>
+            </div>
+          </div>
         </div>
       </div>
 

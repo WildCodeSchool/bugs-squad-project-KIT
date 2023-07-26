@@ -59,6 +59,7 @@ export class HomeformComponent {
           user: {
             id,
             username,
+            origin,
             email,
             authorities: [{ authority }],
           },
@@ -66,7 +67,7 @@ export class HomeformComponent {
 
         // Store the token and user information in local storage
         localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify({ id, username, email, authority }));
+        localStorage.setItem('user', JSON.stringify({ id, username, email, authority, origin }));
 
         if (token) {
           // Set the token in the HTTP header
