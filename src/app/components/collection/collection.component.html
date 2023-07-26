@@ -2,7 +2,7 @@
   <div class="collection-infos">
     <div class="icons">
       <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdate('0ms', '0ms')"></i>
-      <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteCollection()"></i>
+      <i class="fa-solid fa-trash" title="Supprimer" (click)="openConfirmationModal()"></i>
       <i
         *ngIf="!collection.favorite"
         class="fa-regular fa-star"
@@ -31,7 +31,7 @@
               </div>
               <div class="link-icons">
                 <i class="fa-solid fa-pencil" title="Modifier" (click)="openDialogUpdateLink(link, '0ms', '0ms')"></i>
-                <i class="fa-solid fa-trash" title="Supprimer" (click)="deleteLink(link.id)"></i>
+                <i class="fa-solid fa-trash" title="Supprimer" (click)="openConfirmationLinkModal(link)"></i>
               </div>
             </div>
           </li>
