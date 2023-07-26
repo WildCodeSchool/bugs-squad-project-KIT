@@ -13,8 +13,12 @@
           (feedSelected)="onFeedSelected($event)"
         ></app-sidebar-rss-feed>
       </div>
-      <h2>{{ feedSelected ? 'ARTICLE DU FLUX : ' + feedSelected.title : 'ARTICLES DES FLUX' }}</h2>
-      <button (click)="openModal()">+ Ajouter un flux RSS</button>
+      <div class="rss_myFlux-header__title_button">
+        <div class="rss_myFlux-header__button">
+          <button (click)="openModal()">+ Ajouter un flux RSS</button>
+        </div>
+        <h2>{{ feedSelected ? 'ARTICLE DU FLUX : ' + feedSelected.title : 'ARTICLES DES FLUX' }}</h2>
+      </div>
     </div>
     <div class="rss_myFlux-content">
       <app-rss-feed-all [rssDataItems]="this.rssService.rssDataItems"></app-rss-feed-all>
