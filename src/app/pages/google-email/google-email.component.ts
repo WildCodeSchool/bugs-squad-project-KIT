@@ -19,6 +19,7 @@ export class GoogleEmailComponent implements OnInit {
     sender: string;
     snippet: string;
     body: string;
+    subject: string;
   }[] = [];
   userInfo?: UserInfo;
   loadingEmails = false;
@@ -61,11 +62,12 @@ export class GoogleEmailComponent implements OnInit {
       const detailsPromises = messages.messages.map(async (message: Message) => {
         const mail = await lastValueFrom(this.googleApi.getMail(userId, message.id));
         const sender = mail.payload.headers.find((header: { name: string }) => header.name === 'From')?.value || '';
+        const subject = mail.payload.headers.find((header: { name: string }) => header.name === 'Subject')?.value || '';
         const snippet = this.decodeHTMLEntities(mail.snippet);
         const body = this.decodeHTMLEntities(this.extractBodyFromMail(mail));
         const date = this.formatDate(mail.internalDate);
         const labels = mail.labelIds;
-        return { id: message.id, sender, snippet, body, date, labels };
+        return { id: message.id, subject, sender, snippet, body, date, labels };
       });
       this.mailDetails = await Promise.all(detailsPromises);
     } catch (error) {
@@ -100,6 +102,7 @@ export interface MailDetail {
   sender: string;
   snippet: string;
   body: string;
+  subject: string;
   date: Date;
   labels: string[];
 }

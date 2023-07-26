@@ -265,6 +265,13 @@
     color: #6c5b7b;
   }
 }
+.d-inline-block {
+  width: 100%!important;
+  overflow-y: scroll!important;
+}
+.d-inline-block::-webkit-scrollbar {
+  display: none;
+}
 
 .dashPresentation {
   padding: 1em;
@@ -273,6 +280,11 @@
 .presText {
   font-weight: bolder;
   color: #f67280;
+}
+
+.email-component {
+  width: 100%;
+
 }
 
 @media screen and (max-width: 800px) {

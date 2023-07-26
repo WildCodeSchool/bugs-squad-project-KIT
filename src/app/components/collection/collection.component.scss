@@ -129,11 +129,13 @@
     margin: 1rem;
     .collection-infos {
       width: 12rem;
+      overflow: hidden;
       .icons {
         display: none;
       }
       ul li {
         width: 10rem;
+        overflow: hidden;
       }
     }
   }
