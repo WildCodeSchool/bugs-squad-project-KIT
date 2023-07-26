@@ -240,3 +240,12 @@ form {
     align-items: center;
   }
 }
+
+.presTeam {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75%;
+  padding: 1rem;
+  margin: 1rem 2rem;
+}
