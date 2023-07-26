@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class GoogleEmailComponent implements OnInit {
   mailDetails: {
+    subject: string;
     labels: string[];
     date: Date;
     id: string;
@@ -62,18 +63,22 @@ export class GoogleEmailComponent implements OnInit {
         const mail = await lastValueFrom(this.googleApi.getMail(userId, message.id));
         const sender = mail.payload.headers.find((header: { name: string }) => header.name === 'From')?.value || '';
         const snippet = this.decodeHTMLEntities(mail.snippet);
-        const body = this.decodeHTMLEntities(this.extractBodyFromMail(mail));
+        const body: string = await this.extractBodyFromMail(mail);
+        const subject = mail.payload.headers.find((header: { name: string }) => header.name === 'Subject')?.value || '';
         const date = this.formatDate(mail.internalDate);
         const labels = mail.labelIds;
-        return { id: message.id, sender, snippet, body, date, labels };
+        return { subject, sender, snippet, body, date, labels };
       });
+      console.log(detailsPromises);
       this.mailDetails = await Promise.all(detailsPromises);
     } catch (error) {
-      throw new Error('Method not implemented.');
+      console.error('Error fetching emails:', error);
+      this.toastr.error('Une erreur est survenue lors de la récupération des emails.');
+    } finally {
+      this.loadingEmails = false;
     }
-
-    this.loadingEmails = false;
   }
+
   formatDate(internalDate: string): Date {
     return new Date(+internalDate);
   }
@@ -81,12 +86,40 @@ export class GoogleEmailComponent implements OnInit {
   sortByLabel(label: string) {
     this.mailDetails = this.mailDetails.filter((mail) => mail.labels.includes(label));
   }
+  async extractBodyFromMail(mail: Mail): Promise<string> {
+    if (mail.payload.parts && mail.payload.parts.length > 0) {
+      const mailPart = mail.payload.parts.find((part) => part.mimeType === 'text/html');
+      if (mailPart?.body?.data) {
+        const bodyData = mailPart.body.data;
+        const uint8Array = this.base64ToUint8Array(bodyData);
+        const decodedBody = await this.uint8ArrayToString(uint8Array);
+        return decodedBody;
+      }
+    }
+    return '';
+  }
 
-  extractBodyFromMail(mail: Mail): string {
-    // TODO: Gérer les mails avec plusieurs parts
-    // Le contenu du mail peut être encodé en base64, à vous de le décoder si nécessaire
-    // Dans cet exemple, je suppose que le contenu n'est pas encodé en base64
-    return mail.snippet || '';
+  base64ToUint8Array(base64String: string): Uint8Array {
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+    const rawData = atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  }
+
+  uint8ArrayToString(array: Uint8Array): Promise<string> {
+    return new Promise((resolve) => {
+      const blob = new Blob([array], { type: 'text/plain' });
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        const text = event.target.result;
+        resolve(text);
+      };
+      reader.readAsText(blob);
+    });
   }
 
   decodeHTMLEntities(text: string): string {
@@ -95,6 +128,7 @@ export class GoogleEmailComponent implements OnInit {
     return decodedText;
   }
 }
+
 export interface MailDetail {
   id: string;
   sender: string;
@@ -147,3 +181,4 @@ interface Result {
   nextPageToken: string;
   resultSizeEstimate: number;
 }
+

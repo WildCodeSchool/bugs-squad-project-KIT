@@ -1,3 +1,4 @@
+<!-- google-email.component.html -->
 <div class="email-component">
   <div class="component-title">
     <h2>Boîte de réception Gmail</h2>
@@ -6,20 +7,9 @@
       d'e-mails à partir de votre compte Gmail.
     </p>
   </div>
-
-  <div class="buttons">
-    <button (click)="sortByLabel('inbox')">Inbox</button>
-    <button (click)="sortByLabel('starred')">Starred</button>
-    <button (click)="sortByLabel('important')">Important</button>
-    <button (click)="sortByLabel('sent')">Sent</button>
-    <button (click)="sortByLabel('drafts')">Drafts</button>
-    <button (click)="sortByLabel('spam')">Spam</button>
-    <button (click)="sortByLabel('trash')">Trash</button>
-  </div>
-
   <div class="email-list">
     <div *ngIf="loading">
-      <!-- Afficher le spinner ici pendant le chargement -->
+      <!-- Show loading spinner here -->
       <div class="spinner">Chargement en cours...</div>
     </div>
     <ng-container *ngIf="!loading">
@@ -37,13 +27,18 @@
           </p>
           <p>
             <strong>Objet:</strong>
-            {{ mailDetail.snippet }}
+            {{ mailDetail.subject }}
           </p>
           <p><strong>Contenu:</strong></p>
-          <p>{{ mailDetail.body }}</p>
+          <!-- Use [innerHTML] to render the email body as HTML -->
+          <div [innerHTML]="mailDetail.body"></div>
           <button mat-raised-button color="warn" (click)="confirmDelete(mailDetail)">Supprimer</button>
           <hr />
         </div>
+      </div>
+      <div *ngIf="mailDetails.length === 0">
+        <!-- Show a message if there are no emails -->
+        Aucun email trouvé.
       </div>
     </ng-container>
   </div>
