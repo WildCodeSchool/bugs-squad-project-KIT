@@ -35,12 +35,12 @@
           <span>Sauvegarder le Grid-Stack</span>
         </button>
         <div class="newWidget grid-stack-item" id="item4" #item4>
-          <h2>Mes mails google</h2>
+          <h2>Mes mails Google</h2>
           <button class="float-right" (click)="toggleMail()">Afficher le contenu</button>
           <div [@slideInOut]="mailOpen" class="d-inline-block">
             <br />
             <a routerLink="/email" class="dashlink">Voir plus</a>
-            <app-google-email></app-google-email>
+            <app-google-email class="email-component"></app-google-email>
           </div>
         </div>
         <div class="newWidget grid-stack-item" id="item3" #item3>
