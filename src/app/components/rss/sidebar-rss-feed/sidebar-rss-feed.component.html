@@ -23,7 +23,17 @@
         <h3>{{ feed.title }}</h3>
       </div>
       <div class="sidebar-feedGlobal__mobile-ellipsis">
-        <i class="fa-solid fa-ellipsis" title="Plus d'options"></i>
+        <i class="fa-solid fa-ellipsis" title="Plus d'options" [matMenuTriggerFor]="menu"></i>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="toggleFavorite(feed)" [ngClass]="{ favorite: feed.favorite }">
+            <i class="fa-solid fa-star" title="Favori" [class.favorite]="feed.favorite"></i>
+            {{ feed.favorite ? 'Retirer des favoris' : 'Mettre en favori' }}
+          </button>
+          <button mat-menu-item (click)="openConfirmationModal(feed)">
+            <i class="fa-solid fa-trash" title="Supprimer"></i>
+            Supprimer
+          </button>
+        </mat-menu>
       </div>
     </div>
   </div>
@@ -48,9 +58,6 @@
             <i class="fa-sharp fa-solid fa-rss"></i>
           </div>
           <h3>{{ feed.title }}</h3>
-        </div>
-        <div class="rssFeed-global__header-icon__point">
-          <i class="fa-solid fa-ellipsis-vertical" title="Ellipsis"></i>
         </div>
         <div class="rssFeed-global__header-icon">
           <i
