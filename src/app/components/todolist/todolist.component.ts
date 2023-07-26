@@ -57,7 +57,11 @@ export class TodolistComponent {
   updateFavorite(todolist: ToDoList): void {
     this.todoService.updateIsFavorite(todolist.id, !todolist.favorite).subscribe(() => {
       todolist.favorite = !todolist.favorite;
-      this.toastr.success(`La liste ${todolist.title} a été ajoutée aux favoris !`);
+      if (todolist.favorite) {
+        this.toastr.success(`La liste ${todolist.title} a été ajoutée aux favoris !`);
+      } else {
+        this.toastr.info(`La liste ${todolist.title} a été retirée des favoris !`);
+      }
     });
   }
   openConfirmationDeleteTask(task: Task): void {

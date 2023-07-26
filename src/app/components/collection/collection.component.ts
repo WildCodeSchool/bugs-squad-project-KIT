@@ -107,7 +107,11 @@ export class CollectionComponent implements OnInit {
   patchFavorite() {
     this.collectionService.patchFavorite(this.collection.id, !this.collection.favorite).subscribe(() => {
       this.collection.favorite = !this.collection.favorite;
-      this.toastr.success(`La collection ${this.collection.title} a été ajoutée aux favoris !`);
+      if (this.collection.favorite) {
+        this.toastr.success(`La collection ${this.collection.title} a été ajoutée aux favoris !`);
+      } else {
+        this.toastr.info(`La collection ${this.collection.title} a été retirée des favoris !`);
+      }
     });
   }
   openConfirmationLinkModal(link: Link): void {
